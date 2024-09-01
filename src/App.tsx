@@ -9,6 +9,7 @@ function App() {
 
         <div className="flex flex-col items-start gap-6">
           <Nav text="notes" />
+          <Nav text="messages" />
           <Nav text="audio" />
           <Nav text="videos" />
           <Nav text="board" />
