@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="grid grid-cols-12 h-full">
+    <div className="grid grid-cols-12 h-full font-mono">
       <Sidebar />
       <Main />
     </div>
