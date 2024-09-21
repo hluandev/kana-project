@@ -3,8 +3,8 @@ import { ButtonLink } from "./ButtonLink";
 export const Nav = () => {
   return (
     <nav className="py-3 border-b border-b-neutral-400">
-      <div className="mx-auto max-w-4xl flex justify-between items-center">
-        <div className="flex gap-10">
+      <div className="mx-auto max-w-5xl flex justify-between items-center">
+        <div className="flex gap-12">
           <ButtonLink text="LEARN" />
           <ButtonLink text="GLOBAL CHART" />
         </div>
