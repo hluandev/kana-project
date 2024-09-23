@@ -1,5 +1,5 @@
 const Anki = () => {
-  return <div>Anki</div>;
+  return <div>hello</div>;
 };
 
 export default Anki;

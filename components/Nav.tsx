@@ -12,14 +12,12 @@ export const Nav = () => {
         <NavButton
           text="Tasks"
           icon={<ListCheck className="" strokeWidth={1.6} size={18} />}
-          selected
+          selected={false}
         />
         <NavButton
           text="Anki"
-          icon={
-            <Diamond className="text-neutral-400" strokeWidth={1.6} size={18} />
-          }
-          selected={false}
+          icon={<Diamond className="" strokeWidth={1.6} size={18} />}
+          selected
         />
         <NavButton
           text="Battle"
