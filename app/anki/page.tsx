@@ -14,15 +14,15 @@ const Anki = () => {
         </div>
 
         <div className="">
-          <p className="font-semibold text-lg text-right">幽玄獣 (Yūgenjū)</p>
+          <p className="font-semibold text-lg text-right">本</p>
           <div className=" bg-gradient-to-t w-72 font-semibold from-purple-600 to-purple-900 border border-yellow-300  rounded-sm text-xl text-white text-center py-1">
             20
           </div>
         </div>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
-        <p className="text-6xl font-medium text-center">声</p>
+      <div className="absolute left-1/2 -translate-x-1/2 top-[40%] -translate-y-1/2">
+        <p className="text-6xl font-medium text-center">本</p>
         <img src="/img/book.webp" className="h-96  rounded-3xl mt-10" alt="" />
       </div>
 
