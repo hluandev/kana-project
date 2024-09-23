@@ -1,4 +1,16 @@
-const Anki = () => {
+import { Monster } from "@/components/Monster";
+import { createClient } from "@/utils/supabase/server";
+
+const Anki = async () => {
+  const supabase = createClient();
+
+  let { data: monsters } = await supabase
+    .from("monsters")
+    .select("*")
+    .eq("id", 1)
+    .limit(1)
+    .single();
+
   return (
     <div className="relative h-full">
       <div className="relative flex justify-between">
@@ -9,7 +21,7 @@ const Anki = () => {
           </div>
         </div>
 
-        <div className="text-6xl absolute left-1/2 -translate-x-1/2 font-semibold leading-none">
+        <div className="text-6xl bg-yellow-400 py-3 px-4 border rounded-lg absolute left-1/2 -translate-x-1/2 font-semibold leading-none">
           10
         </div>
 
@@ -21,10 +33,7 @@ const Anki = () => {
         </div>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 top-[40%] -translate-y-1/2">
-        <p className="text-6xl font-medium text-center">本</p>
-        <img src="/img/book.webp" className="h-96  rounded-3xl mt-10" alt="" />
-      </div>
+      <Monster monsters={monsters} />
 
       <form
         action=""
