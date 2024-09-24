@@ -1,3 +1,4 @@
+import { InputAttack } from "@/components/InputAttack";
 import { Monster } from "@/components/Monster";
 import { createClient } from "@/utils/supabase/server";
 
@@ -35,21 +36,7 @@ const Anki = async () => {
 
       <Monster monsters={monsters} />
 
-      <form
-        action=""
-        className=" left-1/2 -translate-x-1/2 absolute  bottom-20 space-x-2"
-      >
-        <input
-          type="text"
-          placeholder="Type here"
-          className="bg-[#f6f6f6] w-96 text-center  shadow-inner outline-none rounded-lg border border-neutral-300 py-3 px-4"
-        />
-        <input
-          value={"Attack"}
-          type="submit"
-          className="bg-blue-500 text-white font-semibold p-3 w-24 rounded-md"
-        />
-      </form>
+      <InputAttack />
     </div>
   );
 };
