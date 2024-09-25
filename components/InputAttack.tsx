@@ -1,8 +1,10 @@
 "use client";
 
 import { attack } from "@/actions/attack";
+import { failredirect } from "@/actions/failredirect";
 import { failStore } from "@/store/failStore";
 import { useRef, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
 
 interface Props {
   monsters: any;
@@ -12,8 +14,10 @@ interface Props {
 export const InputAttack = ({ monsters, pro }: Props) => {
   const killRef = useRef<HTMLAudioElement>(null);
   const failRef = useRef<HTMLAudioElement>(null);
-  const { setFail } = failStore();
+  const { fail, setFail } = failStore();
   const [answer, setAnswer] = useState("");
+
+  const router = useRouter();
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -26,9 +30,14 @@ export const InputAttack = ({ monsters, pro }: Props) => {
         setFail(false);
       }
     } else {
-      if (failRef.current) {
-        failRef.current.play();
-        setFail(true);
+      if (fail) {
+        setFail(false);
+        router.refresh();
+      } else {
+        if (failRef.current) {
+          failRef.current.play();
+          setFail(true);
+        }
       }
     }
   };
@@ -44,7 +53,6 @@ export const InputAttack = ({ monsters, pro }: Props) => {
           type="text"
           id="answer"
           name="answer"
-          required
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
           placeholder="Type here"
@@ -52,7 +60,10 @@ export const InputAttack = ({ monsters, pro }: Props) => {
         />
         <input
           type="submit"
-          className="bg-blue-500 text-white font-semibold p-3 w-24 rounded-md"
+          value={fail ? "Next" : "Attack"}
+          className={`${
+            fail ? "bg-red-500" : "bg-blue-500"
+          } text-white font-semibold p-3 w-24 rounded-md`}
         />
         {/* <button
           formAction={attack}
