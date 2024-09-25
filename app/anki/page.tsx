@@ -36,7 +36,7 @@ const Anki = async () => {
 
       <Monster monsters={monsters} />
 
-      <InputAttack />
+      <InputAttack read={monsters.read} />
     </div>
   );
 };

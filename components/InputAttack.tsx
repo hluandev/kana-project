@@ -2,16 +2,27 @@
 
 import { useRef, useState } from "react";
 
-export const InputAttack = () => {
-  const audioRef = useRef(null);
+interface Props {
+  read: string;
+}
+
+export const InputAttack = ({ read }: Props) => {
+  const killRef = useRef(null);
+  const failRef = useRef(null);
   const [answer, setAnswer] = useState("");
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
     setAnswer("");
 
-    if (audioRef.current) {
-      audioRef.current.play();
+    if (answer === read) {
+      if (killRef.current) {
+        killRef.current.play();
+      }
+    } else {
+      if (failRef.current) {
+        failRef.current.play();
+      }
     }
   };
 
@@ -36,7 +47,8 @@ export const InputAttack = () => {
         />
       </form>
 
-      <audio ref={audioRef} src="/audio/slash.mp3" preload="auto" />
+      <audio ref={killRef} src="/audio/kill.mp3" preload="auto" />
+      <audio ref={failRef} src="/audio/fail.mp3" preload="auto" />
     </div>
   );
 };
