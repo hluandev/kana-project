@@ -10,8 +10,8 @@ interface Props {
 }
 
 export const InputAttack = ({ monsters, pro }: Props) => {
-  const killRef = useRef(null);
-  const failRef = useRef(null);
+  const killRef = useRef<HTMLAudioElement>(null);
+  const failRef = useRef<HTMLAudioElement>(null);
   const { setFail } = failStore();
   const [answer, setAnswer] = useState("");
 
