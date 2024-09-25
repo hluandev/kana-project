@@ -1,12 +1,14 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export const InputAttack = () => {
   const audioRef = useRef(null);
+  const [answer, setAnswer] = useState("");
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    setAnswer("");
 
     if (audioRef.current) {
       audioRef.current.play();
@@ -22,6 +24,8 @@ export const InputAttack = () => {
       >
         <input
           type="text"
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
           placeholder="Type here"
           className="bg-[#f6f6f6] w-96 text-center  shadow-inner outline-none rounded-lg border border-neutral-300 py-3 px-4"
         />
