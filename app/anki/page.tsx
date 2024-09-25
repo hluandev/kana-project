@@ -1,3 +1,4 @@
+import { attack } from "@/actions/attack";
 import { InputAttack } from "@/components/InputAttack";
 import { Monster } from "@/components/Monster";
 import { createClient } from "@/utils/supabase/server";
@@ -12,12 +13,12 @@ const Anki = async () => {
     .limit(1)
     .single();
 
-  console.log(pro.reviews);
+  let randomIndex = Math.floor(Math.random() * pro.reviews.length);
 
   let { data: monsters } = await supabase
     .from("monsters")
     .select("*")
-    .eq("id", 1)
+    .eq("id", pro.reviews[randomIndex])
     .limit(1)
     .single();
 
@@ -45,7 +46,7 @@ const Anki = async () => {
 
       <Monster monsters={monsters} />
 
-      <InputAttack read={monsters.read} />
+      <InputAttack monsters={monsters} pro={pro} />
     </div>
   );
 };

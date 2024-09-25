@@ -5,21 +5,23 @@ import { failStore } from "@/store/failStore";
 import { useRef, useState } from "react";
 
 interface Props {
-  read: string;
+  monsters: any;
+  pro: any;
 }
 
-export const InputAttack = ({ read }: Props) => {
+export const InputAttack = ({ monsters, pro }: Props) => {
   const killRef = useRef(null);
   const failRef = useRef(null);
   const { setFail } = failStore();
   const [answer, setAnswer] = useState("");
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     setAnswer("");
 
-    if (answer === read) {
+    if (answer === monsters.read) {
       if (killRef.current) {
+        await attack(monsters.id, pro);
         killRef.current.play();
         setFail(false);
       }
@@ -40,17 +42,24 @@ export const InputAttack = ({ read }: Props) => {
       >
         <input
           type="text"
+          id="answer"
+          name="answer"
+          required
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
           placeholder="Type here"
           className="bg-[#f6f6f6] w-96 text-center  shadow-inner outline-none rounded-lg border border-neutral-300 py-3 px-4"
         />
-        <button
+        <input
+          type="submit"
+          className="bg-blue-500 text-white font-semibold p-3 w-24 rounded-md"
+        />
+        {/* <button
           formAction={attack}
           className="bg-blue-500 text-white font-semibold p-3 w-24 rounded-md"
         >
           Attack
-        </button>
+        </button> */}
       </form>
 
       <audio ref={killRef} src="/audio/kill.mp3" preload="auto" />
