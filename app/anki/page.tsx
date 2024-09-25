@@ -5,6 +5,15 @@ import { createClient } from "@/utils/supabase/server";
 const Anki = async () => {
   const supabase = createClient();
 
+  let { data: pro, error } = await supabase
+    .from("pro")
+    .select("*")
+    .eq("user_id", "44df6dcf-da1a-4ded-b117-9d317bacdca0")
+    .limit(1)
+    .single();
+
+  console.log(pro.reviews);
+
   let { data: monsters } = await supabase
     .from("monsters")
     .select("*")
