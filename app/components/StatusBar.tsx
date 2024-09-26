@@ -1,4 +1,9 @@
+import { useLoaderData } from "@remix-run/react";
+import { loader } from "~/routes/_index";
+
 export const StatusBar = () => {
+  const data = useLoaderData<typeof loader>();
+
   return (
     <div className="p-5 flex justify-between">
       {/* Player */}
@@ -18,7 +23,9 @@ export const StatusBar = () => {
       {/* Monster */}
       <div className="flex gap-2">
         <div className="flex flex-col justify-between">
-          <p className="text-3xl font-black text-right leading-none">馬鹿</p>
+          <p className="text-3xl font-black text-right leading-none">
+            {data.word}
+          </p>
           <div className="italic bg-red-500  w-72 py-1 text-center rounded-md text-black text-3xl font-black">
             20
           </div>
