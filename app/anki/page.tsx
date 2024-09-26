@@ -13,7 +13,16 @@ const Anki = async () => {
     .limit(1)
     .single();
 
-  let randomIndex = Math.floor(Math.random() * pro.reviews.length);
+  let lastRandomIndex = null;
+  let randomIndex = null;
+
+  do {
+    randomIndex = Math.floor(Math.random() * pro.reviews.length);
+  } while (randomIndex === lastRandomIndex);
+
+  lastRandomIndex = randomIndex;
+
+  console.log(randomIndex);
 
   let { data: monsters } = await supabase
     .from("monsters")
