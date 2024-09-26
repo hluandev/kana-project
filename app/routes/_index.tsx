@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { Connect } from "~/components/Connect";
 import { Main } from "~/components/Main";
 import { Nav } from "~/components/Nav";
 
@@ -11,6 +12,8 @@ export default function Index() {
     <div className="h-full grid grid-cols-12">
       <Nav />
       <Main />
+
+      <Connect />
     </div>
   );
 }
