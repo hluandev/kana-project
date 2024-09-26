@@ -1,5 +1,5 @@
 import { Form, useLoaderData } from "@remix-run/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { loader } from "~/routes/_index";
 
 interface Props {
@@ -9,6 +9,8 @@ interface Props {
 export const InputAttack = ({ setWrong }: Props) => {
   const [answer, setAnswer] = useState("");
   const data = useLoaderData<typeof loader>();
+  const wrongRef = useRef<HTMLAudioElement>(null);
+  const killRef = useRef<HTMLAudioElement>(null);
 
   const onAttack = (e: any) => {
     e.preventDefault();
@@ -16,6 +18,13 @@ export const InputAttack = ({ setWrong }: Props) => {
     if (answer !== data.word) {
       setWrong(true);
       setAnswer("");
+      if (wrongRef.current) {
+        wrongRef.current.play();
+      }
+    } else {
+      if (killRef.current) {
+        killRef.current.play();
+      }
     }
   };
 
@@ -38,6 +47,9 @@ export const InputAttack = ({ setWrong }: Props) => {
       >
         Attack
       </button>
+
+      <audio ref={wrongRef} src="/audio/wrong.mp3" preload="auto" />
+      <audio ref={killRef} src="/audio/kill.mp3" preload="auto" />
     </Form>
   );
 };
