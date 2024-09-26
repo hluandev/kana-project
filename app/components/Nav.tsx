@@ -9,7 +9,7 @@ export const Nav = () => {
 
       <div className="flex flex-col gap-4 text-xl font-black mt-9">
         <NavButton text="Tasks" active={false} />
-        <NavButton text="Anki" active />
+        <NavButton text="Battle" active />
         <NavButton text="Guides" active={false} />
       </div>
     </nav>

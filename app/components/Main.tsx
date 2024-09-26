@@ -6,7 +6,7 @@ export const Main = () => {
     <div className=" col-span-8 py-3 h-full">
       <div className="relative h-full  rounded-2xl border-white bg-[#161716] shadow-inner-shadow-dark-float">
         <div className="border-b border-neutral-800 p-5 text-2xl font-black">
-          Anki
+          Battle
         </div>
 
         <StatusBar />
