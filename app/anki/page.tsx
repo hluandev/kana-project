@@ -1,10 +1,13 @@
 import { attack } from "@/actions/attack";
 import { InputAttack } from "@/components/InputAttack";
 import { Monster } from "@/components/Monster";
+import { randomNumber } from "@/store/randomNumber";
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
 const Anki = async () => {
   const supabase = createClient();
+  const cookieStore = cookies();
 
   let { data: pro, error } = await supabase
     .from("pro")
@@ -13,14 +16,12 @@ const Anki = async () => {
     .limit(1)
     .single();
 
-  let lastRandomIndex = null;
   let randomIndex = null;
+  let lastRandomIndex = cookieStore.get("lastNumber");
 
   do {
     randomIndex = Math.floor(Math.random() * pro.reviews.length);
-  } while (randomIndex === lastRandomIndex);
-
-  lastRandomIndex = randomIndex;
+  } while (randomIndex === parseInt(lastRandomIndex));
 
   console.log(randomIndex);
 

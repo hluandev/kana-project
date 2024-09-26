@@ -1,10 +1,10 @@
 "use client";
 
 import { attack } from "@/actions/attack";
-import { failredirect } from "@/actions/failredirect";
 import { failStore } from "@/store/failStore";
 import { useRef, useState } from "react";
 import { redirect, useRouter } from "next/navigation";
+import { setLastNumber } from "@/actions/setLastNumber";
 
 interface Props {
   monsters: any;
@@ -36,6 +36,7 @@ export const InputAttack = ({ monsters, pro }: Props) => {
       } else {
         if (failRef.current) {
           failRef.current.play();
+          setLastNumber(monsters.id);
           setFail(true);
         }
       }
