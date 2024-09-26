@@ -16,14 +16,18 @@ export const loader = async () => {
     .limit(1)
     .single();
 
+  const randomIndex = Math.floor(Math.random() * pro.reviews.length);
+
   let { data: monsters } = await supabase
     .from("monsters")
     .select("*")
-    .eq("id", pro.reviews[1])
+    .eq("id", pro.reviews[randomIndex])
     .limit(1)
     .single();
   return monsters;
 };
+
+export const action = async () => {};
 
 export default function Index() {
   return (
