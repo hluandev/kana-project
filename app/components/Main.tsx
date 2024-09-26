@@ -1,4 +1,5 @@
 import { Form } from "@remix-run/react";
+import { StatusBar } from "./StatusBar";
 
 export const Main = () => {
   return (
@@ -7,6 +8,8 @@ export const Main = () => {
         <div className="border-b border-neutral-800 p-5 text-2xl font-black">
           Anki
         </div>
+
+        <StatusBar />
 
         <Form className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center bg-[#141414] border-neutral-700 p-2 border rounded-full">
           <input
