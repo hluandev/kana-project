@@ -1,12 +1,12 @@
 import { MenuTop } from "@/components/menu-top";
 
 export default function MenuLayout({
-  children, // will be a page or nested layout
+  children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <section className="h-full">
+    <section className="h-full bg-[url('/img/bg-menu.png')] bg-cover">
       <MenuTop />
       {children}
     </section>
