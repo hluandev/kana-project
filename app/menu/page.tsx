@@ -1,9 +1,9 @@
-import { MenuBar } from "@/components/menu-bar";
+import { MenuOptions } from "@/components/menu-options";
 
 const Menu = () => {
   return (
-    <div className="h-full relative">
-      <MenuBar />
+    <div className="">
+      <MenuOptions />
     </div>
   );
 };
