@@ -6,7 +6,7 @@ export default function MenuLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="h-full bg-[url('/img/bg-menu.png')] bg-cover">
+    <section className="h-full flex flex-col bg-[url('/img/bg-menu.png')] bg-cover">
       <MenuTop />
       {children}
     </section>
