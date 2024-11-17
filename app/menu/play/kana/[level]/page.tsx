@@ -1,7 +1,7 @@
 import { EnemyCard } from "@/components/enemy-card";
 import { createClient } from "@/utils/supabase/server";
 
-const ThisKana = async ({ params }: { params: Promise<{ kana: string }> }) => {
+const Level = async ({ params }: { params: Promise<{ kana: string }> }) => {
   const supabase = await createClient();
 
   let { data: profiles } = await supabase
@@ -14,7 +14,6 @@ const ThisKana = async ({ params }: { params: Promise<{ kana: string }> }) => {
     .from("kana")
     .select("*")
     .eq("level", profiles.level)
-    .eq("this_kana", (await params).kana)
     .limit(1)
     .single();
 
@@ -42,4 +41,4 @@ const ThisKana = async ({ params }: { params: Promise<{ kana: string }> }) => {
   );
 };
 
-export default ThisKana;
+export default Level;
