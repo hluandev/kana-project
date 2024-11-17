@@ -13,15 +13,16 @@ interface Props {
 export async function levelup({ id, level }: Props) {
   const supabase = await createClient();
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("profiles")
     .update({ level: level + 1 })
     .eq("id", id);
 
   if (error) {
+    console.log(error);
     redirect("/error");
   }
 
-  revalidatePath("/", "layout");
-  redirect("/");
+  revalidatePath("/menu/play/kana/", "page");
+  redirect("/menu/play/kana/");
 }
