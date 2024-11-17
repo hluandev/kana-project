@@ -1,20 +1,15 @@
+import { EnemyCard } from "@/components/enemy-card";
 import { InputAnswer } from "@/components/input-answer";
 import { createClient } from "@/utils/supabase/server";
 
 const Level = async () => {
   const supabase = await createClient();
-  const { data: kana, error } = await supabase.from("kana").select("*");
+  const { data, error } = await supabase.from("kana").select("*");
 
   return (
     <div className="flex-1 relative z-10 flex justify-center">
-      <div className="flex flex-col gap-0.5 items-center h-fit">
-        <div className="bg-red-600  border w-72 border-red-500 rounded-md p-2 text-center font-bold text-xl italic">
-          20
-        </div>
-        <div className="text-7xl  bg-black/70 backdrop-blur-2xl flex justify-center items-center h-72 aspect-square rounded-md">
-          あ
-        </div>
-      </div>
+      <EnemyCard data={data} />
+
       <InputAnswer />
 
       <div className="absolute space-y-0.5 left-0 bottom-0 -skew-y-6 p-12">
