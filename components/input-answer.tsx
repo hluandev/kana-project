@@ -14,6 +14,7 @@ export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
   const [input, setInput] = useState("");
   const { hp, setHp } = usePlayerHpStore();
   const { wrong, setWrong } = useWrongStore();
+  const [correctAnswers, setCorrectAnswers] = useState<any>([]);
 
   const playSound = (src: string) => {
     const audio = new Audio(src);
@@ -46,7 +47,11 @@ export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
             e.preventDefault();
             if (data[currentIndex].romaji === input) {
               playSound("/audio/shoot.wav");
-              setCurrentIndex(currentIndex + 1);
+              setCorrectAnswers([...correctAnswers, currentIndex]);
+              if (correctAnswers.length <= 5) {
+                setCurrentIndex(currentIndex + 1);
+              }
+
               setInput("");
             } else {
               playSound("/audio/fail.wav");
