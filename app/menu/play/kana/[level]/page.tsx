@@ -1,6 +1,10 @@
 import { InputAnswer } from "@/components/input-answer";
+import { createClient } from "@/utils/supabase/server";
 
-const Level = () => {
+const Level = async () => {
+  const supabase = await createClient();
+  const { data: kana, error } = await supabase.from("kana").select("*");
+
   return (
     <div className="flex-1 relative z-10 flex justify-center">
       <div className="flex flex-col gap-0.5 items-center h-fit">
@@ -18,7 +22,10 @@ const Level = () => {
 
         <div className="flex gap-0.5  bg-black/50 p-0.5 rounded-md">
           {[1, 2, 3, 4, 5].map((item, index) => (
-            <div className="w-10 aspect-square p-2 rounded-md font-bold text-2xl text-center italic bg-blue-500"></div>
+            <div
+              key={index}
+              className="w-10 aspect-square p-2 rounded-md font-bold text-2xl text-center italic bg-blue-500"
+            ></div>
           ))}
         </div>
 
