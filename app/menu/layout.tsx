@@ -1,3 +1,4 @@
+import { AmbientSound } from "@/components/ambient-sound";
 import { MenuTop } from "@/components/menu-top";
 
 export default function MenuLayout({
@@ -16,6 +17,8 @@ export default function MenuLayout({
         {/* <track srcLang="en" label="English" /> */}
         Your browser does not support the video tag.
       </video>
+
+      <AmbientSound />
     </section>
   );
 }

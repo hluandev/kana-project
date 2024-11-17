@@ -13,18 +13,22 @@ export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
   const [input, setInput] = useState("");
   const { hp, setHp } = usePlayerHpStore();
 
+  const playSound = (src: string) => {
+    const audio = new Audio(src);
+    audio.volume = 0.2;
+    audio.play();
+  };
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         if (data[currentIndex].romaji === input) {
-          const audio = new Audio("/audio/shoot.wav");
-          audio.play();
+          playSound("/audio/shoot.wav");
           setCurrentIndex(currentIndex + 1);
           setInput("");
         } else {
-          const audio = new Audio("/audio/fail.wav");
-          audio.play();
+          playSound("/audio/fail.wav");
           if (hp >= 20) {
             setHp(hp - 20);
           }
