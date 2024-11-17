@@ -21,7 +21,9 @@ export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
           setCurrentIndex(currentIndex + 1);
           setInput("");
         } else {
-          setHp(hp - 20);
+          if (hp >= 0) {
+            setHp(hp - 20);
+          }
           setInput("");
         }
       }}
