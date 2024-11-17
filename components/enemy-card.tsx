@@ -55,7 +55,13 @@ export const EnemyCard = ({ data, profiles }: Props) => {
           <p className="text-9xl italic  text-yellow-500">You Defeated</p>
           <p className="text-4xl">You are now level {profiles.level + 1}</p>
           <button
-            onClick={() => levelup({ id: profiles.id, level: profiles.level })}
+            onClick={() =>
+              levelup({
+                id: profiles.id,
+                level: profiles.level,
+                kana: profiles.kana,
+              })
+            }
             className="bg-pink-600 text-3xl rounded-md text-white px-6 py-2"
           >
             Next Level
