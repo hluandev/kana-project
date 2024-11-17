@@ -22,7 +22,7 @@ export const EnemyCard = ({ data }: Props) => {
   return (
     <div className="">
       {hp === 0 && (
-        <div className="fixed flex flex-col gap-8 font-bold justify-center z-20 items-center top-0 left-0 w-full bg-black/80 h-full">
+        <div className="fixed flex flex-col gap-10 font-bold justify-center z-20 items-center top-0 left-0 w-full bg-black/80 h-full">
           <p className="text-9xl italic  text-red-600">You Died</p>
           <div className="space-x-6">
             <button
@@ -49,8 +49,8 @@ export const EnemyCard = ({ data }: Props) => {
       )}
 
       {win && (
-        <div className="fixed flex flex-col gap-8 font-bold justify-center z-20 items-center top-0 left-0 w-full bg-black/80 h-full">
-          <p className="text-9xl italic  text-yellow-500">Clear!</p>
+        <div className="fixed flex flex-col gap-10 font-bold justify-center z-20 items-center top-0 left-0 w-full bg-black/80 h-full">
+          <p className="text-9xl italic  text-yellow-500">You Defeated</p>
           <button className="bg-pink-600 text-3xl rounded-md text-white px-6 py-2">
             Next Level
           </button>
