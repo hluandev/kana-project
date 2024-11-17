@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
 
 interface Props {
   currentIndex: number;
+  correctAnswers: any;
+  input: string;
+  setInput: (e: string) => void;
+  setCorrectAnswers: (e: any) => void;
   setCurrentIndex: (e: number) => void;
   setWin: (e: boolean) => void;
   data: any;
@@ -14,14 +18,16 @@ interface Props {
 export const InputAnswer = ({
   data,
   currentIndex,
+  input,
+  setInput,
   setCurrentIndex,
+  correctAnswers,
+  setCorrectAnswers,
   setWin,
 }: Props) => {
   const defaultIndex = [0, 1, 2, 3, 4];
-  const [input, setInput] = useState("");
   const { hp, setHp } = usePlayerHpStore();
   const { wrong, setWrong } = useWrongStore();
-  const [correctAnswers, setCorrectAnswers] = useState<any>([]);
 
   const playSound = (src: string) => {
     const audio = new Audio(src);

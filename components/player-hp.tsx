@@ -8,6 +8,9 @@ export const PlayerHp = () => {
   const [hpBars, setHpBars] = useState([1, 2, 3, 4, 5]);
 
   useEffect(() => {
+    if (hp === 100) {
+      setHpBars([1, 2, 3, 4, 5]);
+    }
     if (hp === 80) {
       setHpBars([1, 2, 3, 4, 0]);
     }
