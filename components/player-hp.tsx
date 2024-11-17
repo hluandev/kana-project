@@ -33,7 +33,7 @@ export const PlayerHp = () => {
         {hpBars.map((item, index) => (
           <div
             key={index}
-            className={`w-10 aspect-square p-2 rounded-md font-bold text-2xl text-center italic ${
+            className={`w-10 aspect-square p-2 duration-300 rounded-md font-bold text-2xl text-center italic ${
               item === 0 ? "bg-neutral-600" : "bg-blue-500"
             } `}
           ></div>

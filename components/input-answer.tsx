@@ -18,9 +18,13 @@ export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
       onSubmit={(e) => {
         e.preventDefault();
         if (data[currentIndex].romaji === input) {
+          const audio = new Audio("/audio/shoot.wav");
+          audio.play();
           setCurrentIndex(currentIndex + 1);
           setInput("");
         } else {
+          const audio = new Audio("/audio/fail.wav");
+          audio.play();
           if (hp >= 20) {
             setHp(hp - 20);
           }

@@ -11,7 +11,7 @@ export const PlayMode = [
   },
   {
     text: "Battle",
-    desc: "Versus other players to test Japanese skills",
+    desc: "Versus other players to test your Japanese skills",
     note: "Free to try 3 matches",
   },
 ];
