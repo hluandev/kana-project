@@ -2,19 +2,27 @@
 
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useWrongStore } from "@/store/useWrongAnswer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   currentIndex: number;
   setCurrentIndex: (e: number) => void;
+  setWin: (e: boolean) => void;
   data: any;
 }
 
-export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
+export const InputAnswer = ({
+  data,
+  currentIndex,
+  setCurrentIndex,
+  setWin,
+}: Props) => {
+  const defaultIndex = [0, 1, 2, 3, 4];
   const [input, setInput] = useState("");
   const { hp, setHp } = usePlayerHpStore();
   const { wrong, setWrong } = useWrongStore();
   const [correctAnswers, setCorrectAnswers] = useState<any>([]);
+  const [randomNumber, setRandomNumber] = useState<any>(null);
 
   const playSound = (src: string) => {
     const audio = new Audio(src);
@@ -22,14 +30,37 @@ export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
     audio.play();
   };
 
+  const handleCurrentIndex = () => {
+    const result = defaultIndex.filter(
+      (num) => ![...correctAnswers, currentIndex].includes(num)
+    );
+    if (result.length > 0) {
+      const newRandomNumber = result[Math.floor(Math.random() * result.length)];
+      setCurrentIndex(newRandomNumber);
+    }
+
+    setInput("");
+  };
+
+  useEffect(() => {
+    // Recalculate `randomNumber` whenever `correctAnswers` changes
+    const result = defaultIndex.filter((num) => !correctAnswers.includes(num));
+    if (result.length > 0) {
+      setRandomNumber(result[Math.floor(Math.random() * result.length)]);
+    } else {
+      setWin(true);
+    }
+
+    console.log(result);
+  }, [correctAnswers]);
+
   return (
     <>
       {wrong ? (
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            setCurrentIndex(currentIndex + 1);
-            setInput("");
+            handleCurrentIndex();
             setWrong(false);
           }}
           className="absolute bottom-32 shadow-xl"
@@ -45,21 +76,19 @@ export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            if (data[currentIndex].romaji === input) {
-              playSound("/audio/shoot.wav");
-              setCorrectAnswers([...correctAnswers, currentIndex]);
-              if (correctAnswers.length <= 5) {
-                setCurrentIndex(currentIndex + 1);
+            if (correctAnswers.length <= 4) {
+              if (data[currentIndex].romaji === input) {
+                playSound("/audio/shoot.wav");
+                setCorrectAnswers((prev: any) => [...prev, currentIndex]);
+                handleCurrentIndex();
+              } else {
+                playSound("/audio/fail.wav");
+                if (hp >= 20) {
+                  setHp(hp - 20);
+                }
+                setInput("");
+                setWrong(true);
               }
-
-              setInput("");
-            } else {
-              playSound("/audio/fail.wav");
-              if (hp >= 20) {
-                setHp(hp - 20);
-              }
-              setInput("");
-              setWrong(true);
             }
           }}
           className="absolute bottom-32 shadow-xl"
