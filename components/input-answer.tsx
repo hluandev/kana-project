@@ -1,5 +1,6 @@
 "use client";
 
+import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useState } from "react";
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 
 export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
   const [input, setInput] = useState("");
+  const { hp, setHp } = usePlayerHpStore();
 
   return (
     <form
@@ -17,6 +19,9 @@ export const InputAnswer = ({ data, currentIndex, setCurrentIndex }: Props) => {
         e.preventDefault();
         if (data[currentIndex].romaji === input) {
           setCurrentIndex(currentIndex + 1);
+          setInput("");
+        } else {
+          setHp(hp - 20);
           setInput("");
         }
       }}

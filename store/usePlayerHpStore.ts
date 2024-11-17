@@ -2,10 +2,10 @@ import { create } from "zustand";
 
 type Store = {
   hp: number;
-  setHp: () => void;
+  setHp: (e: number) => void;
 };
 
 export const usePlayerHpStore = create<Store>()((set) => ({
   hp: 100,
-  setHp: () => set((state) => ({ hp: state.hp + 1 })),
+  setHp: (e) => set(() => ({ hp: e })),
 }));
