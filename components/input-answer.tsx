@@ -22,7 +22,6 @@ export const InputAnswer = ({
   const { hp, setHp } = usePlayerHpStore();
   const { wrong, setWrong } = useWrongStore();
   const [correctAnswers, setCorrectAnswers] = useState<any>([]);
-  const [randomNumber, setRandomNumber] = useState<any>(null);
 
   const playSound = (src: string) => {
     const audio = new Audio(src);
@@ -43,15 +42,11 @@ export const InputAnswer = ({
   };
 
   useEffect(() => {
-    // Recalculate `randomNumber` whenever `correctAnswers` changes
     const result = defaultIndex.filter((num) => !correctAnswers.includes(num));
     if (result.length > 0) {
-      setRandomNumber(result[Math.floor(Math.random() * result.length)]);
     } else {
       setWin(true);
     }
-
-    console.log(result);
   }, [correctAnswers]);
 
   return (
@@ -63,7 +58,7 @@ export const InputAnswer = ({
             handleCurrentIndex();
             setWrong(false);
           }}
-          className="absolute bottom-32 shadow-xl"
+          className="absolute bottom-28 shadow-xl"
         >
           <input
             value={"Wrong answer (Enter)"}
@@ -85,13 +80,14 @@ export const InputAnswer = ({
                 playSound("/audio/fail.wav");
                 if (hp >= 20) {
                   setHp(hp - 20);
+                } else {
                 }
                 setInput("");
                 setWrong(true);
               }
             }
           }}
-          className="absolute bottom-32 shadow-xl"
+          className="absolute bottom-28 shadow-xl"
         >
           <input
             onChange={(e) => setInput(e.target.value)}

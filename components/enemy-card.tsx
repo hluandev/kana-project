@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { InputAnswer } from "./input-answer";
 import { useWrongStore } from "@/store/useWrongAnswer";
+import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 
 interface Props {
   data: any;
@@ -12,6 +13,7 @@ export const EnemyCard = ({ data }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { wrong } = useWrongStore();
   const [win, setWin] = useState(false);
+  const { hp } = usePlayerHpStore();
 
   return (
     <div className="">
