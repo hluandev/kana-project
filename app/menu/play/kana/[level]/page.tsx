@@ -4,7 +4,17 @@ import { createClient } from "@/utils/supabase/server";
 
 const Level = async () => {
   const supabase = await createClient();
-  const { data, error } = await supabase.from("kana").select("*");
+
+  let { data: profiles } = await supabase
+    .from("profiles")
+    .select("*")
+    .limit(1)
+    .single();
+
+  const { data, error } = await supabase
+    .from("kana")
+    .select("*")
+    .eq("level", profiles.level);
 
   return (
     <div className="flex-1 relative z-10 flex justify-center">

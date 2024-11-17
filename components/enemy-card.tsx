@@ -17,7 +17,7 @@ export const EnemyCard = ({ data }: Props) => {
         20
       </div>
       <div className="text-7xl  bg-black/70 backdrop-blur-2xl flex justify-center items-center h-72 aspect-square rounded-md">
-        {cards[1].japanese}
+        {cards[0].japanese}
       </div>
     </div>
   );
