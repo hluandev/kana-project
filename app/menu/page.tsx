@@ -2,7 +2,7 @@ import { MenuOptions } from "@/components/menu-options";
 
 const Menu = () => {
   return (
-    <div className="">
+    <div className="z-50">
       <MenuOptions />
     </div>
   );

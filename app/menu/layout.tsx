@@ -6,9 +6,16 @@ export default function MenuLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="h-full flex flex-col bg-[url('/img/bg-menu.png')] bg-cover">
+    <section className="h-full flex flex-col">
       <MenuTop />
+
       {children}
+
+      <video className="fixed w-full " autoPlay loop muted>
+        <source src="/img/bg-video.mp4" type="video/mp4" />
+        <track srcLang="en" label="English" />
+        Your browser does not support the video tag.
+      </video>
     </section>
   );
 }
