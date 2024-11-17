@@ -18,7 +18,7 @@ const Level = async ({ params }: { params: Promise<{ kana: string }> }) => {
 
   return (
     <div className="flex-1 relative z-10 flex justify-center">
-      <EnemyCard data={data} />
+      <EnemyCard profiles={profiles} data={data} />
 
       <PlayerHp />
     </div>
