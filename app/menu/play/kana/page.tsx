@@ -1,13 +1,28 @@
+import { createClient } from "@/utils/supabase/server";
 import { LockIcon } from "lucide-react";
 import Link from "next/link";
 
-const Kana = () => {
+const Kana = async () => {
+  const supabase = await createClient();
+  let { data: profiles } = await supabase
+    .from("profiles")
+    .select("*")
+    .limit(1)
+    .single();
+
+  const { data, error } = await supabase
+    .from("kana")
+    .select("*")
+    .eq("level", profiles.level)
+    .limit(1)
+    .single();
+
   return (
     <div className="fixed top-1/2 -translate-y-1/2 left-1/2 w-full -translate-x-1/2 z-10 flex justify-center items-center px-12">
       <div className="grid grid-cols-4 gap-1 font-mono ">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((item, index) => (
           <Link
-            href={`kana/${item.toString()}`}
+            href={`kana/${item.toString()}/${data.this_kana}`}
             className={`${
               item === 5 || item === 10 ? "bg-red-800/80" : "bg-neutral-800/80"
             } hover:bg-orange-600 relative cursor-pointer text-3xl rounded-md overflow-hidden backdrop-blur-xl font-bold w-60 flex justify-center items-center aspect-video`}

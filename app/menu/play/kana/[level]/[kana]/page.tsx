@@ -1,8 +1,7 @@
 import { EnemyCard } from "@/components/enemy-card";
-import { InputAnswer } from "@/components/input-answer";
 import { createClient } from "@/utils/supabase/server";
 
-const Level = async () => {
+const ThisKana = async ({ params }: { params: Promise<{ kana: string }> }) => {
   const supabase = await createClient();
 
   let { data: profiles } = await supabase
@@ -11,11 +10,13 @@ const Level = async () => {
     .limit(1)
     .single();
 
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("kana")
     .select("*")
     .eq("level", profiles.level)
-    .limit(1);
+    .eq("this_kana", (await params).kana)
+    .limit(1)
+    .single();
 
   return (
     <div className="flex-1 relative z-10 flex justify-center">
@@ -41,4 +42,4 @@ const Level = async () => {
   );
 };
 
-export default Level;
+export default ThisKana;
