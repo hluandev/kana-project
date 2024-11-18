@@ -3,6 +3,7 @@
 import { playSound } from "@/actions/functions/play-sound";
 import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
+import { useWrongStore } from "@/store/useWrongAnswer";
 import { LockIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -15,6 +16,7 @@ export const KanaBoard = ({ profiles }: Props) => {
   const defaultLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const { setHp } = usePlayerHpStore();
   const { setCombo } = useComboStore();
+  const { setWrong } = useWrongStore();
 
   const [currentLevels, setCurrentLevels] = useState<number[]>([]);
 
@@ -34,6 +36,7 @@ export const KanaBoard = ({ profiles }: Props) => {
             playSound({ src: "/audio/chooselevel.wav" });
             setHp(100);
             setCombo([]);
+            setWrong(false);
           }}
           className={`${
             item === 6 || item === 12 ? "bg-red-800/80" : "bg-neutral-800/80"
