@@ -1,7 +1,7 @@
 "use client";
 
 import { playSound } from "@/actions/functions/play-sound";
-import { levelup } from "@/actions/levelup";
+import { kanaup } from "@/actions/kana-up";
 import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useWrongStore } from "@/store/useWrongAnswer";
@@ -56,9 +56,8 @@ export const InputAnswer = ({
       }, 500);
       setWin(true);
 
-      levelup({
+      kanaup({
         id: profiles.id,
-        level: profiles.level,
         kana: profiles.kana,
       });
     }
