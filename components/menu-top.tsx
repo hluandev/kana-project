@@ -15,11 +15,18 @@ export const MenuTop = async () => {
 
       <div className="relative">
         <div className="flex bg-white/20  backdrop-blur-xl  border">
-          <div className=" h-12 aspect-square bg-white text-black flex justify-center text-xl font-bold items-center">
+          <div className=" h-14 aspect-square bg-white text-black flex justify-center text-2xl font-bold items-center">
             {profiles.level}
           </div>
-          <div className="w-60 pl-3 uppercase font-semibold flex items-center text-lg">
-            {profiles.first_name}
+
+          {/* Right */}
+          <div className="flex flex-col">
+            <div className="w-60 flex-1 pl-3 uppercase font-semibold flex items-center text-xl">
+              {profiles.first_name}
+            </div>
+            <div className="bg-white/30  py-[2px] text-center text-sm leading-none">
+              {profiles.exp} / 100
+            </div>
           </div>
         </div>
 

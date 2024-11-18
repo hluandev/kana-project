@@ -31,10 +31,14 @@ export const EnemyCard = ({ data, profiles }: Props) => {
 
   useEffect(() => {
     if (profiles.exp >= 100) {
+      const levelNumber = Math.floor(profiles.exp / 100);
+
       levelup({
         id: profiles.id,
-        level: 1,
+        level: levelNumber,
         currentLevel: profiles.level,
+        currentExp: profiles.exp,
+        levelNumber: levelNumber,
       });
     }
   }, [profiles.exp]);

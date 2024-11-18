@@ -6,7 +6,7 @@ import { kanaup } from "@/actions/kana-up";
 import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useWrongStore } from "@/store/useWrongAnswer";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface Props {
   currentIndex: number;
@@ -65,7 +65,7 @@ export const InputAnswer = ({
       gainxp({
         id: profiles.id,
         currentExp: profiles.exp,
-        exp: 100,
+        exp: 150,
       });
     }
   }, [correctAnswers]);
