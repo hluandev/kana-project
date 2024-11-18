@@ -31,7 +31,7 @@ export const InputAnswer = ({
   setWin,
   profiles,
 }: Props) => {
-  const defaultIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const defaultIndex = Array.from({ length: data.length }, (_, index) => index);
   const { hp, setHp } = usePlayerHpStore();
   const { wrong, setWrong } = useWrongStore();
   const { combo, setCombo } = useComboStore();
@@ -56,6 +56,7 @@ export const InputAnswer = ({
         playSound({ src: "/audio/win.wav" });
       }, 500);
       setWin(true);
+      setCurrentIndex(0);
 
       kanaup({
         id: profiles.id,

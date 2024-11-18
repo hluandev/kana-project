@@ -15,7 +15,7 @@ const Level = async ({ params }: { params: Promise<{ kana: string }> }) => {
   const { data } = await supabase
     .from("kana")
     .select("*")
-    .eq("level", profiles.level);
+    .eq("level", profiles.kana);
 
   return (
     <div className="flex-1 relative z-10 flex justify-center">

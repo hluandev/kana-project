@@ -7,6 +7,8 @@ import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { levelup } from "@/actions/level-up";
+import Link from "next/link";
+import { useComboStore } from "@/store/useComboStore";
 
 interface Props {
   data: any;
@@ -16,6 +18,7 @@ interface Props {
 export const EnemyCard = ({ data, profiles }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { wrong, setWrong } = useWrongStore();
+  const { setCombo } = useComboStore();
   const [correctAnswers, setCorrectAnswers] = useState<any>([]);
   const [input, setInput] = useState("");
   const rounter = useRouter();
@@ -88,9 +91,16 @@ export const EnemyCard = ({ data, profiles }: Props) => {
             You Defeated
           </motion.p>
           <p className="text-4xl">You are now level {profiles.level}</p>
-          <button className="bg-pink-600 text-3xl rounded-md text-white px-6 py-2">
+          <Link
+            href={`${profiles.kana}`}
+            onClick={() => {
+              setHp(100);
+              setCombo([]);
+            }}
+            className="bg-pink-600 text-3xl rounded-md text-white px-6 py-2"
+          >
             Next Level
-          </button>
+          </Link>
         </div>
       )}
 
