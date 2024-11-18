@@ -19,7 +19,7 @@ const Play = () => {
             href={`/menu/play/${item.text.toLowerCase()}`}
             prefetch
             key={index}
-            className="bg-pink-400/70 hover:bg-pink-600 relative text-center rounded-md border border-pink-500 flex-col px-10 gap-3  backdrop-blur-md h-[30rem] w-72 flex justify-center items-center text-4xl"
+            className="bg-[#dd0036] bg-opacity-70 hover:bg-pink-600 relative text-center rounded-md border border-pink-500 flex-col px-10 gap-3  backdrop-blur-md h-[30rem] w-72 flex justify-center items-center text-4xl"
           >
             <p className="font-bold">{item.text}</p>
             <p className="text-lg font-medium">{item.desc}</p>
