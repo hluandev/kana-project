@@ -3,7 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 export const MenuTop = async () => {
   const supabase = await createClient();
 
-  let { data: profiles } = await supabase
+  const { data: profiles } = await supabase
     .from("profiles")
     .select("*")
     .limit(1)
