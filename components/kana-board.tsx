@@ -32,7 +32,6 @@ export const KanaBoard = ({ profiles }: Props) => {
           href={`kana/${item.toString()}`}
           onClick={() => {
             playSound({ src: "/audio/chooselevel.wav" });
-
             setHp(100);
             setCombo([]);
           }}

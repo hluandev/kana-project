@@ -94,7 +94,7 @@ export const InputAnswer = ({
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            if (correctAnswers.length <= 9) {
+            if (correctAnswers.length <= data.length) {
               if (data[currentIndex].romaji === input) {
                 playSound({ src: "/audio/shoot.wav" });
                 playSound({ src: "/audio/sweep.wav", volume: 0.1 });
