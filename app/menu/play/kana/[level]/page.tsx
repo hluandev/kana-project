@@ -12,7 +12,15 @@ const Level = async ({ params }: { params: Promise<{ kana: string }> }) => {
     .limit(1)
     .single();
 
-  const { data } = await supabase
+  // let { data } = await supabase
+  //   .from("kana")
+  //   .select("*")
+  //   .in(
+  //     "level",
+  //     Array.from({ length: profiles.kana }, (_, index) => index - 1)
+  //   );
+
+  let { data } = await supabase
     .from("kana")
     .select("*")
     .eq("level", profiles.kana);
