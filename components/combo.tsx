@@ -34,7 +34,7 @@ export const Combo = () => {
         <ComboText text="SS" desc="神" className="text-blue-600" />
       )}
 
-      {combo.length === 7 && (
+      {combo.length >= 7 && (
         <ComboText text="SSS" desc="神業" className="text-red-600" />
       )}
     </div>

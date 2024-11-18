@@ -53,6 +53,9 @@ export const InputAnswer = ({
     const result = defaultIndex.filter((num) => !correctAnswers.includes(num));
     if (result.length > 0) {
     } else {
+      setTimeout(() => {
+        playSound("/audio/win.wav");
+      }, 500);
       setWin(true);
     }
   }, [correctAnswers]);
