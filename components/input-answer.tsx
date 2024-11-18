@@ -1,5 +1,6 @@
 "use client";
 
+import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useWrongStore } from "@/store/useWrongAnswer";
 import { useEffect, useState } from "react";
@@ -28,6 +29,7 @@ export const InputAnswer = ({
   const defaultIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const { hp, setHp } = usePlayerHpStore();
   const { wrong, setWrong } = useWrongStore();
+  const { combo, setCombo } = useComboStore();
 
   const playSound = (src: string) => {
     const audio = new Audio(src);
@@ -77,13 +79,15 @@ export const InputAnswer = ({
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            if (correctAnswers.length <= 4) {
+            if (correctAnswers.length <= 9) {
               if (data[currentIndex].romaji === input) {
                 playSound("/audio/shoot.wav");
+                setCombo([...combo, 1]);
                 setCorrectAnswers((prev: any) => [...prev, currentIndex]);
                 handleCurrentIndex();
               } else {
                 playSound("/audio/fail.wav");
+                setCombo([]);
                 if (hp >= 20) {
                   setHp(hp - 20);
                 } else {

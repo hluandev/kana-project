@@ -1,3 +1,4 @@
+import { Combo } from "@/components/combo";
 import { EnemyCard } from "@/components/enemy-card";
 import { PlayerHp } from "@/components/player-hp";
 import { createClient } from "@/utils/supabase/server";
@@ -19,6 +20,8 @@ const Level = async ({ params }: { params: Promise<{ kana: string }> }) => {
   return (
     <div className="flex-1 relative z-10 flex justify-center">
       <EnemyCard profiles={profiles} data={data} />
+
+      <Combo />
 
       <PlayerHp />
     </div>

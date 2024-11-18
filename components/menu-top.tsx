@@ -1,5 +1,4 @@
 import { createClient } from "@/utils/supabase/server";
-import { DailyQuests } from "./daily-quests";
 
 export const MenuTop = async () => {
   const supabase = await createClient();
@@ -24,7 +23,7 @@ export const MenuTop = async () => {
           </div>
         </div>
 
-        <DailyQuests />
+        {/* <DailyQuests /> */}
       </div>
     </div>
   );

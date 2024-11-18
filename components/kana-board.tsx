@@ -1,5 +1,6 @@
 "use client";
 
+import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { LockIcon } from "lucide-react";
 import Link from "next/link";
@@ -12,6 +13,7 @@ interface Props {
 export const KanaBoard = ({ profiles }: Props) => {
   const defaultLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const { setHp } = usePlayerHpStore();
+  const { setCombo } = useComboStore();
 
   const [currentLevels, setCurrentLevels] = useState<number[]>([]);
 
@@ -26,6 +28,7 @@ export const KanaBoard = ({ profiles }: Props) => {
           href={`kana/${item.toString()}`}
           onClick={() => {
             setHp(100);
+            setCombo([]);
           }}
           className={`${
             item === 6 || item === 12 ? "bg-red-800/80" : "bg-neutral-800/80"
