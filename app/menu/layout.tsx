@@ -1,3 +1,4 @@
+import { AmbientSound } from "@/components/ambient-sound";
 import { MenuTop } from "@/components/menu-top";
 
 export default function MenuLayout({
@@ -19,7 +20,7 @@ export default function MenuLayout({
         Your browser does not support the video tag.
       </video>
 
-      {/* <AmbientSound /> */}
+      <AmbientSound />
     </section>
   );
 }

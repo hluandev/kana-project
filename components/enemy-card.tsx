@@ -6,6 +6,7 @@ import { useWrongStore } from "@/store/useWrongAnswer";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useRouter } from "next/navigation";
 import { levelup } from "@/actions/levelup";
+import { motion } from "framer-motion";
 
 interface Props {
   data: any;
@@ -69,7 +70,7 @@ export const EnemyCard = ({ data, profiles }: Props) => {
         </div>
       )}
 
-      {(!win || hp > 0) && (
+      {!win && hp > 0 && (
         <div className="flex flex-col gap-0.5 items-center">
           <div className="bg-red-600  border w-72 border-red-500 rounded-md p-2 text-center font-bold text-xl italic">
             20
@@ -82,9 +83,13 @@ export const EnemyCard = ({ data, profiles }: Props) => {
           >
             <p>{data[currentIndex].japanese}</p>
             {wrong && (
-              <p className="absolute bottom-5 text-5xl">
+              <motion.p
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="absolute bottom-5 text-5xl"
+              >
                 {data[currentIndex].romaji}
-              </p>
+              </motion.p>
             )}
           </div>
 

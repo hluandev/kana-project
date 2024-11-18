@@ -1,5 +1,6 @@
 "use client";
 
+import { playSound } from "@/actions/functions/play-sound";
 import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { LockIcon } from "lucide-react";
@@ -25,8 +26,13 @@ export const KanaBoard = ({ profiles }: Props) => {
     <div className="grid grid-cols-4 gap-2 font-mono ">
       {defaultLevels.map((item, index) => (
         <Link
+          onMouseEnter={() => {
+            playSound("/audio/click.wav");
+          }}
           href={`kana/${item.toString()}`}
           onClick={() => {
+            playSound("/audio/chooselevel.wav");
+
             setHp(100);
             setCombo([]);
           }}

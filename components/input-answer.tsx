@@ -94,7 +94,10 @@ export const InputAnswer = ({
                 setCombo([]);
                 if (hp >= 20) {
                   setHp(hp - 20);
-                } else {
+                }
+
+                if (hp === 20) {
+                  playSound("/audio/died.wav");
                 }
                 setInput("");
                 setWrong(true);

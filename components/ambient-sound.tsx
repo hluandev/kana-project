@@ -20,6 +20,7 @@ export const AmbientSound = () => {
     if (!audioRef.current) {
       audioRef.current = new Audio("/audio/ambient.wav");
       audioRef.current.loop = true;
+      audioRef.current.volume = 0.2;
     }
 
     audioRef.current.play().catch((error) => {
