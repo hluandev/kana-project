@@ -83,6 +83,7 @@ export const InputAnswer = ({
               if (data[currentIndex].romaji === input) {
                 playSound("/audio/shoot.wav");
                 setCombo([...combo, 1]);
+                playSound("/audio/combo.wav");
                 setCorrectAnswers((prev: any) => [...prev, currentIndex]);
                 handleCurrentIndex();
               } else {

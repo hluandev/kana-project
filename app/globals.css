@@ -9,3 +9,7 @@ html {
   background-color: black;
   color: white;
 }
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}

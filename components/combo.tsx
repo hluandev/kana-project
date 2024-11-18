@@ -7,7 +7,7 @@ export const Combo = () => {
   const { combo } = useComboStore();
 
   return (
-    <div className="text-8xl space-y-2 absolute right-20 top-1/4 -translate-y-1/2">
+    <div className=" space-y-2 absolute right-16 top-1/4 -translate-y-1/2">
       {combo.length === 0 && null}
 
       {combo.length === 1 && (
