@@ -1,5 +1,6 @@
 "use client";
 
+import { playSound } from "@/actions/functions/play-sound";
 import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useWrongStore } from "@/store/useWrongAnswer";
@@ -31,12 +32,6 @@ export const InputAnswer = ({
   const { wrong, setWrong } = useWrongStore();
   const { combo, setCombo } = useComboStore();
 
-  const playSound = (src: string) => {
-    const audio = new Audio(src);
-    audio.volume = 0.2;
-    audio.play();
-  };
-
   const handleCurrentIndex = () => {
     const result = defaultIndex.filter(
       (num) => ![...correctAnswers, currentIndex].includes(num)
@@ -54,7 +49,7 @@ export const InputAnswer = ({
     if (result.length > 0) {
     } else {
       setTimeout(() => {
-        playSound("/audio/win.wav");
+        playSound({ src: "/audio/win.wav" });
       }, 500);
       setWin(true);
     }
@@ -84,20 +79,23 @@ export const InputAnswer = ({
             e.preventDefault();
             if (correctAnswers.length <= 9) {
               if (data[currentIndex].romaji === input) {
-                playSound("/audio/shoot.wav");
+                playSound({ src: "/audio/shoot.wav" });
+                setTimeout(() => {
+                  playSound({ src: "/audio/sweep.wav", volume: 0.1 });
+                }, 0);
                 setCombo([...combo, 1]);
-                playSound("/audio/combo.wav");
+                playSound({ src: "/audio/combo.wav" });
                 setCorrectAnswers((prev: any) => [...prev, currentIndex]);
                 handleCurrentIndex();
               } else {
-                playSound("/audio/fail.wav");
+                playSound({ src: "/audio/fail.wav" });
                 setCombo([]);
                 if (hp >= 20) {
                   setHp(hp - 20);
                 }
 
                 if (hp === 20) {
-                  playSound("/audio/died.wav");
+                  playSound({ src: "/audio/died.wav" });
                 }
                 setInput("");
                 setWrong(true);

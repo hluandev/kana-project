@@ -11,10 +11,10 @@ const Play = () => {
         {PlayMode.map((item, index) => (
           <Link
             onClick={() => {
-              playSound("/audio/onclick.wav");
+              playSound({ src: "/audio/onclick.wav" });
             }}
             onMouseEnter={() => {
-              playSound("/audio/click.wav");
+              playSound({ src: "/audio/click.wav" });
             }}
             href={`/menu/play/${item.text.toLowerCase()}`}
             prefetch

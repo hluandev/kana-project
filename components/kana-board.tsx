@@ -27,11 +27,11 @@ export const KanaBoard = ({ profiles }: Props) => {
       {defaultLevels.map((item, index) => (
         <Link
           onMouseEnter={() => {
-            playSound("/audio/click.wav");
+            playSound({ src: "/audio/click.wav" });
           }}
           href={`kana/${item.toString()}`}
           onClick={() => {
-            playSound("/audio/chooselevel.wav");
+            playSound({ src: "/audio/chooselevel.wav" });
 
             setHp(100);
             setCombo([]);

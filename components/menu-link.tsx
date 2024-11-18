@@ -12,11 +12,11 @@ export const MenuLink = ({ text, href }: Props) => {
   return (
     <Link
       onClick={() => {
-        playSound("/audio/onclick.wav");
-        playSound("/audio/ambient.wav");
+        playSound({ src: "/audio/onclick.wav" });
+        playSound({ src: "/audio/ambient.wav" });
       }}
       onMouseEnter={() => {
-        playSound("/audio/click.wav");
+        playSound({ src: "/audio/click.wav" });
       }}
       className="hover:text-pink-500"
       prefetch

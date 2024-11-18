@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputAnswer } from "./input-answer";
 import { useWrongStore } from "@/store/useWrongAnswer";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useRouter } from "next/navigation";
 import { levelup } from "@/actions/levelup";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface Props {
   data: any;
@@ -14,6 +14,7 @@ interface Props {
 }
 
 export const EnemyCard = ({ data, profiles }: Props) => {
+  const [triggerAnimation, setTriggerAnimation] = useState<any>(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { wrong, setWrong } = useWrongStore();
   const [correctAnswers, setCorrectAnswers] = useState<any>([]);
@@ -21,6 +22,19 @@ export const EnemyCard = ({ data, profiles }: Props) => {
   const rounter = useRouter();
   const [win, setWin] = useState(false);
   const { hp, setHp } = usePlayerHpStore();
+  const [currentJapanese, setCurrentJapanese] = useState(
+    data[currentIndex].japanese
+  );
+
+  // useEffect(() => {
+  //   setTriggerAnimation(false); // Reset animation
+  //   const timeout = setTimeout(() => setTriggerAnimation(true), 0); // Trigger animation
+  //   return () => clearTimeout(timeout); // Cleanup timeout
+  // }, [data[currentIndex].japanese]);
+
+  useEffect(() => {
+    setCurrentJapanese(data[currentIndex].japanese);
+  }, [data[currentIndex].japanese]);
 
   return (
     <div className="">
@@ -88,22 +102,36 @@ export const EnemyCard = ({ data, profiles }: Props) => {
             20
           </div>
 
-          <div
-            className={`${
-              wrong ? "bg-red-600/50" : "bg-black/70"
-            } text-7xl relative border-2 border-black  backdrop-blur-2xl flex justify-center items-center h-72 aspect-square rounded-md`}
-          >
-            <p>{data[currentIndex].japanese}</p>
-            {wrong && (
-              <motion.p
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="absolute bottom-5 text-5xl"
+          <AnimatePresence mode="wait">
+            {currentJapanese && (
+              <motion.div
+                key={currentJapanese}
+                initial={{ y: 100, opacity: 0, backgroundColor: "#fbbf24" }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  backgroundColor: wrong ? "#7d2222" : "#000",
+                }}
+                exit={{ y: -300, opacity: 0, backgroundColor: "#fbbf24" }}
+                className={`${
+                  wrong ? "bg-red-600/50" : "bg-black/70"
+                } text-7xl relative   backdrop-blur-2xl flex justify-center items-center h-72 aspect-square rounded-md`}
               >
-                {data[currentIndex].romaji}
-              </motion.p>
+                <p>{currentJapanese}</p>
+
+                {/* Shown answer */}
+                {wrong && (
+                  <motion.p
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute bottom-5 text-5xl"
+                  >
+                    {data[currentIndex].romaji}
+                  </motion.p>
+                )}
+              </motion.div>
             )}
-          </div>
+          </AnimatePresence>
 
           <InputAnswer
             input={input}
