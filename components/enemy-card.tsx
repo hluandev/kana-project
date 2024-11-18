@@ -26,7 +26,13 @@ export const EnemyCard = ({ data, profiles }: Props) => {
     <div className="">
       {hp === 0 && (
         <div className="fixed flex flex-col gap-10 font-bold justify-center z-20 items-center top-0 left-0 w-full bg-black/80 h-full">
-          <p className="text-9xl italic  text-red-600">You Died</p>
+          <motion.p
+            initial={{ scale: 1.25, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+            className="text-9xl italic  text-red-600"
+          >
+            You Died
+          </motion.p>
           <div className="space-x-6">
             <button
               onClick={() => rounter.back()}
@@ -53,7 +59,13 @@ export const EnemyCard = ({ data, profiles }: Props) => {
 
       {win && (
         <div className="fixed flex flex-col gap-10 font-bold justify-center z-20 items-center top-0 left-0 w-full bg-black/80 h-full">
-          <p className="text-9xl italic  text-yellow-500">You Defeated</p>
+          <motion.p
+            initial={{ scale: 1.25, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1, transition: { duration: 3 } }}
+            className="text-9xl italic  text-yellow-500"
+          >
+            You Defeated
+          </motion.p>
           <p className="text-4xl">You are now level {profiles.level + 1}</p>
           <button
             onClick={() =>
