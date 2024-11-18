@@ -1,5 +1,6 @@
 "use client";
 
+import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { LockIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -9,7 +10,8 @@ interface Props {
 }
 
 export const KanaBoard = ({ profiles }: Props) => {
-  const defaultLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  const defaultLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const { setHp } = usePlayerHpStore();
 
   const [currentLevels, setCurrentLevels] = useState<number[]>([]);
 
@@ -22,8 +24,11 @@ export const KanaBoard = ({ profiles }: Props) => {
       {defaultLevels.map((item, index) => (
         <Link
           href={`kana/${item.toString()}`}
+          onClick={() => {
+            setHp(100);
+          }}
           className={`${
-            item === 5 || item === 10 ? "bg-red-800/80" : "bg-neutral-800/80"
+            item === 6 || item === 12 ? "bg-red-800/80" : "bg-neutral-800/80"
           } hover:border-pink-600 border-2 border-neutral-800 relative cursor-pointer text-3xl rounded-md overflow-hidden backdrop-blur-xl font-bold w-60 flex justify-center items-center aspect-video`}
           key={index}
         >
@@ -32,7 +37,13 @@ export const KanaBoard = ({ profiles }: Props) => {
               Current
             </div>
           )}
-          <p>{item === 1 ? "あ" : <LockIcon strokeWidth={1.5} />}</p>
+          <p>
+            {currentLevels.includes(item) ? (
+              item
+            ) : (
+              <LockIcon strokeWidth={1.5} />
+            )}
+          </p>
         </Link>
       ))}
     </div>
