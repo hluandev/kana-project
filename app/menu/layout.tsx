@@ -2,10 +2,8 @@ import { AmbientSound } from "@/components/ambient-sound";
 import { MenuTop } from "@/components/menu-top";
 
 export default function MenuLayout({
-  params,
   children,
 }: {
-  params: Promise<{ slug: string }>;
   children: React.ReactNode;
 }) {
   return (

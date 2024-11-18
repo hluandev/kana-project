@@ -8,13 +8,13 @@ const Level = async ({ params }: any) => {
 
   console.log(params.level);
 
-  let { data: profiles } = await supabase
+  const { data: profiles } = await supabase
     .from("profiles")
     .select("*")
     .limit(1)
     .single();
 
-  let { data } = await supabase
+  const { data } = await supabase
     .from("kana")
     .select("*")
     .in(
