@@ -25,5 +25,5 @@ export async function levelup({ id, level, kana }: Props) {
   }
 
   revalidatePath("/menu/play/kana/", "page");
-  redirect("/menu/play/kana/");
+  // redirect("/menu/play/kana/");
 }

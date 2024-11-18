@@ -1,6 +1,7 @@
 "use client";
 
 import { playSound } from "@/actions/functions/play-sound";
+import { levelup } from "@/actions/levelup";
 import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useWrongStore } from "@/store/useWrongAnswer";
@@ -10,6 +11,7 @@ interface Props {
   currentIndex: number;
   correctAnswers: any;
   input: string;
+  profiles: any;
   setInput: (e: string) => void;
   setCorrectAnswers: (e: any) => void;
   setCurrentIndex: (e: number) => void;
@@ -26,6 +28,7 @@ export const InputAnswer = ({
   correctAnswers,
   setCorrectAnswers,
   setWin,
+  profiles,
 }: Props) => {
   const defaultIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const { hp, setHp } = usePlayerHpStore();
@@ -52,6 +55,12 @@ export const InputAnswer = ({
         playSound({ src: "/audio/win.wav" });
       }, 500);
       setWin(true);
+
+      levelup({
+        id: profiles.id,
+        level: profiles.level,
+        kana: profiles.kana,
+      });
     }
   }, [correctAnswers]);
 
@@ -62,6 +71,7 @@ export const InputAnswer = ({
           onSubmit={(e) => {
             e.preventDefault();
             handleCurrentIndex();
+            playSound({ src: "/audio/sweep.wav", volume: 0.1 });
             setWrong(false);
           }}
           className="absolute bottom-28 shadow-xl"
@@ -80,11 +90,10 @@ export const InputAnswer = ({
             if (correctAnswers.length <= 9) {
               if (data[currentIndex].romaji === input) {
                 playSound({ src: "/audio/shoot.wav" });
-                setTimeout(() => {
-                  playSound({ src: "/audio/sweep.wav", volume: 0.1 });
-                }, 0);
+                playSound({ src: "/audio/sweep.wav", volume: 0.1 });
+
                 setCombo([...combo, 1]);
-                playSound({ src: "/audio/combo.wav" });
+                playSound({ src: "/audio/combo.wav", volume: 0.1 });
                 setCorrectAnswers((prev: any) => [...prev, currentIndex]);
                 handleCurrentIndex();
               } else {

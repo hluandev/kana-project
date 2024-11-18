@@ -5,7 +5,6 @@ import { InputAnswer } from "./input-answer";
 import { useWrongStore } from "@/store/useWrongAnswer";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useRouter } from "next/navigation";
-import { levelup } from "@/actions/levelup";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface Props {
@@ -14,7 +13,6 @@ interface Props {
 }
 
 export const EnemyCard = ({ data, profiles }: Props) => {
-  const [triggerAnimation, setTriggerAnimation] = useState<any>(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { wrong, setWrong } = useWrongStore();
   const [correctAnswers, setCorrectAnswers] = useState<any>([]);
@@ -25,12 +23,6 @@ export const EnemyCard = ({ data, profiles }: Props) => {
   const [currentJapanese, setCurrentJapanese] = useState(
     data[currentIndex].japanese
   );
-
-  // useEffect(() => {
-  //   setTriggerAnimation(false); // Reset animation
-  //   const timeout = setTimeout(() => setTriggerAnimation(true), 0); // Trigger animation
-  //   return () => clearTimeout(timeout); // Cleanup timeout
-  // }, [data[currentIndex].japanese]);
 
   useEffect(() => {
     setCurrentJapanese(data[currentIndex].japanese);
@@ -80,17 +72,8 @@ export const EnemyCard = ({ data, profiles }: Props) => {
           >
             You Defeated
           </motion.p>
-          <p className="text-4xl">You are now level {profiles.level + 1}</p>
-          <button
-            onClick={() =>
-              levelup({
-                id: profiles.id,
-                level: profiles.level,
-                kana: profiles.kana,
-              })
-            }
-            className="bg-pink-600 text-3xl rounded-md text-white px-6 py-2"
-          >
+          <p className="text-4xl">You are now level {profiles.level}</p>
+          <button className="bg-pink-600 text-3xl rounded-md text-white px-6 py-2">
             Next Level
           </button>
         </div>
@@ -134,6 +117,7 @@ export const EnemyCard = ({ data, profiles }: Props) => {
           </AnimatePresence>
 
           <InputAnswer
+            profiles={profiles}
             input={input}
             setInput={setInput}
             correctAnswers={correctAnswers}
