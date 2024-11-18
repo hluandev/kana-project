@@ -1,6 +1,7 @@
 "use client";
 
 import { playSound } from "@/actions/functions/play-sound";
+import { gainxp } from "@/actions/gain-xp";
 import { kanaup } from "@/actions/kana-up";
 import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
@@ -59,6 +60,12 @@ export const InputAnswer = ({
       kanaup({
         id: profiles.id,
         kana: profiles.kana,
+      });
+
+      gainxp({
+        id: profiles.id,
+        currentExp: profiles.exp,
+        exp: 100,
       });
     }
   }, [correctAnswers]);

@@ -6,6 +6,7 @@ import { useWrongStore } from "@/store/useWrongAnswer";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { levelup } from "@/actions/level-up";
 
 interface Props {
   data: any;
@@ -27,6 +28,16 @@ export const EnemyCard = ({ data, profiles }: Props) => {
   useEffect(() => {
     setCurrentJapanese(data[currentIndex].japanese);
   }, [data[currentIndex].japanese]);
+
+  useEffect(() => {
+    if (profiles.exp >= 100) {
+      levelup({
+        id: profiles.id,
+        level: 1,
+        currentLevel: profiles.level,
+      });
+    }
+  }, [profiles.exp]);
 
   return (
     <div className="">
