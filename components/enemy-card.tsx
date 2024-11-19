@@ -92,7 +92,7 @@ export const EnemyCard = ({ data, profiles }: Props) => {
           >
             You Defeated
           </motion.p>
-          <ExpBar />
+          <ExpBar profiles={profiles} />
           {/* <p className="text-4xl">You are now level {profiles.level}</p> */}
           <Link
             href={`${profiles.kana}`}

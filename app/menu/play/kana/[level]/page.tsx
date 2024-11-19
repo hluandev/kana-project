@@ -19,7 +19,7 @@ const Level = async ({ params }: any) => {
     .select("*")
     .in(
       "level",
-      profiles.kana === 8 || profiles.kana === 16
+      profiles.kana === 7 || profiles.kana === 15
         ? Array.from({ length: profiles.kana }, (_, index) => index + 1)
         : [profiles.kana]
     );
