@@ -7,6 +7,7 @@ import { kanaup } from "@/actions/kana-up";
 import { useComboStore } from "@/store/useComboStore";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
 import { useWrongStore } from "@/store/useWrongAnswer";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 interface Props {
@@ -36,6 +37,7 @@ export const InputAnswer = ({
   const { hp, setHp } = usePlayerHpStore();
   const { wrong, setWrong } = useWrongStore();
   const { combo, setCombo } = useComboStore();
+  const pathname = usePathname();
 
   const handleCurrentIndex = () => {
     const result = defaultIndex.filter(
@@ -52,7 +54,7 @@ export const InputAnswer = ({
   useEffect(() => {
     const result = defaultIndex.filter((num) => !correctAnswers.includes(num));
 
-    if (profiles.first_time_kana !== profiles.kana) {
+    if (profiles.first_time_kana !== parseInt(pathname.slice(16))) {
       if (result.length > 0) {
       } else {
         setTimeout(() => {
@@ -61,16 +63,18 @@ export const InputAnswer = ({
         setWin(true);
         setCurrentIndex(0);
 
-        kanaup({
-          id: profiles.id,
-          kana: profiles.kana,
-        });
+        if (profiles.kana === parseInt(pathname.slice(16))) {
+          kanaup({
+            id: profiles.id,
+            kana: profiles.kana,
+          });
 
-        gainxp({
-          id: profiles.id,
-          currentExp: profiles.exp,
-          exp: 150,
-        });
+          gainxp({
+            id: profiles.id,
+            currentExp: profiles.exp,
+            exp: 150,
+          });
+        }
       }
     } else {
       if (result.length > 0) {

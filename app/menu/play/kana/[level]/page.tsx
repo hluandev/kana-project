@@ -2,6 +2,7 @@ import { Combo } from "@/components/combo";
 import { EnemyCard } from "@/components/enemy-card";
 import { PlayerHp } from "@/components/player-hp";
 import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 const Level = async ({ params }: any) => {
   const supabase = await createClient();
@@ -11,6 +12,10 @@ const Level = async ({ params }: any) => {
     .select("*")
     .limit(1)
     .single();
+
+  if (params.level > profiles.kana) {
+    redirect(`/menu/play/kana/${profiles.kana}`);
+  }
 
   const { data } = await supabase
     .from("kana")

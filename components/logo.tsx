@@ -12,7 +12,14 @@ export const Logo = () => {
       {pathname === "/menu" ? (
         <img src="/img/logo.svg" className="w-60" alt="" />
       ) : (
-        <button onClick={() => router.back()}>
+        <button
+          onClick={() => {
+            if (pathname === `/menu/play/kana/${pathname.slice(16)}`) {
+              router.push("kana");
+            }
+            router.back();
+          }}
+        >
           <ChevronLeft className="h-8 w-8" />
         </button>
       )}
