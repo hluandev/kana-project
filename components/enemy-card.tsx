@@ -29,9 +29,11 @@ export const EnemyCard = ({ data, profiles }: Props) => {
   const [currentJapanese, setCurrentJapanese] = useState(
     data[currentIndex].japanese
   );
+  const [currentRomaji, setCurrentRomaji] = useState(data[currentIndex].romaji);
 
   useEffect(() => {
     setCurrentJapanese(data[currentIndex].japanese);
+    setCurrentRomaji(data[currentIndex].romaji);
   }, [data[currentIndex].japanese]);
 
   useEffect(() => {
@@ -93,7 +95,6 @@ export const EnemyCard = ({ data, profiles }: Props) => {
             You Defeated
           </motion.p>
           <ExpBar profiles={profiles} />
-          {/* <p className="text-4xl">You are now level {profiles.level}</p> */}
           <Link
             href={`${profiles.kana}`}
             onClick={() => {
@@ -108,7 +109,7 @@ export const EnemyCard = ({ data, profiles }: Props) => {
       )}
 
       {!win && hp > 0 && (
-        <div className="flex flex-col gap-3 items-center">
+        <div className="flex flex-col gap-1 items-center">
           <EnemyHpBar
             currentJapanese={currentJapanese}
             correctAnswers={correctAnswers}
@@ -128,7 +129,7 @@ export const EnemyCard = ({ data, profiles }: Props) => {
                 exit={{ x: -300, opacity: 0, backgroundColor: "#fbbf24" }}
                 className={`${
                   wrong ? "bg-red-600/50" : "bg-black/70"
-                } text-7xl relative   backdrop-blur-2xl flex justify-center items-center h-72 aspect-square rounded-md`}
+                } text-7xl relative backdrop-blur-2xl flex justify-center items-center h-72 aspect-square rounded-md`}
               >
                 <motion.p
                   key={input}
@@ -137,6 +138,10 @@ export const EnemyCard = ({ data, profiles }: Props) => {
                 >
                   {currentJapanese}
                 </motion.p>
+
+                {profiles.first_time_kana === profiles.kana && (
+                  <p className="absolute text-3xl bottom-5">{currentRomaji}</p>
+                )}
 
                 {/* Shown answer */}
                 {wrong && (

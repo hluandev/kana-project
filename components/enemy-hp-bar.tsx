@@ -23,11 +23,11 @@ export const EnemyHpBar = ({
   }, [correctAnswers.length]);
 
   return (
-    <div className="w-[20rem] relative bg-[#931e2d] bg-opacity-50 backdrop-blur-xl p-1 rounded-full">
+    <div className="w-[18rem] relative bg-[#931e2d] bg-opacity-50 backdrop-blur-xl p-1 rounded-md">
       <motion.div
         initial={{ width: "0%" }}
         animate={{ width: enemyHpPercent, transition: { duration: 1 } }}
-        className="bg-[#ec1335] h-9 text-white rounded-full text-center"
+        className="bg-[#ec1335] h-9 text-white rounded-md text-center"
       ></motion.div>
 
       <motion.div

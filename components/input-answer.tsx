@@ -1,5 +1,6 @@
 "use client";
 
+import { firsttimekanaup } from "@/actions/first-time-up";
 import { playSound } from "@/actions/functions/play-sound";
 import { gainxp } from "@/actions/gain-xp";
 import { kanaup } from "@/actions/kana-up";
@@ -50,24 +51,39 @@ export const InputAnswer = ({
 
   useEffect(() => {
     const result = defaultIndex.filter((num) => !correctAnswers.includes(num));
-    if (result.length > 0) {
+
+    if (profiles.first_time_kana !== profiles.kana) {
+      if (result.length > 0) {
+      } else {
+        setTimeout(() => {
+          playSound({ src: "/audio/win.wav" });
+        }, 500);
+        setWin(true);
+        setCurrentIndex(0);
+
+        kanaup({
+          id: profiles.id,
+          kana: profiles.kana,
+        });
+
+        gainxp({
+          id: profiles.id,
+          currentExp: profiles.exp,
+          exp: 150,
+        });
+      }
     } else {
-      setTimeout(() => {
-        playSound({ src: "/audio/win.wav" });
-      }, 500);
-      setWin(true);
-      setCurrentIndex(0);
+      if (result.length > 0) {
+      } else {
+        firsttimekanaup({
+          id: profiles.id,
+          first_time_kana: profiles.first_time_kana,
+        });
 
-      kanaup({
-        id: profiles.id,
-        kana: profiles.kana,
-      });
-
-      gainxp({
-        id: profiles.id,
-        currentExp: profiles.exp,
-        exp: 150,
-      });
+        setCurrentIndex(0);
+        setCorrectAnswers([]);
+        setHp(100);
+      }
     }
   }, [correctAnswers]);
 
