@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const KanaBoard = ({ profiles }: Props) => {
-  const defaultLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+  const defaultLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   const { setHp } = usePlayerHpStore();
   const { setCombo } = useComboStore();
   const { setWrong } = useWrongStore();
@@ -39,7 +39,7 @@ export const KanaBoard = ({ profiles }: Props) => {
             setWrong(false);
           }}
           className={`${
-            item === 6 || item === 12 ? "bg-red-800/80" : "bg-neutral-800/80"
+            item === 7 || item === 15 ? "bg-red-800/80" : "bg-neutral-800/80"
           } hover:border-pink-600 border-2 border-neutral-800 relative cursor-pointer text-3xl rounded-md overflow-hidden backdrop-blur-xl font-bold w-60 flex justify-center items-center aspect-video`}
           key={index}
         >

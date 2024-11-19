@@ -6,8 +6,6 @@ import { createClient } from "@/utils/supabase/server";
 const Level = async ({ params }: any) => {
   const supabase = await createClient();
 
-  console.log(params.level);
-
   const { data: profiles } = await supabase
     .from("profiles")
     .select("*")
@@ -21,7 +19,7 @@ const Level = async ({ params }: any) => {
       "level",
       profiles.kana === 7 || profiles.kana === 15
         ? Array.from({ length: profiles.kana }, (_, index) => index + 1)
-        : [profiles.kana]
+        : [params.level < profiles.kana ? params.level : profiles.kana]
     );
 
   return (

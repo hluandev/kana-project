@@ -28,9 +28,5 @@ export const AmbientSound = () => {
     });
   }, []);
 
-  return (
-    <div onClick={playMusic} className="">
-      Play
-    </div>
-  );
+  return <div onClick={playMusic} className=""></div>;
 };

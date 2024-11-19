@@ -82,6 +82,7 @@ export const InputAnswer = ({
 
         setCurrentIndex(0);
         setCorrectAnswers([]);
+        setCombo([]);
         setHp(100);
       }
     }
