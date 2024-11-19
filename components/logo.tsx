@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronLeft } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 export const Logo = () => {
@@ -12,16 +13,20 @@ export const Logo = () => {
       {pathname === "/menu" ? (
         <img src="/img/logo.svg" className="w-60" alt="" />
       ) : (
-        <button
+        <Link
+          href={
+            pathname === `/menu/play/kana/${pathname.slice(16)}`
+              ? "/menu/play/kana"
+              : "#"
+          }
           onClick={() => {
-            if (pathname === `/menu/play/kana/${pathname.slice(16)}`) {
-              router.push("kana");
+            if (pathname !== `/menu/play/kana/${pathname.slice(16)}`) {
+              router.back();
             }
-            router.back();
           }}
         >
           <ChevronLeft className="h-8 w-8" />
-        </button>
+        </Link>
       )}
     </>
   );
