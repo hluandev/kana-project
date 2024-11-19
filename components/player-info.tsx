@@ -11,9 +11,9 @@ export const PlayerInfo = ({ profiles }: Props) => {
 
   return (
     <>
-      {pathname === "/menu/play/kana/1" ? (
+      {pathname === `/menu/play/kana/${pathname.slice(16)}` ? (
         <div className="text-3xl bg-black/50 backdrop-blur-xl py-3 px-6 rounded-md font-bold">
-          {profiles.first_time_kana === profiles.kana
+          {profiles.first_time_kana === parseInt(pathname.slice(16))
             ? "Learning mode"
             : "Battle mode"}
         </div>

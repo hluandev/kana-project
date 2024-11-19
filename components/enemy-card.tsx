@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { InputAnswer } from "./input-answer";
 import { useWrongStore } from "@/store/useWrongAnswer";
 import { usePlayerHpStore } from "@/store/usePlayerHpStore";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { levelup } from "@/actions/level-up";
 import Link from "next/link";
@@ -18,6 +18,7 @@ interface Props {
 }
 
 export const EnemyCard = ({ data, profiles }: Props) => {
+  const pathname = usePathname();
   const [currentIndex, setCurrentIndex] = useState(0);
   const { wrong, setWrong } = useWrongStore();
   const { setCombo } = useComboStore();
@@ -139,7 +140,7 @@ export const EnemyCard = ({ data, profiles }: Props) => {
                   {currentJapanese}
                 </motion.p>
 
-                {profiles.first_time_kana === profiles.kana && (
+                {profiles.first_time_kana === parseInt(pathname.slice(16)) && (
                   <p className="absolute text-3xl bottom-5">{currentRomaji}</p>
                 )}
 
