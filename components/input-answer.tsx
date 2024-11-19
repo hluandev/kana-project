@@ -121,7 +121,10 @@ export const InputAnswer = ({
           className="absolute bottom-28 shadow-xl"
         >
           <input
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => {
+              playSound({ src: "/audio/hit.wav", volume: 0.1 });
+              setInput(e.target.value);
+            }}
             value={input}
             placeholder="Answer here"
             className="bg-white/20 backdrop-blur-lg border border-neutral-500 placeholder:text-white/30 text-center text-2xl py-3 px-3.5 outline-none rounded-lg w-96"

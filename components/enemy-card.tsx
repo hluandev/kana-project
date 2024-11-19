@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { levelup } from "@/actions/level-up";
 import Link from "next/link";
 import { useComboStore } from "@/store/useComboStore";
+import { EnemyHpBar } from "./enemy-hp-bar";
 
 interface Props {
   data: any;
@@ -105,27 +106,35 @@ export const EnemyCard = ({ data, profiles }: Props) => {
       )}
 
       {!win && hp > 0 && (
-        <div className="flex flex-col gap-0.5 items-center">
-          <div className="bg-red-600  border w-72 border-red-500 rounded-md p-2 text-center font-bold text-xl italic">
-            20
-          </div>
+        <div className="flex flex-col gap-3 items-center">
+          <EnemyHpBar
+            currentJapanese={currentJapanese}
+            correctAnswers={correctAnswers}
+            data={data}
+          />
 
           <AnimatePresence mode="wait">
             {currentJapanese && (
               <motion.div
                 key={currentJapanese}
-                initial={{ y: 100, opacity: 0, backgroundColor: "#fbbf24" }}
+                initial={{ y: 300, opacity: 0, backgroundColor: "#fbbf24" }}
                 animate={{
                   y: 0,
                   opacity: 1,
                   backgroundColor: wrong ? "#7d2222" : "#000",
                 }}
-                exit={{ y: -300, opacity: 0, backgroundColor: "#fbbf24" }}
+                exit={{ x: -300, opacity: 0, backgroundColor: "#fbbf24" }}
                 className={`${
                   wrong ? "bg-red-600/50" : "bg-black/70"
                 } text-7xl relative   backdrop-blur-2xl flex justify-center items-center h-72 aspect-square rounded-md`}
               >
-                <p>{currentJapanese}</p>
+                <motion.p
+                  key={input}
+                  initial={{ scale: 1.25 }}
+                  animate={{ scale: 1 }}
+                >
+                  {currentJapanese}
+                </motion.p>
 
                 {/* Shown answer */}
                 {wrong && (
