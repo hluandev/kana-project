@@ -28,6 +28,7 @@ export const KanaBoard = ({ profiles }: Props) => {
     <div className="grid grid-cols-4 gap-2 font-mono ">
       {defaultLevels.map((item, index) => (
         <Link
+          prefetch={true}
           onMouseEnter={() => {
             playSound({ src: "/audio/click.wav" });
           }}
