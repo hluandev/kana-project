@@ -10,6 +10,7 @@ import { levelup } from "@/actions/level-up";
 import Link from "next/link";
 import { useComboStore } from "@/store/useComboStore";
 import { EnemyHpBar } from "./enemy-hp-bar";
+import { ExpBar } from "./exp-bar";
 
 interface Props {
   data: any;
@@ -91,7 +92,8 @@ export const EnemyCard = ({ data, profiles }: Props) => {
           >
             You Defeated
           </motion.p>
-          <p className="text-4xl">You are now level {profiles.level}</p>
+          <ExpBar />
+          {/* <p className="text-4xl">You are now level {profiles.level}</p> */}
           <Link
             href={`${profiles.kana}`}
             onClick={() => {
@@ -100,7 +102,7 @@ export const EnemyCard = ({ data, profiles }: Props) => {
             }}
             className="bg-pink-600 text-3xl rounded-md text-white px-6 py-2"
           >
-            Next Level
+            Next Challenge
           </Link>
         </div>
       )}

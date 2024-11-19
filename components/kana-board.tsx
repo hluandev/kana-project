@@ -13,7 +13,7 @@ interface Props {
 }
 
 export const KanaBoard = ({ profiles }: Props) => {
-  const defaultLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const defaultLevels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
   const { setHp } = usePlayerHpStore();
   const { setCombo } = useComboStore();
   const { setWrong } = useWrongStore();
