@@ -22,7 +22,7 @@ const Level = async ({ params }: any) => {
     .select("*")
     .in(
       "level",
-      profiles.kana === 7 || profiles.kana === 15
+      parseInt(params.level) === 7 || parseInt(params.level) === 15
         ? Array.from({ length: profiles.kana }, (_, index) => index + 1)
         : [params.level < profiles.kana ? params.level : profiles.kana]
     );
