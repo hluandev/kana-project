@@ -13,9 +13,12 @@ interface CardHandProps {
 export default function CardHand({ kana }: CardHandProps) {
   const [clicked, setClicked] = useState(false);
   const { readyHand, addToReadyHand, removeFromReadyHand } = useKanaStore();
+  const [showRomaji, setShowRomaji] = useState(false);
 
   return (
     <div
+      onMouseOver={() => setShowRomaji(true)}
+      onMouseLeave={() => setShowRomaji(false)}
       onClick={() => {
         if (clicked) {
           removeFromReadyHand(kana.id);
@@ -25,10 +28,15 @@ export default function CardHand({ kana }: CardHandProps) {
           setClicked(true);
         }
       }}
-      className={`h-52 cursor-pointer relative w-32  p-1.5 ${
+      className={`h-52  cursor-pointer relative w-32  p-1.5 ${
         clicked ? "bg-blue-600 -mt-10" : "bg-neutral-800"
       }  border border-neutral-700 duration-300 rounded-md`}
     >
+      {showRomaji && (
+        <p className="absolute -top-10 left-1/2 -translate-x-1/2 bg-neutral-800 p-1 rounded-md w-full text-center border border-neutral-700">
+          {kana.romaji}
+        </p>
+      )}
       <p className="font-mono  bg-neutral-700 border border-neutral-600  h-6 w-6 flex justify-center items-center rounded-md">
         {kana.suit}
       </p>
