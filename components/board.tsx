@@ -17,13 +17,14 @@ type BoardProps = {
 };
 
 export default function Board({ kana_data }: BoardProps) {
-  const { setKana } = useKanaStore();
+  const { setInitKana, setKanaDeck } = useKanaStore();
 
   useEffect(() => {
     if (kana_data) {
-      setKana(kana_data);
+      setInitKana(kana_data);
+      setKanaDeck(kana_data);
     }
-  }, [kana_data]);
+  }, []);
 
   return (
     <div className="flex flex-col justify-between h-full">
