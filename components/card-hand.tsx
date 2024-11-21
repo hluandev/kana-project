@@ -7,6 +7,7 @@ interface CardHandProps {
     japanese: string;
     suit: string;
     romaji: string;
+    rank: number;
   };
 }
 
@@ -39,6 +40,10 @@ export default function CardHand({ kana }: CardHandProps) {
       )}
       <p className="font-mono  bg-neutral-700 border border-neutral-600  h-6 w-6 flex justify-center items-center rounded-md">
         {kana.suit}
+      </p>
+
+      <p className="absolute bottom-4 font-mono left-1/2 -translate-x-1/2">
+        {kana.rank}
       </p>
       <p className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-3xl">
         {kana.japanese}

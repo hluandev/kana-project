@@ -3,12 +3,13 @@
 import { useKanaStore } from "@/store/useKanaStore";
 import { useEffect, useState } from "react";
 import CardHand from "./card-hand";
+import { useScoreStore } from "@/store/useScoreStore";
 
 export default function Hands() {
   const { initKana, kanaDeck, setKanaDeck, readyHand, setReadyHand } =
     useKanaStore();
   const [hand, setHand] = useState<any[]>([]);
-
+  const { score, multiplier, setScore, setMultiplier } = useScoreStore();
   useEffect(() => {
     drawHand();
   }, [initKana]);
@@ -22,13 +23,49 @@ export default function Hands() {
       newHand.push(currentDeck.splice(randomIndex, 1)[0]);
     }
 
+    newHand.sort((a, b) => {
+      if (a.rank < b.rank) return -1;
+      if (a.rank > b.rank) return 1;
+      return 0;
+    });
+
     setKanaDeck(currentDeck);
     setHand(newHand);
   };
 
-  const playHand = () => {
-    const updatedHand = hand.filter((card) => !readyHand.includes(card));
+  // Check for pairs in readyHand
+  const checkForPair = () => {
+    const ranks = readyHand.map((card) => card.rank);
+    let pairFound = false;
+    let pairRankSum = 0;
 
+    // Find the first pair and get their rank sum
+    ranks.some((rank, index) => {
+      const pairIndex = ranks.slice(index + 1).indexOf(rank);
+      if (pairIndex !== -1) {
+        pairRankSum = rank * 2; // Multiply by 2 since it's a pair
+        pairFound = true;
+        return true;
+      }
+      return false;
+    });
+
+    if (pairFound) {
+      setMultiplier(multiplier + 2);
+      setScore(score + (10 + pairRankSum)); // Add both base score (10) and pair rank values
+    }
+
+    return pairFound;
+  };
+
+  const playHand = () => {
+    const hasPair = checkForPair();
+
+    if (hasPair) {
+      console.log("has pair");
+    }
+
+    const updatedHand = hand.filter((card) => !readyHand.includes(card));
     const cardsNeeded = 8 - updatedHand.length;
     const currentDeck = [...kanaDeck];
 
@@ -36,6 +73,12 @@ export default function Hands() {
       const randomIndex = Math.floor(Math.random() * currentDeck.length);
       updatedHand.push(currentDeck.splice(randomIndex, 1)[0]);
     }
+
+    updatedHand.sort((a, b) => {
+      if (a.rank < b.rank) return -1;
+      if (a.rank > b.rank) return 1;
+      return 0;
+    });
 
     setKanaDeck(currentDeck);
     setHand(updatedHand);

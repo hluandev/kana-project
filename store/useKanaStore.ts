@@ -5,6 +5,7 @@ type Kana = {
   japanese: string;
   suit: string;
   romaji: string;
+  rank: number;
 };
 
 interface KanaStore {
