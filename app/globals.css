@@ -3,13 +3,9 @@
 @tailwind utilities;
 
 :root,
-body,
-html {
+html,
+body {
   height: 100%;
-  background-color: black;
-  color: white;
-}
-
-.animate-bounce {
-  animation: bounce 2s infinite;
+  background-color: #0f0f0f;
+  color: #bfbfbf;
 }

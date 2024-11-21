@@ -14,8 +14,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "jp",
-  description: "",
+  title: "KAMIKANA",
+  description: "Most addictive way to learn Japanese",
 };
 
 export default function RootLayout({

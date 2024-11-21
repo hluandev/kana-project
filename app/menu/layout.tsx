@@ -1,22 +1,20 @@
-import { AmbientSound } from "@/components/ambient-sound";
-import { MenuTop } from "@/components/menu-top";
+import LeftBar from "@/components/left-bar";
+import RightBar from "@/components/right-bar";
 
 export default function MenuLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <section className="h-full flex flex-col overflow-hidden bg-cover bg-[url('/img/bg.png')]">
-      <MenuTop />
-
-      {children}
-
-      {/* <video className="fixed w-full " autoPlay loop muted>
-        <source src="/img/bg-video.mp4" type="video/mp4" />
-      </video> */}
-
-      <AmbientSound />
-    </section>
+    <div className="flex h-full">
+      <LeftBar />
+      <div className="flex-1 py-4">
+        <div className="bg-[#161716] p-4 border border-neutral-800 h-full rounded-lg">
+          {children}
+        </div>
+      </div>
+      <RightBar />
+    </div>
   );
 }
