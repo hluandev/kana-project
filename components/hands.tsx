@@ -5,10 +5,18 @@ import { useEffect, useState } from "react";
 import CardHand from "./card-hand";
 import { useScoreStore } from "@/store/useScoreStore";
 
+interface Kana {
+  id: number;
+  rank: number;
+  suit: string;
+  japanese: string;
+  romaji: string;
+}
+
 export default function Hands() {
   const { initKana, kanaDeck, setKanaDeck, readyHand, setReadyHand } =
     useKanaStore();
-  const [hand, setHand] = useState<any[]>([]);
+  const [hand, setHand] = useState<Kana[]>([]);
   const { score, multiplier, setScore, setMultiplier } = useScoreStore();
   useEffect(() => {
     drawHand();

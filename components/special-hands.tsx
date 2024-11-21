@@ -1,5 +1,3 @@
-import CardSpecialHand from "./card-special-hand";
-
 export default function SpecialHands() {
   return (
     <div className="flex gap-2 justify-center">
