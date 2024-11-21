@@ -7,7 +7,8 @@ export async function kanaData() {
     .from("kana")
     .select("*")
     .eq("special", false)
-    .order("rank");
+    .order("rank")
+    .order("romaji");
 
   return kana;
 }
