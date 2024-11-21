@@ -6,7 +6,8 @@ export async function kanaData() {
   let { data: kana, error } = await supabase
     .from("kana")
     .select("*")
-    .eq("special", false);
+    .eq("special", false)
+    .order("rank");
 
   return kana;
 }
