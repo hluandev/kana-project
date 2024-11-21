@@ -1,6 +1,3 @@
-import { useKanaStore } from "@/store/useKanaStore";
-import { useState } from "react";
-
 interface CardHandProps {
   kana: {
     id: number;
@@ -11,25 +8,10 @@ interface CardHandProps {
 }
 
 export default function CardHand({ kana }: CardHandProps) {
-  const { addToReadyHand, removeFromReadyHand, readyHand } = useKanaStore();
-  const [isClicked, setIsClicked] = useState(false);
-
   return (
     <div
-      onClick={() => {
-        if (isClicked) {
-          removeFromReadyHand(kana.id);
-          setIsClicked(false);
-        } else {
-          if (readyHand.length < 5) {
-            addToReadyHand(kana);
-            setIsClicked(true);
-          }
-        }
-      }}
-      className={`h-52 cursor-pointer relative w-32  p-1.5 ${
-        isClicked ? "bg-rose-900 -mt-10" : "bg-neutral-800"
-      } border border-neutral-700 duration-300 rounded-md`}
+      onClick={() => {}}
+      className={`h-52 cursor-pointer relative w-32  p-1.5 bg-neutral-800 border border-neutral-700 duration-300 rounded-md`}
     >
       <p className="font-mono bg-neutral-700 border border-neutral-600  h-6 w-6 flex justify-center items-center rounded-md">
         {kana.suit}
