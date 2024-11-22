@@ -1,6 +1,7 @@
-import { login, signup } from "@/actions/auth";
+import { signup } from "@/actions/auth";
+import { login } from "@/actions/auth";
 
-export default function Login() {
+export default function LoginPage() {
   return (
     <form>
       <label htmlFor="email">Email:</label>

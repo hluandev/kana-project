@@ -1,12 +1,23 @@
-import { kanaData } from "@/actions/kana-data";
-import Board from "@/components/board";
+import { fetchKana } from "@/actions/fetchKana";
+import { ActionsHand } from "@/components/board/actions-hand/actions-hand";
+import { CurrentHand } from "@/components/board/current-hand";
+import { SpecialHands } from "@/components/board/special-hand";
+import { DataInit } from "@/components/data-init";
 
-export default async function KanaPlayPage() {
-  const kana_data = await kanaData();
+const Kana = async () => {
+  const initialData = await fetchKana();
 
   return (
-    <div className="h-full">
-      <Board kana_data={kana_data} />
+    <div className="flex flex-col justify-between h-full">
+      <DataInit initialData={initialData ?? []} />
+      <SpecialHands />
+
+      <div>
+        <CurrentHand />
+        <ActionsHand />
+      </div>
     </div>
   );
-}
+};
+
+export default Kana;
