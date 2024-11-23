@@ -3,12 +3,16 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { useEffect } from "react";
 
-export const DataInit = ({ initialData }: { initialData: any[] }) => {
+interface DataInitProps {
+  initialData: any[];
+}
+
+export const DataInit = ({ initialData }: DataInitProps) => {
   const { setKana } = useKanaStore();
 
   useEffect(() => {
     setKana(initialData);
   }, []);
 
-  return <div className="hidden" />;
+  return null;
 };
