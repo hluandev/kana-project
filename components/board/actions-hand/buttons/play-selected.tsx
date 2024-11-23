@@ -135,7 +135,6 @@ export const PlaySelected = () => {
       hasStraightFlush,
     } = checkHand();
 
-    // Get ranks as numbers for scoring
     const cardRanks = selectedCard.map((card) => parseInt(card.rank));
 
     if (

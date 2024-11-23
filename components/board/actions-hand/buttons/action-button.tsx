@@ -10,7 +10,10 @@ export const ActionButton = ({
   className,
 }: ActionButtonProps) => {
   return (
-    <div className={`p-3 rounded-md font-bold ${className}`} onClick={onClick}>
+    <div
+      className={`p-3 rounded-md font-bold cursor-pointer ${className}`}
+      onClick={onClick}
+    >
       {text}
     </div>
   );

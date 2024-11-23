@@ -13,17 +13,40 @@ interface kanaStore {
   setSelectedCard: (card: any) => void;
   kanaMissions: any[];
   setKanaMissions: (kanaMissions: any[]) => void;
+  kanaSpecial: any[];
+  setKanaSpecial: (kanaSpecial: any[]) => void;
+  drawHand: () => void;
 }
 
-export const useKanaStore = create<kanaStore>((set) => ({
+export const useKanaStore = create<kanaStore>((set, get) => ({
   kana: [],
   currentDeck: [],
   currentHand: [],
   selectedCard: [],
   kanaMissions: [],
+  kanaSpecial: [],
+  setKanaSpecial: (kanaSpecial) => set({ kanaSpecial }),
   setKanaMissions: (kanaMissions) => set({ kanaMissions }),
   setCurrentDeck: (currentDeck) => set({ currentDeck }),
   setCurrentHand: (currentHand) => set({ currentHand }),
+  drawHand: () => {
+    const { kana } = get();
+    const newHand = [];
+    const currentDecks = [...kana];
+
+    for (let i = 0; i < 8 && currentDecks.length > 0; i++) {
+      const randomIndex = Math.floor(Math.random() * currentDecks.length);
+      newHand.push(currentDecks.splice(randomIndex, 1)[0]);
+    }
+
+    newHand.sort((a, b) => {
+      if (a.rank < b.rank) return -1;
+      if (a.rank > b.rank) return 1;
+      return 0;
+    });
+
+    set({ currentHand: newHand, currentDeck: currentDecks });
+  },
   setKana: (kana) => set({ kana }),
   setSelectedCard: (card) => set({ selectedCard: card }),
   addSelectedCard: (card) =>

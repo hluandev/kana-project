@@ -6,10 +6,10 @@ import { Win } from "./win";
 import { useKanaStore } from "@/stores/useKanaStore";
 
 export const Results = () => {
-  const { turns, score, multiplier } = useScoreStore();
+  const { turns, score, multiplier, missionID } = useScoreStore();
   const { kanaMissions } = useKanaStore();
 
-  const mission = kanaMissions.find((mission) => mission.id === 1);
+  const mission = kanaMissions.find((mission) => mission.id === missionID);
 
   return (
     <>

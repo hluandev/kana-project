@@ -1,8 +1,10 @@
 import { Box } from "@/components/box";
+import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 
 export const CurrentInfo = () => {
-  const { turns, discard } = useScoreStore();
+  const { turns, discard, missionID } = useScoreStore();
+  const { kanaMissions } = useKanaStore();
 
   return (
     <Box className="p-0 grid grid-cols-2 grid-rows-2 overflow-hidden">
@@ -17,7 +19,9 @@ export const CurrentInfo = () => {
       </div>
 
       {/* Matches */}
-      <div className="border-r text-center border-[#414447] py-6">0 / 5</div>
+      <div className="border-r text-center border-[#414447] py-6">
+        {missionID} / {kanaMissions.length}
+      </div>
 
       {/* Money */}
       <div className="text-center py-6 text-yellow-500">¥100</div>

@@ -11,6 +11,8 @@ interface scoreStore {
   setDiscard: (discard: number) => void;
   setAnnouncement: (announcement: string) => void;
   announcement: string;
+  missionID: number;
+  setMissionID: (missionID: number) => void;
 }
 
 export const useScoreStore = create<scoreStore>((set) => ({
@@ -19,10 +21,12 @@ export const useScoreStore = create<scoreStore>((set) => ({
   turns: 4,
   discard: 4,
   announcement: "",
+  missionID: 1,
 
   setScore: (score) => set({ score }),
   setMultiplier: (multiplier) => set({ multiplier }),
   setTurns: (turns) => set({ turns }),
   setDiscard: (discard) => set({ discard }),
   setAnnouncement: (announcement) => set({ announcement }),
+  setMissionID: (missionID) => set({ missionID }),
 }));
