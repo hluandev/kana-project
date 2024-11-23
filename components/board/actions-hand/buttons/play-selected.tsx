@@ -17,9 +17,7 @@ export const PlaySelected = () => {
     setScore,
     setMultiplier,
     turns,
-    discard,
     setTurns,
-    setDiscard,
     setAnnouncement,
   } = useScoreStore();
 

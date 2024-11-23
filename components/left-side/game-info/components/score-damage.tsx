@@ -10,10 +10,10 @@ export const ScoreDamage = () => {
         {announcement}
       </div>
 
-      <div className="py-6 border-t border-[#414447]">{score * multiplier}</div>
+      <div className="py-6 border-t border-[#262630]">{score * multiplier}</div>
 
-      <div className="border-t border-[#414447] grid grid-cols-2">
-        <div className="border-r border-[#414447] py-5">{score}</div>
+      <div className="border-t border-[#262630] grid grid-cols-2">
+        <div className="border-r border-[#262630] py-5">{score}</div>
         <div className="py-5">{multiplier}</div>
       </div>
     </Box>
