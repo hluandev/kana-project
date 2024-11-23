@@ -11,6 +11,8 @@ interface kanaStore {
   addSelectedCard: (card: any) => void;
   removeSelectedCard: (card: any) => void;
   setSelectedCard: (card: any) => void;
+  kanaMissions: any[];
+  setKanaMissions: (kanaMissions: any[]) => void;
 }
 
 export const useKanaStore = create<kanaStore>((set) => ({
@@ -18,7 +20,8 @@ export const useKanaStore = create<kanaStore>((set) => ({
   currentDeck: [],
   currentHand: [],
   selectedCard: [],
-
+  kanaMissions: [],
+  setKanaMissions: (kanaMissions) => set({ kanaMissions }),
   setCurrentDeck: (currentDeck) => set({ currentDeck }),
   setCurrentHand: (currentHand) => set({ currentHand }),
   setKana: (kana) => set({ kana }),

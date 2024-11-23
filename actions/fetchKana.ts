@@ -12,3 +12,11 @@ export async function fetchKana() {
 
   return kana;
 }
+
+export async function fetchKanaMissions() {
+  const supabase = await createClient();
+
+  let { data: kanaMissions } = await supabase.from("kana_missions").select("*");
+
+  return kanaMissions;
+}
