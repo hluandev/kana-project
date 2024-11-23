@@ -7,7 +7,7 @@ export const CurrentInfo = () => {
   const { kanaMissions } = useKanaStore();
 
   return (
-    <Box className="p-0 grid grid-cols-2 grid-rows-2 overflow-hidden">
+    <Box className="p-0 font-mono grid grid-cols-2 grid-rows-2 overflow-hidden">
       {/* Turns */}
       <div className="border-b text-center border-r border-neutral-800 py-8">
         {turns}
