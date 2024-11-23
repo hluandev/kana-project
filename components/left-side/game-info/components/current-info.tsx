@@ -9,17 +9,17 @@ export const CurrentInfo = () => {
   return (
     <Box className="p-0 font-mono grid grid-cols-2 grid-rows-2 overflow-hidden">
       {/* Turns */}
-      <div className="border-b text-center border-r border-neutral-800 py-8">
+      <div className="border-b text-center border-r border-neutral-700 py-8">
         {turns}
       </div>
 
       {/* Discard */}
-      <div className="border-b text-center border-neutral-800 py-8">
+      <div className="border-b text-center border-neutral-700 py-8">
         {discard}
       </div>
 
       {/* Matches */}
-      <div className="border-r text-center border-neutral-800 py-8">
+      <div className="border-r text-center border-neutral-700 py-8">
         {missionID} / {kanaMissions.length}
       </div>
 

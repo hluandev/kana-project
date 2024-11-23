@@ -39,7 +39,7 @@ export const DiscardSelected = () => {
     <ActionButton
       onClick={onHandleDiscard}
       text="Discard"
-      className="bg-red-700"
+      className="bg-red-600/20 text-red-400 hover:bg-red-600/40"
     />
   );
 };

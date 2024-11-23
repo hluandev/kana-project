@@ -22,12 +22,12 @@ export const Card = ({ card }: CardProps) => {
 
         console.log(selectedCard.length);
       }}
-      className={`flex relative duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-600 hover:z-50 hover:-mt-5 w-40 h-56 p-2 border-[#202029] ${
-        clicked ? "bg-blue-600 -mt-10" : "bg-[#121212]"
-      }  border rounded-md cursor-pointer`}
+      className={`flex relative duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-600 hover:z-50 hover:-mt-5 w-40 h-56 p-2  ${
+        clicked ? "bg-blue-600 -mt-10" : "bg-[#1f1f1f]"
+      }  darkBorder rounded-[10px]  shadow-inner-shadow-dark-float  cursor-pointer`}
     >
       <div className="flex justify-between  w-full">
-        <p className="bg-black/30  border border-[#2e3032] h-8 w-8 rounded-full flex items-center justify-center">
+        <p className="bg-black/30  border border-[#2e3032] h-8 w-8 rounded-lg flex items-center justify-center">
           {card?.suit}
         </p>
 
