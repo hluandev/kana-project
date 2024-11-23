@@ -23,7 +23,7 @@ export const Card = ({ card }: CardProps) => {
         console.log(selectedCard.length);
       }}
       className={`flex relative duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-600 hover:z-50 hover:-mt-5 w-40 h-56 p-2 border-[#202029] ${
-        clicked ? "bg-blue-600 -mt-10" : "bg-[#0e0e11]"
+        clicked ? "bg-blue-600 -mt-10" : "bg-[#121212]"
       }  border rounded-md cursor-pointer`}
     >
       <div className="flex justify-between  w-full">
