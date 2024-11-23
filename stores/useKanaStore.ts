@@ -18,6 +18,7 @@ export const useKanaStore = create<kanaStore>((set) => ({
   currentDeck: [],
   currentHand: [],
   selectedCard: [],
+
   setCurrentDeck: (currentDeck) => set({ currentDeck }),
   setCurrentHand: (currentHand) => set({ currentHand }),
   setKana: (kana) => set({ kana }),
