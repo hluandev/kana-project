@@ -21,7 +21,7 @@ const Kana = async () => {
       />
       <SpecialHands />
 
-      <div>
+      <div className="flex items-center flex-col">
         <CurrentHand />
         <ActionsHand />
       </div>

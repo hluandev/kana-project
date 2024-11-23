@@ -1,5 +1,6 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
+import SpecialCard from "./special-card";
 
 export const Win = () => {
   const {
@@ -16,7 +17,11 @@ export const Win = () => {
     <div className="fixed bg-black/40 backdrop-blur-lg w-full flex-col gap-8 h-full flex justify-center items-center z-10">
       <div className="text-yellow-600 text-8xl">You Defeated</div>
 
-      <div className="h-96 w-1/3 bg-[#1e2022] border border-[#2e3032] rounded-lg"></div>
+      <div className="h-96 grid grid-cols-2 gap-6 w-1/3 p-6 bg-[#1e2022] border border-[#2e3032] rounded-lg">
+        {[1, 2].map((item) => (
+          <SpecialCard japanese={item.toString()} />
+        ))}
+      </div>
 
       <div
         onClick={() => {

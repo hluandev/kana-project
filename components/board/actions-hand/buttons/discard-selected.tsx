@@ -38,7 +38,7 @@ export const DiscardSelected = () => {
   return (
     <ActionButton
       onClick={onHandleDiscard}
-      text="discard selected"
+      text="Discard"
       className="bg-red-700"
     />
   );

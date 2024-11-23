@@ -11,7 +11,7 @@ export const ActionButton = ({
 }: ActionButtonProps) => {
   return (
     <div
-      className={`p-3 rounded-md font-bold cursor-pointer ${className}`}
+      className={`py-3 w-36 text-center rounded-md font-bold cursor-pointer ${className}`}
       onClick={onClick}
     >
       {text}
