@@ -7,16 +7,20 @@ interface CardProps {
 
 export const Card = ({ card }: CardProps) => {
   const [clicked, setClicked] = useState(false);
-  const { selectedCard, setSelectedCard } = useKanaStore();
+  const { selectedCard, addSelectedCard, removeSelectedCard } = useKanaStore();
+
   return (
     <div
       onClick={() => {
-        if (selectedCard.length < 5) {
-          setClicked(!clicked);
-          setSelectedCard(card);
-        } else {
-          setClicked(!clicked);
+        if (!clicked && selectedCard.length < 5) {
+          setClicked(true);
+          addSelectedCard(card);
+        } else if (clicked) {
+          setClicked(false);
+          removeSelectedCard(card);
         }
+
+        console.log(selectedCard.length);
       }}
       className={`flex relative duration-300  w-40 h-56 p-2 border-[#2e3032] ${
         clicked ? "bg-blue-600 -mt-10" : "bg-[#1e2022]"
@@ -32,7 +36,7 @@ export const Card = ({ card }: CardProps) => {
         </p>
       </div>
       <p className="absolute top-1/2 text-4xl -translate-x-1/2 left-1/2 -translate-y-1/2">
-        {card?.text}
+        {card?.japanese}
       </p>
     </div>
   );

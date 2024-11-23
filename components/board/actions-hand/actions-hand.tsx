@@ -1,3 +1,5 @@
+"use client";
+
 import { DiscardSelected } from "./buttons/discard-selected";
 import { PlaySelected } from "./buttons/play-selected";
 import { SortCurrentHand } from "./buttons/sort-current-hand";
