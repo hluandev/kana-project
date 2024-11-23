@@ -19,7 +19,7 @@ export const Win = () => {
 
       <div className="h-96 grid grid-cols-2 gap-6 w-1/3 p-6 bg-[#1e2022] border border-[#2e3032] rounded-lg">
         {[1, 2].map((item) => (
-          <SpecialCard japanese={item.toString()} />
+          <SpecialCard key={item} japanese={item.toString()} />
         ))}
       </div>
 
