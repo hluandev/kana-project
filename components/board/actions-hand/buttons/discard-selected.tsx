@@ -29,10 +29,12 @@ export const DiscardSelected = () => {
       return 0;
     });
 
-    setCurrentHand(sortedHand);
-    setCurrentDeck(newDeck);
-    setSelectedCard([]);
-    setDiscard(discard - 1);
+    if (discard > 0) {
+      setCurrentHand(sortedHand);
+      setCurrentDeck(newDeck);
+      setSelectedCard([]);
+      setDiscard(discard - 1);
+    }
   };
 
   return (
