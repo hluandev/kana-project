@@ -5,29 +5,12 @@ import { Card } from "./card";
 import { useEffect } from "react";
 
 export const CurrentHand = () => {
-  const { kana, drawHand, currentHand, currentDeck } = useKanaStore();
-
-  // const drawHand = () => {
-  //   const newHand = [];
-  //   const currentDecks = [...kana];
-
-  //   for (let i = 0; i < 8 && currentDecks.length > 0; i++) {
-  //     const randomIndex = Math.floor(Math.random() * currentDecks.length);
-  //     newHand.push(currentDecks.splice(randomIndex, 1)[0]);
-  //   }
-
-  //   newHand.sort((a, b) => {
-  //     if (a.rank < b.rank) return -1;
-  //     if (a.rank > b.rank) return 1;
-  //     return 0;
-  //   });
-
-  //   setCurrentHand(newHand);
-  //   setCurrentDeck(currentDecks);
-  // };
+  const { kana, drawHand, currentHand, currentDeck, drawSpecial } =
+    useKanaStore();
 
   useEffect(() => {
     drawHand();
+    drawSpecial();
   }, [kana]);
 
   return (

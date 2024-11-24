@@ -14,13 +14,18 @@ export const Win = () => {
     setProgress,
   } = useScoreStore();
 
-  const { drawHand, setSelectedCard, kanaSpecial, addCurrentSpecial } =
-    useKanaStore();
+  const {
+    drawHand,
+    setSelectedCard,
+    currentSpecialDeck,
+    setCurrentSpecialDeck,
+    addCurrentSpecial,
+  } = useKanaStore();
 
   // Get 3 random cards from kanaSpecial
   const randomSpecialCards = React.useMemo(() => {
-    return [...kanaSpecial].sort(() => Math.random() - 0.5).slice(0, 3);
-  }, [kanaSpecial]);
+    return [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3);
+  }, [currentSpecialDeck]);
 
   const [value, setValue] = React.useState("");
 
@@ -37,6 +42,11 @@ export const Win = () => {
     if (matchingCard) {
       // Add the special card to current specials
       addCurrentSpecial(matchingCard);
+
+      // Remove the selected card from currentSpecialDeck
+      setCurrentSpecialDeck(
+        currentSpecialDeck.filter((card) => card.romaji !== value)
+      );
 
       // Reset game state
       setMissionID(missionID + 1);
