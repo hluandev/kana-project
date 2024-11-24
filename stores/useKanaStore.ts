@@ -16,12 +16,16 @@ interface kanaStore {
   kanaSpecial: any[];
   setKanaSpecial: (kanaSpecial: any[]) => void;
   drawHand: () => void;
+  currentSpecial: any[];
+  setCurrentSpecial: (currentSpecial: any[]) => void;
+  addCurrentSpecial: (currentSpecial: any) => void;
 }
 
 export const useKanaStore = create<kanaStore>((set, get) => ({
   kana: [],
   currentDeck: [],
   currentHand: [],
+  currentSpecial: [],
   selectedCard: [],
   kanaMissions: [],
   kanaSpecial: [],
@@ -29,6 +33,11 @@ export const useKanaStore = create<kanaStore>((set, get) => ({
   setKanaMissions: (kanaMissions) => set({ kanaMissions }),
   setCurrentDeck: (currentDeck) => set({ currentDeck }),
   setCurrentHand: (currentHand) => set({ currentHand }),
+  setCurrentSpecial: (currentSpecial) => set({ currentSpecial }),
+  addCurrentSpecial: (currentSpecial) =>
+    set((state) => ({
+      currentSpecial: [...state.currentSpecial, currentSpecial],
+    })),
   drawHand: () => {
     const { kana } = get();
     const newHand = [];

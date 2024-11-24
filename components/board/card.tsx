@@ -6,7 +6,8 @@ interface CardProps {
 }
 
 export const Card = ({ card }: CardProps) => {
-  const { selectedCard, addSelectedCard, removeSelectedCard } = useKanaStore();
+  const { selectedCard } = useKanaStore();
+  const [onHover, setOnHover] = useState(false);
 
   const isSelected = selectedCard.some(
     (selected) => selected.romaji === card.romaji
@@ -14,17 +15,28 @@ export const Card = ({ card }: CardProps) => {
 
   return (
     <div
-      onClick={() => {
-        if (isSelected) {
-          removeSelectedCard(card);
-        }
-      }}
+      onMouseEnter={() => setOnHover(true)}
+      onMouseLeave={() => setOnHover(false)}
       className={`flex relative duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-600 hover:z-50 hover:-mt-5 w-40 h-56 p-2  ${
         isSelected ? "bg-blue-600 -mt-10" : "bg-[#1f1f1f]"
-      }  darkBorder rounded-[10px]  shadow-inner-shadow-dark-float  cursor-pointer`}
+      }  darkBorder rounded-[10px]  shadow-inner-shadow-dark-float `}
     >
-      <div className="flex justify-between  w-full">
-        <p className="bg-black/30  border border-[#2e3032] h-8 w-8 rounded-lg flex items-center justify-center">
+      {onHover && (
+        <p className="absolute -top-12 left-1/2 -translate-x-1/2 bg-[#1f1f1f] py-2 w-full text-center darkBorder rounded-[10px]  shadow-inner-shadow-dark-float">
+          {card.romaji}
+        </p>
+      )}
+
+      <div className="flex justify-between w-full">
+        <p
+          className={`${card?.suit === "あ" && "text-red-500"} ${
+            card?.suit === "う" && "text-blue-500"
+          } ${card?.suit === "お" && "text-green-500"} ${
+            card?.suit === "い" && "text-yellow-500"
+          } ${
+            card?.suit === "え" && "text-white"
+          } bg-black/70  border border-[#2e3032] h-8 w-8 rounded-lg flex items-center justify-center`}
+        >
           {card?.suit}
         </p>
 
