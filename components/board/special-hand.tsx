@@ -11,7 +11,7 @@ export const SpecialHands = () => {
         <div className="bg-black/50 flex flex-col overflow-hidden justify-between rounded-xl w-40 h-full bg-[url('/img/ya.png')] bg-cover">
           <p>{card.japanese}</p>
 
-          <p className="text-center h-20 flex justify-center items-center border-t border-neutral-800 bg-black/50 backdrop-blur-lg">
+          <p className="text-center px-4 h-20 flex justify-center items-center border-t border-neutral-800 bg-black/50 backdrop-blur-lg">
             {card.desc}
           </p>
         </div>

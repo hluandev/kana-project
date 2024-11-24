@@ -242,6 +242,10 @@ export const PlaySelected = () => {
         : "high_card";
 
       currentSpecial.forEach((special) => {
+        if (special.combo === "none" && special.condition === "multiples") {
+          finalMultiplier += special.reward;
+        }
+
         if (
           special.combo === currentAnnouncement &&
           special.condition === "multiples"
