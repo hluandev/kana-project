@@ -1,6 +1,7 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
+import { useEffect } from "react";
 
 export const PlaySelected = () => {
   const {
@@ -10,6 +11,7 @@ export const PlaySelected = () => {
     setCurrentHand,
     setCurrentDeck,
     setSelectedCard,
+    currentSpecial,
   } = useKanaStore();
   const {
     score,
@@ -18,6 +20,7 @@ export const PlaySelected = () => {
     setMultiplier,
     turns,
     setTurns,
+    announcement,
     setAnnouncement,
     progress,
     setProgress,
@@ -123,31 +126,160 @@ export const PlaySelected = () => {
     };
   };
 
+  useEffect(() => {
+    if (selectedCard.length > 0) {
+      const {
+        hasPair,
+        hasTwoPair,
+        hasThreeOfKind,
+        hasStraight,
+        hasFlush,
+        hasFullHouse,
+        hasFourOfKind,
+        hasStraightFlush,
+      } = checkHand();
+
+      const cardRanks = selectedCard.map((card) => parseInt(card.rank));
+
+      let rankPoints = 0;
+      let newScore = 0;
+      let newMultiplier = 1;
+
+      if (hasStraightFlush) {
+        rankPoints = cardRanks
+          .sort((a, b) => b - a)
+          .slice(0, 5)
+          .reduce((sum, rank) => sum + rank, 0);
+        newScore = 100 + rankPoints;
+        newMultiplier = 8;
+        setAnnouncement("straight_flush");
+      } else if (hasFourOfKind) {
+        const fourKindRank = Array.from(rankCount.entries()).find(
+          ([_, count]) => count === 4
+        )?.[0];
+        rankPoints = fourKindRank ? parseInt(fourKindRank) * 4 : 0;
+        newScore = 60 + rankPoints;
+        newMultiplier = 5;
+        setAnnouncement("four_of_a_kind");
+      } else if (hasFullHouse) {
+        const threeKindRank = Array.from(rankCount.entries()).find(
+          ([_, count]) => count === 3
+        )?.[0];
+        const pairRank = Array.from(rankCount.entries()).find(
+          ([_, count]) => count === 2
+        )?.[0];
+        rankPoints =
+          (threeKindRank ? parseInt(threeKindRank) * 3 : 0) +
+          (pairRank ? parseInt(pairRank) * 2 : 0);
+        newScore = 40 + rankPoints;
+        newMultiplier = 4;
+        setAnnouncement("full_house");
+      } else if (hasStraight) {
+        rankPoints = cardRanks
+          .sort((a, b) => b - a)
+          .slice(0, 5)
+          .reduce((sum, rank) => sum + rank, 0);
+        newScore = 30 + rankPoints;
+        newMultiplier = 3;
+        setAnnouncement("straight");
+      } else if (hasFlush) {
+        rankPoints = cardRanks
+          .sort((a, b) => b - a)
+          .slice(0, 5)
+          .reduce((sum, rank) => sum + rank, 0);
+        newScore = 40 + rankPoints;
+        newMultiplier = 3;
+        setAnnouncement("flush");
+      } else if (hasThreeOfKind) {
+        const threeKindRank = Array.from(rankCount.entries()).find(
+          ([_, count]) => count === 3
+        )?.[0];
+        rankPoints = threeKindRank ? parseInt(threeKindRank) * 3 : 0;
+        newScore = 20 + rankPoints;
+        newMultiplier = 3;
+        setAnnouncement("three_of_a_kind");
+      } else if (hasTwoPair) {
+        const pairRanks = Array.from(rankCount.entries())
+          .filter(([_, count]) => count === 2)
+          .map(([rank, _]) => parseInt(rank));
+        rankPoints = pairRanks.reduce((sum, rank) => sum + rank * 2, 0);
+        newScore = 20 + rankPoints;
+        newMultiplier = 2;
+        setAnnouncement("two_pairs");
+      } else if (hasPair) {
+        const pairRank = Array.from(rankCount.entries()).find(
+          ([_, count]) => count === 2
+        )?.[0];
+        rankPoints = pairRank ? parseInt(pairRank) * 2 : 0;
+        newScore = 10 + rankPoints;
+        newMultiplier = 2;
+        setAnnouncement("pair");
+      } else {
+        rankPoints = Math.max(...cardRanks);
+        newScore = 5 + rankPoints;
+        newMultiplier = 1;
+        setAnnouncement("high_card");
+      }
+
+      let finalScore = newScore;
+      let finalMultiplier = newMultiplier;
+      const currentAnnouncement = hasStraightFlush
+        ? "straight_flush"
+        : hasFourOfKind
+        ? "four_of_a_kind"
+        : hasFullHouse
+        ? "full_house"
+        : hasStraight
+        ? "straight"
+        : hasFlush
+        ? "flush"
+        : hasThreeOfKind
+        ? "three_of_a_kind"
+        : hasTwoPair
+        ? "two_pairs"
+        : hasPair
+        ? "pair"
+        : "high_card";
+
+      currentSpecial.forEach((special) => {
+        if (
+          special.combo === currentAnnouncement &&
+          special.condition === "multiples"
+        ) {
+          finalMultiplier += special.reward;
+        }
+
+        if (
+          special.combo === currentAnnouncement &&
+          special.condition === "xmultiples"
+        ) {
+          finalMultiplier *= special.reward;
+        }
+
+        if (special.combo === "none" && special.condition === "points") {
+          finalScore += special.reward;
+        }
+
+        if (
+          special.combo === currentAnnouncement &&
+          special.condition === "points"
+        ) {
+          finalScore += special.reward;
+        }
+      });
+
+      setScore(finalScore);
+      setMultiplier(finalMultiplier);
+      setAnnouncement(currentAnnouncement);
+    } else {
+      setAnnouncement("");
+      setScore(0);
+      setMultiplier(0);
+    }
+  }, [selectedCard]);
+
   const handlePlaySelected = () => {
-    const {
-      hasPair,
-      hasTwoPair,
-      hasThreeOfKind,
-      hasStraight,
-      hasFlush,
-      hasFullHouse,
-      hasFourOfKind,
-      hasStraightFlush,
-    } = checkHand();
-
-    const cardRanks = selectedCard.map((card) => parseInt(card.rank));
-
-    if (
-      hasPair ||
-      hasTwoPair ||
-      hasThreeOfKind ||
-      hasStraight ||
-      hasFlush ||
-      hasFullHouse ||
-      hasFourOfKind ||
-      hasStraightFlush ||
-      selectedCard.length > 0
-    ) {
+    if (selectedCard.length > 0) {
       const newHand = currentHand.filter(
         (card) => !selectedCard.includes(card)
       );
@@ -162,94 +294,14 @@ export const PlaySelected = () => {
         return 0;
       });
 
+      setProgress(progress + score * multiplier);
+
       setCurrentHand(sortedHand);
       setCurrentDeck(newDeck);
+      setScore(0);
+      setMultiplier(0);
       setSelectedCard([]);
       setTurns(turns - 1);
-
-      let rankPoints = 0;
-      let newScore = 0;
-      let newMultiplier = 1;
-
-      if (hasStraightFlush) {
-        rankPoints = cardRanks
-          .sort((a, b) => b - a)
-          .slice(0, 5)
-          .reduce((sum, rank) => sum + rank, 0);
-        newScore = 100 + rankPoints;
-        newMultiplier = 8;
-        setAnnouncement("a straight flush!");
-      } else if (hasFourOfKind) {
-        const fourKindRank = Array.from(rankCount.entries()).find(
-          ([_, count]) => count === 4
-        )?.[0];
-        rankPoints = fourKindRank ? parseInt(fourKindRank) * 4 : 0;
-        newScore = 60 + rankPoints;
-        newMultiplier = 5;
-        setAnnouncement("four of a kind!");
-      } else if (hasFullHouse) {
-        const threeKindRank = Array.from(rankCount.entries()).find(
-          ([_, count]) => count === 3
-        )?.[0];
-        const pairRank = Array.from(rankCount.entries()).find(
-          ([_, count]) => count === 2
-        )?.[0];
-        rankPoints =
-          (threeKindRank ? parseInt(threeKindRank) * 3 : 0) +
-          (pairRank ? parseInt(pairRank) * 2 : 0);
-        newScore = 40 + rankPoints;
-        newMultiplier = 4;
-        setAnnouncement("a full house!");
-      } else if (hasStraight) {
-        rankPoints = cardRanks
-          .sort((a, b) => b - a)
-          .slice(0, 5)
-          .reduce((sum, rank) => sum + rank, 0);
-        newScore = 30 + rankPoints;
-        newMultiplier = 3;
-        setAnnouncement("a straight!");
-      } else if (hasFlush) {
-        rankPoints = cardRanks
-          .sort((a, b) => b - a)
-          .slice(0, 5)
-          .reduce((sum, rank) => sum + rank, 0);
-        newScore = 40 + rankPoints;
-        newMultiplier = 3;
-        setAnnouncement("a flush!");
-      } else if (hasThreeOfKind) {
-        const threeKindRank = Array.from(rankCount.entries()).find(
-          ([_, count]) => count === 3
-        )?.[0];
-        rankPoints = threeKindRank ? parseInt(threeKindRank) * 3 : 0;
-        newScore = 20 + rankPoints;
-        newMultiplier = 3;
-        setAnnouncement("three of a kind!");
-      } else if (hasTwoPair) {
-        const pairRanks = Array.from(rankCount.entries())
-          .filter(([_, count]) => count === 2)
-          .map(([rank, _]) => parseInt(rank));
-        rankPoints = pairRanks.reduce((sum, rank) => sum + rank * 2, 0);
-        newScore = 20 + rankPoints;
-        newMultiplier = 2;
-        setAnnouncement("two pairs!");
-      } else if (hasPair) {
-        const pairRank = Array.from(rankCount.entries()).find(
-          ([_, count]) => count === 2
-        )?.[0];
-        rankPoints = pairRank ? parseInt(pairRank) * 2 : 0;
-        newScore = 10 + rankPoints;
-        newMultiplier = 2;
-        setAnnouncement("one pair!");
-      } else {
-        rankPoints = Math.max(...cardRanks);
-        newScore = 5 + rankPoints;
-        newMultiplier = 1;
-        setAnnouncement("High card!");
-      }
-
-      setScore(newScore);
-      setMultiplier(newMultiplier);
-      setProgress(progress + newScore * newMultiplier);
     }
   };
 

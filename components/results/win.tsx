@@ -31,7 +31,6 @@ export const Win = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
-    // Add a small delay before focusing
     const timer = setTimeout(() => {
       inputRef.current?.focus();
     }, 100);

@@ -48,7 +48,12 @@ export default function ActionInput() {
   };
 
   return (
-    <form action="">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+      action=""
+    >
       <input
         ref={inputRef}
         type="text"
