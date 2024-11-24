@@ -5,7 +5,8 @@ import { useKanaStore } from "@/stores/useKanaStore";
 
 export default function ActionInput() {
   const [value, setValue] = useState("");
-  const { addSelectedCard, currentHand, selectedCard } = useKanaStore();
+  const { addSelectedCard, currentHand, selectedCard, removeSelectedCard } =
+    useKanaStore();
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const inputValue = e.target.value.toLowerCase();
@@ -20,8 +21,16 @@ export default function ActionInput() {
       (card) => card.romaji.toLowerCase() === inputValue
     );
 
-    if (matchedCard && selectedCard.length < 5) {
-      addSelectedCard(matchedCard);
+    if (matchedCard) {
+      const isAlreadySelected = selectedCard.some(
+        (card) => card.romaji === matchedCard.romaji
+      );
+
+      if (isAlreadySelected) {
+        removeSelectedCard(matchedCard);
+      } else if (selectedCard.length < 5) {
+        addSelectedCard(matchedCard);
+      }
       setValue("");
     }
   };

@@ -1,7 +1,6 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
-import { useEffect } from "react";
 
 export const PlaySelected = () => {
   const {
@@ -20,6 +19,8 @@ export const PlaySelected = () => {
     turns,
     setTurns,
     setAnnouncement,
+    progress,
+    setProgress,
   } = useScoreStore();
 
   const rankCount = new Map<string, number>();
@@ -167,26 +168,26 @@ export const PlaySelected = () => {
       setTurns(turns - 1);
 
       let rankPoints = 0;
+      let newScore = 0;
+      let newMultiplier = 1;
+
       if (hasStraightFlush) {
-        // Use all 5 cards in the straight flush
         rankPoints = cardRanks
           .sort((a, b) => b - a)
           .slice(0, 5)
           .reduce((sum, rank) => sum + rank, 0);
-        setScore(score + 100 + rankPoints);
-        setMultiplier(multiplier + 8);
+        newScore = 100 + rankPoints;
+        newMultiplier = 8;
         setAnnouncement("a straight flush!");
       } else if (hasFourOfKind) {
-        // Find the rank that appears 4 times and sum it 4 times
         const fourKindRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 4
         )?.[0];
         rankPoints = fourKindRank ? parseInt(fourKindRank) * 4 : 0;
-        setScore(score + 60 + rankPoints);
-        setMultiplier(multiplier + 5);
+        newScore = 60 + rankPoints;
+        newMultiplier = 5;
         setAnnouncement("four of a kind!");
       } else if (hasFullHouse) {
-        // Sum the three of a kind ranks and the pair ranks
         const threeKindRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 3
         )?.[0];
@@ -196,61 +197,59 @@ export const PlaySelected = () => {
         rankPoints =
           (threeKindRank ? parseInt(threeKindRank) * 3 : 0) +
           (pairRank ? parseInt(pairRank) * 2 : 0);
-        setScore(score + 40 + rankPoints);
-        setMultiplier(multiplier + 4);
+        newScore = 40 + rankPoints;
+        newMultiplier = 4;
         setAnnouncement("a full house!");
       } else if (hasStraight) {
-        // Use all 5 cards in the straight
         rankPoints = cardRanks
           .sort((a, b) => b - a)
           .slice(0, 5)
           .reduce((sum, rank) => sum + rank, 0);
-        setScore(score + 30 + rankPoints);
-        setMultiplier(multiplier + 3);
+        newScore = 30 + rankPoints;
+        newMultiplier = 3;
         setAnnouncement("a straight!");
       } else if (hasFlush) {
-        // Use all 5 cards in the flush
         rankPoints = cardRanks
           .sort((a, b) => b - a)
           .slice(0, 5)
           .reduce((sum, rank) => sum + rank, 0);
-        setScore(score + 40 + rankPoints);
-        setMultiplier(multiplier + 3);
+        newScore = 40 + rankPoints;
+        newMultiplier = 3;
         setAnnouncement("a flush!");
       } else if (hasThreeOfKind) {
-        // Find the rank that appears 3 times and sum it 3 times
         const threeKindRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 3
         )?.[0];
         rankPoints = threeKindRank ? parseInt(threeKindRank) * 3 : 0;
-        setScore(score + 20 + rankPoints);
-        setMultiplier(multiplier + 3);
+        newScore = 20 + rankPoints;
+        newMultiplier = 3;
         setAnnouncement("three of a kind!");
       } else if (hasTwoPair) {
-        // Sum both pairs
         const pairRanks = Array.from(rankCount.entries())
           .filter(([_, count]) => count === 2)
           .map(([rank, _]) => parseInt(rank));
         rankPoints = pairRanks.reduce((sum, rank) => sum + rank * 2, 0);
-        setScore(score + 20 + rankPoints);
-        setMultiplier(multiplier + 2);
+        newScore = 20 + rankPoints;
+        newMultiplier = 2;
         setAnnouncement("two pairs!");
       } else if (hasPair) {
-        // Find the rank that appears twice and sum it twice
         const pairRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 2
         )?.[0];
         rankPoints = pairRank ? parseInt(pairRank) * 2 : 0;
-        setScore(score + 10 + rankPoints);
-        setMultiplier(multiplier + 2);
+        newScore = 10 + rankPoints;
+        newMultiplier = 2;
         setAnnouncement("one pair!");
       } else {
-        // Use highest card rank
         rankPoints = Math.max(...cardRanks);
-        setScore(score + 5 + rankPoints);
-        setMultiplier(multiplier + 1);
+        newScore = 5 + rankPoints;
+        newMultiplier = 1;
         setAnnouncement("High card!");
       }
+
+      setScore(newScore);
+      setMultiplier(newMultiplier);
+      setProgress(progress + newScore * newMultiplier);
     }
   };
 

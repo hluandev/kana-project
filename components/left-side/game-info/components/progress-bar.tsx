@@ -5,11 +5,11 @@ interface ProgressBarProps {
 }
 
 export const ProgressBar = ({ target }: ProgressBarProps) => {
-  const { score, multiplier } = useScoreStore();
+  const { progress } = useScoreStore();
 
   return (
     <div className="border rounded-lg font-mono border-neutral-700 text-center py-3">
-      {score * multiplier} / {target}
+      {progress} / {target}
     </div>
   );
 };
