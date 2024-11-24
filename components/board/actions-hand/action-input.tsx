@@ -13,12 +13,10 @@ export default function ActionInput() {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
-    // Add a small delay before focusing
     const timer = setTimeout(() => {
       inputRef.current?.focus();
     }, 100);
 
-    // Cleanup timeout
     return () => clearTimeout(timer);
   }, [missionID]);
 
