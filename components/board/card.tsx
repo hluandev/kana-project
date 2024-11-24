@@ -6,24 +6,21 @@ interface CardProps {
 }
 
 export const Card = ({ card }: CardProps) => {
-  const [clicked, setClicked] = useState(false);
   const { selectedCard, addSelectedCard, removeSelectedCard } = useKanaStore();
+
+  const isSelected = selectedCard.some(
+    (selected) => selected.romaji === card.romaji
+  );
 
   return (
     <div
       onClick={() => {
-        if (!clicked && selectedCard.length < 5) {
-          setClicked(true);
-          addSelectedCard(card);
-        } else if (clicked) {
-          setClicked(false);
+        if (isSelected) {
           removeSelectedCard(card);
         }
-
-        console.log(selectedCard.length);
       }}
       className={`flex relative duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-600 hover:z-50 hover:-mt-5 w-40 h-56 p-2  ${
-        clicked ? "bg-blue-600 -mt-10" : "bg-[#1f1f1f]"
+        isSelected ? "bg-blue-600 -mt-10" : "bg-[#1f1f1f]"
       }  darkBorder rounded-[10px]  shadow-inner-shadow-dark-float  cursor-pointer`}
     >
       <div className="flex justify-between  w-full">
