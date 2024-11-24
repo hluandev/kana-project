@@ -1,6 +1,7 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
+import { useEffect } from "react";
 
 export const PlaySelected = () => {
   const {
@@ -256,8 +257,9 @@ export const PlaySelected = () => {
   return (
     <ActionButton
       onClick={handlePlaySelected}
-      text="Play"
+      text="Play (3)"
       className="bg-blue-600/20 text-blue-400 hover:bg-blue-600/40"
+      keyboardShortcut="3"
     />
   );
 };

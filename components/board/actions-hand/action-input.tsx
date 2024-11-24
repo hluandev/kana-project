@@ -11,6 +11,11 @@ export default function ActionInput() {
     const inputValue = e.target.value.toLowerCase();
     setValue(inputValue);
 
+    if (["1", "2", "3"].includes(inputValue)) {
+      setValue("");
+      return;
+    }
+
     const matchedCard = currentHand.find(
       (card) => card.romaji.toLowerCase() === inputValue
     );
