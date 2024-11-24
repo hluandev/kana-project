@@ -2,11 +2,25 @@
 
 import { ChangeEventHandler, useState } from "react";
 import { useKanaStore } from "@/stores/useKanaStore";
+import React from "react";
+import { useScoreStore } from "@/stores/useScoreStore";
 
 export default function ActionInput() {
   const [value, setValue] = useState("");
   const { addSelectedCard, currentHand, selectedCard, removeSelectedCard } =
     useKanaStore();
+  const { missionID } = useScoreStore();
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    // Add a small delay before focusing
+    const timer = setTimeout(() => {
+      inputRef.current?.focus();
+    }, 100);
+
+    // Cleanup timeout
+    return () => clearTimeout(timer);
+  }, [missionID]);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const inputValue = e.target.value.toLowerCase();
@@ -38,6 +52,7 @@ export default function ActionInput() {
   return (
     <form action="">
       <input
+        ref={inputRef}
         type="text"
         value={value}
         placeholder="Type in card's name that you want to play"

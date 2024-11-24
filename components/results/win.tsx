@@ -28,6 +28,17 @@ export const Win = () => {
   }, [currentSpecialDeck]);
 
   const [value, setValue] = React.useState("");
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    // Add a small delay before focusing
+    const timer = setTimeout(() => {
+      inputRef.current?.focus();
+    }, 100);
+
+    // Cleanup timeout
+    return () => clearTimeout(timer);
+  }, [missionID]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -80,6 +91,7 @@ export const Win = () => {
 
       <form onSubmit={handleSubmit} className="flex gap-4">
         <input
+          ref={inputRef}
           type="text"
           value={value}
           onChange={handleInputChange}
