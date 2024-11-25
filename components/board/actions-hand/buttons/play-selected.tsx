@@ -2,7 +2,6 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { useEffect, useState } from "react";
-import { useComboStore } from "@/stores/useComboStore";
 
 export const PlaySelected = () => {
   const {
@@ -27,29 +26,7 @@ export const PlaySelected = () => {
     setProgress,
   } = useScoreStore();
 
-  const {
-    highCard,
-    pair,
-    twoPairs,
-    threeOfAKind,
-    straight,
-    flush,
-    fullHouse,
-    fourOfAKind,
-    straightFlush,
-    increaseHighCard,
-    increasePair,
-    increaseTwoPairs,
-    increaseThreeOfAKind,
-    increaseStraight,
-    increaseFlush,
-    increaseFullHouse,
-    increaseFourOfAKind,
-    increaseStraightFlush,
-  } = useComboStore();
-
   const rankCount = new Map<string, number>();
-  const [usedUpgradeIds, setUsedUpgradeIds] = useState(new Set<string>());
 
   const checkHand = () => {
     rankCount.clear();
@@ -173,16 +150,16 @@ export const PlaySelected = () => {
           .sort((a, b) => b - a)
           .slice(0, 5)
           .reduce((sum, rank) => sum + rank, 0);
-        newScore = straightFlush.score + rankPoints;
-        newMultiplier = straightFlush.multiplier;
+        newScore = 100 + rankPoints;
+        newMultiplier = 8;
         setAnnouncement("straight_flush");
       } else if (hasFourOfKind) {
         const fourKindRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 4
         )?.[0];
         rankPoints = fourKindRank ? parseInt(fourKindRank) * 4 : 0;
-        newScore = fourOfAKind.score + rankPoints;
-        newMultiplier = fourOfAKind.multiplier;
+        newScore = 60 + rankPoints;
+        newMultiplier = 5;
         setAnnouncement("four_of_a_kind");
       } else if (hasFullHouse) {
         const threeKindRank = Array.from(rankCount.entries()).find(
@@ -194,53 +171,53 @@ export const PlaySelected = () => {
         rankPoints =
           (threeKindRank ? parseInt(threeKindRank) * 3 : 0) +
           (pairRank ? parseInt(pairRank) * 2 : 0);
-        newScore = fullHouse.score + rankPoints;
-        newMultiplier = fullHouse.multiplier;
+        newScore = 40 + rankPoints;
+        newMultiplier = 4;
         setAnnouncement("full_house");
       } else if (hasStraight) {
         rankPoints = cardRanks
           .sort((a, b) => b - a)
           .slice(0, 5)
           .reduce((sum, rank) => sum + rank, 0);
-        newScore = straight.score + rankPoints;
-        newMultiplier = straight.multiplier;
+        newScore = 30 + rankPoints;
+        newMultiplier = 3;
         setAnnouncement("straight");
       } else if (hasFlush) {
         rankPoints = cardRanks
           .sort((a, b) => b - a)
           .slice(0, 5)
           .reduce((sum, rank) => sum + rank, 0);
-        newScore = flush.score + rankPoints;
-        newMultiplier = flush.multiplier;
+        newScore = 40 + rankPoints;
+        newMultiplier = 3;
         setAnnouncement("flush");
       } else if (hasThreeOfKind) {
         const threeKindRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 3
         )?.[0];
         rankPoints = threeKindRank ? parseInt(threeKindRank) * 3 : 0;
-        newScore = threeOfAKind.score + rankPoints;
-        newMultiplier = threeOfAKind.multiplier;
+        newScore = 20 + rankPoints;
+        newMultiplier = 3;
         setAnnouncement("three_of_a_kind");
       } else if (hasTwoPair) {
         const pairRanks = Array.from(rankCount.entries())
           .filter(([_, count]) => count === 2)
           .map(([rank, _]) => parseInt(rank));
         rankPoints = pairRanks.reduce((sum, rank) => sum + rank * 2, 0);
-        newScore = twoPairs.score + rankPoints;
-        newMultiplier = twoPairs.multiplier;
+        newScore = 20 + rankPoints;
+        newMultiplier = 2;
         setAnnouncement("two_pairs");
       } else if (hasPair) {
         const pairRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 2
         )?.[0];
         rankPoints = pairRank ? parseInt(pairRank) * 2 : 0;
-        newScore = pair.score + rankPoints;
-        newMultiplier = pair.multiplier;
+        newScore = 10 + rankPoints;
+        newMultiplier = 2;
         setAnnouncement("pair");
       } else {
         rankPoints = Math.max(...cardRanks);
-        newScore = highCard.score + rankPoints;
-        newMultiplier = highCard.multiplier;
+        newScore = 5 + rankPoints;
+        newMultiplier = 1;
         setAnnouncement("high_card");
       }
 
@@ -294,48 +271,16 @@ export const PlaySelected = () => {
           validCombos.push("straight_flush", "straight", "flush");
         }
 
-        // Handle upgrades - only apply if this specific card hasn't been used yet
-        if (
-          special.condition === "upgrade" &&
-          validCombos.includes(special.combo) &&
-          !usedUpgradeIds.has(special.id)
-        ) {
-          setUsedUpgradeIds((prev) => new Set(prev).add(special.id));
-
-          switch (special.combo) {
-            case "high_card":
-              increaseHighCard();
-              break;
-            case "pair":
-              increasePair();
-              break;
-            case "two_pairs":
-              increaseTwoPairs();
-              break;
-            case "three_of_a_kind":
-              increaseThreeOfAKind();
-              break;
-            case "straight":
-              increaseStraight();
-              break;
-            case "flush":
-              increaseFlush();
-              break;
-            case "full_house":
-              increaseFullHouse();
-              break;
-            case "four_of_a_kind":
-              increaseFourOfAKind();
-              break;
-            case "straight_flush":
-              increaseStraightFlush();
-              break;
-          }
-        }
-
         // Continue with other special card effects...
         if (special.combo === "none" && special.condition === "multiples") {
           finalMultiplier += special.reward;
+        }
+
+        if (
+          validCombos.includes(special.combo) &&
+          special.condition === "upgrade"
+        ) {
+          finalMultiplier += special.reward_multiplier;
         }
 
         if (
@@ -354,6 +299,13 @@ export const PlaySelected = () => {
 
         if (special.combo === "none" && special.condition === "points") {
           finalScore += special.reward;
+        }
+
+        if (
+          validCombos.includes(special.combo) &&
+          special.condition === "upgrade"
+        ) {
+          finalScore += special.reward_points;
         }
 
         if (

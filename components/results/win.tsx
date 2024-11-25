@@ -99,15 +99,16 @@ export const Win = () => {
       setYen(yen - totalCost);
     }
 
-    setSelectedSpecial([]);
-    setMissionID(missionID + 1);
-    setScore(0);
-    setTurns(4);
-    setProgress(0);
-    setDiscard(4);
-    setMultiplier(0);
     drawHand();
+    setMissionID(missionID + 1);
+    setTurns(4);
+    setDiscard(4);
     setSelectedCard([]);
+    setSelectedSpecial([]);
+
+    setMultiplier(0);
+    setScore(0);
+    setProgress(0);
   };
 
   return (
