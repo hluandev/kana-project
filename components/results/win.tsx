@@ -81,13 +81,19 @@ export const Win = () => {
     );
 
     if (yen >= totalCost && selectedSpecial.length > 0) {
-      const newSpecialCards = currentSpecial.concat(selectedSpecial);
+      const newSpecialCards = [...currentSpecial, ...selectedSpecial];
       setCurrentSpecial(newSpecialCards);
 
-      const newSpecialDeck = currentSpecialDeck.filter(
-        (card) =>
-          !selectedSpecial.some((selected) => selected.romaji === card.romaji)
-      );
+      const newSpecialDeck = currentSpecialDeck.filter((card) => {
+        const isSelected = selectedSpecial.some(
+          (selected) => selected.romaji === card.romaji
+        );
+        const isUpgrade = selectedSpecial.some(
+          (selected) =>
+            selected.romaji === card.romaji && selected.condition === "upgrade"
+        );
+        return !isSelected || isUpgrade;
+      });
       setCurrentSpecialDeck(newSpecialDeck);
 
       setYen(yen - totalCost);

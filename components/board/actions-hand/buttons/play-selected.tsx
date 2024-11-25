@@ -1,7 +1,7 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useComboStore } from "@/stores/useComboStore";
 
 export const PlaySelected = () => {
@@ -49,6 +49,7 @@ export const PlaySelected = () => {
   } = useComboStore();
 
   const rankCount = new Map<string, number>();
+  const [usedUpgradeIds, setUsedUpgradeIds] = useState(new Set<string>());
 
   const checkHand = () => {
     rankCount.clear();
@@ -264,11 +265,6 @@ export const PlaySelected = () => {
         : "high_card";
 
       currentSpecial.forEach((special) => {
-        // Base multiplier effects
-        if (special.combo === "none" && special.condition === "multiples") {
-          finalMultiplier += special.reward;
-        }
-
         // Check all valid combinations for this hand
         const validCombos = [currentAnnouncement];
         if (hasPair) validCombos.push("pair");
@@ -298,41 +294,14 @@ export const PlaySelected = () => {
           validCombos.push("straight_flush", "straight", "flush");
         }
 
-        console.log(validCombos);
-
-        // Apply multiplier effects
+        // Handle upgrades - only apply if this specific card hasn't been used yet
         if (
+          special.condition === "upgrade" &&
           validCombos.includes(special.combo) &&
-          special.condition === "multiples"
+          !usedUpgradeIds.has(special.id)
         ) {
-          finalMultiplier += special.reward;
-        }
+          setUsedUpgradeIds((prev) => new Set(prev).add(special.id));
 
-        // Apply multiplier multiplication effects
-        if (
-          validCombos.includes(special.combo) &&
-          special.condition === "xmultiples"
-        ) {
-          finalMultiplier *= special.reward;
-        }
-
-        // Apply base point effects
-        if (special.combo === "none" && special.condition === "points") {
-          finalScore += special.reward;
-        }
-
-        // Apply point effects for specific combinations
-        if (
-          validCombos.includes(special.combo) &&
-          special.condition === "points"
-        ) {
-          finalScore += special.reward;
-        }
-      });
-
-      // Apply upgrade effects for combinations
-      currentSpecial.forEach((special) => {
-        if (special.condition === "upgrade") {
           switch (special.combo) {
             case "high_card":
               increaseHighCard();
@@ -362,6 +331,36 @@ export const PlaySelected = () => {
               increaseStraightFlush();
               break;
           }
+        }
+
+        // Continue with other special card effects...
+        if (special.combo === "none" && special.condition === "multiples") {
+          finalMultiplier += special.reward;
+        }
+
+        if (
+          validCombos.includes(special.combo) &&
+          special.condition === "multiples"
+        ) {
+          finalMultiplier += special.reward;
+        }
+
+        if (
+          validCombos.includes(special.combo) &&
+          special.condition === "xmultiples"
+        ) {
+          finalMultiplier *= special.reward;
+        }
+
+        if (special.combo === "none" && special.condition === "points") {
+          finalScore += special.reward;
+        }
+
+        if (
+          validCombos.includes(special.combo) &&
+          special.condition === "points"
+        ) {
+          finalScore += special.reward;
         }
       });
 
