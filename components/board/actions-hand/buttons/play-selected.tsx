@@ -271,7 +271,7 @@ export const PlaySelected = () => {
           validCombos.push("straight_flush", "straight", "flush");
         }
 
-        // Continue with other special card effects...
+        // Effects
         if (special.combo === "none" && special.condition === "multiples") {
           finalMultiplier += special.reward;
         }
