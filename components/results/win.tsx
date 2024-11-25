@@ -57,10 +57,13 @@ export const Win = () => {
       const isAlreadySelected = selectedSpecial.some(
         (card) => card.romaji === matchingCard.romaji
       );
+      const isAlreadyInCurrent = currentSpecial.some(
+        (card) => card.romaji === matchingCard.romaji
+      );
 
       if (isAlreadySelected) {
         removeSelectedSpecial(matchingCard);
-      } else if (selectedSpecial.length < 3) {
+      } else if (!isAlreadyInCurrent && selectedSpecial.length < 3) {
         addSelectedSpecial(matchingCard);
       }
       setValue("");
@@ -78,20 +81,18 @@ export const Win = () => {
     );
 
     if (yen >= totalCost && selectedSpecial.length > 0) {
-      setCurrentSpecial([...currentSpecial, ...selectedSpecial]);
+      const newSpecialCards = currentSpecial.concat(selectedSpecial);
+      setCurrentSpecial(newSpecialCards);
 
-      // Remove the selected cards from currentSpecialDeck
-      setCurrentSpecialDeck(
-        currentSpecialDeck.filter(
-          (card) =>
-            !selectedSpecial.some((selected) => selected.romaji === card.romaji)
-        )
+      const newSpecialDeck = currentSpecialDeck.filter(
+        (card) =>
+          !selectedSpecial.some((selected) => selected.romaji === card.romaji)
       );
+      setCurrentSpecialDeck(newSpecialDeck);
 
       setYen(yen - totalCost);
     }
 
-    // Reset selectedSpecial array
     setSelectedSpecial([]);
     setMissionID(missionID + 1);
     setScore(0);

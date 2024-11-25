@@ -242,35 +242,73 @@ export const PlaySelected = () => {
         : "high_card";
 
       currentSpecial.forEach((special) => {
+        // Base multiplier effects
         if (special.combo === "none" && special.condition === "multiples") {
           finalMultiplier += special.reward;
         }
 
+        // Check all valid combinations for this hand
+        const validCombos = [currentAnnouncement];
+        if (hasPair) validCombos.push("pair");
+        if (hasTwoPair) {
+          validCombos.push("two_pairs", "pair");
+        }
+        if (hasThreeOfKind) validCombos.push("three_of_a_kind", "pair");
+        if (hasStraight) validCombos.push("straight");
+        if (hasFlush) validCombos.push("flush");
+        if (hasFullHouse) {
+          validCombos.push(
+            "full_house",
+            "three_of_a_kind",
+            "pair",
+            "two_pairs"
+          );
+        }
+        if (hasFourOfKind) {
+          validCombos.push(
+            "four_of_a_kind",
+            "three_of_a_kind",
+            "pair",
+            "two_pairs"
+          );
+        }
+        if (hasStraightFlush) {
+          validCombos.push("straight_flush", "straight", "flush");
+        }
+
+        console.log(validCombos);
+
+        // Apply multiplier effects
         if (
-          special.combo === currentAnnouncement &&
+          validCombos.includes(special.combo) &&
           special.condition === "multiples"
         ) {
           finalMultiplier += special.reward;
         }
 
+        // Apply multiplier multiplication effects
         if (
-          special.combo === currentAnnouncement &&
+          validCombos.includes(special.combo) &&
           special.condition === "xmultiples"
         ) {
           finalMultiplier *= special.reward;
         }
 
+        // Apply base point effects
         if (special.combo === "none" && special.condition === "points") {
           finalScore += special.reward;
         }
 
+        // Apply point effects for specific combinations
         if (
-          special.combo === currentAnnouncement &&
+          validCombos.includes(special.combo) &&
           special.condition === "points"
         ) {
           finalScore += special.reward;
         }
       });
+
+      console.log(currentSpecial);
 
       setScore(finalScore);
       setMultiplier(finalMultiplier);

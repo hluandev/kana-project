@@ -4,18 +4,32 @@ import { useScoreStore } from "@/stores/useScoreStore";
 
 export const CurrentInfo = () => {
   const { turns, discard, missionID, yen } = useScoreStore();
-  const { kanaMissions } = useKanaStore();
+  const { kanaMissions, currentSpecial } = useKanaStore();
+
+  const turnValue = currentSpecial.reduce((total, special) => {
+    if (special.condition === "life" && special.combo === "turn") {
+      return total + special.reward;
+    }
+    return total;
+  }, 0);
+
+  const discardValue = currentSpecial.reduce((total, special) => {
+    if (special.condition === "life" && special.combo === "discard") {
+      return total + special.reward;
+    }
+    return total;
+  }, 0);
 
   return (
     <Box className="p-0 font-mono grid grid-cols-2 grid-rows-2 overflow-hidden">
       {/* Discard */}
       <div className="border-b text-center bg-red-600/5 text-red-400 border-r border-neutral-700 py-8">
-        {discard}
+        {discard + discardValue}
       </div>
 
       {/* Turns */}
-      <div className="border-b text-center  bg-blue-600/5 text-blue-400 border-neutral-700 py-8">
-        {turns}
+      <div className="border-b text-center bg-blue-600/5 text-blue-400 border-neutral-700 py-8">
+        {turns + turnValue}
       </div>
 
       {/* Matches */}
