@@ -3,7 +3,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 
 export const CurrentInfo = () => {
-  const { turns, discard, missionID } = useScoreStore();
+  const { turns, discard, missionID, yen } = useScoreStore();
   const { kanaMissions } = useKanaStore();
 
   return (
@@ -24,7 +24,7 @@ export const CurrentInfo = () => {
       </div>
 
       {/* Money */}
-      <div className="text-center py-8 text-yellow-500">¥100</div>
+      <div className="text-center py-8 text-yellow-500">¥{yen}</div>
     </Box>
   );
 };

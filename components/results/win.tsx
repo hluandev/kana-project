@@ -12,6 +12,8 @@ export const Win = () => {
     setTurns,
     setDiscard,
     setProgress,
+    yen,
+    setYen,
   } = useScoreStore();
 
   const {
@@ -19,7 +21,12 @@ export const Win = () => {
     setSelectedCard,
     currentSpecialDeck,
     setCurrentSpecialDeck,
-    addCurrentSpecial,
+    currentSpecial,
+    addSelectedSpecial,
+    setCurrentSpecial,
+    removeSelectedSpecial,
+    setSelectedSpecial,
+    selectedSpecial,
   } = useKanaStore();
 
   // Get 3 random cards from kanaSpecial
@@ -41,33 +48,59 @@ export const Win = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
+
+    const matchingCard = randomSpecialCards.find(
+      (card) => card.romaji === e.target.value
+    );
+
+    if (matchingCard) {
+      const isAlreadySelected = selectedSpecial.some(
+        (card) => card.romaji === matchingCard.romaji
+      );
+
+      if (isAlreadySelected) {
+        removeSelectedSpecial(matchingCard);
+      } else if (selectedSpecial.length < 3) {
+        addSelectedSpecial(matchingCard);
+      }
+      setValue("");
+    }
+
+    console.log(selectedSpecial);
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const matchingCard = randomSpecialCards.find(
-      (card) => card.romaji === value
+
+    const totalCost = selectedSpecial.reduce(
+      (sum, card) => sum + card.price,
+      0
     );
 
-    if (matchingCard) {
-      // Add the special card to current specials
-      addCurrentSpecial(matchingCard);
+    if (yen >= totalCost && selectedSpecial.length > 0) {
+      setCurrentSpecial([...currentSpecial, ...selectedSpecial]);
 
-      // Remove the selected card from currentSpecialDeck
+      // Remove the selected cards from currentSpecialDeck
       setCurrentSpecialDeck(
-        currentSpecialDeck.filter((card) => card.romaji !== value)
+        currentSpecialDeck.filter(
+          (card) =>
+            !selectedSpecial.some((selected) => selected.romaji === card.romaji)
+        )
       );
 
-      // Reset game state
-      setMissionID(missionID + 1);
-      setScore(0);
-      setTurns(4);
-      setProgress(0);
-      setDiscard(4);
-      setMultiplier(0);
-      drawHand();
-      setSelectedCard([]);
+      setYen(yen - totalCost);
     }
+
+    // Reset selectedSpecial array
+    setSelectedSpecial([]);
+    setMissionID(missionID + 1);
+    setScore(0);
+    setTurns(4);
+    setProgress(0);
+    setDiscard(4);
+    setMultiplier(0);
+    drawHand();
+    setSelectedCard([]);
   };
 
   return (
@@ -80,10 +113,11 @@ export const Win = () => {
       <div className="h-96 grid grid-cols-3 gap-6 w-[40%] p-6 bg-[#1e2022] border border-[#2e3032] rounded-lg">
         {randomSpecialCards.map((card) => (
           <SpecialCard
+            price={card.price}
             desc={card.desc}
             key={card.japanese}
             japanese={card.japanese}
-            isSelected={card.romaji === value}
+            romaji={card.romaji}
           />
         ))}
       </div>

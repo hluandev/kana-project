@@ -1,4 +1,5 @@
 import { useKanaStore } from "@/stores/useKanaStore";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 interface CardProps {
@@ -14,7 +15,15 @@ export const Card = ({ card }: CardProps) => {
   );
 
   return (
-    <div
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: -100,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
       onMouseEnter={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
       className={`flex relative duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-600 hover:z-50 hover:-mt-5 w-40 h-56 p-2  ${
@@ -47,6 +56,6 @@ export const Card = ({ card }: CardProps) => {
       <p className="absolute top-1/2 text-4xl -translate-x-1/2 left-1/2 -translate-y-1/2">
         {card?.japanese}
       </p>
-    </div>
+    </motion.div>
   );
 };

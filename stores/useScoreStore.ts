@@ -15,6 +15,8 @@ interface scoreStore {
   setMissionID: (missionID: number) => void;
   progress: number;
   setProgress: (progress: number) => void;
+  yen: number;
+  setYen: (yen: number) => void;
 }
 
 export const useScoreStore = create<scoreStore>((set) => ({
@@ -22,9 +24,11 @@ export const useScoreStore = create<scoreStore>((set) => ({
   multiplier: 0,
   turns: 4,
   discard: 4,
+  yen: 0,
   announcement: "",
   missionID: 1,
   progress: 0,
+  setYen: (yen) => set({ yen }),
   setScore: (score) => set({ score }),
   setMultiplier: (multiplier) => set({ multiplier }),
   setTurns: (turns) => set({ turns }),

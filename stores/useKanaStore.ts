@@ -22,6 +22,10 @@ interface kanaStore {
   drawSpecial: () => void;
   currentSpecialDeck: any[];
   setCurrentSpecialDeck: (currentSpecialDeck: any[]) => void;
+  selectedSpecial: any[];
+  setSelectedSpecial: (selectedSpecial: any[]) => void;
+  addSelectedSpecial: (selectedSpecial: any) => void;
+  removeSelectedSpecial: (selectedSpecial: any) => void;
 }
 
 export const useKanaStore = create<kanaStore>((set, get) => ({
@@ -31,9 +35,20 @@ export const useKanaStore = create<kanaStore>((set, get) => ({
   currentSpecialDeck: [],
   currentSpecial: [],
   selectedCard: [],
+  selectedSpecial: [],
   kanaMissions: [],
   kanaSpecial: [],
-
+  setSelectedSpecial: (selectedSpecial) => set({ selectedSpecial }),
+  addSelectedSpecial: (selectedSpecial) =>
+    set((state) => ({
+      selectedSpecial: [...state.selectedSpecial, selectedSpecial],
+    })),
+  removeSelectedSpecial: (selectedSpecial) =>
+    set((state) => ({
+      selectedSpecial: state.selectedSpecial.filter(
+        (c) => c !== selectedSpecial
+      ),
+    })),
   setKanaSpecial: (kanaSpecial) => set({ kanaSpecial }),
   setCurrentSpecialDeck: (currentSpecialDeck) => set({ currentSpecialDeck }),
   setKanaMissions: (kanaMissions) => set({ kanaMissions }),
