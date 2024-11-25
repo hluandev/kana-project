@@ -155,7 +155,7 @@ export const Win = () => {
   };
 
   return (
-    <div className="fixed bg-black/40 backdrop-blur-lg w-full flex-col gap-8 h-full flex justify-center items-center z-10">
+    <div className="fixed bg-black/50 backdrop-blur-xl w-full flex-col gap-8 h-full flex justify-center items-center z-10">
       <div className="text-yellow-600 text-8xl mt-52">You Defeated</div>
 
       <p className="text-2xl">
