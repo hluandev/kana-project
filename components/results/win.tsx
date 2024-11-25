@@ -2,6 +2,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import SpecialCard from "./special-card";
 import React, { FormEvent } from "react";
+import { ActionButton } from "../board/actions-hand/buttons/action-button";
 
 export const Win = () => {
   const {
@@ -29,10 +30,16 @@ export const Win = () => {
     selectedSpecial,
   } = useKanaStore();
 
-  // Get 3 random cards from kanaSpecial
-  const randomSpecialCards = React.useMemo(() => {
-    return [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3);
-  }, [currentSpecialDeck]);
+  const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
+    [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
+  );
+
+  // This will only run once when the component mounts
+  React.useEffect(() => {
+    setRandomSpecialCards(
+      [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
+    );
+  }, []);
 
   const [value, setValue] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -53,17 +60,31 @@ export const Win = () => {
       (card) => card.romaji === e.target.value
     );
 
+    const matchingSpecial = currentSpecial.find(
+      (card) => card.romaji.toLowerCase() === e.target.value
+    );
+
+    if (matchingSpecial) {
+      const isAlreadySelected = selectedSpecial.some(
+        (card) => card.romaji === matchingSpecial.romaji
+      );
+
+      if (isAlreadySelected) {
+        removeSelectedSpecial(matchingSpecial);
+      } else if (selectedSpecial.length < 3) {
+        addSelectedSpecial(matchingSpecial);
+      }
+      setValue("");
+    }
+
     if (matchingCard) {
       const isAlreadySelected = selectedSpecial.some(
-        (card) => card.romaji === matchingCard.romaji
-      );
-      const isAlreadyInCurrent = currentSpecial.some(
         (card) => card.romaji === matchingCard.romaji
       );
 
       if (isAlreadySelected) {
         removeSelectedSpecial(matchingCard);
-      } else if (!isAlreadyInCurrent && selectedSpecial.length < 3) {
+      } else if (selectedSpecial.length < 3) {
         addSelectedSpecial(matchingCard);
       }
       setValue("");
@@ -111,9 +132,31 @@ export const Win = () => {
     }, 100);
   };
 
+  const handleSellSpecial = () => {
+    if (selectedSpecial.length === 0) return;
+
+    // Filter out selected cards from currentSpecial
+    const newCurrentSpecial = currentSpecial.filter(
+      (card) =>
+        !selectedSpecial.some((selected) => selected.romaji === card.romaji)
+    );
+
+    // Add sold cards back to the special deck
+    const newSpecialDeck = [...currentSpecialDeck, ...selectedSpecial];
+
+    // Calculate yen to add (500 per card)
+    const yenToAdd = selectedSpecial.length * 500;
+
+    // Update the stores
+    setCurrentSpecial(newCurrentSpecial);
+    setCurrentSpecialDeck(newSpecialDeck);
+    setSelectedSpecial([]);
+    setYen(yen + yenToAdd);
+  };
+
   return (
     <div className="fixed bg-black/40 backdrop-blur-lg w-full flex-col gap-8 h-full flex justify-center items-center z-10">
-      <div className="text-yellow-600 text-8xl">You Defeated</div>
+      <div className="text-yellow-600 text-8xl mt-52">You Defeated</div>
 
       <p className="text-2xl">
         Select a special card to enchance the next rounds
@@ -130,7 +173,7 @@ export const Win = () => {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="flex gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           ref={inputRef}
           type="text"
@@ -139,11 +182,19 @@ export const Win = () => {
           placeholder="Type the romaji of the special card"
           className="bg-transparent text-center outline-none border rounded-md py-2 px-4"
         />
-        <input
-          type="submit"
-          value="Next match"
-          className="bg-yellow-600 px-4 py-2 font-bold rounded-md"
-        />
+        <div className="flex gap-3">
+          <ActionButton
+            onClick={handleSellSpecial}
+            text="Sell Special (3)"
+            keyboardShortcut="3"
+            className="bg-yellow-600/20 text-yellow-200 hover:bg-yellow-600/40"
+          />
+          <input
+            type="submit"
+            value="Next match"
+            className="bg-yellow-600 px-4 py-2 font-bold rounded-md"
+          />
+        </div>
       </form>
     </div>
   );

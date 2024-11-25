@@ -316,8 +316,6 @@ export const PlaySelected = () => {
         }
       });
 
-      console.log(currentSpecial);
-
       setScore(finalScore);
       setMultiplier(finalMultiplier);
       setAnnouncement(currentAnnouncement);
@@ -358,9 +356,9 @@ export const PlaySelected = () => {
   return (
     <ActionButton
       onClick={handlePlaySelected}
-      text="Play (3)"
+      text="Play (2)"
       className="bg-blue-600/20 text-blue-400 hover:bg-blue-600/40"
-      keyboardShortcut="3"
+      keyboardShortcut="2"
     />
   );
 };

@@ -3,7 +3,6 @@
 import ActionInput from "./action-input";
 import { DiscardSelected } from "./buttons/discard-selected";
 import { PlaySelected } from "./buttons/play-selected";
-import { SortCurrentHand } from "./buttons/sort-current-hand";
 
 export const ActionsHand = () => {
   return (
@@ -11,7 +10,7 @@ export const ActionsHand = () => {
       <ActionInput />
       <div className="flex justify-center mt-3 gap-3 w-fit h-fit ">
         <DiscardSelected />
-        <SortCurrentHand />
+        {/* <SortCurrentHand /> */}
         <PlaySelected />
       </div>
     </div>
