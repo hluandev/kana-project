@@ -68,8 +68,6 @@ export const Win = () => {
       }
       setValue("");
     }
-
-    console.log(selectedSpecial);
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -104,11 +102,13 @@ export const Win = () => {
     setTurns(4);
     setDiscard(4);
     setSelectedCard([]);
-    setSelectedSpecial([]);
 
-    setMultiplier(0);
-    setScore(0);
-    setProgress(0);
+    setTimeout(() => {
+      setSelectedSpecial([]);
+      setMultiplier(0);
+      setScore(0);
+      setProgress(0);
+    }, 100);
   };
 
   return (

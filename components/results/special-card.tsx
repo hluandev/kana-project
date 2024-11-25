@@ -35,7 +35,7 @@ export default function SpecialCard({
         </p>
       </div>
 
-      <p className="text-center relative bg-black/50 backdrop-blur-xl py-8">
+      <p className="text-center flex items-center justify-center relative bg-black/50 backdrop-blur-xl h-32">
         <p className="absolute -top-5 leading-none flex justify-center items-center text-xl bg-black h-10 w-16 border border-neutral-800 rounded-md left-1/2 -translate-x-1/2">
           {hover ? romaji : japanese}
         </p>
