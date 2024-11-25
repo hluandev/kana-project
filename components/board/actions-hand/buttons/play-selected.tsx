@@ -2,6 +2,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { useEffect } from "react";
+import { useComboStore } from "@/stores/useComboStore";
 
 export const PlaySelected = () => {
   const {
@@ -25,6 +26,27 @@ export const PlaySelected = () => {
     progress,
     setProgress,
   } = useScoreStore();
+
+  const {
+    highCard,
+    pair,
+    twoPairs,
+    threeOfAKind,
+    straight,
+    flush,
+    fullHouse,
+    fourOfAKind,
+    straightFlush,
+    increaseHighCard,
+    increasePair,
+    increaseTwoPairs,
+    increaseThreeOfAKind,
+    increaseStraight,
+    increaseFlush,
+    increaseFullHouse,
+    increaseFourOfAKind,
+    increaseStraightFlush,
+  } = useComboStore();
 
   const rankCount = new Map<string, number>();
 
@@ -150,16 +172,16 @@ export const PlaySelected = () => {
           .sort((a, b) => b - a)
           .slice(0, 5)
           .reduce((sum, rank) => sum + rank, 0);
-        newScore = 100 + rankPoints;
-        newMultiplier = 8;
+        newScore = straightFlush.score + rankPoints;
+        newMultiplier = straightFlush.multiplier;
         setAnnouncement("straight_flush");
       } else if (hasFourOfKind) {
         const fourKindRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 4
         )?.[0];
         rankPoints = fourKindRank ? parseInt(fourKindRank) * 4 : 0;
-        newScore = 60 + rankPoints;
-        newMultiplier = 5;
+        newScore = fourOfAKind.score + rankPoints;
+        newMultiplier = fourOfAKind.multiplier;
         setAnnouncement("four_of_a_kind");
       } else if (hasFullHouse) {
         const threeKindRank = Array.from(rankCount.entries()).find(
@@ -171,53 +193,53 @@ export const PlaySelected = () => {
         rankPoints =
           (threeKindRank ? parseInt(threeKindRank) * 3 : 0) +
           (pairRank ? parseInt(pairRank) * 2 : 0);
-        newScore = 40 + rankPoints;
-        newMultiplier = 4;
+        newScore = fullHouse.score + rankPoints;
+        newMultiplier = fullHouse.multiplier;
         setAnnouncement("full_house");
       } else if (hasStraight) {
         rankPoints = cardRanks
           .sort((a, b) => b - a)
           .slice(0, 5)
           .reduce((sum, rank) => sum + rank, 0);
-        newScore = 30 + rankPoints;
-        newMultiplier = 3;
+        newScore = straight.score + rankPoints;
+        newMultiplier = straight.multiplier;
         setAnnouncement("straight");
       } else if (hasFlush) {
         rankPoints = cardRanks
           .sort((a, b) => b - a)
           .slice(0, 5)
           .reduce((sum, rank) => sum + rank, 0);
-        newScore = 40 + rankPoints;
-        newMultiplier = 3;
+        newScore = flush.score + rankPoints;
+        newMultiplier = flush.multiplier;
         setAnnouncement("flush");
       } else if (hasThreeOfKind) {
         const threeKindRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 3
         )?.[0];
         rankPoints = threeKindRank ? parseInt(threeKindRank) * 3 : 0;
-        newScore = 20 + rankPoints;
-        newMultiplier = 3;
+        newScore = threeOfAKind.score + rankPoints;
+        newMultiplier = threeOfAKind.multiplier;
         setAnnouncement("three_of_a_kind");
       } else if (hasTwoPair) {
         const pairRanks = Array.from(rankCount.entries())
           .filter(([_, count]) => count === 2)
           .map(([rank, _]) => parseInt(rank));
         rankPoints = pairRanks.reduce((sum, rank) => sum + rank * 2, 0);
-        newScore = 20 + rankPoints;
-        newMultiplier = 2;
+        newScore = twoPairs.score + rankPoints;
+        newMultiplier = twoPairs.multiplier;
         setAnnouncement("two_pairs");
       } else if (hasPair) {
         const pairRank = Array.from(rankCount.entries()).find(
           ([_, count]) => count === 2
         )?.[0];
         rankPoints = pairRank ? parseInt(pairRank) * 2 : 0;
-        newScore = 10 + rankPoints;
-        newMultiplier = 2;
+        newScore = pair.score + rankPoints;
+        newMultiplier = pair.multiplier;
         setAnnouncement("pair");
       } else {
         rankPoints = Math.max(...cardRanks);
-        newScore = 5 + rankPoints;
-        newMultiplier = 1;
+        newScore = highCard.score + rankPoints;
+        newMultiplier = highCard.multiplier;
         setAnnouncement("high_card");
       }
 
@@ -305,6 +327,41 @@ export const PlaySelected = () => {
           special.condition === "points"
         ) {
           finalScore += special.reward;
+        }
+      });
+
+      // Apply upgrade effects for combinations
+      currentSpecial.forEach((special) => {
+        if (special.condition === "upgrade") {
+          switch (special.combo) {
+            case "high_card":
+              increaseHighCard();
+              break;
+            case "pair":
+              increasePair();
+              break;
+            case "two_pairs":
+              increaseTwoPairs();
+              break;
+            case "three_of_a_kind":
+              increaseThreeOfAKind();
+              break;
+            case "straight":
+              increaseStraight();
+              break;
+            case "flush":
+              increaseFlush();
+              break;
+            case "full_house":
+              increaseFullHouse();
+              break;
+            case "four_of_a_kind":
+              increaseFourOfAKind();
+              break;
+            case "straight_flush":
+              increaseStraightFlush();
+              break;
+          }
         }
       });
 

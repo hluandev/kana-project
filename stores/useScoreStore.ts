@@ -8,7 +8,9 @@ interface scoreStore {
   setScore: (score: number) => void;
   setMultiplier: (multiplier: number) => void;
   setTurns: (turns: number) => void;
+  addTurns: (turns: number) => void;
   setDiscard: (discard: number) => void;
+  addDiscard: (discard: number) => void;
   setAnnouncement: (announcement: string) => void;
   announcement: string;
   missionID: number;
@@ -32,7 +34,10 @@ export const useScoreStore = create<scoreStore>((set) => ({
   setScore: (score) => set({ score }),
   setMultiplier: (multiplier) => set({ multiplier }),
   setTurns: (turns) => set({ turns }),
+  addTurns: (turns) => set((state) => ({ turns: state.turns + turns })),
   setDiscard: (discard) => set({ discard }),
+  addDiscard: (discard) =>
+    set((state) => ({ discard: state.discard + discard })),
   setAnnouncement: (announcement) => set({ announcement }),
   setMissionID: (missionID) => set({ missionID }),
   setProgress: (progress) => set({ progress }),
