@@ -155,13 +155,13 @@ export const Win = () => {
   };
 
   return (
-    <div className="fixed bg-black/50 backdrop-blur-xl w-full flex-col gap-8 h-full flex justify-center items-center z-40">
+    <div className="fixed bg-black/30 backdrop-blur-xl w-full flex-col gap-8 h-full flex justify-center items-center z-40">
       <div className="text-yellow-600 text-8xl mt-52">You Defeated</div>
 
       <p className="text-2xl">
         Select a special card to enchance the next rounds
       </p>
-      <div className="h-96 grid grid-cols-3 gap-6 w-[40%] p-6 bg-white/50 border border-white/40 rounded-lg">
+      <div className="h-96 grid grid-cols-3 gap-6 w-[40%] p-6 bg-[#ffffff] border border-black/10 shadow-sm rounded-lg">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             price={card.price}
@@ -180,14 +180,14 @@ export const Win = () => {
           value={value}
           onChange={handleInputChange}
           placeholder="Type the romaji of the special card"
-          className="bg-transparent text-center outline-none border rounded-md py-2 px-4"
+          className="bg-[#fbfaf9]  border-black/10  shadow-sm text-center outline-none border rounded-md py-2 px-4"
         />
         <div className="flex gap-3">
           <ActionButton
             onClick={handleSellSpecial}
-            text="Sell Special (3)"
+            text="Sell Special"
             keyboardShortcut="3"
-            className="bg-yellow-600/20 text-yellow-200 hover:bg-yellow-600/40"
+            className="bg-[#EFCB68]  hover:bg-yellow-600/40"
           />
           <input
             type="submit"

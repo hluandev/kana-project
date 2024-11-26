@@ -15,7 +15,7 @@ export const SpecialHands = () => {
         return (
           <div
             key={card.romaji}
-            className={` border flex flex-col overflow-hidden justify-between rounded-xl bg-white border border-black/10 w-40 h-full  bg-cover ${
+            className={`flex flex-col overflow-hidden justify-between rounded-xl bg-white border border-black/10 w-40 h-full  bg-cover ${
               isSelected
                 ? " border-yellow-500/80 shadow-yellow-500/50 shadow-lg"
                 : "border-neutral-300"

@@ -13,7 +13,7 @@ export const ProgressBar = ({ target }: ProgressBarProps) => {
     <div className="border rounded-lg bg-[#fbfaf9] overflow-hidden">
       <div className="relative h-9">
         <motion.div
-          className="absolute top-0 left-0 h-full bg-[#9e9eff]"
+          className="absolute top-0 left-0 h-full bg-[#efcb68]"
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
           transition={{ duration: 0.5 }}

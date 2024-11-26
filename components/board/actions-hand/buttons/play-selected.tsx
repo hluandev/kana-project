@@ -357,7 +357,7 @@ export const PlaySelected = () => {
     <ActionButton
       onClick={handlePlaySelected}
       text="Play"
-      className="bg-[#94d1ff] "
+      className="bg-[#659157] text-white"
       keyboardShortcut="2"
     />
   );

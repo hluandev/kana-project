@@ -43,7 +43,7 @@ export const DiscardSelected = () => {
     <ActionButton
       onClick={onHandleDiscard}
       text="Discard"
-      className="bg-[#e16741] text-white "
+      className="bg-[#F06543] text-white "
       keyboardShortcut="1"
     />
   );
