@@ -1,3 +1,5 @@
+import { Box } from "@/components/box";
+
 export const PlayerInfo = () => {
-  return <div>player info</div>;
+  return <Box>player info</Box>;
 };
