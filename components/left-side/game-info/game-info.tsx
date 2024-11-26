@@ -1,3 +1,4 @@
+import { Support } from "../support";
 import { CurrentInfo } from "./components/current-info";
 import { Score } from "./components/score";
 import { ScoreDamage } from "./components/score-damage";
@@ -9,7 +10,10 @@ export const GameInfo = () => {
         <Score />
         <ScoreDamage />
       </div>
-      <CurrentInfo />
+      <div className="space-y-3">
+        <CurrentInfo />
+        <Support />
+      </div>
     </div>
   );
 };
