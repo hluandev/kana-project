@@ -356,8 +356,8 @@ export const PlaySelected = () => {
   return (
     <ActionButton
       onClick={handlePlaySelected}
-      text="Play (2)"
-      className="bg-blue-600/20 text-blue-400 hover:bg-blue-600/40"
+      text="Play"
+      className="bg-blue-600/90 text-blue-100 hover:bg-blue-600/40"
       keyboardShortcut="2"
     />
   );

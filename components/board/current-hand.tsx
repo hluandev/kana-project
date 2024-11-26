@@ -3,7 +3,7 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { Card } from "./card";
 import { useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export const CurrentHand = () => {
   const { kana, drawHand, currentHand, currentDeck, drawSpecial } =

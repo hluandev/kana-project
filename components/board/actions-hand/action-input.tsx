@@ -59,7 +59,7 @@ export default function ActionInput() {
         type="text"
         value={value}
         placeholder="Type in card's name that you want to play"
-        className="w-full text-center text-lg bg-transparent border placeholder:text-neutral-600 outline-none border-neutral-700 rounded-md p-4"
+        className="w-full text-center text-lg bg-white/80 border border-black/30 placeholder:text-neutral-600 outline-none border-neutral-700 rounded-md p-4"
         onChange={handleChange}
       />
       <input className="hidden" type="submit" />

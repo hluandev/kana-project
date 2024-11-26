@@ -6,7 +6,7 @@ export const SpecialHands = () => {
   const { currentSpecial, selectedSpecial } = useKanaStore();
 
   return (
-    <div className="h-60 p-3  text-neutral-500 z-50 grid grid-cols-8 gap-3 darkBorder rounded-[14px] bg-[#1a1a1a] shadow-inner-shadow-dark-float">
+    <div className="h-60 p-3  text-neutral-500 z-50 grid grid-cols-8 gap-3 rounded-[14px] bg-white border border-black/10">
       {currentSpecial.map((card) => {
         const isSelected = selectedSpecial.some(
           (selected) => selected.romaji === card.romaji

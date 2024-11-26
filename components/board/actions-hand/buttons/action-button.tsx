@@ -28,10 +28,11 @@ export const ActionButton = ({
 
   return (
     <div
-      className={`py-3 w-36 text-center rounded-md font-semibold duration-200 cursor-pointer ${className}`}
+      className={`py-3 flex items-center justify-center gap-2 w-32 text-center rounded-md font-semibold duration-200 cursor-pointer ${className}`}
       onClick={onClick}
     >
-      {text}
+      <p> {text}</p>
+      <p className="bg-white/20 w-6 h-6 rounded-md">{keyboardShortcut}</p>
     </div>
   );
 };
