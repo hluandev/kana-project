@@ -18,7 +18,7 @@ export default function MenuLayout({
 
       <Board>{children}</Board>
 
-      <BgGradient />
+      {/* <BgGradient /> */}
     </section>
   );
 }

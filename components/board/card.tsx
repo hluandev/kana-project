@@ -26,8 +26,8 @@ export const Card = ({ card }: CardProps) => {
       }}
       onMouseEnter={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
-      className={`flex relative duration-300 border border-black/10 hover:scale-110 hover:shadow-2xl hover:shadow-blue-600 hover:z-50 hover:-mt-5 w-40 h-56 p-2  ${
-        isSelected ? "bg-blue-600/90 text-white -mt-10" : "bg-white"
+      className={`flex relative duration-300 shadow-sm border border-black/10 hover:scale-110 hover:shadow-2xl hover:shadow-blue-600 hover:z-50 hover:-mt-5 w-40 h-56 p-2  ${
+        isSelected ? "bg-[#201e1d] text-white -mt-10" : "bg-[#fbfaf9]"
       }  rounded-[10px]  `}
     >
       {onHover && (
@@ -37,20 +37,18 @@ export const Card = ({ card }: CardProps) => {
       )}
 
       <div className="flex justify-between w-full">
+        <p className="pl-1 text-2xl">{card?.rank}</p>
+
         <p
-          className={`${card?.suit === "あ" && "bg-red-600"} ${
-            card?.suit === "う" && "bg-blue-600"
-          } ${card?.suit === "お" && "bg-green-600"} ${
-            card?.suit === "い" && "bg-yellow-600"
+          className={`${card?.suit === "あ" && "bg-[#e16741]"} ${
+            card?.suit === "う" && "bg-[#94d1ff] text-black"
+          } ${card?.suit === "お" && "bg-[#e3e1de] text-black"} ${
+            card?.suit === "い" && "bg-[#ef9e48]"
           } ${
-            card?.suit === "え" && "bg-purple-600"
-          }  border border-black/20 text-white h-8 w-8 rounded-lg flex items-center justify-center`}
+            card?.suit === "え" && "bg-[#9999ff]"
+          }   text-white h-8 w-8 rounded-lg flex items-center justify-center`}
         >
           {card?.suit}
-        </p>
-
-        <p className="font-mono absolute bottom-2.5 left-1/2 -translate-x-1/2 ">
-          {card?.rank}
         </p>
       </div>
       <p className="absolute top-1/2 text-4xl -translate-x-1/2 left-1/2 -translate-y-1/2">

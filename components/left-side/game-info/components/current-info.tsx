@@ -34,24 +34,22 @@ export const CurrentInfo = () => {
   }, [currentSpecial]);
 
   return (
-    <Box className="p-0 font-mono grid grid-cols-2 grid-rows-2 overflow-hidden">
+    <Box className="p-0 grid grid-cols-2  grid-rows-2 overflow-hidden">
       {/* Discard */}
-      <div className="border-b text-center bg-red-600/80 text-red-100 border-r  py-8">
+      <div className="border-b text-center  text-[#e16741] border-r  py-7">
         {discard}
       </div>
 
       {/* Turns */}
-      <div className="border-b text-center bg-blue-600/80 text-blue-100  py-8">
-        {turns}
-      </div>
+      <div className="border-b text-center  text-[#5f98c3]  py-7">{turns}</div>
 
       {/* Matches */}
-      <div className="border-r text-center  py-8">
+      <div className="border-r text-center  py-7">
         {missionID} / {kanaMissions.length}
       </div>
 
       {/* Money */}
-      <div className="text-center py-8 text-yellow-500">¥{yen}</div>
+      <div className="text-center py-7 text-yellow-500">¥{yen}</div>
     </Box>
   );
 };
