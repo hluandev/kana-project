@@ -6,5 +6,9 @@ interface LinkNavProps {
 }
 
 export const LinkNav = ({ href, children }: LinkNavProps) => {
-  return <Link href={href}>{children}</Link>;
+  return (
+    <Link prefetch={true} href={href}>
+      {children}
+    </Link>
+  );
 };

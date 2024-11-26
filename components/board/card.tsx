@@ -40,13 +40,13 @@ export const Card = ({ card }: CardProps) => {
         <p className="pl-1 text-2xl">{card?.rank}</p>
 
         <p
-          className={`${card?.suit === "あ" && "bg-[#F06543]"} ${
-            card?.suit === "う" && "bg-[#659157] "
+          className={`${card?.suit === "あ" && "bg-[#F06543] text-white"} ${
+            card?.suit === "う" && "bg-[#659157] text-white"
           } ${card?.suit === "お" && "bg-[#e3e1de] text-black"} ${
             card?.suit === "い" && "bg-[#EFCB68] text-black"
           } ${
-            card?.suit === "え" && "bg-[#69A2B0]"
-          }   text-white h-8 w-8 rounded-lg flex items-center justify-center`}
+            card?.suit === "え" && "bg-[#69A2B0] text-white"
+          }    h-8 w-8 rounded-lg flex items-center justify-center`}
         >
           {card?.suit}
         </p>
