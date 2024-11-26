@@ -8,7 +8,7 @@ export const LeftSide = () => {
   const pathname = usePathname();
 
   return (
-    <div className="w-80 z-50 relative p-4  h-full overflow-hidden darkBorder rounded-[14px] bg-[#1a1a1a] shadow-inner-shadow-dark-float">
+    <div className="w-80 z-50 bg-[#faf7fa] p-3 rounded-[14px] border border-neutral-300 relative  h-full overflow-hidden">
       {pathname.split("/")[3] === "kana" ? <GameInfo /> : <Nav />}
     </div>
   );

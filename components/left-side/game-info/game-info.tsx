@@ -5,7 +5,7 @@ import { ScoreDamage } from "./components/score-damage";
 export const GameInfo = () => {
   return (
     <div className="flex flex-col  h-full justify-between">
-      <div className="space-y-4">
+      <div className="space-y-3">
         <Score />
         <ScoreDamage />
       </div>
