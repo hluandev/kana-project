@@ -15,7 +15,7 @@ export const CurrentHand = () => {
   }, [kana]);
 
   return (
-    <div className="w-full">
+    <div className="w-full z-20">
       <motion.div layout className="flex gap-2 flex-wrap justify-center">
         {currentHand?.map((item) => (
           <Card card={item} key={item.id} />

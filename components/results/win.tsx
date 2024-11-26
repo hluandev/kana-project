@@ -155,13 +155,13 @@ export const Win = () => {
   };
 
   return (
-    <div className="fixed bg-black/50 backdrop-blur-xl w-full flex-col gap-8 h-full flex justify-center items-center z-10">
+    <div className="fixed bg-black/50 backdrop-blur-xl w-full flex-col gap-8 h-full flex justify-center items-center z-40">
       <div className="text-yellow-600 text-8xl mt-52">You Defeated</div>
 
       <p className="text-2xl">
         Select a special card to enchance the next rounds
       </p>
-      <div className="h-96 grid grid-cols-3 gap-6 w-[40%] p-6 bg-[#1e2022] border border-[#2e3032] rounded-lg">
+      <div className="h-96 grid grid-cols-3 gap-6 w-[40%] p-6 bg-white/50 border border-white/40 rounded-lg">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             price={card.price}

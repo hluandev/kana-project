@@ -23,13 +23,13 @@ export default function SpecialCard({
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`flex relative hover:bg-neutral-950 overflow-hidden hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500 hover:z-40 duration-300 flex-col h-full w-full bg-[url('/img/ya.png')] bg-cover border ${
+      className={`flex relative hover:bg-neutral-950 text-white overflow-hidden hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500 hover:z-40 duration-300 flex-col h-full w-full bg-[url('/img/ya.png')] bg-cover border-2 ${
         isSelected
           ? "border-yellow-500 shadow-lg shadow-yellow-500/50"
-          : "border-neutral-800"
+          : "bg-white"
       } rounded-lg`}
     >
-      <div className="flex-1 relative bg-[url('/img/ya.png')] bg-cover border-b border-neutral-800 p-4">
+      <div className="flex-1 relative bg-cover border-b border-neutral-800 p-4">
         <p className="absolute border border-neutral-800 left-2 top-2 rounded-lg z-50 text-xl text-yellow-500 bg-black/50 justify-center items-center h-9 w-16 flex ">
           ¥{price}
         </p>

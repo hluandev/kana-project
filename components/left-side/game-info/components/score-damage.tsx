@@ -7,7 +7,7 @@ export const ScoreDamage = () => {
   return (
     <Box className="p-0 text-center">
       <div className="h-20 text-2xl font-bold flex items-center justify-center uppercase">
-        {announcement}
+        {announcement.replace(/_/g, " ")}
       </div>
 
       <div className="py-6 font-mono border-t ">{score * multiplier}</div>
