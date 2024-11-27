@@ -31,7 +31,11 @@ export const Card = ({ card }: CardProps) => {
       }  rounded-[10px]  `}
     >
       {onHover && (
-        <p className="absolute -top-12 left-1/2 -translate-x-1/2 bg-white py-2 w-full text-center  rounded-[10px]  border border-neutral-300">
+        <p
+          className={`absolute -top-12 left-1/2 -translate-x-1/2 ${
+            isSelected ? "bg-[#1d1d1f] text-white" : "bg-white"
+          }  py-2 w-full text-center  rounded-[10px]  border border-neutral-300`}
+        >
           {card.romaji}
         </p>
       )}
