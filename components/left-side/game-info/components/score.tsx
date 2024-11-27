@@ -10,8 +10,10 @@ export const Score = () => {
   const mission = kanaMissions.find((mission) => mission.id === missionID);
 
   return (
-    <Box className="space-y-2.5 p-3 text-center bg-[#fbfaf9]">
-      <div className="">Score {mission?.target} points to win</div>
+    <Box className="space-y-3 p-4 text-center">
+      <div className="font-bold text-xl">
+        Score {mission?.target} points to win
+      </div>
       <ProgressBar target={mission?.target} />
     </Box>
   );

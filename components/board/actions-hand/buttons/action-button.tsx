@@ -32,7 +32,7 @@ export const ActionButton = ({
       onClick={onClick}
     >
       <p> {text}</p>
-      <p className="bg-white/30 w-6 h-6 rounded-md">{keyboardShortcut}</p>
+      <p className="bg-black/10 w-6 h-6 rounded-md">{keyboardShortcut}</p>
     </div>
   );
 };

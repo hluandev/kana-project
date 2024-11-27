@@ -10,9 +10,9 @@ export const ScoreDamage = () => {
         {announcement.replace(/_/g, " ")}
       </div>
 
-      <div className="py-6 font-mono border-t ">{score * multiplier}</div>
+      <div className="py-6  border-t ">{score * multiplier}</div>
 
-      <div className="border-t  font-mono grid grid-cols-2">
+      <div className="border-t   grid grid-cols-2">
         <div className="border-r  py-5">{score}</div>
         <div className="py-5">{multiplier}</div>
       </div>

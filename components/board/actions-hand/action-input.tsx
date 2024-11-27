@@ -58,8 +58,8 @@ export default function ActionInput() {
         ref={inputRef}
         type="text"
         value={value}
-        placeholder="Type in card's name that you want to play"
-        className="w-full text-center text-lg bg-[#fbfaf9] border border-black/10 shadow-sm placeholder:text-neutral-600 outline-none  rounded-md py-3 px-3"
+        placeholder="Type here"
+        className="w-full text-center bg-[#fbfaf9] border border-black/10 shadow-sm placeholder:text-neutral-600 outline-none  rounded-md py-3 px-3"
         onChange={handleChange}
       />
       <input className="hidden" type="submit" />
