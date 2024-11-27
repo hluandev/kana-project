@@ -10,9 +10,9 @@ export const Score = () => {
   const mission = kanaMissions.find((mission) => mission.id === missionID);
 
   return (
-    <Box className="space-y-3 p-4 text-center">
-      <div className="font-bold text-xl">
-        Score {mission?.target} points to win
+    <Box className="space-y-2.5 p-4">
+      <div className="text-neutral-400  font-medium ">
+        Score at least {mission?.target} points to clear this round.
       </div>
       <ProgressBar target={mission?.target} />
     </Box>

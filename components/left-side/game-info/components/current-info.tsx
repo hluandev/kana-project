@@ -2,6 +2,7 @@ import { Box } from "@/components/box";
 import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { useEffect } from "react";
+import { InfoBox } from "./infoBox";
 
 export const CurrentInfo = () => {
   const { turns, discard, missionID, yen, addTurns, addDiscard } =
@@ -34,22 +35,20 @@ export const CurrentInfo = () => {
   }, [currentSpecial]);
 
   return (
-    <Box className="p-0 grid grid-cols-2  grid-rows-2 overflow-hidden">
+    <Box className="p-4 grid grid-cols-2 gap-2 grid-rows-2 overflow-hidden">
       {/* Discard */}
-      <div className="border-b text-center  text-[#e16741] border-r  py-7">
-        {discard}
-      </div>
+      <InfoBox>{discard}</InfoBox>
 
       {/* Turns */}
-      <div className="border-b text-center  text-[#5f98c3]  py-7">{turns}</div>
+      <InfoBox>{turns}</InfoBox>
 
       {/* Matches */}
-      <div className="border-r text-center  py-7">
+      <InfoBox>
         {missionID} / {kanaMissions.length}
-      </div>
+      </InfoBox>
 
       {/* Money */}
-      <div className="text-center py-7 text-yellow-500">¥{yen}</div>
+      <InfoBox>¥{yen}</InfoBox>
     </Box>
   );
 };
