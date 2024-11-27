@@ -35,20 +35,20 @@ export const CurrentInfo = () => {
   }, [currentSpecial]);
 
   return (
-    <Box className="p-4 grid grid-cols-2 gap-2 grid-rows-2 overflow-hidden">
+    <Box className="p-0 bg-transparent grid grid-cols-2 gap-4 grid-rows-2 overflow-hidden">
       {/* Discard */}
-      <InfoBox>{discard}</InfoBox>
+      <InfoBox title="Discard">{discard}</InfoBox>
 
       {/* Turns */}
-      <InfoBox>{turns}</InfoBox>
+      <InfoBox title="Turns">{turns}</InfoBox>
 
       {/* Matches */}
-      <InfoBox>
+      <InfoBox title="Matches">
         {missionID} / {kanaMissions.length}
       </InfoBox>
 
       {/* Money */}
-      <InfoBox>¥{yen}</InfoBox>
+      <InfoBox title="Money">¥{yen}</InfoBox>
     </Box>
   );
 };
