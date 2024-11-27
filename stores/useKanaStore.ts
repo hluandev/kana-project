@@ -26,10 +26,14 @@ interface kanaStore {
   setSelectedSpecial: (selectedSpecial: any[]) => void;
   addSelectedSpecial: (selectedSpecial: any) => void;
   removeSelectedSpecial: (selectedSpecial: any) => void;
+  hiragana: boolean;
+  setHiragana: (hiragana: boolean) => void;
 }
 
 export const useKanaStore = create<kanaStore>((set, get) => ({
   kana: [],
+  hiragana: true,
+  setHiragana: (hiragana) => set({ hiragana }),
   currentDeck: [],
   currentHand: [],
   currentSpecialDeck: [],

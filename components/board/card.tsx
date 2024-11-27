@@ -7,7 +7,7 @@ interface CardProps {
 }
 
 export const Card = ({ card }: CardProps) => {
-  const { selectedCard } = useKanaStore();
+  const { selectedCard, hiragana } = useKanaStore();
   const [onHover, setOnHover] = useState(false);
 
   const isSelected = selectedCard.some(
@@ -51,8 +51,8 @@ export const Card = ({ card }: CardProps) => {
           {card?.suit}
         </p>
       </div>
-      <p className="absolute top-1/2 text-4xl -translate-x-1/2 left-1/2 -translate-y-1/2">
-        {card?.japanese}
+      <p className="absolute top-1/2 font-medium text-5xl -translate-x-1/2 left-1/2 -translate-y-1/2">
+        {hiragana ? card?.japanese : card?.japanese_katakana}
       </p>
     </motion.div>
   );
