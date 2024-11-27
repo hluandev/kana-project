@@ -312,6 +312,8 @@ export const PlaySelected = () => {
           validCombos.includes(special.combo) &&
           special.condition === "points"
         ) {
+          console.log(special.combo);
+
           finalScore += special.reward;
         }
       });
