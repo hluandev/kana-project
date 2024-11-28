@@ -30,7 +30,7 @@ export default function CurrentPlayHand() {
   }, [progress >= mission?.target]);
 
   return (
-    <div>
+    <div className={`${turns === 0 && "h-full"}`}>
       {turns === 0 ? (
         progress >= mission?.target ? (
           <Win />
