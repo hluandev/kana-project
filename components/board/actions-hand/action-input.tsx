@@ -52,14 +52,14 @@ export default function ActionInput() {
       onSubmit={(e) => {
         e.preventDefault();
       }}
-      action=""
+      className="h-full"
     >
       <input
         ref={inputRef}
         type="text"
         value={value}
         placeholder="Type here"
-        className="w-full text-center bg-[#fbfaf9] border border-black/10 shadow-sm placeholder:text-neutral-600 outline-none  rounded-md py-3 px-3"
+        className=" text-center w-52 h-full placeholder:text-neutral-400 outline-none rounded-md"
         onChange={handleChange}
       />
       <input className="hidden" type="submit" />

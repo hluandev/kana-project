@@ -27,7 +27,7 @@ export const Card = ({ card }: CardProps) => {
       onMouseEnter={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
       className={`flex relative duration-300  hover:scale-110 hover:shadow-lg hover:shadow-[#381d2a] hover:z-50 hover:-mt-5 w-40 h-56 p-2  ${
-        isSelected ? "bg-[#1d1d1f] text-white -mt-10" : "bg-[#fbfaf9]"
+        isSelected ? "bg-[#1d1d1f] text-white -mt-10" : "bg-white"
       }  rounded-[10px]  `}
     >
       {onHover && (
@@ -57,6 +57,10 @@ export const Card = ({ card }: CardProps) => {
       </div>
       <p className="absolute top-1/2 font-medium text-5xl -translate-x-1/2 left-1/2 -translate-y-1/2">
         {hiragana ? card?.japanese : card?.japanese_katakana}
+      </p>
+
+      <p className="absolute bottom-3 text-center left-1/2 -translate-x-1/2">
+        {card?.romaji}
       </p>
     </motion.div>
   );

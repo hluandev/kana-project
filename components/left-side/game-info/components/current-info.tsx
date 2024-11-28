@@ -35,7 +35,7 @@ export const CurrentInfo = () => {
   }, [currentSpecial]);
 
   return (
-    <Box className="p-0 bg-transparent grid grid-cols-2 gap-4 grid-rows-2 overflow-hidden">
+    <div className="grid rounded-2xl grid-cols-2 gap-4 grid-rows-2 overflow-hidden">
       {/* Discard */}
       <InfoBox title="Discard">{discard}</InfoBox>
 
@@ -49,6 +49,6 @@ export const CurrentInfo = () => {
 
       {/* Money */}
       <InfoBox title="Money">¥{yen}</InfoBox>
-    </Box>
+    </div>
   );
 };

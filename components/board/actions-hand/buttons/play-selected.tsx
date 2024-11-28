@@ -2,6 +2,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { useEffect, useState } from "react";
+import { ArrowUp } from "lucide-react";
 
 export const PlaySelected = () => {
   const {
@@ -358,9 +359,9 @@ export const PlaySelected = () => {
   return (
     <ActionButton
       onClick={handlePlaySelected}
-      text="Play"
-      className="bg-[#e8e8e8] "
+      icon={<ArrowUp strokeWidth={2.5} />}
       keyboardShortcut="2"
+      className="bg-[#01de5b]"
     />
   );
 };

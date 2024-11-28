@@ -6,13 +6,10 @@ import { PlaySelected } from "./buttons/play-selected";
 
 export const ActionsHand = () => {
   return (
-    <div className="mt-6 z-20">
+    <div className="mt-6 z-20 flex items-center bg-white rounded-full p-2">
+      <DiscardSelected />
       <ActionInput />
-      <div className="flex justify-center mt-3 gap-3 w-fit h-fit ">
-        <DiscardSelected />
-        {/* <SortCurrentHand /> */}
-        <PlaySelected />
-      </div>
+      <PlaySelected />
     </div>
   );
 };

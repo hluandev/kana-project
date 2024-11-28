@@ -3,6 +3,7 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
+import { XIcon } from "lucide-react";
 
 export const DiscardSelected = () => {
   const {
@@ -42,9 +43,9 @@ export const DiscardSelected = () => {
   return (
     <ActionButton
       onClick={onHandleDiscard}
-      text="Discard"
-      className="bg-[#F06543] text-white "
+      icon={<XIcon strokeWidth={2.5} />}
       keyboardShortcut="1"
+      className="bg-[#e4e4e6]"
     />
   );
 };

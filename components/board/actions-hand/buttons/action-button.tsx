@@ -1,14 +1,15 @@
+import { ArrowUp } from "lucide-react";
 import React, { useEffect } from "react";
 
 interface ActionButtonProps {
-  text: string;
+  icon: React.ReactNode;
   onClick?: () => void;
   className?: string;
   keyboardShortcut?: string;
 }
 
 export const ActionButton = ({
-  text,
+  icon,
   onClick,
   className,
   keyboardShortcut,
@@ -28,11 +29,11 @@ export const ActionButton = ({
 
   return (
     <div
-      className={`py-3 flex px-2 items-center justify-center gap-2 w-36 text-center rounded-md font-semibold duration-200 cursor-pointer ${className}`}
+      className={`py-3 flex px-2 items-center justify-center gap-2 w-12 aspect-square text-center rounded-full font-semibold duration-200 cursor-pointer ${className}`}
       onClick={onClick}
     >
-      <p> {text}</p>
-      <p className="bg-black/10 w-6 h-6 rounded-md">{keyboardShortcut}</p>
+      {icon}
+      {/* <p className="bg-black/15 w-6 h-6 rounded-md">{keyboardShortcut}</p> */}
     </div>
   );
 };

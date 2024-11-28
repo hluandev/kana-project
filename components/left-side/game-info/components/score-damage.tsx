@@ -20,8 +20,12 @@ export const ScoreDamage = () => {
       </div>
 
       <div className="font-semibold text-lg text-center grid mt-4 gap-4 grid-cols-2">
-        <div className="py-2 bg-[#f2f3f7] rounded-full">{score}</div>
-        <div className="py-2 bg-[#f2f3f7] rounded-full">{multiplier}</div>
+        <div className="py-2 bg-[#f2f3f7] rounded-full text-[#01de5b]">
+          {score}
+        </div>
+        <div className="py-2 bg-[#f2f3f7] rounded-full text-[#4961ff]">
+          {multiplier}
+        </div>
       </div>
     </Box>
   );
