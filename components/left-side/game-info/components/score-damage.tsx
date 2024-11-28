@@ -23,7 +23,7 @@ export const ScoreDamage = () => {
         <div className="py-2 bg-[#f2f3f7] rounded-full text-[#01de5b]">
           {score}
         </div>
-        <div className="py-2 bg-[#f2f3f7] rounded-full text-[#4961ff]">
+        <div className="py-2 bg-[#f2f3f7] rounded-full text-purple-600">
           {multiplier}
         </div>
       </div>

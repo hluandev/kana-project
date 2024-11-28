@@ -6,7 +6,7 @@ export const SpecialHands = () => {
   const { currentSpecial, selectedSpecial } = useKanaStore();
 
   return (
-    <div className="h-64 p-4 z-50 grid grid-cols-8 gap-2 rounded-[14px] bg-white/50">
+    <div className="h-64 w-full p-4 z-50 grid grid-cols-8 gap-2 rounded-2xl bg-white/50">
       {currentSpecial.map((card) => {
         const isSelected = selectedSpecial.some(
           (selected) => selected.romaji === card.romaji
@@ -26,7 +26,37 @@ export const SpecialHands = () => {
             </p>
 
             <p className="text-center rounded-xl relative px-4  h-52  flex justify-center items-center  bg-[#f2f3f7] backdrop-blur-lg">
-              <p className="font-medium">{card.desc}</p>
+              <p className="font-medium">
+                {card.condition === "xmultiples" && (
+                  <span className="text-purple-600">
+                    x{card.reward} multiples{" "}
+                  </span>
+                )}
+
+                {card.condition === "upgrade" && (
+                  <span>
+                    <span className="text-[#01de5b]">
+                      +{card.reward_points}
+                    </span>{" "}
+                    /
+                    <span className="text-purple-600">
+                      +{card.reward_multiplier}
+                    </span>{" "}
+                  </span>
+                )}
+
+                {card.condition === "points" && (
+                  <span className="text-[#01de5b]">+{card.reward} points </span>
+                )}
+
+                {card.condition === "multiples" && (
+                  <span className="text-purple-600">
+                    +{card.reward} multiples{" "}
+                  </span>
+                )}
+
+                {card.desc}
+              </p>
             </p>
           </div>
         );

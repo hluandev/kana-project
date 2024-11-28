@@ -362,6 +362,7 @@ export const PlaySelected = () => {
       icon={<ArrowUp strokeWidth={2.5} />}
       keyboardShortcut="2"
       className="bg-[#01de5b]"
+      sound="/audio/play.wav"
     />
   );
 };

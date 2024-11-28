@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, useCallback, useState } from "react";
 import { useKanaStore } from "@/stores/useKanaStore";
 import React from "react";
 import { useScoreStore } from "@/stores/useScoreStore";
@@ -19,6 +19,16 @@ export default function ActionInput() {
 
     return () => clearTimeout(timer);
   }, [missionID]);
+
+  const playSound = useCallback((sound: string) => {
+    if (sound) {
+      const audio = new Audio(sound);
+      audio.volume = 0.5;
+      audio
+        .play()
+        .catch((error) => console.log("Audio playback failed:", error));
+    }
+  }, []);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const inputValue = e.target.value.toLowerCase();
@@ -40,8 +50,10 @@ export default function ActionInput() {
 
       if (isAlreadySelected) {
         removeSelectedCard(matchedCard);
+        playSound("/audio/deselect_card.wav");
       } else if (selectedCard.length < 5) {
         addSelectedCard(matchedCard);
+        playSound("/audio/select_card.wav");
       }
       setValue("");
     }

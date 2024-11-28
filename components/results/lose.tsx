@@ -34,8 +34,8 @@ export const Lose = () => {
   };
 
   return (
-    <div className="fixed bg-black/50 w-full flex-col gap-8 h-full flex justify-center items-center z-10">
-      <div className="text-red-600 text-8xl">You Died</div>
+    <div className="fixed bg-black/90 w-full flex-col h-full z-10">
+      <div className="text-red-600 text-xl">You Died</div>
       <form onSubmit={handleLoseSubmit} action="">
         <input
           type="submit"

@@ -46,6 +46,7 @@ export const DiscardSelected = () => {
       icon={<XIcon strokeWidth={2.5} />}
       keyboardShortcut="1"
       className="bg-[#e4e4e6]"
+      sound="/audio/discard.wav"
     />
   );
 };

@@ -3,6 +3,7 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import SpecialCard from "./special-card";
 import React, { FormEvent } from "react";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
+import { ArrowRightIcon, JapaneseYenIcon } from "lucide-react";
 
 export const Win = () => {
   const {
@@ -91,9 +92,7 @@ export const Win = () => {
     }
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     const totalCost = selectedSpecial.reduce(
       (sum, card) => sum + card.price,
       0
@@ -155,15 +154,16 @@ export const Win = () => {
   };
 
   return (
-    <div className="">
-      <div className="text-yellow-600 text-8xl mt-52">You Defeated</div>
+    <div className="w-[42rem] relative flex flex-col items-center z-10">
+      <div className="text-yellow-600 font-medium text-6xl">You Defeated</div>
 
-      <p className="text-2xl">
-        Select a special card to enchance the next rounds
+      <p className="text-xl mt-4 font-medium">
+        Buy or sell special cards to enchance the next round
       </p>
-      <div className="h-96 grid grid-cols-3 gap-6 w-[40%] p-6 bg-[#ffffff] border border-black/10 shadow-sm rounded-lg">
+      <div className="h-80 grid mt-10 grid-cols-3 gap-4 p-4 bg-white/50 rounded-2xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
+            card={card}
             price={card.price}
             desc={card.desc}
             key={card.japanese}
@@ -173,28 +173,38 @@ export const Win = () => {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        className="flex bg-white h-full mt-10 rounded-full p-2"
+      >
+        <ActionButton
+          onClick={handleSellSpecial}
+          icon={<JapaneseYenIcon />}
+          keyboardShortcut="1"
+          className="bg-[#EFCB68]  hover:bg-yellow-600/40"
+        />
         <input
           ref={inputRef}
           type="text"
           value={value}
           onChange={handleInputChange}
-          placeholder="Type the romaji of the special card"
-          className="bg-[#fbfaf9]  border-black/10  shadow-sm text-center outline-none border rounded-md py-2 px-4"
+          placeholder="Type here"
+          className="flex   text-center outline-none rounded-md"
         />
-        <div className="flex gap-3">
-          <ActionButton
-            onClick={handleSellSpecial}
-            text="Sell Special"
-            keyboardShortcut="3"
-            className="bg-[#EFCB68]  hover:bg-yellow-600/40"
-          />
-          <input
-            type="submit"
-            value="Next match"
-            className="bg-yellow-600 px-4 py-2 font-bold rounded-md"
-          />
-        </div>
+        {/* <input
+          type="submit"
+          value="N"
+          className="bg-yellow-600 px-4 py-2 font-bold rounded-full w-12 aspect-square"
+        /> */}
+
+        <ActionButton
+          onClick={handleSubmit}
+          icon={<ArrowRightIcon />}
+          keyboardShortcut="2"
+          className="bg-[#EFCB68]  hover:bg-yellow-600/40"
+        />
       </form>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
+import { JapaneseYenIcon } from "lucide-react";
 
 export const SortCurrentHand = () => {
   const {
@@ -38,9 +39,9 @@ export const SortCurrentHand = () => {
   return (
     <ActionButton
       onClick={handleSellSpecial}
-      text="Sell Special (2)"
+      icon={<JapaneseYenIcon />}
       keyboardShortcut="2"
-      className="bg-yellow-600/20 text-yellow-200 hover:bg-yellow-600/40"
+      className="bg-yellow-600/20 hover:bg-yellow-600/40"
     />
   );
 };
