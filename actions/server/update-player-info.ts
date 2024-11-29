@@ -41,7 +41,7 @@ export async function updatePlayerInfoServer({
     console.log(error);
   }
 
-  revalidatePath("/", "page");
+  revalidatePath("/menu/play/kana", "layout");
 }
 
 // export async function updateLevelServer({ id, level }: UpdateLevelProps) {

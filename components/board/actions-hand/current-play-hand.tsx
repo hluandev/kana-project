@@ -16,7 +16,8 @@ export default function CurrentPlayHand() {
 
   const { turns, missionID, progress, setYen, yen } = useScoreStore();
 
-  const { info, updateXp, updateLevel, setXp } = usePlayerStore();
+  const { info, updateXp, updateLevel, setXp, updateGameResult } =
+    usePlayerStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
 
@@ -38,6 +39,7 @@ export default function CurrentPlayHand() {
         wins: info.wins + 1,
         matches: info.matches + 1,
       });
+      updateGameResult(true);
     }
   }, [progress >= mission?.target]);
 
@@ -69,6 +71,7 @@ export default function CurrentPlayHand() {
         losses: info.losses + 1,
         matches: info.matches + 1,
       });
+      updateGameResult(false);
     }
   }, [turns === 0]);
 
