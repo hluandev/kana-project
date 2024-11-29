@@ -4,6 +4,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { XIcon } from "lucide-react";
+import { playSound } from "@/actions/client/play-sound";
 
 export const DiscardSelected = () => {
   const {
@@ -19,6 +20,12 @@ export const DiscardSelected = () => {
     useScoreStore();
 
   const onHandleDiscard = () => {
+    if (selectedCard.length === 0) {
+      setWarning("Select cards to discard first");
+      playSound("/audio/error.wav");
+      return;
+    }
+
     const newHand = currentHand.filter((card) => !selectedCard.includes(card));
 
     const cardsNeeded = 8 - newHand.length;
@@ -38,6 +45,7 @@ export const DiscardSelected = () => {
       setScore(0);
       setMultiplier(0);
       setDiscard(discard - 1);
+      playSound("/audio/discard.wav");
     } else {
       setWarning("You can't discard anymore cards");
     }
@@ -49,7 +57,6 @@ export const DiscardSelected = () => {
       icon={<XIcon strokeWidth={2.5} />}
       keyboardShortcut="1"
       className="bg-[#e4e4e6]"
-      sound="/audio/discard.wav"
     />
   );
 };

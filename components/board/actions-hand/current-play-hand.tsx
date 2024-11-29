@@ -7,6 +7,7 @@ import { CurrentHand } from "../current-hand";
 import { ActionsHand } from "./actions-hand";
 import { Win } from "@/components/results/win";
 import { Lose } from "@/components/results/lose";
+import { playSound } from "@/actions/client/play-sound";
 
 export default function CurrentPlayHand() {
   const { kana, drawHand, drawSpecial, kanaMissions } = useKanaStore();
@@ -28,6 +29,12 @@ export default function CurrentPlayHand() {
       setYen(yen + 500);
     }
   }, [progress >= mission?.target]);
+
+  useEffect(() => {
+    if (turns > 0) {
+      playSound("/audio/start.wav");
+    }
+  }, [missionID]);
 
   return (
     <div
