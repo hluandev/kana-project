@@ -1,5 +1,6 @@
 import { Support } from "../support";
 import { CurrentInfo } from "./components/current-info";
+import PlayerLevel from "./components/player-level";
 import { Score } from "./components/score";
 import { ScoreDamage } from "./components/score-damage";
 import { SwitchKana } from "./components/switch-kana";
@@ -14,7 +15,8 @@ export const GameInfo = () => {
       </div>
       <div className="space-y-4">
         <CurrentInfo />
-        <Support />
+        <PlayerLevel />
+        {/* <Support /> */}
       </div>
     </div>
   );

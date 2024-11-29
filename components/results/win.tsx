@@ -5,6 +5,8 @@ import React from "react";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import { ArrowRightIcon, JapaneseYenIcon } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
+import { motion } from "framer-motion";
+import { usePlayerStore } from "@/stores/usePlayerStore";
 
 export const Win = () => {
   const {
@@ -31,6 +33,7 @@ export const Win = () => {
     setSelectedSpecial,
     selectedSpecial,
   } = useKanaStore();
+  const { updateXp } = usePlayerStore();
 
   const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
     [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
@@ -61,6 +64,7 @@ export const Win = () => {
       audio.volume = 0.5;
       audio.play();
     };
+
     playSound();
   }, []);
 
@@ -95,8 +99,10 @@ export const Win = () => {
 
       if (isAlreadySelected) {
         removeSelectedSpecial(matchingCard);
+        playSound("/audio/deselect_card.wav");
       } else if (selectedSpecial.length < 3) {
         addSelectedSpecial(matchingCard);
+        playSound("/audio/select_card.wav");
       }
       setValue("");
     }
@@ -182,7 +188,14 @@ export const Win = () => {
 
   return (
     <div className="w-[42rem] relative flex flex-col items-center z-10">
-      <div className="text-yellow-600 font-medium text-6xl">You Defeated</div>
+      <motion.div
+        className="text-yellow-600 font-medium text-6xl"
+        initial={{ opacity: 0, scale: 2 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2 }}
+      >
+        You Defeated
+      </motion.div>
 
       <p className="text-xl mt-4 font-medium">
         Buy or sell special cards to enchance the next round

@@ -19,3 +19,13 @@ export async function fetchKanaSpecial() {
   let { data: kanaSpecial } = await supabase.from("kana_special").select("*");
   return kanaSpecial;
 }
+
+export async function fetchPlayerInfo() {
+  const supabase = await createClient();
+  let { data: playerInfo } = await supabase
+    .from("profiles")
+    .select("*")
+    .limit(1)
+    .single();
+  return playerInfo;
+}
