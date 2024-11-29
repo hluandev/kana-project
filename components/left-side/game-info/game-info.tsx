@@ -12,9 +12,9 @@ export const GameInfo = () => {
         <Score />
         <ScoreDamage />
       </div>
-      <div className="space-y-2">
+      <div className="space-y-4">
         <CurrentInfo />
-        {/* <Support /> */}
+        <Support />
       </div>
     </div>
   );

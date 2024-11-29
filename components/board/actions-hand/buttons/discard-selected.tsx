@@ -48,6 +48,7 @@ export const DiscardSelected = () => {
       playSound("/audio/discard.wav");
     } else {
       setWarning("You can't discard anymore cards");
+      playSound("/audio/error.wav");
     }
   };
 
