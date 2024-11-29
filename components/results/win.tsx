@@ -54,6 +54,15 @@ export const Win = () => {
     return () => clearTimeout(timer);
   }, [missionID]);
 
+  React.useEffect(() => {
+    const playSound = () => {
+      const audio = new Audio("/audio/win.wav");
+      audio.volume = 0.5;
+      audio.play();
+    };
+    playSound();
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
 

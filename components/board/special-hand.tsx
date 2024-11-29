@@ -4,13 +4,15 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 
 export const SpecialHands = () => {
-  const { currentSpecial, selectedSpecial } = useKanaStore();
-  const { turns } = useScoreStore();
+  const { currentSpecial, selectedSpecial, kanaMissions } = useKanaStore();
+  const { turns, missionID, progress } = useScoreStore();
+
+  const mission = kanaMissions.find((mission) => mission.id === missionID);
 
   return (
     <div
       className={`${
-        turns === 0 && "hidden"
+        turns === 0 && mission?.target > progress && "hidden"
       } h-64 w-full p-4 z-50 grid grid-cols-8 gap-2 rounded-2xl bg-white/50`}
     >
       {currentSpecial.map((card) => {

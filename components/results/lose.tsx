@@ -2,6 +2,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import { RotateCcwIcon } from "lucide-react";
+import { useCallback, useEffect } from "react";
 
 export const Lose = () => {
   const {
@@ -32,6 +33,18 @@ export const Lose = () => {
     setSelectedCard([]);
     setCurrentSpecial([]);
   };
+
+  useEffect(() => {
+    const playSound = () => {
+      const audio = new Audio("/audio/lose.wav");
+      audio.volume = 0.5;
+      audio
+        .play()
+        .catch((error) => console.log("Audio playback failed:", error));
+    };
+
+    playSound();
+  }, []);
 
   return (
     <div className="relative flex items-center  h-full z-10">
