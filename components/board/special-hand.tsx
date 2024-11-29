@@ -23,10 +23,8 @@ export const SpecialHands = () => {
         return (
           <div
             key={card.romaji}
-            className={`flex flex-col p-2 overflow-hidden justify-between rounded-xl bg-white w-40 h-full  bg-cover ${
-              isSelected
-                ? "border-yellow-500/80 shadow-yellow-500/50 shadow-lg"
-                : "border-neutral-300"
+            className={`flex flex-col p-2 overflow-hidden justify-between rounded-xl  w-40 h-full   ${
+              isSelected ? "border-yellow-500 bg-[#efcb68]" : " bg-white"
             }`}
           >
             <p className="text-5xl font-medium flex justify-center items-center h-full">

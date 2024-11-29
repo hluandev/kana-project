@@ -15,7 +15,8 @@ export const DiscardSelected = () => {
     setSelectedCard,
   } = useKanaStore();
 
-  const { discard, setDiscard, setScore, setMultiplier } = useScoreStore();
+  const { discard, setDiscard, setScore, setMultiplier, setWarning } =
+    useScoreStore();
 
   const onHandleDiscard = () => {
     const newHand = currentHand.filter((card) => !selectedCard.includes(card));
@@ -37,6 +38,8 @@ export const DiscardSelected = () => {
       setScore(0);
       setMultiplier(0);
       setDiscard(discard - 1);
+    } else {
+      setWarning("You can't discard anymore cards");
     }
   };
 

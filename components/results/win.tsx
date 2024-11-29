@@ -1,7 +1,7 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import SpecialCard from "./special-card";
-import React, { FormEvent } from "react";
+import React from "react";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import { ArrowRightIcon, JapaneseYenIcon } from "lucide-react";
 
@@ -108,9 +108,7 @@ export const Win = () => {
     );
 
     if (yen >= totalCost && selectedSpecial.length > 0) {
-      const newSpecialCards = [...currentSpecial, ...selectedSpecial];
-      setCurrentSpecial(newSpecialCards);
-
+      // 1. Update special deck first
       const newSpecialDeck = currentSpecialDeck.filter((card) => {
         const isSelected = selectedSpecial.some(
           (selected) => selected.romaji === card.romaji
@@ -123,17 +121,24 @@ export const Win = () => {
       });
       setCurrentSpecialDeck(newSpecialDeck);
 
+      // 2. Then update current special cards
+      const newSpecialCards = [...currentSpecial, ...selectedSpecial];
+      setCurrentSpecial(newSpecialCards);
+
+      // 3. Update yen last
       setYen(yen - totalCost);
     }
 
+    // 4. Reset game state
+    setSelectedSpecial([]);
     drawHand();
     setMissionID(missionID + 1);
     setTurns(4);
     setDiscard(4);
     setSelectedCard([]);
 
+    // 5. Reset score-related states
     setTimeout(() => {
-      setSelectedSpecial([]);
       setMultiplier(0);
       setScore(0);
       setProgress(0);
@@ -141,7 +146,15 @@ export const Win = () => {
   };
 
   const handleSellSpecial = () => {
-    if (selectedSpecial.length === 0) return;
+    // Check if there are selected cards and they exist in currentSpecial
+    const selectedCardsInCurrent = selectedSpecial.every((card) =>
+      currentSpecial.some((current) => current.romaji === card.romaji)
+    );
+
+    if (selectedSpecial.length === 0 || !selectedCardsInCurrent) {
+      setValue("");
+      return;
+    }
 
     // Filter out selected cards from currentSpecial
     const newCurrentSpecial = currentSpecial.filter(
@@ -160,6 +173,7 @@ export const Win = () => {
     setCurrentSpecialDeck(newSpecialDeck);
     setSelectedSpecial([]);
     setYen(yen + yenToAdd);
+    setValue("");
   };
 
   return (
@@ -169,7 +183,7 @@ export const Win = () => {
       <p className="text-xl mt-4 font-medium">
         Buy or sell special cards to enchance the next round
       </p>
-      <div className="h-80 grid mt-10 grid-cols-3 gap-4 p-4 bg-white/50 rounded-2xl">
+      <div className="h-80 relative grid mt-10 grid-cols-3 gap-4 p-4 bg-white/50 rounded-2xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             card={card}
@@ -180,6 +194,10 @@ export const Win = () => {
             romaji={card.romaji}
           />
         ))}
+
+        <div className="absolute -right-20 top-1/2 -translate-y-1/2 bg-white p-2 text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center">
+          {currentSpecialDeck.length}
+        </div>
       </div>
 
       <form
