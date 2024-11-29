@@ -3,6 +3,7 @@ import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
+import { playSound } from "@/actions/client/play-sound";
 
 export const PlaySelected = () => {
   const {
@@ -21,8 +22,8 @@ export const PlaySelected = () => {
     setMultiplier,
     turns,
     setTurns,
-    announcement,
     setAnnouncement,
+    setWarning,
     progress,
     setProgress,
   } = useScoreStore();
@@ -353,6 +354,10 @@ export const PlaySelected = () => {
       setMultiplier(0);
       setSelectedCard([]);
       setTurns(turns - 1);
+      playSound("/audio/play.wav");
+    } else {
+      setWarning("Select cards to play first");
+      playSound("/audio/error.wav");
     }
   };
 
@@ -362,7 +367,6 @@ export const PlaySelected = () => {
       icon={<ArrowUp strokeWidth={2.5} />}
       keyboardShortcut="2"
       className="bg-[#01de5b]"
-      sound="/audio/play.wav"
     />
   );
 };
