@@ -4,6 +4,7 @@ import SpecialCard from "./special-card";
 import React from "react";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import { ArrowRightIcon, JapaneseYenIcon } from "lucide-react";
+import { playSound } from "@/actions/client/play-sound";
 
 export const Win = () => {
   const {
@@ -108,7 +109,7 @@ export const Win = () => {
     );
 
     if (yen >= totalCost && selectedSpecial.length > 0) {
-      // 1. Update special deck first
+      // Create new arrays instead of modifying existing ones
       const newSpecialDeck = currentSpecialDeck.filter((card) => {
         const isSelected = selectedSpecial.some(
           (selected) => selected.romaji === card.romaji
@@ -119,30 +120,33 @@ export const Win = () => {
         );
         return !isSelected || isUpgrade;
       });
+
+      // Create a new array for special cards, ensuring no duplicates
+      const newSpecialCards = Array.from(
+        new Set([...currentSpecial, ...selectedSpecial])
+      );
+
+      // Batch the state updates
       setCurrentSpecialDeck(newSpecialDeck);
-
-      // 2. Then update current special cards
-      const newSpecialCards = [...currentSpecial, ...selectedSpecial];
       setCurrentSpecial(newSpecialCards);
-
-      // 3. Update yen last
       setYen(yen - totalCost);
+      setSelectedSpecial([]);
+
+      // Reset game state
+      drawHand();
+      setMissionID(missionID + 1);
+      setTurns(4);
+      setDiscard(4);
+      setSelectedCard([]);
+      playSound("/audio/next_turn.wav");
+
+      // Reset score-related states with a slight delay
+      setTimeout(() => {
+        setMultiplier(0);
+        setScore(0);
+        setProgress(0);
+      }, 100);
     }
-
-    // 4. Reset game state
-    setSelectedSpecial([]);
-    drawHand();
-    setMissionID(missionID + 1);
-    setTurns(4);
-    setDiscard(4);
-    setSelectedCard([]);
-
-    // 5. Reset score-related states
-    setTimeout(() => {
-      setMultiplier(0);
-      setScore(0);
-      setProgress(0);
-    }, 100);
   };
 
   const handleSellSpecial = () => {
