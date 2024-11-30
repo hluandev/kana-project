@@ -30,13 +30,6 @@ export default function SpecialCard({
       } rounded-xl`}
     >
       <div className="flex-1">
-        <p
-          className={`absolute ${
-            isSelected ? "bg-black/80 text-[#efcb68]" : "bg-[#efcb68]"
-          } left-4 top-4 text-sm rounded-full z-50 justify-center items-center px-2 py-1 font-medium flex `}
-        >
-          ¥{price}
-        </p>
         <p className="font-medium text-5xl flex justify-center items-center h-full">
           {hover ? romaji : japanese}
         </p>
@@ -47,6 +40,14 @@ export default function SpecialCard({
           isSelected ? "bg-black/80 text-white" : "bg-[#f2f3f7]"
         } rounded-lg h-32`}
       >
+        <p
+          className={`absolute ${
+            isSelected ? "bg-black/80 text-[#efcb68]" : "bg-[#efcb68]"
+          } left-1/2 -translate-x-1/2 -top-3.5 text-sm rounded-full z-50 justify-center items-center px-2 py-1 font-medium flex `}
+        >
+          ¥{price}
+        </p>
+
         <p className="font-medium">
           {card.condition === "xmultiples" && (
             <span className="text-purple-600">x{card.reward} multiples </span>

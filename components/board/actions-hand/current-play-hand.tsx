@@ -33,7 +33,8 @@ export default function CurrentPlayHand() {
     const isGameOver = turns === 0;
 
     if (hasWon && !isGameOver) {
-      setYen(yen + 500);
+      const remainingYen = turns * 50;
+      setYen(yen + 500 + remainingYen);
       updateXp(20);
       updatePlayerInfoServer({
         id: info.id,
@@ -43,7 +44,7 @@ export default function CurrentPlayHand() {
       });
       updateGameResult(true);
     }
-  }, [progress, mission?.target, turns]);
+  }, [progress]);
 
   useEffect(() => {
     if (info.xp >= 100) {
