@@ -78,10 +78,10 @@ export const Win = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
 
-    // If we already have selected special cards, only allow matching from currentSpecial
+    // If we already have selected special cards from currentSpecial
     if (
       selectedSpecial.length > 0 &&
-      selectedSpecial[0].condition === "upgrade"
+      currentSpecial.some((card) => card.romaji === selectedSpecial[0].romaji)
     ) {
       const matchingSpecial = currentSpecial.find(
         (card) => card.romaji.toLowerCase() === e.target.value
@@ -107,7 +107,7 @@ export const Win = () => {
     // If we already have selected cards from randomSpecialCards
     if (selectedSpecial.length > 0) {
       const matchingCard = randomSpecialCards.find(
-        (card) => card.romaji === e.target.value
+        (card) => card.romaji.toLowerCase() === e.target.value
       );
 
       if (matchingCard) {
@@ -127,14 +127,15 @@ export const Win = () => {
       return;
     }
 
-    // If no cards are selected yet
+    // If no cards are selected yet, determine the source of the first selection
     const matchingCard = randomSpecialCards.find(
-      (card) => card.romaji === e.target.value
+      (card) => card.romaji.toLowerCase() === e.target.value
     );
     const matchingSpecial = currentSpecial.find(
       (card) => card.romaji.toLowerCase() === e.target.value
     );
 
+    // Only allow selection from one source
     if (matchingSpecial) {
       addSelectedSpecial(matchingSpecial);
       playSound("/audio/select_card.wav");
@@ -152,7 +153,13 @@ export const Win = () => {
       0
     );
 
-    if (yen >= totalCost) {
+    // Check if any selected card is from currentSpecial
+    const hasCurrentSpecialCard = selectedSpecial.some((card) =>
+      currentSpecial.some((special) => special.romaji === card.romaji)
+    );
+
+    if (hasCurrentSpecialCard) {
+      // If card is from currentSpecial, don't charge yen
       // Create new arrays instead of modifying existing ones
       const newSpecialDeck = currentSpecialDeck.filter((card) => {
         const isSelected = selectedSpecial.some(
@@ -170,10 +177,9 @@ export const Win = () => {
         new Set([...currentSpecial, ...selectedSpecial])
       );
 
-      // Batch the state updates
+      // Update states without changing yen
       setCurrentSpecialDeck(newSpecialDeck);
       setCurrentSpecial(newSpecialCards);
-      setYen(yen - totalCost);
       setSelectedSpecial([]);
 
       // Reset game state
@@ -185,6 +191,40 @@ export const Win = () => {
       playSound("/audio/next_turn.wav");
 
       // Reset score-related states with a slight delay
+      setTimeout(() => {
+        setMultiplier(0);
+        setScore(0);
+        setProgress(0);
+      }, 100);
+    } else if (yen >= totalCost) {
+      // Original logic for purchasing new cards
+      const newSpecialDeck = currentSpecialDeck.filter((card) => {
+        const isSelected = selectedSpecial.some(
+          (selected) => selected.romaji === card.romaji
+        );
+        const isUpgrade = selectedSpecial.some(
+          (selected) =>
+            selected.romaji === card.romaji && selected.condition === "upgrade"
+        );
+        return !isSelected || isUpgrade;
+      });
+
+      const newSpecialCards = Array.from(
+        new Set([...currentSpecial, ...selectedSpecial])
+      );
+
+      setCurrentSpecialDeck(newSpecialDeck);
+      setCurrentSpecial(newSpecialCards);
+      setYen(yen - totalCost);
+      setSelectedSpecial([]);
+
+      drawHand();
+      setMissionID(missionID + 1);
+      setTurns(4);
+      setDiscard(4);
+      setSelectedCard([]);
+      playSound("/audio/next_turn.wav");
+
       setTimeout(() => {
         setMultiplier(0);
         setScore(0);

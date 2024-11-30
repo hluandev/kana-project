@@ -328,7 +328,7 @@ export const PlaySelected = () => {
         }
 
         if (special.condition === "reroll") {
-          finalMultiplier += reroll + special.reward;
+          finalMultiplier += reroll;
         }
       });
 
