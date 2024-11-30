@@ -174,8 +174,8 @@ export const Win = () => {
     // Add sold cards back to the special deck
     const newSpecialDeck = [...currentSpecialDeck, ...selectedSpecial];
 
-    // Calculate yen to add (500 per card)
-    const yenToAdd = selectedSpecial.length * 500;
+    // Calculate yen to add (300 per card)
+    const yenToAdd = selectedSpecial.length * 300;
 
     // Update the stores
     setCurrentSpecial(newCurrentSpecial);
