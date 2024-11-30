@@ -27,7 +27,9 @@ export default function CurrentPlayHand() {
   }, [kana]);
 
   useEffect(() => {
-    const hasWon = progress >= mission?.target && turns >= 0;
+    if (!mission) return;
+
+    const hasWon = progress >= mission.target && turns > 0;
     const isGameOver = turns === 0;
 
     if (hasWon && !isGameOver) {
@@ -41,7 +43,7 @@ export default function CurrentPlayHand() {
       });
       updateGameResult(true);
     }
-  }, [progress >= mission?.target]);
+  }, [progress, mission?.target, turns]);
 
   useEffect(() => {
     if (info.xp >= 100) {

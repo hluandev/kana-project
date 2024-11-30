@@ -33,7 +33,6 @@ export const Win = () => {
     setSelectedSpecial,
     selectedSpecial,
   } = useKanaStore();
-  const { updateXp } = usePlayerStore();
 
   const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
     [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
