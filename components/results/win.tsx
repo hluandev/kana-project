@@ -43,13 +43,13 @@ export const Win = () => {
   } = useKanaStore();
 
   const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
-    [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
+    [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 4)
   );
 
   // This will only run once when the component mounts
   React.useEffect(() => {
     setRandomSpecialCards(
-      [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
+      [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 4)
     );
   }, []);
 
@@ -152,7 +152,7 @@ export const Win = () => {
       0
     );
 
-    if (yen >= totalCost && selectedSpecial.length > 0) {
+    if (yen >= totalCost) {
       // Create new arrays instead of modifying existing ones
       const newSpecialDeck = currentSpecialDeck.filter((card) => {
         const isSelected = selectedSpecial.some(
@@ -191,7 +191,7 @@ export const Win = () => {
         setProgress(0);
       }, 100);
     } else {
-      setWarning("You don't have enough yen or you haven't selected any cards");
+      setWarning("You don't have enough yen");
       playSound("/audio/error.wav");
     }
   };
@@ -230,9 +230,9 @@ export const Win = () => {
   const handleRefreshCards = () => {
     if (yen >= 200) {
       setRandomSpecialCards(
-        [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
+        [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 4)
       );
-      setYen(yen - 100);
+      setYen(yen - 200);
       setReroll(reroll + 1);
     } else {
       setWarning("You need 200 yen to refresh cards");
@@ -241,7 +241,7 @@ export const Win = () => {
   };
 
   return (
-    <div className="w-[42rem] relative flex flex-col items-center z-10">
+    <div className="w-[56rem] relative flex flex-col items-center z-10">
       <motion.div
         className="text-yellow-600 font-medium text-6xl"
         initial={{ opacity: 0, scale: 2 }}
@@ -254,7 +254,7 @@ export const Win = () => {
       <p className="text-xl mt-4 font-medium">
         Buy or sell special cards to enchance the next round
       </p>
-      <div className="h-80 relative grid mt-10 grid-cols-3 gap-4 p-4 bg-white/50 rounded-2xl">
+      <div className="h-80 relative grid mt-10 grid-cols-4 gap-4 p-4 bg-white/50 rounded-2xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             card={card}

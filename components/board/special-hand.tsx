@@ -5,7 +5,7 @@ import { useScoreStore } from "@/stores/useScoreStore";
 
 export const SpecialHands = () => {
   const { currentSpecial, selectedSpecial, kanaMissions } = useKanaStore();
-  const { turns, missionID, progress } = useScoreStore();
+  const { turns, missionID, progress, reroll } = useScoreStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
 
@@ -62,6 +62,12 @@ export const SpecialHands = () => {
                 {card.condition === "multiples" && (
                   <span className="text-purple-600">
                     +{card.reward} multiples{" "}
+                  </span>
+                )}
+
+                {card.condition === "reroll" && (
+                  <span className="text-purple-600">
+                    +{card.reward} multiples ({reroll})
                   </span>
                 )}
 

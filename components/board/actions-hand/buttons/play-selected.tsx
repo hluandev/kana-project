@@ -4,6 +4,8 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
+import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
+import { usePlayerStore } from "@/stores/usePlayerStore";
 
 export const PlaySelected = () => {
   const {
@@ -14,6 +16,7 @@ export const PlaySelected = () => {
     setCurrentDeck,
     setSelectedCard,
     currentSpecial,
+    kanaMissions,
   } = useKanaStore();
   const {
     score,
@@ -22,14 +25,17 @@ export const PlaySelected = () => {
     setMultiplier,
     turns,
     setTurns,
+    missionID,
     setAnnouncement,
     setWarning,
     progress,
     setProgress,
+    yen,
+    setYen,
     reroll,
-    setReroll,
   } = useScoreStore();
 
+  const { info, updateXp, updateGameResult } = usePlayerStore();
   const rankCount = new Map<string, number>();
 
   const checkHand = () => {
@@ -322,7 +328,7 @@ export const PlaySelected = () => {
         }
 
         if (special.condition === "reroll") {
-          finalMultiplier += reroll * special.reward;
+          finalMultiplier += reroll + special.reward;
         }
       });
 
@@ -352,8 +358,40 @@ export const PlaySelected = () => {
         return 0;
       });
 
-      setProgress(progress + score * multiplier);
+      // Calculate new progress
+      const newProgress = progress + score * multiplier;
+      const newTurns = turns - 1;
+      const mission = kanaMissions.find((mission) => mission.id === missionID);
 
+      // Check win condition
+      if (newProgress >= mission?.target && newTurns >= 0) {
+        // Calculate rewards
+        const remainingYen = newTurns * 100;
+        const winBonus = 500;
+        const totalYen = yen + winBonus + remainingYen;
+        const xpGain = 20;
+
+        // Batch all updates
+        Promise.all([
+          // Update server
+          updatePlayerInfoServer({
+            id: info.id,
+            xp: info.xp + xpGain,
+            wins: info.wins + 1,
+            matches: info.matches + 1,
+          }),
+          // Update client state
+          updateXp(xpGain),
+          setYen(totalYen),
+          updateGameResult(true),
+        ]);
+
+        // Play win sound
+        // playSound("/audio/win.wav");
+      }
+
+      // Update game state
+      setProgress(newProgress);
       setCurrentHand(sortedHand);
       setCurrentDeck(newDeck);
       setScore(0);
