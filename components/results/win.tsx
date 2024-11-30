@@ -3,7 +3,12 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import SpecialCard from "./special-card";
 import React from "react";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
-import { ArrowRightIcon, JapaneseYenIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  JapaneseYenIcon,
+  RefreshCcwIcon,
+  RefreshCwIcon,
+} from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
 import { motion } from "framer-motion";
 import { usePlayerStore } from "@/stores/usePlayerStore";
@@ -220,6 +225,18 @@ export const Win = () => {
     setValue("");
   };
 
+  const handleRefreshCards = () => {
+    if (yen >= 200) {
+      setRandomSpecialCards(
+        [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
+      );
+      setYen(yen - 200); // Deduct 200 yen
+    } else {
+      setWarning("You need 200 yen to refresh cards");
+      playSound("/audio/error.wav");
+    }
+  };
+
   return (
     <div className="w-[42rem] relative flex flex-col items-center z-10">
       <motion.div
@@ -246,8 +263,16 @@ export const Win = () => {
           />
         ))}
 
-        <div className="absolute -right-20 top-1/2 -translate-y-1/2 bg-white p-2 text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center">
-          {currentSpecialDeck.length}
+        <div className="absolute -right-16 top-0 space-y-2">
+          <div
+            onClick={handleRefreshCards}
+            className="bg-white p-2 cursor-pointer group text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center"
+          >
+            <RefreshCwIcon className="group-hover:animate-spin" />
+          </div>
+          <div className=" bg-white p-2 text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center">
+            {currentSpecialDeck.length}
+          </div>
         </div>
       </div>
 
