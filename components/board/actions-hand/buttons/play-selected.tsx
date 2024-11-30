@@ -26,6 +26,8 @@ export const PlaySelected = () => {
     setWarning,
     progress,
     setProgress,
+    reroll,
+    setReroll,
   } = useScoreStore();
 
   const rankCount = new Map<string, number>();
@@ -317,6 +319,10 @@ export const PlaySelected = () => {
           console.log(special.combo);
 
           finalScore += special.reward;
+        }
+
+        if (special.condition === "reroll") {
+          finalMultiplier += reroll * special.reward;
         }
       });
 

@@ -15,6 +15,7 @@ export const Lose = () => {
     setDiscard,
     setYen,
     setAnnouncement,
+    setReroll,
   } = useScoreStore();
 
   const { setSelectedCard, drawHand, drawSpecial, setCurrentSpecial } =
@@ -29,6 +30,7 @@ export const Lose = () => {
     setMissionID(1);
     setDiscard(4);
     setYen(0);
+    setReroll(0);
     drawHand();
     drawSpecial();
     setSelectedCard([]);

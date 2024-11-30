@@ -21,6 +21,8 @@ interface scoreStore {
   setYen: (yen: number) => void;
   warning: string;
   setWarning: (warning: string) => void;
+  reroll: number;
+  setReroll: (reroll: number) => void;
 }
 
 export const useScoreStore = create<scoreStore>((set) => ({
@@ -29,10 +31,12 @@ export const useScoreStore = create<scoreStore>((set) => ({
   turns: 4,
   discard: 4,
   yen: 0,
+  reroll: 0,
   announcement: "",
   missionID: 1,
   progress: 0,
   warning: "",
+  setReroll: (reroll) => set({ reroll }),
   setWarning: (warning) => set({ warning }),
   setYen: (yen) => set({ yen }),
   setScore: (score) => set({ score }),

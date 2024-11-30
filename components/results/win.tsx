@@ -25,6 +25,8 @@ export const Win = () => {
     yen,
     setYen,
     setWarning,
+    reroll,
+    setReroll,
   } = useScoreStore();
 
   const {
@@ -230,7 +232,8 @@ export const Win = () => {
       setRandomSpecialCards(
         [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
       );
-      setYen(yen - 200); // Deduct 200 yen
+      setYen(yen - 100);
+      setReroll(reroll + 1);
     } else {
       setWarning("You need 200 yen to refresh cards");
       playSound("/audio/error.wav");
