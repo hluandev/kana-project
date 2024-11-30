@@ -33,7 +33,7 @@ export default function CurrentPlayHand() {
     const isGameOver = turns === 0;
 
     if (hasWon && !isGameOver) {
-      const remainingYen = turns * 50;
+      const remainingYen = turns * 100;
       setYen(yen + 500 + remainingYen);
       updateXp(20);
       updatePlayerInfoServer({

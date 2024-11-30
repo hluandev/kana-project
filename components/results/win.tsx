@@ -19,6 +19,7 @@ export const Win = () => {
     setProgress,
     yen,
     setYen,
+    setWarning,
   } = useScoreStore();
 
   const {
@@ -70,39 +71,70 @@ export const Win = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
 
+    // If we already have selected special cards, only allow matching from currentSpecial
+    if (
+      selectedSpecial.length > 0 &&
+      selectedSpecial[0].condition === "upgrade"
+    ) {
+      const matchingSpecial = currentSpecial.find(
+        (card) => card.romaji.toLowerCase() === e.target.value
+      );
+
+      if (matchingSpecial) {
+        const isAlreadySelected = selectedSpecial.some(
+          (card) => card.romaji === matchingSpecial.romaji
+        );
+
+        if (isAlreadySelected) {
+          removeSelectedSpecial(matchingSpecial);
+          playSound("/audio/deselect_card.wav");
+        } else if (selectedSpecial.length < 3) {
+          addSelectedSpecial(matchingSpecial);
+          playSound("/audio/select_card.wav");
+        }
+        setValue("");
+      }
+      return;
+    }
+
+    // If we already have selected cards from randomSpecialCards
+    if (selectedSpecial.length > 0) {
+      const matchingCard = randomSpecialCards.find(
+        (card) => card.romaji === e.target.value
+      );
+
+      if (matchingCard) {
+        const isAlreadySelected = selectedSpecial.some(
+          (card) => card.romaji === matchingCard.romaji
+        );
+
+        if (isAlreadySelected) {
+          removeSelectedSpecial(matchingCard);
+          playSound("/audio/deselect_card.wav");
+        } else if (selectedSpecial.length < 3) {
+          addSelectedSpecial(matchingCard);
+          playSound("/audio/select_card.wav");
+        }
+        setValue("");
+      }
+      return;
+    }
+
+    // If no cards are selected yet
     const matchingCard = randomSpecialCards.find(
       (card) => card.romaji === e.target.value
     );
-
     const matchingSpecial = currentSpecial.find(
       (card) => card.romaji.toLowerCase() === e.target.value
     );
 
     if (matchingSpecial) {
-      const isAlreadySelected = selectedSpecial.some(
-        (card) => card.romaji === matchingSpecial.romaji
-      );
-
-      if (isAlreadySelected) {
-        removeSelectedSpecial(matchingSpecial);
-      } else if (selectedSpecial.length < 3) {
-        addSelectedSpecial(matchingSpecial);
-      }
+      addSelectedSpecial(matchingSpecial);
+      playSound("/audio/select_card.wav");
       setValue("");
-    }
-
-    if (matchingCard) {
-      const isAlreadySelected = selectedSpecial.some(
-        (card) => card.romaji === matchingCard.romaji
-      );
-
-      if (isAlreadySelected) {
-        removeSelectedSpecial(matchingCard);
-        playSound("/audio/deselect_card.wav");
-      } else if (selectedSpecial.length < 3) {
-        addSelectedSpecial(matchingCard);
-        playSound("/audio/select_card.wav");
-      }
+    } else if (matchingCard) {
+      addSelectedSpecial(matchingCard);
+      playSound("/audio/select_card.wav");
       setValue("");
     }
   };
@@ -151,6 +183,9 @@ export const Win = () => {
         setScore(0);
         setProgress(0);
       }, 100);
+    } else {
+      setWarning("You don't have enough yen or you haven't selected any cards");
+      playSound("/audio/error.wav");
     }
   };
 

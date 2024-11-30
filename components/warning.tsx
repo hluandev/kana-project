@@ -19,7 +19,7 @@ export default function Warning() {
       <AnimatePresence>
         {warning && (
           <motion.div
-            className="absolute left-1/2 z-10 -translate-x-1/2 top-1/2 -translate-y-1/2 text-red-100 text-2xl font-medium bg-red-600 py-3 px-5 rounded-full"
+            className="absolute left-1/2 z-50 -translate-x-1/2 text-center top-1/2 -translate-y-1/2 text-red-100 text-2xl font-medium bg-red-600 py-3  px-5 rounded-full"
             initial={{ opacity: 0, y: 20, x: "-50%" }}
             animate={{ opacity: 1, y: 0, x: "-50%" }}
             exit={{ opacity: 0, y: 20, x: "-50%" }}

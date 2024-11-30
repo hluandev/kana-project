@@ -31,7 +31,11 @@ export const SpecialHands = () => {
               {card.japanese}
             </p>
 
-            <p className="text-center rounded-xl relative px-4  h-52  flex justify-center items-center  bg-[#f2f3f7] backdrop-blur-lg">
+            <p
+              className={`text-center rounded-xl relative px-4  h-52  flex justify-center items-center  ${
+                isSelected ? "bg-black/80 text-white" : "bg-[#f2f3f7]"
+              } backdrop-blur-lg`}
+            >
               <p className="font-medium">
                 {card.condition === "xmultiples" && (
                   <span className="text-purple-600">
