@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Play() {
   return (
-    <div className="z-10 gap-16 flex justify-center items-center">
+    <div className="z-10 gap-8 flex justify-center items-center">
       <PlayBox
         linkText="Play"
         href="/menu/play/kana"
