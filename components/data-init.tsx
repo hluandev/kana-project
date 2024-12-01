@@ -9,7 +9,7 @@ interface DataInitProps {
   initialMissions: any[];
   initialSpecial: any[];
   initialPlayerInfo: any;
-  isSubscribed: boolean;
+  isSubscribed?: boolean;
 }
 
 export const DataInit = ({
@@ -20,14 +20,13 @@ export const DataInit = ({
   isSubscribed,
 }: DataInitProps) => {
   const { setKana, setKanaMissions, setKanaSpecial } = useKanaStore();
-  const { setInfo, setIsSubscribed } = usePlayerStore();
+  const { setInfo } = usePlayerStore();
 
   useEffect(() => {
     setKana(initialData);
     setKanaMissions(initialMissions);
     setKanaSpecial(initialSpecial);
     setInfo(initialPlayerInfo);
-    setIsSubscribed(isSubscribed);
   }, []);
 
   return null;

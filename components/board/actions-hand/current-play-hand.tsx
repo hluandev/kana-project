@@ -31,7 +31,6 @@ export default function CurrentPlayHand() {
         if (info.level === 10) {
           const response = await fetch("/api/stripe/status");
           const { isSubscribed } = await response.json();
-
           if (!isSubscribed) {
             setXp(100);
             return;

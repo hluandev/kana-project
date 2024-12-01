@@ -2,7 +2,7 @@ import { Box } from "../box";
 import { SubscriptionButton } from "../subscription-button";
 import { SupportBox } from "./support-box";
 
-export const Support = async () => {
+export const Support = () => {
   return (
     <Box className="text-black p-4 fixed top-0 right-4 w-72">
       <div className="space-y-4">

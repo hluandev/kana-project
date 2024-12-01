@@ -37,10 +37,6 @@ export async function updatePlayerInfoServer({
     })
     .eq("id", id);
 
-  if (error) {
-    console.log(error);
-  }
-
   revalidatePath("/menu/play/kana", "layout");
 }
 
