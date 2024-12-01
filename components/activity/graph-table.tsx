@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  LabelList,
 } from "recharts";
 
 export const GraphTable = () => {
@@ -26,24 +27,49 @@ export const GraphTable = () => {
   };
 
   return (
-    <div className="bg-white  pt-8 pb-10 overflow-hidden pr-8 h-full rounded-2xl">
+    <div className="bg-white p-4  overflow-hidden h-full rounded-2xl">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={activity}>
+        <LineChart
+          margin={{ left: 60, right: 60, bottom: 10, top: 10 }}
+          data={activity}
+        >
+          <CartesianGrid vertical={false} stroke="#e5e5e5" />
           <XAxis
-            dy={14}
-            padding={{ right: 10 }}
+            stroke="black"
+            strokeWidth={2}
+            tickLine={false}
+            axisLine={false}
+            tickMargin={14}
             dataKey="created_at"
             tickFormatter={formatDate}
+            style={{ fontSize: "20px", fontWeight: "600" }}
           />
-          <YAxis />
+          {/* <YAxis
+            strokeWidth={2}
+            stroke="black"
+            style={{ fontSize: "20px", fontWeight: "600" }}
+          /> */}
           <Tooltip labelFormatter={formatDate} formatter={formatTooltipValue} />
-          <Line
-            type="linear"
-            dataKey="wins"
-            stroke="#93c5fd"
-            activeDot={{ r: 10 }}
-          />
-          <Line type="linear" dataKey="losses" stroke="#ff915a" />
+          <Line type="linear" dataKey="wins" stroke="#93c5fd" strokeWidth={4}>
+            <LabelList
+              dataKey="wins"
+              position="top"
+              offset={16}
+              fontSize={24}
+              fill="black"
+              fontWeight={600}
+            />
+          </Line>
+          <Line type="linear" dataKey="losses" stroke="#ff915a" strokeWidth={4}>
+            <LabelList
+              dataKey="losses"
+              position="top"
+              offset={16}
+              fontSize={24}
+              fill="black"
+              fontWeight={600}
+            />
+          </Line>
         </LineChart>
       </ResponsiveContainer>
     </div>
