@@ -36,3 +36,11 @@ export async function fetchLeaderboard() {
     .order("highest_score", { ascending: false });
   return leaderboard;
 }
+
+export async function fetchActivity() {
+  const supabase = await createClient();
+  let { data: activity } = await supabase
+    .from("activity")
+    .select("created_at, wins, losses");
+  return activity;
+}

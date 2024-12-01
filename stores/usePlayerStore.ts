@@ -11,6 +11,12 @@ interface PlayerInfo {
   highest_score: number;
 }
 
+interface Activity {
+  created_at: string;
+  wins: number;
+  losses: number;
+}
+
 interface playerStore {
   info: PlayerInfo;
   setInfo: (info: PlayerInfo) => void;
@@ -20,6 +26,8 @@ interface playerStore {
   updateGameResult: (won: boolean) => void;
   isSubscribed: boolean;
   setIsSubscribed: (isSubscribed: boolean) => void;
+  activity: Activity[];
+  setActivity: (activity: Activity[]) => void;
 }
 
 export const usePlayerStore = create<playerStore>((set) => ({
@@ -34,6 +42,8 @@ export const usePlayerStore = create<playerStore>((set) => ({
     highest_score: 0,
     stripe_customer_id: "",
   },
+  activity: [],
+  setActivity: (activity: Activity[]) => set({ activity }),
   isSubscribed: false,
   setIsSubscribed: (isSubscribed: boolean) => set({ isSubscribed }),
   setInfo: (info: PlayerInfo) => set({ info }),
