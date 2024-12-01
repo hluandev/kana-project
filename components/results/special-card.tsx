@@ -8,6 +8,7 @@ interface SpecialCardProps {
   romaji: string;
   price: number;
   card: any;
+  isFrozen?: boolean;
 }
 
 export default function SpecialCard({
@@ -16,6 +17,7 @@ export default function SpecialCard({
   japanese_katakana,
   price,
   card,
+  isFrozen = false,
 }: SpecialCardProps) {
   const { selectedSpecial, hiragana } = useKanaStore();
   const [hover, setHover] = useState(false);
@@ -27,7 +29,11 @@ export default function SpecialCard({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       className={`flex relative p-4 overflow-hidden duration-300 flex-col ${
-        isSelected ? "border-yellow-500 bg-[#efcb68] " : "bg-white"
+        isSelected
+          ? "border-yellow-500 bg-[#efcb68]"
+          : isFrozen
+          ? "border-blue-500 bg-blue-200"
+          : "bg-white"
       } rounded-xl`}
     >
       <div className="flex-1">

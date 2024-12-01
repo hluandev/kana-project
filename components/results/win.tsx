@@ -9,6 +9,7 @@ import {
   RefreshCcwIcon,
   RefreshCwIcon,
   ShoppingCartIcon,
+  SnowflakeIcon,
 } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
 import { motion } from "framer-motion";
@@ -41,6 +42,9 @@ export const Win = () => {
     removeSelectedSpecial,
     setSelectedSpecial,
     selectedSpecial,
+    frozenSpecialCards,
+    setFrozenSpecialCards,
+    addFrozenSpecialCard,
   } = useKanaStore();
 
   const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
@@ -185,6 +189,33 @@ export const Win = () => {
     playSound("/audio/select_card.wav");
   };
 
+  const handleFreezeCard = () => {
+    if (selectedSpecial.length === 0) {
+      setWarning("Select cards to freeze first");
+      playSound("/audio/error.wav");
+      return;
+    }
+
+    // Only allow freezing cards from randomSpecialCards
+    const selectedFromRandom = selectedSpecial.every((card) =>
+      randomSpecialCards.some((randomCard) => randomCard.romaji === card.romaji)
+    );
+
+    if (!selectedFromRandom) {
+      setWarning("You can only freeze cards from the shop");
+      playSound("/audio/error.wav");
+      return;
+    }
+
+    // Add selected cards to frozen cards
+    selectedSpecial.forEach((card) => addFrozenSpecialCard(card));
+
+    // Don't remove frozen cards from random cards anymore
+    setSelectedSpecial([]);
+    setValue("");
+    playSound("/audio/freeze.wav");
+  };
+
   const handleSubmit = () => {
     const totalCost = selectedSpecial.reduce(
       (sum, card) => sum + card.price,
@@ -264,6 +295,20 @@ export const Win = () => {
   };
 
   const handleNextTurn = () => {
+    // Keep frozen cards and add new random cards to fill remaining slots
+    const newRandomCards = [
+      ...currentSpecialDeck
+        .filter(
+          (card) =>
+            !frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
+        )
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 4 - frozenSpecialCards.length),
+    ];
+
+    // Combine frozen cards with new random cards
+    setRandomSpecialCards([...frozenSpecialCards, ...newRandomCards]);
+    setFrozenSpecialCards([]); // Clear frozen cards for next turn
     drawHand();
     setMissionID(missionID + 1);
     setTurns(4);
@@ -348,16 +393,29 @@ export const Win = () => {
             key={card.japanese}
             japanese={card.japanese}
             romaji={card.romaji}
+            isFrozen={frozenSpecialCards.some(
+              (frozenCard) => frozenCard.romaji === card.romaji
+            )}
           />
         ))}
 
         <div className="absolute -right-16 top-0 space-y-2">
+          {/* Reroll */}
           <div
             onClick={handleRefreshCards}
             className="bg-white p-2 cursor-pointer group text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center"
           >
             <RefreshCwIcon className="group-hover:animate-spin" />
           </div>
+
+          {/* Freeze */}
+          <div
+            onClick={handleFreezeCard}
+            className="bg-white p-2 cursor-pointer group text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center"
+          >
+            <SnowflakeIcon className="" />
+          </div>
+
           <div className=" bg-white p-2 text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center">
             {currentSpecialDeck.length}
           </div>

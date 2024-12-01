@@ -28,6 +28,10 @@ interface kanaStore {
   removeSelectedSpecial: (selectedSpecial: any) => void;
   hiragana: boolean;
   setHiragana: (hiragana: boolean) => void;
+  frozenSpecialCards: any[];
+  setFrozenSpecialCards: (frozenSpecialCards: any[]) => void;
+  addFrozenSpecialCard: (card: any) => void;
+  removeFrozenSpecialCard: (card: any) => void;
 }
 
 export const useKanaStore = create<kanaStore>((set, get) => ({
@@ -95,5 +99,15 @@ export const useKanaStore = create<kanaStore>((set, get) => ({
   removeSelectedCard: (card) =>
     set((state) => ({
       selectedCard: state.selectedCard.filter((c) => c !== card),
+    })),
+  frozenSpecialCards: [],
+  setFrozenSpecialCards: (frozenSpecialCards) => set({ frozenSpecialCards }),
+  addFrozenSpecialCard: (card) =>
+    set((state) => ({
+      frozenSpecialCards: [...state.frozenSpecialCards, card],
+    })),
+  removeFrozenSpecialCard: (card) =>
+    set((state) => ({
+      frozenSpecialCards: state.frozenSpecialCards.filter((c) => c !== card),
     })),
 }));
