@@ -3,7 +3,7 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { useState } from "react";
-
+import { motion } from "framer-motion";
 export const SpecialHands = () => {
   const [isHovered, setIsHovered] = useState(false);
   const { currentSpecial, selectedSpecial, kanaMissions, hiragana } =
@@ -38,9 +38,20 @@ export const SpecialHands = () => {
               isSelected ? "border-yellow-500 bg-[#efcb68]" : " bg-white"
             }`}
           >
-            <div className="absolute top-2 left-2 animate-pulse bg-black text-white aspect-square w-8 flex justify-center items-center rounded-full  z-50  ">
-              {index + 5}
-            </div>
+            {selectedSpecial.length > 0 &&
+              currentSpecial.some((special) =>
+                selectedSpecial.some(
+                  (selected) => selected.romaji === special.romaji
+                )
+              ) && (
+                <motion.div
+                  className="absolute top-2 left-2  bg-black/90 text-white aspect-square w-8 flex justify-center items-center rounded-full  z-50  "
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  {index + 5}
+                </motion.div>
+              )}
 
             <p className="text-5xl font-medium flex justify-center items-center h-full relative group">
               {isHovered
@@ -56,7 +67,11 @@ export const SpecialHands = () => {
               } backdrop-blur-lg`}
             >
               {turns >= 0 && mission?.target <= progress && (
-                <p className="text-sm bg-[#efcb68] absolute px-2 py-1 font-medium -top-0 -translate-y-1/2  rounded-full">
+                <p
+                  className={`text-sm ${
+                    isSelected ? "bg-black/90" : "bg-[#efcb68]"
+                  } absolute px-2 py-1 font-medium -top-0 -translate-y-1/2 rounded-full`}
+                >
                   ¥300
                 </p>
               )}
