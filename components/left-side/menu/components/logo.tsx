@@ -1,3 +1,3 @@
 export const Logo = () => {
-  return <div>KAMIKANI</div>;
+  return <div className="text-2xl font-semibold">KAMIKANI</div>;
 };
