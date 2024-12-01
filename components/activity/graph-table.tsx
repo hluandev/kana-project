@@ -10,7 +10,11 @@ import {
   LabelList,
 } from "recharts";
 
-export const GraphTable = () => {
+interface GraphTableProps {
+  highestHandsTable: boolean;
+}
+
+export const GraphTable = ({ highestHandsTable }: GraphTableProps) => {
   const { activity } = usePlayerStore();
 
   const formatDate = (dateString: string) => {
@@ -19,8 +23,10 @@ export const GraphTable = () => {
   };
 
   const formatTooltipValue = (value: number, name: string) => {
-    // Capitalize the first letter of the metric name
-    const label = name.charAt(0).toUpperCase() + name.slice(1);
+    const label = name
+      .split("_")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
     return [`${value}`, label];
   };
 
@@ -40,7 +46,7 @@ export const GraphTable = () => {
             tickMargin={14}
             dataKey="created_at"
             tickFormatter={formatDate}
-            style={{ fontSize: "20px", fontWeight: "600" }}
+            style={{ fontSize: "18px", fontWeight: "400" }}
           />
           {/* <YAxis
             strokeWidth={2}
@@ -48,24 +54,14 @@ export const GraphTable = () => {
             style={{ fontSize: "20px", fontWeight: "600" }}
           /> */}
           <Tooltip labelFormatter={formatDate} formatter={formatTooltipValue} />
-          <Line type="monotone" dataKey="wins" stroke="#93c5fd" strokeWidth={4}>
-            <LabelList
-              dataKey="wins"
-              position="top"
-              offset={16}
-              fontSize={24}
-              fill="black"
-              fontWeight={600}
-            />
-          </Line>
           <Line
             type="monotone"
-            dataKey="losses"
-            stroke="#ff915a"
+            dataKey={highestHandsTable ? "wins" : "highest_hand"}
+            stroke={highestHandsTable ? "#93c5fd" : "#efcb68"}
             strokeWidth={4}
           >
             <LabelList
-              dataKey="losses"
+              dataKey={highestHandsTable ? "wins" : "highest_hand"}
               position="top"
               offset={16}
               fontSize={24}
@@ -73,6 +69,23 @@ export const GraphTable = () => {
               fontWeight={600}
             />
           </Line>
+          {highestHandsTable && (
+            <Line
+              type="monotone"
+              dataKey="losses"
+              stroke="#ff915a"
+              strokeWidth={4}
+            >
+              <LabelList
+                dataKey="losses"
+                position="top"
+                offset={16}
+                fontSize={24}
+                fill="black"
+                fontWeight={600}
+              />
+            </Line>
+          )}
         </LineChart>
       </ResponsiveContainer>
     </div>

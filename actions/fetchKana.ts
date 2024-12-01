@@ -41,7 +41,7 @@ export async function fetchActivity() {
   const supabase = await createClient();
   let { data: activity } = await supabase
     .from("activity")
-    .select("created_at, wins, losses")
+    .select("created_at, wins, losses, highest_hand")
     .order("created_at");
   return activity;
 }
