@@ -153,6 +153,13 @@ export const Win = () => {
       0
     );
 
+    // Check if adding new cards would exceed the 5-card limit
+    if (currentSpecial.length + selectedSpecial.length > 5) {
+      setWarning("You can only have 5 special cards at a time");
+      playSound("/audio/error.wav");
+      return;
+    }
+
     // Check if any selected card is from currentSpecial
     const hasCurrentSpecialCard = selectedSpecial.some((card) =>
       currentSpecial.some((special) => special.romaji === card.romaji)
@@ -274,6 +281,7 @@ export const Win = () => {
       );
       setYen(yen - 200);
       setReroll(reroll + 1);
+      setSelectedSpecial([]);
     } else {
       setWarning("You need 200 yen to refresh cards");
       playSound("/audio/error.wav");
@@ -297,6 +305,7 @@ export const Win = () => {
       <div className="h-80 relative grid mt-10 grid-cols-4 gap-4 p-4 bg-white/50 rounded-2xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
+            japanese_katakana={card.japanese_katakana}
             card={card}
             price={card.price}
             desc={card.desc}

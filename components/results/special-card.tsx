@@ -3,6 +3,7 @@ import { useState } from "react";
 
 interface SpecialCardProps {
   japanese: string;
+  japanese_katakana: string;
   desc: string;
   romaji: string;
   price: number;
@@ -11,12 +12,12 @@ interface SpecialCardProps {
 
 export default function SpecialCard({
   japanese,
-  desc,
   romaji,
+  japanese_katakana,
   price,
   card,
 }: SpecialCardProps) {
-  const { selectedSpecial } = useKanaStore();
+  const { selectedSpecial, hiragana } = useKanaStore();
   const [hover, setHover] = useState(false);
 
   const isSelected = selectedSpecial.some((card) => card.romaji === romaji);
@@ -31,7 +32,7 @@ export default function SpecialCard({
     >
       <div className="flex-1">
         <p className="font-medium text-5xl flex justify-center items-center h-full">
-          {hover ? romaji : japanese}
+          {hover ? romaji : hiragana ? japanese : japanese_katakana}
         </p>
       </div>
 

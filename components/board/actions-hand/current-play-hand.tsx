@@ -14,10 +14,9 @@ import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 export default function CurrentPlayHand() {
   const { kana, drawHand, drawSpecial, kanaMissions } = useKanaStore();
 
-  const { turns, missionID, progress, setYen, yen } = useScoreStore();
+  const { turns, missionID, progress } = useScoreStore();
 
-  const { info, updateXp, updateLevel, setXp, updateGameResult } =
-    usePlayerStore();
+  const { info, updateLevel, setXp, updateGameResult } = usePlayerStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
 
@@ -25,32 +24,6 @@ export default function CurrentPlayHand() {
     drawHand();
     drawSpecial();
   }, [kana]);
-
-  // useEffect(() => {
-  //   if (!mission) return;
-
-  //   const hasWon = progress >= mission.target;
-  //   const isGameOver = turns === 0;
-
-  //   if (hasWon && !isGameOver) {
-  //     const remainingYen = turns * 100;
-  //     const winBonus = 500;
-  //     const totalYen = yen + winBonus + remainingYen;
-  //     const xpGain = 20;
-
-  //     Promise.all([
-  //       updatePlayerInfoServer({
-  //         id: info.id,
-  //         xp: info.xp + xpGain,
-  //         wins: info.wins + 1,
-  //         matches: info.matches + 1,
-  //       }),
-  //       updateXp(xpGain),
-  //       setYen(totalYen),
-  //       updateGameResult(true),
-  //     ]);
-  //   }
-  // }, [progress, turns]);
 
   useEffect(() => {
     if (info.xp >= 100) {
