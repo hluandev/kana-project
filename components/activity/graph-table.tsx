@@ -30,7 +30,7 @@ export const GraphTable = () => {
     <div className="bg-white p-4  overflow-hidden h-full rounded-2xl">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          margin={{ left: 60, right: 60, bottom: 10, top: 10 }}
+          margin={{ left: 60, right: 60, bottom: 10, top: 40 }}
           data={activity}
         >
           <CartesianGrid vertical={false} stroke="#e5e5e5" />
