@@ -16,7 +16,7 @@ export const GameInfo = () => {
       <div className="space-y-4">
         <CurrentInfo />
         <PlayerLevel />
-        {/* <Support /> */}
+        <Support />
       </div>
     </div>
   );

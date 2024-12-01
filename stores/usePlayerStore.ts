@@ -30,6 +30,7 @@ export const usePlayerStore = create<playerStore>((set) => ({
     losses: 0,
     matches: 0,
     highest_score: 0,
+    stripe_customer_id: "",
   },
   setInfo: (info: PlayerInfo) => set({ info }),
   setXp: (xp: number) => set((state) => ({ info: { ...state.info, xp } })),
