@@ -16,7 +16,7 @@ export const SpecialHands = () => {
     <div
       className={`${
         turns === 0 && mission?.target > progress && "hidden"
-      } h-64 ${
+      } h-72 ${
         currentSpecial.length === 0 ? "aspect-square" : "w-fit"
       } relative p-4 z-10 grid grid-cols-5 gap-2 rounded-2xl bg-white/50`}
     >
@@ -26,7 +26,7 @@ export const SpecialHands = () => {
         </p>
       )}
 
-      {currentSpecial.map((card) => {
+      {currentSpecial.map((card, index: number) => {
         const isSelected = selectedSpecial.some(
           (selected) => selected.romaji === card.romaji
         );
@@ -34,10 +34,14 @@ export const SpecialHands = () => {
         return (
           <div
             key={card.romaji}
-            className={`flex flex-col p-2 overflow-hidden justify-between rounded-xl  w-40 h-full   ${
+            className={`flex flex-col p-2 relative overflow-hidden justify-between rounded-xl  w-44 h-full   ${
               isSelected ? "border-yellow-500 bg-[#efcb68]" : " bg-white"
             }`}
           >
+            <div className="absolute top-2 left-2 animate-pulse bg-black text-white aspect-square w-8 flex justify-center items-center rounded-full  z-50  ">
+              {index + 5}
+            </div>
+
             <p className="text-5xl font-medium flex justify-center items-center h-full relative group">
               {isHovered
                 ? card.romaji
@@ -47,7 +51,7 @@ export const SpecialHands = () => {
             </p>
 
             <p
-              className={`text-center rounded-xl relative px-4  h-52  flex justify-center items-center  ${
+              className={`text-center rounded-xl relative px-4  h-60  flex justify-center items-center  ${
                 isSelected ? "bg-black/80 text-white" : "bg-[#f2f3f7]"
               } backdrop-blur-lg`}
             >

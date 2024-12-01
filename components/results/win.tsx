@@ -84,6 +84,25 @@ export const Win = () => {
       selectedSpecial.length > 0 &&
       currentSpecial.some((card) => card.romaji === selectedSpecial[0].romaji)
     ) {
+      // Check if input is a number 5-9 for reordering
+      const input = parseInt(e.target.value);
+      if (!isNaN(input) && input >= 5 && input <= 9) {
+        const targetIndex = input - 5; // Convert 5-9 to 0-4
+        if (targetIndex < currentSpecial.length) {
+          const selectedCardIndex = currentSpecial.findIndex(
+            (card) => card.romaji === selectedSpecial[0].romaji
+          );
+
+          if (selectedCardIndex !== -1) {
+            handleReorderSpecial(selectedCardIndex, targetIndex);
+            setSelectedSpecial([]);
+            setValue("");
+            return;
+          }
+        }
+      }
+
+      // Existing card selection logic
       const matchingSpecial = currentSpecial.find(
         (card) => card.romaji.toLowerCase() === e.target.value
       );
@@ -146,6 +165,24 @@ export const Win = () => {
       playSound("/audio/select_card.wav");
       setValue("");
     }
+  };
+
+  const handleReorderSpecial = (fromIndex: number, toIndex: number) => {
+    if (
+      fromIndex < 0 ||
+      fromIndex >= currentSpecial.length ||
+      toIndex < 0 ||
+      toIndex >= currentSpecial.length
+    ) {
+      return;
+    }
+
+    const newSpecialCards = [...currentSpecial];
+    const [movedItem] = newSpecialCards.splice(fromIndex, 1);
+    newSpecialCards.splice(toIndex, 0, movedItem);
+
+    setCurrentSpecial(newSpecialCards);
+    playSound("/audio/select_card.wav");
   };
 
   const handleSubmit = () => {
