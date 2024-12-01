@@ -34,7 +34,7 @@ export default async function MenuLayout({
         initialActivity={initialActivity ?? []}
       />
 
-      <Support />
+      {/* <Support /> */}
 
       <div className="p-4">
         <LeftSide />

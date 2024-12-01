@@ -1,3 +1,4 @@
+import { Support } from "../support";
 import { CurrentInfo } from "./components/current-info";
 import PlayerLevel from "./components/player-level";
 import { Score } from "./components/score";
@@ -16,6 +17,8 @@ export const GameInfo = () => {
         <CurrentInfo />
         <PlayerLevel />
       </div>
+
+      <Support />
     </div>
   );
 };

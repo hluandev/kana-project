@@ -7,8 +7,10 @@ export const Menu = () => {
     <div className="flex flex-col justify-between h-full">
       <TopInfo />
 
-      <Support />
-      <PlayerLevel />
+      <div className="space-y-4">
+        <Support />
+        <PlayerLevel />
+      </div>
     </div>
   );
 };
