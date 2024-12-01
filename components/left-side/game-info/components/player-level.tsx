@@ -1,3 +1,4 @@
+import { signOut } from "@/actions/server/sign-out";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import ManageSubscription from "@/components/subscriptions/manage-subscription";
 import { usePlayerStore } from "@/stores/usePlayerStore";
@@ -48,7 +49,10 @@ export default function PlayerLevel() {
             className="absolute -top-32 space-y-2 bg-white w-full p-2 rounded-2xl left-0 "
           >
             <ManageSubscription />
-            <button className="bg-red-600 w-full text-white p-3 rounded-lg">
+            <button
+              onClick={() => signOut()}
+              className="bg-red-600 w-full text-white p-3 rounded-lg"
+            >
               Sign Out
             </button>
           </motion.div>
@@ -61,7 +65,7 @@ export default function PlayerLevel() {
         </div>
 
         <div className="z-10">
-          <p className="text-xl font-medium">Ruan</p>
+          <p className="text-xl font-medium">{info.first_name}</p>
           <p className="text-sm">{info.xp}/100</p>
         </div>
 

@@ -20,7 +20,6 @@ export const DataInit = ({
   initialSpecial,
   initialPlayerInfo,
   initialLeaderboard,
-  isSubscribed,
 }: DataInitProps) => {
   const { setKana, setKanaMissions, setKanaSpecial } = useKanaStore();
   const { setInfo } = usePlayerStore();

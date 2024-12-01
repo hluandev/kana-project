@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 interface PlayerInfo {
   id: string;
-  name: string;
+  first_name: string;
   level: number;
   xp: number;
   wins: number;
@@ -25,7 +25,7 @@ interface playerStore {
 export const usePlayerStore = create<playerStore>((set) => ({
   info: {
     id: "",
-    name: "",
+    first_name: "",
     level: 0,
     xp: 0,
     wins: 0,
