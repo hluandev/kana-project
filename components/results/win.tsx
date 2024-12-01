@@ -372,7 +372,7 @@ export const Win = () => {
   return (
     <div className="w-[56rem] relative flex flex-col items-center z-10">
       <motion.div
-        className="text-yellow-600 font-medium text-6xl"
+        className="text-[#cb980b] font-medium text-7xl"
         initial={{ opacity: 0, scale: 2 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 2 }}
@@ -380,7 +380,7 @@ export const Win = () => {
         You Defeated
       </motion.div>
 
-      <p className="text-xl mt-4 font-medium">
+      <p className="text-xl mt-4 font-medium text-black/90">
         Buy or sell special cards to enchance the next round
       </p>
       <div className="h-80 relative grid mt-10 grid-cols-4 gap-4 p-4 bg-white/50 rounded-2xl">
@@ -399,24 +399,38 @@ export const Win = () => {
           />
         ))}
 
-        <div className="absolute -right-16 top-0 space-y-2">
+        <div className="absolute -right-16 top-0 space-y-3">
           {/* Reroll */}
-          <div
+          {/* <div
             onClick={handleRefreshCards}
             className="bg-white p-2 cursor-pointer group text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center"
           >
             <RefreshCwIcon className="group-hover:animate-spin" />
-          </div>
+          </div> */}
+
+          <ActionButton
+            onClick={handleRefreshCards}
+            icon={<RefreshCwIcon />}
+            keyboardShortcut="3"
+            className="bg-[#ff915a]  hover:bg-[#ff915a] hover:bg-opacity-90"
+          />
 
           {/* Freeze */}
-          <div
+          <ActionButton
             onClick={handleFreezeCard}
-            className="bg-white p-2 cursor-pointer group text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center"
+            icon={<SnowflakeIcon />}
+            keyboardShortcut="0"
+            className="bg-blue-300  hover:bg-blue-300/80"
+          />
+
+          {/* <div
+            onClick={handleFreezeCard}
+            className="bg-white hover:bg-blue-200 p-2 cursor-pointer group text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center"
           >
             <SnowflakeIcon className="" />
-          </div>
+          </div> */}
 
-          <div className=" bg-white p-2 text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center">
+          <div className=" bg-white p-2 text-xl font-medium rounded-full aspect-square w-12 flex items-center justify-center">
             {currentSpecialDeck.length}
           </div>
         </div>
