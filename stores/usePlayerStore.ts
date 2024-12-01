@@ -18,6 +18,8 @@ interface playerStore {
   updateLevel: (level: number) => void;
   setXp: (xp: number) => void;
   updateGameResult: (won: boolean) => void;
+  isSubscribed: boolean;
+  setIsSubscribed: (isSubscribed: boolean) => void;
 }
 
 export const usePlayerStore = create<playerStore>((set) => ({
@@ -32,6 +34,8 @@ export const usePlayerStore = create<playerStore>((set) => ({
     highest_score: 0,
     stripe_customer_id: "",
   },
+  isSubscribed: false,
+  setIsSubscribed: (isSubscribed: boolean) => set({ isSubscribed }),
   setInfo: (info: PlayerInfo) => set({ info }),
   setXp: (xp: number) => set((state) => ({ info: { ...state.info, xp } })),
   updateXp: (xp: number) =>

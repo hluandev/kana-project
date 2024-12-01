@@ -1,3 +1,4 @@
+import { usePlayerStore } from "@/stores/usePlayerStore";
 import { Support } from "../support";
 import { CurrentInfo } from "./components/current-info";
 import PlayerLevel from "./components/player-level";
@@ -6,6 +7,8 @@ import { ScoreDamage } from "./components/score-damage";
 import { SwitchKana } from "./components/switch-kana";
 
 export const GameInfo = () => {
+  const { isSubscribed } = usePlayerStore();
+
   return (
     <div className="flex flex-col  h-full justify-between">
       <div className="space-y-4">
@@ -16,7 +19,7 @@ export const GameInfo = () => {
       <div className="space-y-4">
         <CurrentInfo />
         <PlayerLevel />
-        <Support />
+        {isSubscribed && <Support />}
       </div>
     </div>
   );

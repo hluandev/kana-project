@@ -8,6 +8,7 @@ import {
   JapaneseYenIcon,
   RefreshCcwIcon,
   RefreshCwIcon,
+  ShoppingCartIcon,
 } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
 import { motion } from "framer-motion";
@@ -188,21 +189,7 @@ export const Win = () => {
       setCurrentSpecialDeck(newSpecialDeck);
       setCurrentSpecial(newSpecialCards);
       setSelectedSpecial([]);
-
-      // Reset game state
-      drawHand();
-      setMissionID(missionID + 1);
-      setTurns(4);
-      setDiscard(4);
-      setSelectedCard([]);
-      playSound("/audio/next_turn.wav");
-
-      // Reset score-related states with a slight delay
-      setTimeout(() => {
-        setMultiplier(0);
-        setScore(0);
-        setProgress(0);
-      }, 100);
+      setValue("");
     } else if (yen >= totalCost) {
       // Original logic for purchasing new cards
       const newSpecialDeck = currentSpecialDeck.filter((card) => {
@@ -220,27 +207,38 @@ export const Win = () => {
         new Set([...currentSpecial, ...selectedSpecial])
       );
 
+      // Remove purchased cards from randomSpecialCards
+      const newRandomSpecialCards = randomSpecialCards.filter(
+        (card) =>
+          !selectedSpecial.some((selected) => selected.romaji === card.romaji)
+      );
+
       setCurrentSpecialDeck(newSpecialDeck);
       setCurrentSpecial(newSpecialCards);
+      setRandomSpecialCards(newRandomSpecialCards);
       setYen(yen - totalCost);
       setSelectedSpecial([]);
-
-      drawHand();
-      setMissionID(missionID + 1);
-      setTurns(4);
-      setDiscard(4);
-      setSelectedCard([]);
-      playSound("/audio/next_turn.wav");
-
-      setTimeout(() => {
-        setMultiplier(0);
-        setScore(0);
-        setProgress(0);
-      }, 100);
+      setValue("");
+      playSound("/audio/buy.wav");
     } else {
       setWarning("You don't have enough yen");
       playSound("/audio/error.wav");
     }
+  };
+
+  const handleNextTurn = () => {
+    drawHand();
+    setMissionID(missionID + 1);
+    setTurns(4);
+    setDiscard(4);
+    setSelectedCard([]);
+    playSound("/audio/next_turn.wav");
+
+    setTimeout(() => {
+      setMultiplier(0);
+      setScore(0);
+      setProgress(0);
+    }, 100);
   };
 
   const handleSellSpecial = () => {
@@ -282,6 +280,7 @@ export const Win = () => {
       setYen(yen - 200);
       setReroll(reroll + 1);
       setSelectedSpecial([]);
+      playSound("/audio/reroll.wav");
     } else {
       setWarning("You need 200 yen to refresh cards");
       playSound("/audio/error.wav");
@@ -346,7 +345,7 @@ export const Win = () => {
           value={value}
           onChange={handleInputChange}
           placeholder="Type here"
-          className="flex   text-center outline-none rounded-md"
+          className="flex text-center outline-none rounded-md"
         />
         {/* <input
           type="submit"
@@ -355,8 +354,14 @@ export const Win = () => {
         /> */}
 
         <ActionButton
-          onClick={handleSubmit}
-          icon={<ArrowRightIcon />}
+          onClick={selectedSpecial.length > 0 ? handleSubmit : handleNextTurn}
+          icon={
+            selectedSpecial.length > 0 ? (
+              <ShoppingCartIcon />
+            ) : (
+              <ArrowRightIcon />
+            )
+          }
           keyboardShortcut="2"
           className="bg-[#EFCB68]  hover:bg-yellow-600/40"
         />
