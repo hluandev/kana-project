@@ -32,10 +32,17 @@ interface kanaStore {
   setFrozenSpecialCards: (frozenSpecialCards: any[]) => void;
   addFrozenSpecialCard: (card: any) => void;
   removeFrozenSpecialCard: (card: any) => void;
+  showRomaji: boolean;
+  setShowRomaji: (showRomaji: boolean) => void;
 }
 
 export const useKanaStore = create<kanaStore>((set, get) => ({
   kana: [],
+  showRomaji: true,
+  setShowRomaji: (showRomaji) => {
+    localStorage.setItem("showRomaji", showRomaji.toString());
+    set({ showRomaji });
+  },
   hiragana: true,
   setHiragana: (hiragana) => set({ hiragana }),
   currentDeck: [],

@@ -3,13 +3,21 @@
 import { useKanaStore } from "@/stores/useKanaStore";
 import { Card } from "./card";
 import { AnimatePresence, motion } from "framer-motion";
-import { CombineIcon, XIcon } from "lucide-react";
-import { useState } from "react";
+import { CombineIcon, LanguagesIcon, XIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import { ComboBox } from "../combo/combo-box";
 
 export const CurrentHand = () => {
-  const { currentHand, currentDeck } = useKanaStore();
+  const { currentHand, currentDeck, setShowRomaji, showRomaji } =
+    useKanaStore();
   const [isCombineOpen, setIsCombineOpen] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("showRomaji");
+    if (stored !== null) {
+      setShowRomaji(stored === "true");
+    }
+  }, [setShowRomaji]);
 
   return (
     <div className="w-full z-20">
@@ -116,12 +124,23 @@ export const CurrentHand = () => {
       <div className="fixed space-y-4 right-4 bottom-4">
         <div
           onClick={() => setIsCombineOpen(true)}
-          className="bg-white rounded-full text-2xl font-medium  h-16 w-16 flex items-center justify-center"
+          className="bg-white rounded-full  h-14 w-14 flex items-center justify-center"
         >
           <CombineIcon />
         </div>
 
-        <div className="bg-white rounded-full text-2xl font-medium  h-16 w-16 flex items-center justify-center">
+        <div
+          onClick={() => {
+            setShowRomaji(!showRomaji);
+          }}
+          className={`${
+            showRomaji ? "bg-white" : "bg-black text-white"
+          } rounded-full  duration-300 h-14 w-14 flex items-center justify-center`}
+        >
+          <LanguagesIcon />
+        </div>
+
+        <div className="bg-white rounded-full text-xl font-semibold  h-14 w-14 flex items-center justify-center">
           {currentDeck.length}
         </div>
       </div>

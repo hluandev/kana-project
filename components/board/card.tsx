@@ -7,7 +7,7 @@ interface CardProps {
 }
 
 export const Card = ({ card }: CardProps) => {
-  const { selectedCard, hiragana } = useKanaStore();
+  const { selectedCard, hiragana, showRomaji } = useKanaStore();
   const [onHover, setOnHover] = useState(false);
 
   const isSelected = selectedCard.some(
@@ -30,7 +30,7 @@ export const Card = ({ card }: CardProps) => {
         isSelected ? "bg-[#1d1d1f] text-white -mt-10" : "bg-white"
       }  rounded-[10px]  `}
     >
-      {onHover && (
+      {!showRomaji && onHover && (
         <p
           className={`absolute -top-12 left-1/2 -translate-x-1/2 ${
             isSelected ? "bg-[#1d1d1f] text-white" : "bg-white"
@@ -52,16 +52,18 @@ export const Card = ({ card }: CardProps) => {
             card?.suit === "え" && "bg-[#fc96df] text-black"
           }    h-8 w-8 rounded-lg flex items-center justify-center`}
         >
-          {card?.suit}
+          {hiragana ? card?.suit : card?.suit_katakana}
         </p>
       </div>
       <p className="absolute top-1/2 font-medium text-5xl -translate-x-1/2 left-1/2 -translate-y-1/2">
         {hiragana ? card?.japanese : card?.japanese_katakana}
       </p>
 
-      <p className="absolute bottom-3 text-center left-1/2 -translate-x-1/2">
-        {card?.romaji}
-      </p>
+      {showRomaji && (
+        <p className="absolute bottom-3 text-center left-1/2 -translate-x-1/2">
+          {card?.romaji}
+        </p>
+      )}
     </motion.div>
   );
 };

@@ -1,4 +1,5 @@
 import { useKanaStore } from "@/stores/useKanaStore";
+import { useScoreStore } from "@/stores/useScoreStore";
 import { useState } from "react";
 
 interface SpecialCardProps {
@@ -21,6 +22,7 @@ export default function SpecialCard({
 }: SpecialCardProps) {
   const { selectedSpecial, hiragana } = useKanaStore();
   const [hover, setHover] = useState(false);
+  const { reroll } = useScoreStore();
 
   const isSelected = selectedSpecial.some((card) => card.romaji === romaji);
 
@@ -73,6 +75,12 @@ export default function SpecialCard({
 
           {card.condition === "multiples" && (
             <span className="text-purple-600">+{card.reward} multiples </span>
+          )}
+
+          {card.condition === "reroll" && (
+            <span className="text-purple-600">
+              +{card.reward} multiples ({reroll}){` `}
+            </span>
           )}
 
           {card.desc}
