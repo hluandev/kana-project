@@ -15,11 +15,27 @@ export default function Activity() {
         </div>
         <div className="grid grid-cols-4 gap-4">
           <ActivityBox title="Matches" value={info.wins + info.losses} />
-          <ActivityBox title="Wins" value={info.wins} />
-          <ActivityBox title="Losses" value={info.losses} />
-          <ActivityBox title="Highest Hands" value={info.highest_score} />
+          <ActivityBox
+            textColor="text-blue-300"
+            title="Wins"
+            value={info.wins}
+          />
+          <ActivityBox
+            textColor="text-[#ff915a]"
+            title="Losses"
+            value={info.losses}
+          />
+          <ActivityBox
+            textColor="text-[#efcb68]"
+            title="Highest Hands"
+            value={info.highest_score}
+          />
         </div>
-        <GraphTable />
+
+        <div className="flex h-full gap-4 w-full">
+          <GraphTable />
+          <GraphTable />
+        </div>
       </div>
     </div>
   );

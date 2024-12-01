@@ -4,10 +4,8 @@ import {
   LineChart,
   Line,
   XAxis,
-  YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   LabelList,
 } from "recharts";
@@ -27,7 +25,7 @@ export const GraphTable = () => {
   };
 
   return (
-    <div className="bg-white p-4  overflow-hidden h-full rounded-2xl">
+    <div className="bg-white p-4 w-full  overflow-hidden h-full rounded-2xl">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           margin={{ left: 60, right: 60, bottom: 10, top: 40 }}
@@ -50,7 +48,7 @@ export const GraphTable = () => {
             style={{ fontSize: "20px", fontWeight: "600" }}
           /> */}
           <Tooltip labelFormatter={formatDate} formatter={formatTooltipValue} />
-          <Line type="linear" dataKey="wins" stroke="#93c5fd" strokeWidth={4}>
+          <Line type="monotone" dataKey="wins" stroke="#93c5fd" strokeWidth={4}>
             <LabelList
               dataKey="wins"
               position="top"
@@ -60,7 +58,12 @@ export const GraphTable = () => {
               fontWeight={600}
             />
           </Line>
-          <Line type="linear" dataKey="losses" stroke="#ff915a" strokeWidth={4}>
+          <Line
+            type="monotone"
+            dataKey="losses"
+            stroke="#ff915a"
+            strokeWidth={4}
+          >
             <LabelList
               dataKey="losses"
               position="top"

@@ -1,13 +1,14 @@
 interface ActivityBoxProps {
   title: string;
   value: number;
+  textColor?: string;
 }
 
-export const ActivityBox = ({ title, value }: ActivityBoxProps) => {
+export const ActivityBox = ({ title, value, textColor }: ActivityBoxProps) => {
   return (
     <div className="bg-white p-6 rounded-2xl space-y-2">
       <p className="text-lg font-medium">{title}</p>
-      <p className="text-4xl font-semibold">{value}</p>
+      <p className={`text-4xl font-semibold ${textColor}`}>{value}</p>
     </div>
   );
 };
