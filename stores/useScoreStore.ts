@@ -23,6 +23,8 @@ interface scoreStore {
   setWarning: (warning: string) => void;
   reroll: number;
   setReroll: (reroll: number) => void;
+  leaderboard: any[];
+  setLeaderboard: (leaderboard: any[]) => void;
 }
 
 export const useScoreStore = create<scoreStore>((set) => ({
@@ -36,6 +38,8 @@ export const useScoreStore = create<scoreStore>((set) => ({
   missionID: 1,
   progress: 0,
   warning: "",
+  leaderboard: [],
+  setLeaderboard: (leaderboard) => set({ leaderboard }),
   setReroll: (reroll) => set({ reroll }),
   setWarning: (warning) => set({ warning }),
   setYen: (yen) => set({ yen }),

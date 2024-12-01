@@ -29,3 +29,12 @@ export async function fetchPlayerInfo() {
     .single();
   return playerInfo;
 }
+
+export async function fetchLeaderboard() {
+  const supabase = await createClient();
+  let { data: leaderboard } = await supabase
+    .from("leaderboard")
+    .select("first_name, highest_score, level")
+    .order("highest_score", { ascending: false });
+  return leaderboard;
+}
