@@ -13,10 +13,9 @@ export async function POST(request: Request) {
     } = await supabase.auth.getUser();
 
     if (!user) {
-      return new Response("Unauthorized", { status: 401 });
+      return Response.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    // Get user's stripe_customer_id from your database
     const { data: profile } = await supabase
       .from("profiles")
       .select("stripe_customer_id")
@@ -24,27 +23,30 @@ export async function POST(request: Request) {
       .single();
 
     if (!profile?.stripe_customer_id) {
-      return new Response("No active subscription found", { status: 404 });
+      return Response.json(
+        { message: "No active subscription found" },
+        { status: 404 }
+      );
     }
 
-    // Get all subscriptions for the customer
-    const subscriptions = await stripe.subscriptions.list({
+    const returnUrl = new URL(
+      "/",
+      process.env.NEXT_PUBLIC_SITE_URL?.startsWith("http")
+        ? process.env.NEXT_PUBLIC_SITE_URL
+        : `https://${process.env.NEXT_PUBLIC_SITE_URL}`
+    ).toString();
+
+    const session = await stripe.billingPortal.sessions.create({
       customer: profile.stripe_customer_id,
-      status: "active",
+      return_url: returnUrl,
     });
 
-    // Cancel the subscription
-    if (subscriptions.data.length > 0) {
-      await stripe.subscriptions.cancel(subscriptions.data[0].id);
-
-      return new Response("Subscription cancelled successfully", {
-        status: 200,
-      });
-    }
-
-    return new Response("No active subscription found", { status: 404 });
+    return Response.json({ url: session.url });
   } catch (error) {
     console.error("Error:", error);
-    return new Response("Error cancelling subscription", { status: 500 });
+    return Response.json(
+      { message: "Error creating billing portal session" },
+      { status: 500 }
+    );
   }
 }
