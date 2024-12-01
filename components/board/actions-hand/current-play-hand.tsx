@@ -16,7 +16,7 @@ export default function CurrentPlayHand() {
 
   const { turns, missionID, progress } = useScoreStore();
 
-  const { info, updateLevel, setXp, updateGameResult } = usePlayerStore();
+  const { info, updateGameResult } = usePlayerStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
 
@@ -24,32 +24,6 @@ export default function CurrentPlayHand() {
     drawHand();
     drawSpecial();
   }, [kana]);
-
-  useEffect(() => {
-    const handleLevelUp = async () => {
-      if (info.xp >= 100) {
-        if (info.level === 10) {
-          const response = await fetch("/api/stripe/status");
-          const { isSubscribed } = await response.json();
-          if (!isSubscribed) {
-            setXp(100);
-            return;
-          }
-        }
-
-        const remainingXp = info.xp - 100;
-        updateLevel(info.level + 1);
-        setXp(remainingXp);
-        updatePlayerInfoServer({
-          id: info.id,
-          level: info.level + 1,
-          xp: remainingXp,
-        });
-      }
-    };
-
-    handleLevelUp();
-  }, [info.xp]);
 
   useEffect(() => {
     if (turns > 0) {

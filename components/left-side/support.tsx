@@ -1,10 +1,30 @@
+"use client";
+
+import { useEffect } from "react";
+import { useState } from "react";
 import { Box } from "../box";
 import { SubscriptionButton } from "../subscription-button";
 import { SupportBox } from "./support-box";
 
 export const Support = () => {
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  useEffect(() => {
+    const checkSubscription = async () => {
+      const response = await fetch("/api/stripe/status");
+      const { isSubscribed } = await response.json();
+      setIsSubscribed(isSubscribed);
+    };
+
+    checkSubscription();
+  }, []);
+
   return (
-    <Box className="text-black p-4 fixed top-0 right-4 w-72">
+    <Box
+      className={`${
+        isSubscribed && "hidden"
+      } text-black p-4 fixed top-4 right-4 w-72 z-10`}
+    >
       <div className="space-y-4">
         <SubscriptionButton />
 

@@ -8,6 +8,7 @@ import {
   fetchPlayerInfo,
 } from "@/actions/fetchKana";
 import { DataInit } from "@/components/data-init";
+import { Support } from "@/components/left-side/support";
 
 export default async function MenuLayout({
   children,
@@ -27,6 +28,8 @@ export default async function MenuLayout({
         initialMissions={initialMissions ?? []}
         initialPlayerInfo={initialPlayerInfo ?? []}
       />
+
+      <Support />
 
       <div className="p-4">
         <LeftSide />

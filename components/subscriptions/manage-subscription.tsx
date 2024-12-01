@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function CancelSubscription() {
+export default function ManageSubscription() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -40,7 +40,7 @@ export default function CancelSubscription() {
       <button
         onClick={handleCancel}
         disabled={loading}
-        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full"
+        className="hover:bg-gray-100 w-full p-3 rounded-lg"
       >
         {loading ? "Processing..." : "Manage Subscription"}
       </button>
