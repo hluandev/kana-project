@@ -308,7 +308,6 @@ export const Win = () => {
 
     // Combine frozen cards with new random cards
     setRandomSpecialCards([...frozenSpecialCards, ...newRandomCards]);
-    setFrozenSpecialCards([]); // Clear frozen cards for next turn
     drawHand();
     setMissionID(missionID + 1);
     setTurns(4);
