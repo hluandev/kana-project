@@ -390,6 +390,14 @@ export const PlaySelected = () => {
         // playSound("/audio/win.wav");
       }
 
+      updatePlayerInfoServer({
+        id: info.id,
+        highest_score: score * multiplier,
+      });
+      updateActivityServer({
+        highest_score: score * multiplier,
+      });
+
       // Update game state
       setProgress(newProgress);
       setCurrentHand(sortedHand);

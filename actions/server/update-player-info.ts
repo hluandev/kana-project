@@ -25,6 +25,12 @@ export async function updatePlayerInfoServer({
 }: UpdatePlayerInfoProps) {
   const supabase = await createClient();
 
+  let { data: profiles } = await supabase
+    .from("profiles")
+    .select("*")
+    .limit(1)
+    .single();
+
   const { error } = await supabase
     .from("profiles")
     .update({
@@ -33,7 +39,7 @@ export async function updatePlayerInfoServer({
       level: level,
       matches: matches,
       losses: losses,
-      highest_score: highest_score,
+      highest_score: Math.max(profiles.highest_score ?? 0, highest_score ?? 0),
     })
     .eq("id", id);
 

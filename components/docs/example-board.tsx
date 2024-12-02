@@ -75,7 +75,7 @@ export const ExampleBoard = ({ shop }: Props) => {
               <div className="w-6 aspect-square bg-[#f2f3f7] rounded-full flex justify-center items-center">
                 1
               </div>
-              <div className="w-6 aspect-square bg-green-600 text-white rounded-full flex justify-center items-center">
+              <div className="w-6 aspect-square bg-[#01de5b] text-white rounded-full flex justify-center items-center">
                 2
               </div>
             </div>

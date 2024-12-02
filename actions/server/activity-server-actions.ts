@@ -43,10 +43,14 @@ export async function insertNewDayActivity() {
 }
 
 interface UpdateActivityProps {
-  result: boolean;
+  result?: boolean;
+  highest_score?: number;
 }
 
-export async function updateActivityServer({ result }: UpdateActivityProps) {
+export async function updateActivityServer({
+  result,
+  highest_score,
+}: UpdateActivityProps) {
   const supabase = await createClient();
   const {
     data: { user },
@@ -69,6 +73,7 @@ export async function updateActivityServer({ result }: UpdateActivityProps) {
     .update({
       wins: activity.wins + (result ? 1 : 0),
       losses: activity?.losses + (result ? 0 : 1),
+      highest_hand: Math.max(activity.highest_hand ?? 0, highest_score ?? 0),
     })
     .eq("id", user.id)
     .gte("created_at", today.toISOString())

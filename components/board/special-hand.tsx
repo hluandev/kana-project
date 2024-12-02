@@ -5,7 +5,7 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import { useState } from "react";
 import { motion } from "framer-motion";
 export const SpecialHands = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered] = useState(false);
   const { currentSpecial, selectedSpecial, kanaMissions, hiragana } =
     useKanaStore();
   const { turns, missionID, progress, reroll } = useScoreStore();

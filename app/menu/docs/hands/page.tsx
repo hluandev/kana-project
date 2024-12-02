@@ -27,7 +27,8 @@ export default function Hands() {
       </div>
 
       <p>
-        The number on up top corner is the rank of the card. Rank from 1 to 13
+        The number in the top corner indicates the card's rank, which ranges
+        from 1 to 13.
       </p>
       <div className="space-y-2">
         <p>
