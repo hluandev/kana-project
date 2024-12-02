@@ -2,7 +2,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import { RotateCcwIcon } from "lucide-react";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 export const Lose = () => {
