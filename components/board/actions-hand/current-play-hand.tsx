@@ -10,6 +10,7 @@ import { Lose } from "@/components/results/lose";
 import { playSound } from "@/actions/client/play-sound";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
+import { updateActivityServer } from "@/actions/server/activity-server-actions";
 
 export default function CurrentPlayHand() {
   const { kana, drawHand, drawSpecial, kanaMissions } = useKanaStore();
@@ -40,6 +41,7 @@ export default function CurrentPlayHand() {
         losses: info.losses + 1,
         matches: info.matches + 1,
       });
+      updateActivityServer({ result: false });
       updateGameResult(false);
     }
   }, [turns === 0]);

@@ -39,18 +39,3 @@ export async function updatePlayerInfoServer({
 
   revalidatePath("/menu/play/kana", "layout");
 }
-
-// export async function updateLevelServer({ id, level }: UpdateLevelProps) {
-//   const supabase = await createClient();
-
-//   const { error } = await supabase
-//     .from("profiles")
-//     .update({ level: level })
-//     .eq("id", id);
-
-//   if (error) {
-//     console.log(error);
-//   }
-
-//   revalidatePath("/", "page");
-// }
