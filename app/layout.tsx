@@ -21,7 +21,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Kamikani",
+  title: "Kamikana",
   description: "",
 };
 

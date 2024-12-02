@@ -6,6 +6,7 @@ import { ArrowUp } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import { usePlayerStore } from "@/stores/usePlayerStore";
+import { updateActivityServer } from "@/actions/server/activity-server-actions";
 
 export const PlaySelected = () => {
   const {
@@ -378,6 +379,7 @@ export const PlaySelected = () => {
             wins: info.wins + 1,
             matches: info.matches + 1,
           }),
+          updateActivityServer({ result: true }),
           // Update client state
           updateXp(xpGain),
           setYen(totalYen),

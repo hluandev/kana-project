@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CombineIcon, LanguagesIcon, XIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ComboBox } from "../combo/combo-box";
+import { Report } from "./report";
 
 export const CurrentHand = () => {
   const { currentHand, currentDeck, setShowRomaji, showRomaji } =
@@ -139,6 +140,8 @@ export const CurrentHand = () => {
         >
           <LanguagesIcon />
         </div>
+
+        <Report />
 
         <div className="bg-white rounded-full text-xl font-semibold  h-14 w-14 flex items-center justify-center">
           {currentDeck.length}

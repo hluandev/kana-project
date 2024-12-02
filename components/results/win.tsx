@@ -43,7 +43,6 @@ export const Win = () => {
     setSelectedSpecial,
     selectedSpecial,
     frozenSpecialCards,
-    setFrozenSpecialCards,
     addFrozenSpecialCard,
   } = useKanaStore();
 
