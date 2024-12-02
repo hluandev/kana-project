@@ -6,9 +6,13 @@ interface DocProps {
 
 export const Doc = ({ title, children, mxAuto = false }: DocProps) => {
   return (
-    <div className={`space-y-2 ${mxAuto && "mx-auto max-w-2xl"}`}>
-      <h2 className="text-lg pl-0.5">{title}</h2>
-      {children}
+    <div
+      className={`space-y-4 flex flex-col h-full ${
+        mxAuto && "mx-auto max-w-2xl"
+      }`}
+    >
+      <h2 className="pl-0.5 font-medium mx-auto max-w-2xl">{title}</h2>
+      <div className="space-y-4 flex-1 flex flex-col">{children}</div>
     </div>
   );
 };

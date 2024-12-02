@@ -5,84 +5,74 @@ import { ExampleBoard } from "@/components/docs/example-board";
 export default function Rules() {
   return (
     <Doc title="2. Rules">
-      <div className="">
-        <p>
-          The objective of the game is to have the best hand in order to clear
-          the round. Let&apos;s look at the example of this board.
-        </p>
-      </div>
-
       <ExampleBoard />
 
       <div className="max-w-2xl mx-auto space-y-10 pt-6">
         <DocDesc title="1. Hiragana and Katakana">
           <p>
             The cards are divided into two categories: Hiragana and Katakana.
-            Hiragana are cards with Japanese syllabaries, while Katakana are
-            cards with English letters.
+          </p>
+          <p>
+            - <span className="font-semibold">Hiragana</span> is used for native
+            Japanese words and grammar.
+          </p>
+          <p>
+            - <span className="font-semibold">Katakana</span> is used for
+            foreign words and names.
           </p>
           <p>Make sure you are comfortable with one set before switching.</p>
         </DocDesc>
-        <DocDesc title="2. Scores to beat">
+        <DocDesc title="2. Round score">
           <p>
-            Each round has a score to beat. The score to beat is the sum of the
-            numbers on the cards in the round.
-          </p>
-          <p>
-            For example, if the round is 300, you need to get a hand that sums
-            up to 300 or less to clear the round.
+            For each round, you&apos;ll have a target score to beat. Beat all 8
+            rounds to win the game!
           </p>
         </DocDesc>
-        <DocDesc title="3. Hands points">
+        <DocDesc title="3. Hand's score">
           <p>
-            Each hand has a point value and multiplier. The point value is the
-            sum of the numbers on the valid cards in the hand.
+            Your current hand's score will be shown here. Green represents
+            points, and purple indicates the multiplier.
           </p>
         </DocDesc>
         <DocDesc title="4. Information">
           <p>
-            Each round, you will be given 4 discards and 4 turns to beat round
+            - In each round, you&apos;ll get{" "}
+            <span className="font-semibold">4 discards</span> and{" "}
+            <span className="font-semibold">4 turns</span> to beat the target
+            score.
           </p>
           <p>
-            You will lose the game if you can&apos;t beat score by turn 4, and
-            you have to start over again.
+            - If you can&apos;t beat the score by turn 4, you&apos;ll lose the
+            game and have to start over.
           </p>
           <p>
-            There are 8 cards in total. each round, the score will be increased.
-            When you beat all 8 rounds, you win the game.
+            - There are 8 rounds in total, and the target score increases each
+            round. Beat all 8 rounds to win the game!
           </p>
           <p>
-            Money is given at the end of each round, use it to buy special cards
-            in shop.
+            - At the end of each round, you&apos;ll earn money. Use it to buy
+            special cards in the shop.
           </p>
         </DocDesc>
         <DocDesc title="5. Special cards">
           <p>
-            Special cards are cards that give you extra points or multipliers.
-          </p>
-          <p>
-            Select carefully as you can only have up to 5 special cards in your
-            hand.
+            Special cards provide extra points or multipliers. Choose wisely, as
+            you can only hold up to 5 special cards in your hand.
           </p>
         </DocDesc>
 
         <DocDesc title="6. Current cards">
-          <p>There are 56 cards in total.</p>
-
           <p>
-            Each round, you will be given 8 cards to choose from. You can select
-            up to 5 cards to discard or to play.
+            There are 56 cards in total. Each round, you'll be given 8 cards to
+            choose from. You can select up to 5 cards to either discard or play.
           </p>
         </DocDesc>
 
-        <DocDesc title="6. Romaji input">
+        <DocDesc title="7. Romaji input">
           <p>
             To select or deselect a card, simply type the romaji of the card.
-          </p>
-
-          <p>
-            After that, click on right button (2) to play or left button (1) to
-            discard.
+            Then, click the right button (2) to play the card or the left button
+            (1) to discard it.
           </p>
         </DocDesc>
       </div>

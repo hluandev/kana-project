@@ -4,20 +4,20 @@ export default function Docs() {
   return (
     <Doc mxAuto title="1. Introduction">
       <div>
-        <h1 className="text-4xl font-semibold">Welcome to Kamikani</h1>
-        <h2 className="text-xl font-medium">
-          Here you will find all the information you need to know about the
-          game.
-        </h2>
+        <h1 className="text-xl font-semibold">Welcome to Kamikana</h1>
       </div>
+
+      <h2 className="">
+        Here&apos;s everything you need to know about the game!
+      </h2>
       <p>
-        Kamikani is a combination of Balatro, Poker and Japanese, so if you
-        already known Balatro, you already known this game, but there are some
-        tweaks here and there to fit with Japanese.
+        Kamikani is a mix of Balatro, Poker, and Japanese. If you already know
+        how to play Balatro, you&apos;re halfway there. This game will feel
+        familiar, with a few tweaks to fit the Japanese theme.
       </p>
       <p>
-        If you are completely new to this game, don&apos;t worry, we will
-        explain everything to you. It is very simple to learn.
+        If you&apos;re completely new, don&apos;t worry! We&apos;ll explain
+        everything. It&apos;s very simple to learn.
       </p>
     </Doc>
   );
