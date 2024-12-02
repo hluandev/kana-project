@@ -25,7 +25,7 @@ export const ComboBox = ({
       </div>
 
       <div className="text-2xl font-semibold flex items-center gap-1">
-        <span className="text-green-500">{point}</span>{" "}
+        <span className="text-[#01de5b]">{point}</span>{" "}
         <XIcon className="w-4 h-4" />{" "}
         <span className="text-purple-600">{multiplier}</span>
       </div>

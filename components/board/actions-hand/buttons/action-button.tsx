@@ -1,11 +1,12 @@
 import { ArrowUp } from "lucide-react";
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 
 interface ActionButtonProps {
   icon: React.ReactNode;
   onClick?: () => void;
   className?: string;
   keyboardShortcut?: string;
+  descTooltip?: string;
   sound?: string;
 }
 
@@ -14,6 +15,7 @@ export const ActionButton = ({
   onClick,
   className,
   keyboardShortcut,
+  descTooltip,
   sound,
 }: ActionButtonProps) => {
   const playSound = useCallback(() => {
@@ -25,6 +27,8 @@ export const ActionButton = ({
         .catch((error) => console.log("Audio playback failed:", error));
     }
   }, [sound]);
+
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleClick = () => {
     playSound();
@@ -47,9 +51,18 @@ export const ActionButton = ({
 
   return (
     <div
-      className={`py-3 flex px-2 items-center justify-center gap-2 w-12 aspect-square text-center rounded-full font-semibold duration-200 cursor-pointer ${className}`}
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+      className={`py-3 flex px-2 relative items-center justify-center gap-2 w-12 aspect-square text-center rounded-full duration-200 cursor-pointer ${className}`}
       onClick={handleClick}
     >
+      {showTooltip && (
+        <div className="absolute flex flex-col p-2 text-left bottom-10 z-50 left-14  w-32 bg-white shadow-lg border rounded-lg">
+          <div className="">Shortcut: {keyboardShortcut}</div>
+          <div className="text-sm text-neutral-500">{descTooltip}</div>
+        </div>
+      )}
+
       {icon}
     </div>
   );

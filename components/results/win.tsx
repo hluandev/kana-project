@@ -114,7 +114,7 @@ export const Win = () => {
           if (selectedCardIndex !== -1) {
             handleReorderSpecial(selectedCardIndex, targetIndex);
             setSelectedSpecial([]);
-            setValue("");
+            setTimeout(() => setValue(""), 0);
             return;
           }
         }
@@ -137,7 +137,7 @@ export const Win = () => {
           addSelectedSpecial(matchingSpecial);
           playSound("/audio/select_card.wav");
         }
-        setValue("");
+        setTimeout(() => setValue(""), 0);
       }
       return;
     }
@@ -160,7 +160,7 @@ export const Win = () => {
           addSelectedSpecial(matchingCard);
           playSound("/audio/select_card.wav");
         }
-        setValue("");
+        setTimeout(() => setValue(""), 0);
       }
       return;
     }
@@ -177,11 +177,11 @@ export const Win = () => {
     if (matchingSpecial) {
       addSelectedSpecial(matchingSpecial);
       playSound("/audio/select_card.wav");
-      setValue("");
+      setTimeout(() => setValue(""), 0);
     } else if (matchingCard) {
       addSelectedSpecial(matchingCard);
       playSound("/audio/select_card.wav");
-      setValue("");
+      setTimeout(() => setValue(""), 0);
     }
   };
 
@@ -225,7 +225,7 @@ export const Win = () => {
       );
       setFrozenSpecialCards(newFrozenCards);
       setSelectedSpecial([]);
-      setValue("");
+      setTimeout(() => setValue(""), 0);
       playSound("/audio/deselect_card.wav");
       return;
     }
@@ -245,7 +245,7 @@ export const Win = () => {
     selectedSpecial.forEach((card) => addFrozenSpecialCard(card));
 
     setSelectedSpecial([]);
-    setValue("");
+    setTimeout(() => setValue(""), 0);
     playSound("/audio/freeze.wav");
   };
 
@@ -290,7 +290,7 @@ export const Win = () => {
       setCurrentSpecialDeck(newSpecialDeck);
       setCurrentSpecial(newSpecialCards);
       setSelectedSpecial([]);
-      setValue("");
+      setTimeout(() => setValue(""), 0);
     } else if (yen >= totalCost) {
       // Original logic for purchasing new cards
       const newSpecialDeck = currentSpecialDeck.filter((card) => {
@@ -319,7 +319,7 @@ export const Win = () => {
       setRandomSpecialCards(newRandomSpecialCards);
       setYen(yen - totalCost);
       setSelectedSpecial([]);
-      setValue("");
+      setTimeout(() => setValue(""), 0);
       playSound("/audio/buy.wav");
     } else {
       setWarning("You don't have enough yen");
@@ -384,7 +384,7 @@ export const Win = () => {
     );
 
     if (selectedSpecial.length === 0 || !selectedCardsInCurrent) {
-      setValue("");
+      setTimeout(() => setValue(""), 0);
       return;
     }
 
@@ -405,7 +405,7 @@ export const Win = () => {
     setCurrentSpecialDeck(newSpecialDeck);
     setSelectedSpecial([]);
     setYen(yen + yenToAdd);
-    setValue("");
+    setTimeout(() => setValue(""), 0);
   };
 
   const handleRefreshCards = () => {
@@ -417,6 +417,7 @@ export const Win = () => {
       setReroll(reroll + 1);
       setSelectedSpecial([]);
       playSound("/audio/reroll.wav");
+      setTimeout(() => setValue(""), 0);
     } else {
       setWarning("You need 200 yen to refresh cards");
       playSound("/audio/error.wav");
@@ -465,6 +466,7 @@ export const Win = () => {
           <ActionButton
             onClick={handleRefreshCards}
             icon={<RefreshCwIcon />}
+            descTooltip="Refresh cards to get new ones (¥200)"
             keyboardShortcut="3"
             className="bg-[#ff915a]  hover:bg-[#ff915a] hover:bg-opacity-90"
           />
@@ -472,8 +474,9 @@ export const Win = () => {
           {/* Freeze */}
           <ActionButton
             onClick={handleFreezeCard}
+            descTooltip="Freeze cards to keep them in your deck"
             icon={<SnowflakeIcon />}
-            keyboardShortcut="0"
+            keyboardShortcut="4"
             className="bg-blue-300  hover:bg-blue-300/80"
           />
 
@@ -499,6 +502,7 @@ export const Win = () => {
         <ActionButton
           onClick={handleSellSpecial}
           icon={<JapaneseYenIcon />}
+          descTooltip="Sell special cards"
           keyboardShortcut="1"
           className="bg-[#EFCB68]  hover:bg-yellow-600/40"
         />
@@ -518,6 +522,11 @@ export const Win = () => {
 
         <ActionButton
           onClick={selectedSpecial.length > 0 ? handleSubmit : handleNextTurn}
+          descTooltip={
+            selectedSpecial.length > 0
+              ? "Buy special cards"
+              : "Go to the next round"
+          }
           icon={
             selectedSpecial.length > 0 ? (
               <ShoppingCartIcon />

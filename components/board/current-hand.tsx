@@ -41,10 +41,11 @@ export const CurrentHand = () => {
               initial={{ y: 200 }}
               animate={{ y: 0 }}
               exit={{ y: 200 }}
-              className="bg-white rounded-2xl relative z-[9999] h-2/3 overflow-y-scroll p-4 space-y-4"
+              className="bg-white rounded-2xl relative z-[9999] h-2/3 overflow-y-scroll p-4 space-y-2"
             >
               <div className="flex items-center justify-between">
-                <p className="text-2xl font-semibold">Combo hands</p>
+                <div className="text-2xl font-semibold text-center">Hands</div>
+
                 <XIcon onClick={() => setIsCombineOpen(false)} />
               </div>
 

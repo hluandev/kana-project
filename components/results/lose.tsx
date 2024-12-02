@@ -18,10 +18,16 @@ export const Lose = () => {
     setReroll,
   } = useScoreStore();
 
-  const { setSelectedCard, drawHand, drawSpecial, setCurrentSpecial } =
-    useKanaStore();
+  const {
+    setSelectedCard,
+    drawHand,
+    drawSpecial,
+    setCurrentSpecial,
+    setFrozenSpecialCards,
+  } = useKanaStore();
 
   const handleLoseSubmit = () => {
+    setFrozenSpecialCards([]);
     setTurns(4);
     setScore(0);
     setMultiplier(0);

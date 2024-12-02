@@ -22,11 +22,21 @@ export default function Shop() {
           </p>
         </DocDesc>
 
-        <DocDesc title="3. Rerolling">
+        <DocDesc title="3. Move special cards">
+          <p>
+            During shopping, you can move your selected special cards from your
+            current special hand to another location within your curent special
+            hand.
+          </p>
+          <p>- Select the card you want to move.</p>
+          <p>- Press the number (5, 6, 7, 8, 9) you want to move it to.</p>
+        </DocDesc>
+
+        <DocDesc title="4. Rerolling">
           <p>Press (3) to reroll your current hand. Each reroll costs ¥100.</p>
         </DocDesc>
 
-        <DocDesc title="4. Freezing cards">
+        <DocDesc title="5. Freezing cards">
           <p>
             Press (4) to freeze your selected special cards. Freezing is free.
           </p>
