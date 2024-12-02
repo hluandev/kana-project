@@ -15,11 +15,15 @@ import { updateActivityServer } from "@/actions/server/activity-server-actions";
 
 export default function CurrentPlayHand() {
   const { kana, drawHand, drawSpecial, kanaMissions } = useKanaStore();
-  const { turns, missionID, progress } = useScoreStore();
+  const { turns, missionID, progress, isEndlessMode, endlessTarget } =
+    useScoreStore();
   const { info, updateGameResult } = usePlayerStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
-  const hasWonGame = missionID === 8 && progress >= mission?.target;
+  const target = isEndlessMode ? endlessTarget : mission?.target;
+
+  const hasWonGame = !isEndlessMode && missionID === 8 && progress >= target;
+  const hasWonEndless = isEndlessMode && progress >= target;
 
   useEffect(() => {
     drawHand();
@@ -33,7 +37,7 @@ export default function CurrentPlayHand() {
   }, [missionID]);
 
   useEffect(() => {
-    const hasLost = turns === 0 && progress < mission?.target;
+    const hasLost = turns === 0 && progress < target;
 
     if (hasLost) {
       updatePlayerInfoServer({
@@ -47,16 +51,18 @@ export default function CurrentPlayHand() {
   }, [turns === 0]);
 
   return (
-    <div className={`${turns === 0 && mission?.target > progress && "h-full"}`}>
+    <div className={`${turns === 0 && target > progress && "h-full"}`}>
       {hasWonGame ? (
         <WinTheGame />
+      ) : hasWonEndless ? (
+        <Win />
       ) : turns === 0 ? (
-        progress >= mission?.target ? (
+        progress >= target ? (
           <Win />
         ) : (
           <Lose />
         )
-      ) : progress >= mission?.target ? (
+      ) : progress >= target ? (
         <Win />
       ) : (
         <div className="flex items-center flex-col">

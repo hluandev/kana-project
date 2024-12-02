@@ -16,6 +16,8 @@ export const Lose = () => {
     setYen,
     setAnnouncement,
     setReroll,
+
+    setIsEndlessMode,
   } = useScoreStore();
 
   const {
@@ -27,6 +29,7 @@ export const Lose = () => {
   } = useKanaStore();
 
   const handleLoseSubmit = () => {
+    setIsEndlessMode(false);
     setFrozenSpecialCards([]);
     setTurns(4);
     setScore(0);

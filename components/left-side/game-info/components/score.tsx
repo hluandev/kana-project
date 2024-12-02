@@ -5,16 +5,18 @@ import { useScoreStore } from "@/stores/useScoreStore";
 
 export const Score = () => {
   const { kanaMissions } = useKanaStore();
-  const { missionID } = useScoreStore();
+  const { missionID, isEndlessMode, endlessTarget } = useScoreStore();
 
-  const mission = kanaMissions.find((mission) => mission.id === missionID);
+  const target = isEndlessMode
+    ? endlessTarget
+    : kanaMissions.find((mission) => mission.id === missionID)?.target || 0;
 
   return (
     <Box className="space-y-1 p-4">
       <div className="text-neutral-400 flex justify-center items-center pb-8 font-medium ">
-        Score at least {mission?.target} points to clear this round.
+        Score at least {target} points to clear this round.
       </div>
-      <ProgressBar target={mission?.target} />
+      <ProgressBar target={target} />
     </Box>
   );
 };

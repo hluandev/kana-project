@@ -25,6 +25,11 @@ interface scoreStore {
   setReroll: (reroll: number) => void;
   leaderboard: any[];
   setLeaderboard: (leaderboard: any[]) => void;
+  isEndlessMode: boolean;
+  endlessTarget: number;
+  setIsEndlessMode: (isEndlessMode: boolean) => void;
+  setEndlessTarget: (endlessTarget: number) => void;
+  incrementEndlessTarget: () => void;
 }
 
 export const useScoreStore = create<scoreStore>((set) => ({
@@ -53,4 +58,13 @@ export const useScoreStore = create<scoreStore>((set) => ({
   setAnnouncement: (announcement) => set({ announcement }),
   setMissionID: (missionID) => set({ missionID }),
   setProgress: (progress) => set({ progress }),
+  isEndlessMode: false,
+  endlessTarget: 15000,
+  setIsEndlessMode: (isEndlessMode) => set({ isEndlessMode }),
+  setEndlessTarget: (endlessTarget) => set({ endlessTarget }),
+  incrementEndlessTarget: () =>
+    set((state) => {
+      console.log(state.endlessTarget);
+      return { endlessTarget: state.endlessTarget + 15000 };
+    }),
 }));

@@ -34,6 +34,10 @@ export const PlaySelected = () => {
     yen,
     setYen,
     reroll,
+    isEndlessMode,
+    incrementEndlessTarget,
+    endlessTarget,
+    setEndlessTarget,
   } = useScoreStore();
 
   const { info, updateXp, updateGameResult } = usePlayerStore();
@@ -360,19 +364,24 @@ export const PlaySelected = () => {
       // Calculate new progress
       const newProgress = progress + score * multiplier;
       const newTurns = turns - 1;
-      const mission = kanaMissions.find((mission) => mission.id === missionID);
+      const target = isEndlessMode
+        ? endlessTarget
+        : kanaMissions.find((mission) => mission.id === missionID)?.target;
 
       // Check win condition
-      if (newProgress >= mission?.target && newTurns >= 0) {
+      if (newProgress >= target && newTurns >= 0) {
         // Calculate rewards
         const remainingYen = newTurns * 100;
         const winBonus = 500;
         const totalYen = yen + winBonus + remainingYen;
         const xpGain = 20;
 
+        if (isEndlessMode) {
+          setEndlessTarget(endlessTarget + 15000);
+        }
+
         // Batch all updates
         Promise.all([
-          // Update server
           updatePlayerInfoServer({
             id: info.id,
             xp: info.xp + xpGain,
@@ -380,14 +389,10 @@ export const PlaySelected = () => {
             matches: info.matches + 1,
           }),
           updateActivityServer({ result: true }),
-          // Update client state
           updateXp(xpGain),
           setYen(totalYen),
           updateGameResult(true),
         ]);
-
-        // Play win sound
-        // playSound("/audio/win.wav");
       }
 
       updatePlayerInfoServer({
