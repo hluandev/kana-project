@@ -12,11 +12,8 @@ export const LeftDocs = () => {
       <Link href={"docs/hands"} className="text-lg">
         3. Hands
       </Link>
-      <Link href={"docs/rewards"} className="text-lg">
-        4. Rewards
-      </Link>
       <Link href={"docs/shop"} className="text-lg">
-        5. Shop
+        4. Shop
       </Link>
     </div>
   );
