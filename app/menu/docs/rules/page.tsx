@@ -8,7 +8,7 @@ export default function Rules() {
       <div className="">
         <p>
           The objective of the game is to have the best hand in order to clear
-          the round. Let's look at the example of this board.
+          the round. Let&apos;s look at the example of this board.
         </p>
       </div>
 
@@ -44,8 +44,8 @@ export default function Rules() {
             Each round, you will be given 4 discards and 4 turns to beat round
           </p>
           <p>
-            You will lose the game if you can't beat score by turn 4, and you
-            have to start over again.
+            You will lose the game if you can&apos;t beat score by turn 4, and
+            you have to start over again.
           </p>
           <p>
             There are 8 cards in total. each round, the score will be increased.
