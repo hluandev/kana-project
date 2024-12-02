@@ -17,8 +17,8 @@ export default function Shop() {
 
         <DocDesc title="2. Buying and selling">
           <p>
-            Select special cards by typing the card's romaji. Press (1) to sell
-            your selected special cards, or press (2) to buy new specials.
+            Select special cards by typing the card&apos;s romaji. Press (1) to
+            sell your selected special cards, or press (2) to buy new specials.
           </p>
         </DocDesc>
 

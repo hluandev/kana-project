@@ -30,7 +30,7 @@ export default function Rules() {
         </DocDesc>
         <DocDesc title="3. Hand's score">
           <p>
-            Your current hand's score will be shown here. Green represents
+            Your current hand&apos;s score will be shown here. Green represents
             points, and purple indicates the multiplier.
           </p>
         </DocDesc>
@@ -63,8 +63,9 @@ export default function Rules() {
 
         <DocDesc title="6. Current cards">
           <p>
-            There are 56 cards in total. Each round, you'll be given 8 cards to
-            choose from. You can select up to 5 cards to either discard or play.
+            There are 56 cards in total. Each round, you&apos;ll be given 8
+            cards to choose from. You can select up to 5 cards to either discard
+            or play.
           </p>
         </DocDesc>
 
