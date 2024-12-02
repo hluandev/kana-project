@@ -6,13 +6,13 @@ export const LeftDocs = () => {
       <Link href={"/menu/docs"} className="text-lg pl-0.5">
         1. Introduction
       </Link>
-      <Link href={"docs/rules"} className="text-lg">
+      <Link href={"/menu/docs/rules"} className="text-lg">
         2. Rules
       </Link>
-      <Link href={"docs/hands"} className="text-lg">
+      <Link href={"/menu/docs/hands"} className="text-lg">
         3. Hands
       </Link>
-      <Link href={"docs/shop"} className="text-lg">
+      <Link href={"/menu/docs/shop"} className="text-lg">
         4. Shop
       </Link>
     </div>
