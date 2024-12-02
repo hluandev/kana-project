@@ -46,7 +46,7 @@ export default function PlayerLevel() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute -top-32 space-y-2 bg-white w-full p-2 rounded-2xl left-0 "
+            className="absolute -top-32 space-y-2 bg-white border shadow-sm w-full p-2 rounded-2xl left-0 "
           >
             <ManageSubscription />
             <button
