@@ -29,6 +29,10 @@ export const Win = () => {
     setWarning,
     reroll,
     setReroll,
+    turns,
+    discard,
+    addTurns,
+    addDiscard,
   } = useScoreStore();
 
   const {
@@ -44,6 +48,7 @@ export const Win = () => {
     selectedSpecial,
     frozenSpecialCards,
     addFrozenSpecialCard,
+    setFrozenSpecialCards,
   } = useKanaStore();
 
   const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
@@ -52,9 +57,19 @@ export const Win = () => {
 
   // This will only run once when the component mounts
   React.useEffect(() => {
-    setRandomSpecialCards(
-      [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 4)
-    );
+    const initialCards = [
+      ...frozenSpecialCards,
+      ...currentSpecialDeck
+        .filter(
+          (card) =>
+            !frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
+        )
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 4 - frozenSpecialCards.length),
+    ];
+
+    setRandomSpecialCards(initialCards);
+    setFrozenSpecialCards([]);
   }, []);
 
   const [value, setValue] = React.useState("");
@@ -195,6 +210,26 @@ export const Win = () => {
       return;
     }
 
+    // Check if any selected cards are already frozen
+    const selectedFrozenCards = selectedSpecial.filter((card) =>
+      frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
+    );
+
+    if (selectedFrozenCards.length > 0) {
+      // Unfreeze the selected frozen cards
+      const newFrozenCards = frozenSpecialCards.filter(
+        (frozen) =>
+          !selectedFrozenCards.some(
+            (selected) => selected.romaji === frozen.romaji
+          )
+      );
+      setFrozenSpecialCards(newFrozenCards);
+      setSelectedSpecial([]);
+      setValue("");
+      playSound("/audio/deselect_card.wav");
+      return;
+    }
+
     // Only allow freezing cards from randomSpecialCards
     const selectedFromRandom = selectedSpecial.every((card) =>
       randomSpecialCards.some((randomCard) => randomCard.romaji === card.romaji)
@@ -209,7 +244,6 @@ export const Win = () => {
     // Add selected cards to frozen cards
     selectedSpecial.forEach((card) => addFrozenSpecialCard(card));
 
-    // Don't remove frozen cards from random cards anymore
     setSelectedSpecial([]);
     setValue("");
     playSound("/audio/freeze.wav");
@@ -307,18 +341,40 @@ export const Win = () => {
 
     // Combine frozen cards with new random cards
     setRandomSpecialCards([...frozenSpecialCards, ...newRandomCards]);
+
     drawHand();
-    setMissionID(missionID + 1);
     setTurns(4);
     setDiscard(4);
+
+    // Reset any previous bonuses
+    let totalTurnBonus = 0;
+    let totalDiscardBonus = 0;
+
+    // Calculate new bonuses
+    currentSpecial.forEach((special) => {
+      if (special.condition === "life") {
+        if (special.combo === "turn") {
+          totalTurnBonus += special.reward;
+        } else if (special.combo === "discard") {
+          totalDiscardBonus += special.reward;
+        }
+      }
+    });
+
+    // Apply the bonuses if they exist
+    if (totalTurnBonus !== 0) {
+      addTurns(totalTurnBonus);
+    }
+    if (totalDiscardBonus !== 0) {
+      addDiscard(totalDiscardBonus);
+    }
+
     setSelectedCard([]);
     playSound("/audio/next_turn.wav");
-
-    setTimeout(() => {
-      setMultiplier(0);
-      setScore(0);
-      setProgress(0);
-    }, 100);
+    setMultiplier(0);
+    setScore(0);
+    setProgress(0);
+    setMissionID(missionID + 1);
   };
 
   const handleSellSpecial = () => {

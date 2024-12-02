@@ -9,31 +9,6 @@ export const CurrentInfo = () => {
     useScoreStore();
   const { kanaMissions, currentSpecial } = useKanaStore();
 
-  useEffect(() => {
-    // Reset any previous bonuses
-    let totalTurnBonus = 0;
-    let totalDiscardBonus = 0;
-
-    // Calculate new bonuses
-    currentSpecial.forEach((special) => {
-      if (special.condition === "life") {
-        if (special.combo === "turn") {
-          totalTurnBonus += special.reward;
-        } else if (special.combo === "discard") {
-          totalDiscardBonus += special.reward;
-        }
-      }
-    });
-
-    // Apply the bonuses if they exist
-    if (totalTurnBonus !== 0) {
-      addTurns(totalTurnBonus);
-    }
-    if (totalDiscardBonus !== 0) {
-      addDiscard(totalDiscardBonus);
-    }
-  }, [currentSpecial]);
-
   return (
     <div className="grid rounded-2xl grid-cols-2 gap-4 grid-rows-2 overflow-hidden">
       {/* Discard */}
