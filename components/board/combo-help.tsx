@@ -1,13 +1,13 @@
 export const ComboHelp = () => {
   return (
     <div className="space-y-4">
-      <div className=" bg-black/10 p-4 flex justify-between rounded-lg">
-        <div className="space-y-2 flex flex-col ">
+      <div className="border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+        <div className="space-y-1.5 flex flex-col ">
           <div>
-            <p className="font-medium text-lg">Straight Flush</p>
-            <p>5 cards in sequence with the same suit</p>
+            <p className="font-medium ">Straight Flush</p>
+            <p className="text-sm">5 cards in sequence with the same suit</p>
           </div>
-          <div className="flex gap-2 bg-white/50 p-2 rounded-lg w-fit">
+          <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg w-fit">
             <div className="flex items-center gap-1.5">
               1
               <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -41,20 +41,20 @@ export const ComboHelp = () => {
           </div>
         </div>
 
-        <div className="text-2xl font-medium">
+        <div className=" font-medium">
           <span className="text-[#01de5b]">100</span> /{" "}
           <span className="text-purple-600">8</span>
         </div>
       </div>
 
-      <div className="space-y-2 bg-black/10 p-4 flex justify-between rounded-lg">
-        <div className="space-y-2 flex flex-col">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+        <div className="space-y-1.5 flex flex-col">
           <div>
-            <p className="font-medium text-lg">Four of a Kind</p>
-            <p>4 cards of the same rank</p>
+            <p className="font-medium ">Four of a Kind</p>
+            <p className="text-sm">4 cards of the same rank</p>
           </div>
           <div className="flex gap-2">
-            <div className="flex gap-2 bg-white/50 p-2 rounded-lg">
+            <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg">
               <div className="flex items-center gap-1.5">
                 1
                 <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -89,20 +89,22 @@ export const ComboHelp = () => {
           </div>
         </div>
 
-        <div className="text-2xl font-medium">
+        <div className=" font-medium">
           <span className="text-[#01de5b]">60</span> /{" "}
           <span className="text-purple-600">5</span>
         </div>
       </div>
 
-      <div className="space-y-2 bg-black/10 p-4 flex justify-between rounded-lg">
-        <div className="space-y-2 flex flex-col">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+        <div className="space-y-1.5 flex flex-col">
           <div>
-            <p className="font-medium text-lg">Full House</p>
-            <p>3 cards of the same rank and 2 cards of another rank</p>
+            <p className="font-medium ">Full House</p>
+            <p className="text-sm">
+              3 cards of the same rank and 2 cards of another rank
+            </p>
           </div>
           <div className="flex gap-2">
-            <div className="flex gap-2 bg-white/50 p-2 rounded-lg">
+            <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg">
               <div className="flex items-center gap-1.5">
                 1
                 <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -122,7 +124,7 @@ export const ComboHelp = () => {
                 </p>
               </div>
             </div>
-            <div className="flex gap-2 bg-white/50 p-2 rounded-lg">
+            <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg">
               <div className="flex items-center gap-1.5">
                 5
                 <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -140,19 +142,19 @@ export const ComboHelp = () => {
           </div>
         </div>
 
-        <div className="text-2xl font-medium">
+        <div className=" font-medium">
           <span className="text-[#01de5b]">40</span> /{" "}
           <span className="text-purple-600">4</span>
         </div>
       </div>
 
-      <div className="space-y-2 bg-black/10 p-4 flex justify-between rounded-lg">
-        <div className="space-y-2 flex flex-col">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+        <div className="space-y-1.5 flex flex-col">
           <div>
-            <p className="font-medium text-lg">Flush</p>
-            <p>5 cards of the same suit</p>
+            <p className="font-medium ">Flush</p>
+            <p className="text-sm">5 cards of the same suit</p>
           </div>
-          <div className="flex gap-2 bg-white/50 p-2 rounded-lg w-fit">
+          <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg w-fit">
             <div className="flex items-center gap-1.5">
               1
               <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -186,19 +188,19 @@ export const ComboHelp = () => {
           </div>
         </div>
 
-        <div className="text-2xl font-medium">
+        <div className=" font-medium">
           <span className="text-[#01de5b]">40</span> /{" "}
           <span className="text-purple-600">3</span>
         </div>
       </div>
 
-      <div className="space-y-2 bg-black/10 p-4 flex justify-between rounded-lg">
-        <div className="space-y-2 flex flex-col">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+        <div className="space-y-1.5 flex flex-col">
           <div>
-            <p className="font-medium text-lg">Straight</p>
-            <p>5 cards in sequence</p>
+            <p className="font-medium ">Straight</p>
+            <p className="text-sm">5 cards in sequence</p>
           </div>
-          <div className="flex gap-2 bg-white/50 p-2 rounded-lg w-fit">
+          <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg w-fit">
             <div className="flex items-center gap-1.5">
               1
               <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -234,20 +236,20 @@ export const ComboHelp = () => {
           </div>
         </div>
 
-        <div className="text-2xl font-medium">
+        <div className=" font-medium">
           <span className="text-[#01de5b]">30</span> /{" "}
           <span className="text-purple-600">3</span>
         </div>
       </div>
 
-      <div className="space-y-2 bg-black/10 p-4 flex justify-between rounded-lg">
-        <div className="space-y-2 flex flex-col">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+        <div className="space-y-1.5 flex flex-col">
           <div>
-            <p className="font-medium text-lg">Three of a Kind</p>
-            <p>3 cards of the same rank</p>
+            <p className="font-medium ">Three of a Kind</p>
+            <p className="text-sm">3 cards of the same rank</p>
           </div>
           <div className="flex gap-2">
-            <div className="flex gap-2 bg-white/50 p-2 rounded-lg">
+            <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg">
               <div className="flex items-center gap-1.5">
                 1
                 <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -283,20 +285,22 @@ export const ComboHelp = () => {
           </div>
         </div>
 
-        <div className="text-2xl font-medium">
+        <div className=" font-medium">
           <span className="text-[#01de5b]">20</span> /{" "}
           <span className="text-purple-600">3</span>
         </div>
       </div>
 
-      <div className="space-y-2 bg-black/10 p-4 flex justify-between rounded-lg">
-        <div className="space-y-2 flex flex-col">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+        <div className="space-y-1.5 flex flex-col">
           <div>
-            <p className="font-medium text-lg">Two Pair</p>
-            <p>2 cards of the same rank and 2 cards of another rank</p>
+            <p className="font-medium ">Two Pair</p>
+            <p className="text-sm">
+              2 cards of the same rank and 2 cards of another rank
+            </p>
           </div>
           <div className="flex gap-2">
-            <div className="flex gap-2 bg-white/50 p-2 rounded-lg">
+            <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg">
               <div className="flex items-center gap-1.5">
                 1
                 <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -310,7 +314,7 @@ export const ComboHelp = () => {
                 </p>
               </div>
             </div>
-            <div className="flex gap-2 bg-white/50 p-2 rounded-lg">
+            <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg">
               <div className="flex items-center gap-1.5">
                 5
                 <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -335,20 +339,20 @@ export const ComboHelp = () => {
           </div>
         </div>
 
-        <div className="text-2xl font-medium">
+        <div className=" font-medium">
           <span className="text-[#01de5b]">20</span> /{" "}
           <span className="text-purple-600">2</span>
         </div>
       </div>
 
-      <div className="space-y-2 bg-black/10 p-4 flex justify-between rounded-lg">
-        <div className="space-y-2 flex flex-col">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+        <div className="space-y-1.5 flex flex-col">
           <div>
-            <p className="font-medium text-lg">Pair</p>
-            <p>2 cards of the same rank</p>
+            <p className="font-medium ">Pair</p>
+            <p className="text-sm">2 cards of the same rank</p>
           </div>
           <div className="flex gap-2">
-            <div className="flex gap-2 bg-white/50 p-2 rounded-lg">
+            <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg">
               <div className="flex items-center gap-1.5">
                 1
                 <p className="bg-[#ff915a] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -384,17 +388,17 @@ export const ComboHelp = () => {
             </div>
           </div>
         </div>
-        <div className="text-2xl font-medium">
+        <div className=" font-medium">
           <span className="text-[#01de5b]">10</span> /{" "}
           <span className="text-purple-600">2</span>
         </div>
       </div>
 
-      <div className="space-y-2 bg-black/10 p-4 flex justify-between rounded-lg">
-        <div className="space-y-2 flex flex-col">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+        <div className="space-y-1.5 flex flex-col">
           <div>
-            <p className="font-medium text-lg">High Card</p>
-            <p>No hand combination</p>
+            <p className="font-medium ">High Card</p>
+            <p className="text-sm">No hand combination</p>
           </div>
           <div className="flex gap-2">
             <div className="flex items-center gap-1.5">
@@ -424,7 +428,7 @@ export const ComboHelp = () => {
               </p>
             </div>
 
-            <div className="flex gap-2 bg-white/50 p-2 rounded-lg">
+            <div className="flex gap-2 bg-white/50 border border-black/15 shadow-sm p-2 rounded-lg">
               <div className="flex items-center gap-1.5">
                 13
                 <p className="bg-[#01de5b] h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
@@ -434,7 +438,7 @@ export const ComboHelp = () => {
             </div>
           </div>
         </div>
-        <div className="text-2xl font-medium">
+        <div className=" font-medium">
           <span className="text-[#01de5b]">5</span> /{" "}
           <span className="text-purple-600">1</span>
         </div>

@@ -61,9 +61,9 @@ export default function PlayerLevel() {
 
       <div
         onClick={() => setSetting(!setting)}
-        className="bg-white/40 col-span-10 w-full relative overflow-hidden rounded-full p-1.5 border border-black/15 shadow-sm flex items-center gap-2"
+        className="bg-white col-span-10 w-full relative overflow-hidden rounded-full p-1.5 border border-black/15 shadow-sm flex items-center gap-2"
       >
-        <div className="bg-[#efcb68] border border-black/15 shadow-sm z-20  font-medium  rounded-full p-1 w-8 h-8 aspect-square flex justify-center items-center">
+        <div className="bg-[#efcb68] border border-black/15 shadow-sm z-20  font-medium  rounded-full p-1 w-10 h-10 aspect-square flex justify-center items-center">
           {info.level}
         </div>
 

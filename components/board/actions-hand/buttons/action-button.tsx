@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import React, { useEffect, useCallback, useState } from "react";
 
@@ -56,12 +57,19 @@ export const ActionButton = ({
       className={` flex  relative items-center border border-black/15 shadow-sm justify-center gap-2 w-11 aspect-square text-center rounded-full duration-200 cursor-pointer ${className}`}
       onClick={handleClick}
     >
-      {showTooltip && (
-        <div className="absolute flex flex-col p-2 text-left bottom-10 z-50 left-14  w-32 bg-white shadow-lg border rounded-md">
-          <div className="">Shortcut: {keyboardShortcut}</div>
-          <div className="text-sm text-neutral-500">{descTooltip}</div>
-        </div>
-      )}
+      <AnimatePresence>
+        {showTooltip && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute flex flex-col p-2 gap-2 text-left bottom-10 z-50 left-14  w-32 bg-white shadow-lg border border-black/15 shadow-sm rounded-xl"
+          >
+            <div className="font-medium">Shortcut: {keyboardShortcut}</div>
+            <div className="text-sm text-neutral-500">{descTooltip}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {icon}
     </div>

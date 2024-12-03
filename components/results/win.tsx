@@ -425,18 +425,20 @@ export const Win = () => {
 
   return (
     <div className="w-[36rem] relative flex flex-col items-center z-10">
-      <motion.div
-        className="text-[#cb980b] font-medium text-7xl"
-        initial={{ opacity: 0, scale: 2 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 2 }}
-      >
-        You Defeated
-      </motion.div>
+      <div className="flex flex-col gap-2">
+        <motion.div
+          className="text-[#cb980b] font-medium text-6xl"
+          initial={{ opacity: 0, scale: 2 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 2 }}
+        >
+          You Defeated
+        </motion.div>
 
-      <p className="text-xl mt-4 font-medium text-black/90">
-        Buy or sell special cards to enchance the next round
-      </p>
+        <p className="font-medium text-black/90">
+          Buy or sell special cards to enchance the next round
+        </p>
+      </div>
       <div className="h-72 relative grid mt-10 grid-cols-3 gap-4 p-4 bg-black/5 border border-black/15 shadow-inner rounded-2xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard

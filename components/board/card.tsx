@@ -50,7 +50,7 @@ export const Card = ({ card }: CardProps) => {
             card?.suit === "い" && "bg-[#ffe65e] text-black"
           } ${
             card?.suit === "え" && "bg-[#fc96df] text-black"
-          }    h-7 w-7 rounded-md flex items-center justify-center`}
+          }  border border-black/15 shadow-sm h-7 w-7 rounded-md flex items-center justify-center`}
         >
           {hiragana ? card?.suit : card?.suit_katakana}
         </p>
