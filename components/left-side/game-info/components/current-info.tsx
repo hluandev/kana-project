@@ -1,4 +1,3 @@
-import { Box } from "@/components/box";
 import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { InfoBox } from "./infoBox";

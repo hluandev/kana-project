@@ -93,31 +93,31 @@ export const ExampleBoard = ({ shop }: Props) => {
         {shop && (
           <div className="flex flex-col items-center">
             <div className="relative">
-              <div className="grid grid-cols-3 gap-2 bg-white/50 p-2 rounded-lg">
+              <div className="grid grid-cols-3 gap-2  border border-black/15 shadow-sm bg-white/50 p-2 rounded-lg">
                 {[1, 2, 3].map((item) => (
                   <div
                     key={item}
-                    className="h-40 w-28 bg-white rounded-lg"
+                    className="h-40 w-28  border border-black/15 shadow-sm bg-white rounded-lg"
                   ></div>
                 ))}
               </div>
 
               <div className="absolute top-0 space-y-2 -right-12">
-                <div className="bg-[#ff915a] p-2 rounded-full">
+                <div className="bg-[#ff915a]  border border-black/15 shadow-sm p-2 rounded-full">
                   <RefreshCcwIcon size={20} />
                 </div>
 
-                <div className="bg-blue-200 p-2 rounded-full">
+                <div className="bg-blue-200 p-2  border border-black/15 shadow-sm rounded-full">
                   <SnowflakeIcon size={20} />
                 </div>
               </div>
             </div>
 
-            <div className="w-40 p-1 flex justify-between h-8 mt-2 bg-white overflow-hidden rounded-full">
-              <div className="w-6 aspect-square bg-[#e1bf62] text-black rounded-full flex justify-center items-center">
+            <div className="w-40 p-1 flex justify-between border border-black/15 shadow-sm h-8 mt-2 bg-white overflow-hidden rounded-full">
+              <div className="w-6 h-6 aspect-square bg-[#e1bf62]  border border-black/15 shadow-sm text-black rounded-full flex justify-center items-center">
                 1
               </div>
-              <div className="w-6 aspect-square bg-[#e1bf62] text-black rounded-full flex justify-center items-center">
+              <div className="w-6 h-6 aspect-square bg-[#e1bf62]  border border-black/15 shadow-sm text-black rounded-full flex justify-center items-center">
                 2
               </div>
             </div>

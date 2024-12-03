@@ -6,7 +6,6 @@ import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import {
   ArrowRightIcon,
   JapaneseYenIcon,
-  RefreshCcwIcon,
   RefreshCwIcon,
   ShoppingCartIcon,
   SnowflakeIcon,
@@ -476,7 +475,7 @@ export const Win = () => {
           {/* Freeze */}
           <ActionButton
             onClick={handleFreezeCard}
-            descTooltip="Freeze cards to keep them in your deck"
+            descTooltip="Freeze cards to keep them in your deck until next turn."
             icon={<SnowflakeIcon />}
             keyboardShortcut="4"
             className="bg-blue-300  hover:bg-blue-300/80"

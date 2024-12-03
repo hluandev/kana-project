@@ -78,35 +78,33 @@ export const SpecialHands = () => {
 
               <p className="font-medium">
                 {card.condition === "xmultiples" && (
-                  <span className="text-purple-600">
+                  <span className="text-red-500">
                     x{card.reward} multiples{" "}
                   </span>
                 )}
 
                 {card.condition === "upgrade" && (
                   <span>
-                    <span className="text-[#01de5b]">
-                      +{card.reward_points}
-                    </span>{" "}
+                    <span className="text-blue-600">+{card.reward_points}</span>{" "}
                     /
-                    <span className="text-purple-600">
+                    <span className="text-red-500">
                       +{card.reward_multiplier}
                     </span>{" "}
                   </span>
                 )}
 
                 {card.condition === "points" && (
-                  <span className="text-[#01de5b]">+{card.reward} points </span>
+                  <span className="text-blue-600">+{card.reward} points </span>
                 )}
 
                 {card.condition === "multiples" && (
-                  <span className="text-purple-600">
+                  <span className="text-red-500">
                     +{card.reward} multiples{" "}
                   </span>
                 )}
 
                 {card.condition === "reroll" && (
-                  <span className="text-purple-600">
+                  <span className="text-red-500">
                     +{card.reward} multiples ({reroll}){` `}
                   </span>
                 )}
