@@ -5,7 +5,7 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import { useState } from "react";
 import { motion } from "framer-motion";
 export const SpecialHands = () => {
-  const [isHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const { currentSpecial, selectedSpecial, kanaMissions, hiragana } =
     useKanaStore();
   const { turns, missionID, progress, reroll } = useScoreStore();
@@ -18,7 +18,7 @@ export const SpecialHands = () => {
         turns === 0 && mission?.target > progress && "hidden"
       } h-[17rem] ${
         currentSpecial.length === 0 ? "aspect-square" : "w-fit"
-      } relative p-4 z-10 grid grid-cols-5 gap-2 rounded-xl bg-black/5 border border-black/15 shadow-inner`}
+      } relative p-4 z-10 grid grid-cols-5 gap-4 rounded-xl bg-black/5 border border-black/15 shadow-inner`}
     >
       {currentSpecial.length === 0 && (
         <p className="text-center absolute top-1/2 -translate-y-1/2 w-full text-black/40 ">

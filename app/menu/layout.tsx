@@ -42,7 +42,7 @@ export default async function MenuLayout({
 
       <Board>{children}</Board>
 
-      <BgGradient />
+      {/* <BgGradient /> */}
     </section>
   );
 }
