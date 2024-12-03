@@ -35,7 +35,6 @@ export const PlaySelected = () => {
     setYen,
     reroll,
     isEndlessMode,
-    incrementEndlessTarget,
     endlessTarget,
     setEndlessTarget,
   } = useScoreStore();

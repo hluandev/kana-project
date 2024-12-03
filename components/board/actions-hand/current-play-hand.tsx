@@ -50,26 +50,29 @@ export default function CurrentPlayHand() {
     }
   }, [turns === 0]);
 
+  const renderOutcome = () => {
+    if (hasWonGame) {
+      return <WinTheGame />;
+    }
+    if (hasWonEndless) {
+      return <Win />;
+    }
+    if (turns === 0) {
+      return progress >= target ? <Win /> : <Lose />;
+    }
+    return progress >= target ? (
+      <Win />
+    ) : (
+      <div className="flex items-center flex-col">
+        <CurrentHand />
+        <ActionsHand />
+      </div>
+    );
+  };
+
   return (
     <div className={`${turns === 0 && target > progress && "h-full"}`}>
-      {hasWonGame ? (
-        <WinTheGame />
-      ) : hasWonEndless ? (
-        <Win />
-      ) : turns === 0 ? (
-        progress >= target ? (
-          <Win />
-        ) : (
-          <Lose />
-        )
-      ) : progress >= target ? (
-        <Win />
-      ) : (
-        <div className="flex items-center flex-col">
-          <CurrentHand />
-          <ActionsHand />
-        </div>
-      )}
+      {renderOutcome()}
     </div>
   );
 }

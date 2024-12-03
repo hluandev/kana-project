@@ -59,12 +59,12 @@ export const useScoreStore = create<scoreStore>((set) => ({
   setMissionID: (missionID) => set({ missionID }),
   setProgress: (progress) => set({ progress }),
   isEndlessMode: false,
-  endlessTarget: 15000,
+  endlessTarget: 1,
   setIsEndlessMode: (isEndlessMode) => set({ isEndlessMode }),
   setEndlessTarget: (endlessTarget) => set({ endlessTarget }),
   incrementEndlessTarget: () =>
     set((state) => {
       console.log(state.endlessTarget);
-      return { endlessTarget: state.endlessTarget + 15000 };
+      return { endlessTarget: state.endlessTarget + 10 };
     }),
 }));

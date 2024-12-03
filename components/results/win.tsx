@@ -29,9 +29,12 @@ export const Win = () => {
     setWarning,
     reroll,
     setReroll,
-
+    isEndlessMode,
+    setEndlessTarget,
     addTurns,
     addDiscard,
+    endlessTarget,
+    incrementEndlessTarget,
   } = useScoreStore();
 
   const {
@@ -345,6 +348,12 @@ export const Win = () => {
     setTurns(4);
     setDiscard(4);
 
+    if (isEndlessMode && endlessTarget === 1) {
+      setEndlessTarget(10);
+    } else if (isEndlessMode) {
+      incrementEndlessTarget();
+    }
+
     // Reset any previous bonuses
     let totalTurnBonus = 0;
     let totalDiscardBonus = 0;
@@ -500,11 +509,6 @@ export const Win = () => {
           placeholder="Type here"
           className="flex text-center text-[0.9rem] outline-none rounded-md"
         />
-        {/* <input
-          type="submit"
-          value="N"
-          className="bg-yellow-600 px-4 py-2 font-bold rounded-full w-12 aspect-square"
-        /> */}
 
         <ActionButton
           onClick={selectedSpecial.length > 0 ? handleSubmit : handleNextTurn}
