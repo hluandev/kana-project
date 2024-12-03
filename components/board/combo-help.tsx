@@ -42,8 +42,8 @@ export const ComboHelp = () => {
         </div>
 
         <div className=" font-medium">
-          <span className="text-[#01de5b]">100</span> /{" "}
-          <span className="text-purple-600">8</span>
+          <span className="text-blue-600">100</span> /{" "}
+          <span className="text-red-500">8</span>
         </div>
       </div>
 
@@ -90,8 +90,8 @@ export const ComboHelp = () => {
         </div>
 
         <div className=" font-medium">
-          <span className="text-[#01de5b]">60</span> /{" "}
-          <span className="text-purple-600">5</span>
+          <span className="text-blue-600">60</span> /{" "}
+          <span className="text-red-500">5</span>
         </div>
       </div>
 
@@ -143,8 +143,8 @@ export const ComboHelp = () => {
         </div>
 
         <div className=" font-medium">
-          <span className="text-[#01de5b]">40</span> /{" "}
-          <span className="text-purple-600">4</span>
+          <span className="text-blue-600">40</span> /{" "}
+          <span className="text-red-500">4</span>
         </div>
       </div>
 
@@ -189,8 +189,8 @@ export const ComboHelp = () => {
         </div>
 
         <div className=" font-medium">
-          <span className="text-[#01de5b]">40</span> /{" "}
-          <span className="text-purple-600">3</span>
+          <span className="text-blue-600">40</span> /{" "}
+          <span className="text-red-500">3</span>
         </div>
       </div>
 
@@ -237,8 +237,8 @@ export const ComboHelp = () => {
         </div>
 
         <div className=" font-medium">
-          <span className="text-[#01de5b]">30</span> /{" "}
-          <span className="text-purple-600">3</span>
+          <span className="text-blue-600">30</span> /{" "}
+          <span className="text-red-500">3</span>
         </div>
       </div>
 
@@ -286,8 +286,8 @@ export const ComboHelp = () => {
         </div>
 
         <div className=" font-medium">
-          <span className="text-[#01de5b]">20</span> /{" "}
-          <span className="text-purple-600">3</span>
+          <span className="text-blue-600">20</span> /{" "}
+          <span className="text-red-500">3</span>
         </div>
       </div>
 
@@ -340,8 +340,8 @@ export const ComboHelp = () => {
         </div>
 
         <div className=" font-medium">
-          <span className="text-[#01de5b]">20</span> /{" "}
-          <span className="text-purple-600">2</span>
+          <span className="text-blue-600">20</span> /{" "}
+          <span className="text-red-500">2</span>
         </div>
       </div>
 
@@ -389,8 +389,8 @@ export const ComboHelp = () => {
           </div>
         </div>
         <div className=" font-medium">
-          <span className="text-[#01de5b]">10</span> /{" "}
-          <span className="text-purple-600">2</span>
+          <span className="text-blue-600">10</span> /{" "}
+          <span className="text-red-500">2</span>
         </div>
       </div>
 
@@ -439,8 +439,8 @@ export const ComboHelp = () => {
           </div>
         </div>
         <div className=" font-medium">
-          <span className="text-[#01de5b]">5</span> /{" "}
-          <span className="text-purple-600">1</span>
+          <span className="text-blue-600">5</span> /{" "}
+          <span className="text-red-500">1</span>
         </div>
       </div>
     </div>
