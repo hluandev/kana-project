@@ -46,7 +46,7 @@ export const Report = () => {
 
       <div
         onClick={() => setIsOpen(true)}
-        className={`bg-white rounded-md  duration-300 h-12 w-12 flex items-center justify-center`}
+        className={`bg-white rounded-xl border border-black/15 shadow-sm  duration-300 h-12 w-12 flex items-center justify-center`}
       >
         <BugIcon className="w-5 h-5" strokeWidth={1.5} />
       </div>

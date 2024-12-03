@@ -23,7 +23,7 @@ export const SwitchKana = () => {
       <button
         onClick={() => handleKanaSwitch(true)}
         className={`rounded-md  py-1 ${
-          hiragana ? "" : "bg-white border border-black/15 shadow-sm"
+          hiragana ? "bg-white border border-black/15 shadow-sm" : ""
         }`}
       >
         Hiragana
@@ -31,7 +31,7 @@ export const SwitchKana = () => {
       <button
         onClick={() => handleKanaSwitch(false)}
         className={`rounded-md py-1 ${
-          hiragana ? "bg-white border border-black/15 shadow-sm" : ""
+          hiragana ? "" : "bg-white border border-black/15 shadow-sm"
         }`}
       >
         Katakana

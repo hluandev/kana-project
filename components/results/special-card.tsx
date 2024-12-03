@@ -30,7 +30,7 @@ export default function SpecialCard({
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`flex relative p-4 overflow-hidden duration-300 flex-col ${
+      className={`flex border border-black/20 shadow-sm relative p-4 overflow-hidden duration-300 flex-col ${
         isSelected
           ? "border-yellow-500 bg-[#efcb68]"
           : isFrozen
@@ -39,25 +39,25 @@ export default function SpecialCard({
       } rounded-xl`}
     >
       <div className="flex-1">
-        <p className="font-medium text-5xl flex justify-center items-center h-full">
+        <p className="font-medium text-4xl flex justify-center items-center h-full">
           {hover ? romaji : hiragana ? japanese : japanese_katakana}
         </p>
       </div>
 
-      <p
-        className={`text-center px-4 flex items-center font-medium justify-center relative ${
-          isSelected ? "bg-black/80 text-white" : "bg-[#f2f3f7]"
+      <div
+        className={`text-center px-4 flex border border-black/10 shadow-sm items-center font-medium justify-center relative ${
+          isSelected ? "bg-black/80 text-white" : "bg-black/5"
         } rounded-lg h-32`}
       >
         <p
           className={`absolute ${
             isSelected ? "bg-black/90 text-[#efcb68]" : "bg-[#efcb68]"
-          } left-1/2 -translate-x-1/2 -top-3.5 text-sm rounded-full z-50 justify-center items-center px-2 py-1 font-medium flex `}
+          } left-1/2 -translate-x-1/2 -top-3.5 border border-black/15 text-sm rounded-full z-50 justify-center items-center px-2 py-1 font-medium flex `}
         >
           ¥{price}
         </p>
 
-        <p className="font-medium">
+        <div className="font-medium text-[0.9rem]">
           {card.condition === "xmultiples" && (
             <span className="text-purple-600">x{card.reward} multiples </span>
           )}
@@ -84,8 +84,8 @@ export default function SpecialCard({
           )}
 
           {card.desc}
-        </p>
-      </p>
+        </div>
+      </div>
     </div>
   );
 }

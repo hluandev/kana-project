@@ -29,13 +29,9 @@ export const Win = () => {
     setWarning,
     reroll,
     setReroll,
-    turns,
-    discard,
+
     addTurns,
     addDiscard,
-    isEndlessMode,
-    endlessTarget,
-    setEndlessTarget,
   } = useScoreStore();
 
   const {
@@ -55,7 +51,7 @@ export const Win = () => {
   } = useKanaStore();
 
   const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
-    [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 4)
+    [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
   );
 
   // This will only run once when the component mounts
@@ -68,7 +64,7 @@ export const Win = () => {
             !frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
         )
         .sort(() => Math.random() - 0.5)
-        .slice(0, 4 - frozenSpecialCards.length),
+        .slice(0, 3 - frozenSpecialCards.length),
     ];
 
     setRandomSpecialCards(initialCards);
@@ -339,7 +335,7 @@ export const Win = () => {
             !frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
         )
         .sort(() => Math.random() - 0.5)
-        .slice(0, 4 - frozenSpecialCards.length),
+        .slice(0, 3 - frozenSpecialCards.length),
     ];
 
     // Combine frozen cards with new random cards
@@ -414,7 +410,7 @@ export const Win = () => {
   const handleRefreshCards = () => {
     if (yen >= 200) {
       setRandomSpecialCards(
-        [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 4)
+        [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
       );
       setYen(yen - 200);
       setReroll(reroll + 1);
@@ -428,7 +424,7 @@ export const Win = () => {
   };
 
   return (
-    <div className="w-[56rem] relative flex flex-col items-center z-10">
+    <div className="w-[36rem] relative flex flex-col items-center z-10">
       <motion.div
         className="text-[#cb980b] font-medium text-7xl"
         initial={{ opacity: 0, scale: 2 }}
@@ -441,7 +437,7 @@ export const Win = () => {
       <p className="text-xl mt-4 font-medium text-black/90">
         Buy or sell special cards to enchance the next round
       </p>
-      <div className="h-80 relative grid mt-10 grid-cols-4 gap-4 p-4 bg-white/50 rounded-2xl">
+      <div className="h-72 relative grid mt-10 grid-cols-3 gap-4 p-4 bg-black/5 border border-black/15 shadow-inner rounded-2xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             japanese_katakana={card.japanese_katakana}
@@ -458,14 +454,6 @@ export const Win = () => {
         ))}
 
         <div className="absolute -right-16 top-0 space-y-3">
-          {/* Reroll */}
-          {/* <div
-            onClick={handleRefreshCards}
-            className="bg-white p-2 cursor-pointer group text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center"
-          >
-            <RefreshCwIcon className="group-hover:animate-spin" />
-          </div> */}
-
           <ActionButton
             onClick={handleRefreshCards}
             icon={<RefreshCwIcon />}
@@ -483,14 +471,7 @@ export const Win = () => {
             className="bg-blue-300  hover:bg-blue-300/80"
           />
 
-          {/* <div
-            onClick={handleFreezeCard}
-            className="bg-white hover:bg-blue-200 p-2 cursor-pointer group text-xl font-medium rounded-full aspect-square w-14 flex items-center justify-center"
-          >
-            <SnowflakeIcon className="" />
-          </div> */}
-
-          <div className=" bg-white p-2 text-xl font-medium rounded-full aspect-square w-12 flex items-center justify-center">
+          <div className=" bg-white border border-black/15 shadow-sm p-2 text-xl font-medium rounded-full aspect-square w-12 flex items-center justify-center">
             {currentSpecialDeck.length}
           </div>
         </div>
@@ -500,7 +481,7 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-white h-full mt-10 rounded-full p-2"
+        className="flex bg-white border border-black/15 shadow-sm h-full mt-10 rounded-full p-2"
       >
         <ActionButton
           onClick={handleSellSpecial}
@@ -515,7 +496,7 @@ export const Win = () => {
           value={value}
           onChange={handleInputChange}
           placeholder="Type here"
-          className="flex text-center outline-none rounded-md"
+          className="flex text-center text-[0.9rem] outline-none rounded-md"
         />
         {/* <input
           type="submit"

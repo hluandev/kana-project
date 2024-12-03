@@ -60,10 +60,10 @@ export const CurrentHand = () => {
         )}
       </AnimatePresence>
 
-      <div className="fixed flex flex-col gap-1 right-2 bottom-2">
+      <div className="fixed flex flex-col gap-2 right-4 bottom-4">
         <div
           onClick={() => setIsCombineOpen(true)}
-          className="bg-white rounded-md  h-12 w-12 flex items-center justify-center"
+          className="bg-white rounded-xl border border-black/15 shadow-sm  h-12 w-12 flex items-center justify-center"
         >
           <CombineIcon className="w-5 h-5" strokeWidth={1.5} />
         </div>
@@ -74,14 +74,14 @@ export const CurrentHand = () => {
           }}
           className={`${
             showRomaji ? "bg-white" : "bg-black text-white"
-          } rounded-md  duration-300 h-12 w-12 flex items-center justify-center`}
+          } rounded-xl border border-black/15 shadow-sm  duration-300 h-12 w-12 flex items-center justify-center`}
         >
           <LanguagesIcon className="w-5 h-5" strokeWidth={1.5} />
         </div>
 
         <Report />
 
-        <div className="bg-white rounded-md  h-12 w-12 flex items-center justify-center">
+        <div className="bg-white rounded-xl border border-black/15 shadow-sm  h-12 w-12 flex items-center justify-center">
           {currentDeck.length}
         </div>
       </div>

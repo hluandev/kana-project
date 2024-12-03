@@ -6,7 +6,7 @@ import { PlaySelected } from "./buttons/play-selected";
 
 export const ActionsHand = () => {
   return (
-    <div className="mt-10 z-10 flex items-center bg-white rounded-full p-1">
+    <div className="mt-10 z-10 flex items-center bg-white border border-black/15 shadow-sm rounded-full p-2">
       <DiscardSelected />
       <ActionInput />
       <PlaySelected />

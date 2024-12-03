@@ -16,9 +16,9 @@ export const SpecialHands = () => {
     <div
       className={`${
         turns === 0 && mission?.target > progress && "hidden"
-      } h-72 ${
+      } h-[17rem] ${
         currentSpecial.length === 0 ? "aspect-square" : "w-fit"
-      } relative p-4 z-10 grid grid-cols-5 gap-2 rounded-md bg-white/50`}
+      } relative p-4 z-10 grid grid-cols-5 gap-2 rounded-xl bg-black/5 border border-black/15 shadow-inner`}
     >
       {currentSpecial.length === 0 && (
         <p className="text-center absolute top-1/2 -translate-y-1/2 w-full text-black/40 ">
@@ -34,7 +34,7 @@ export const SpecialHands = () => {
         return (
           <div
             key={card.romaji}
-            className={`flex flex-col p-2 relative overflow-hidden justify-between rounded-md  w-44 h-full   ${
+            className={`flex flex-col p-3 relative overflow-hidden justify-between border border-black/20 shadow-sm rounded-xl  w-40 h-full   ${
               isSelected ? "border-yellow-500 bg-[#efcb68]" : " bg-white"
             }`}
           >
@@ -53,7 +53,7 @@ export const SpecialHands = () => {
                 </motion.div>
               )}
 
-            <p className="text-5xl font-medium flex justify-center items-center h-full relative group">
+            <p className="text-4xl font-medium flex justify-center items-center h-full relative group">
               {isHovered
                 ? card.romaji
                 : hiragana
@@ -62,15 +62,15 @@ export const SpecialHands = () => {
             </p>
 
             <p
-              className={`text-center rounded-xl relative px-4  h-60  flex justify-center items-center  ${
-                isSelected ? "bg-black/80 text-white" : "bg-[#f2f3f7]"
+              className={`text-center rounded-xl border border-black/10 text-[0.9rem] shadow-sm relative px-4  h-60  flex justify-center items-center  ${
+                isSelected ? "bg-black/80 text-white" : "bg-black/5"
               } backdrop-blur-lg`}
             >
               {turns >= 0 && mission?.target <= progress && (
                 <p
                   className={`text-sm ${
                     isSelected ? "bg-black/90" : "bg-[#efcb68]"
-                  } absolute px-2 py-1 font-medium -top-0 -translate-y-1/2 rounded-full`}
+                  } absolute px-2 py-1 font-medium border border-black/15 -top-0 -translate-y-1/2 rounded-full`}
                 >
                   ¥300
                 </p>
