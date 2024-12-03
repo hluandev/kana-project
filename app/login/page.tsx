@@ -9,8 +9,8 @@ export default function LoginPage() {
   return (
     <div className="flex flex-col gap-6 justify-center items-center h-full max-w-sm mx-auto">
       <svg
-        width="60"
-        height="60"
+        width="72"
+        height="72"
         viewBox="0 0 512 512"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +73,18 @@ export default function LoginPage() {
           brand="GitHub"
           signInWith={signInWithGithub}
         />
+      </div>
+
+      <div className="text-xs text-center max-w-xs  text-black/60">
+        By continuing, you agree to Kamikana's{" "}
+        <a href="" className="underline">
+          Terms of Service
+        </a>
+        , and acknowledge the{" "}
+        <a href="" className="underline">
+          Privacy Policy
+        </a>
+        .
       </div>
     </div>
   );
