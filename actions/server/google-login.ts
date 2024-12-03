@@ -1,7 +1,6 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
 
 export async function signInWithGoogle() {
   const supabase = await createClient();
@@ -10,12 +9,17 @@ export async function signInWithGoogle() {
     provider: "google",
     options: {
       redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/auth/callback`,
+      queryParams: {
+        access_type: "offline",
+        prompt: "consent",
+      },
     },
   });
 
   if (error) {
-    redirect("/error");
+    console.error("Google sign in error:", error.message);
+    throw error;
   }
 
-  return data;
+  return { data };
 }
