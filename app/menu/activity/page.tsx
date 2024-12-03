@@ -7,8 +7,8 @@ import { usePlayerStore } from "@/stores/usePlayerStore";
 export default function Activity() {
   const { info } = usePlayerStore();
   return (
-    <div className="h-full w-full pr-4">
-      <div className="flex flex-col bg-white/50 space-y-4 rounded-2xl w-full p-4 h-full">
+    <div className="h-full w-full">
+      <div className="flex flex-col  space-y-4 rounded-2xl w-full h-full">
         <div className="grid grid-cols-4 gap-4">
           <ActivityBox title="Matches" value={info.wins + info.losses} />
           <ActivityBox

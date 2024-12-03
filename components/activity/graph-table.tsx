@@ -31,7 +31,7 @@ export const GraphTable = ({ highestHandsTable }: GraphTableProps) => {
   };
 
   return (
-    <div className="bg-white p-4 w-full  overflow-hidden h-full rounded-2xl">
+    <div className="bg-white border border-black/15 shadow-sm p-4 w-full  overflow-hidden h-full rounded-2xl">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           margin={{ left: 60, right: 60, bottom: 10, top: 40 }}
