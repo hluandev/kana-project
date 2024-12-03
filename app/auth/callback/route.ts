@@ -1,28 +1,29 @@
-import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
-
-export const runtime = "edge";
+import { createClient } from "@/utils/supabase/server";
 
 export async function GET(request: Request) {
-  const requestUrl = new URL(request.url);
-  const code = requestUrl.searchParams.get("code");
+  const { searchParams, origin } = new URL(request.url);
+  const code = searchParams.get("code");
+  // Default redirect to menu page
+  const next = searchParams.get("next") ?? "/menu";
 
-  if (!code) {
-    return NextResponse.redirect(new URL("/login", requestUrl.origin));
-  }
-
-  const supabase = await createClient();
-
-  try {
+  if (code) {
+    const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (!error) {
+      const forwardedHost = request.headers.get("x-forwarded-host");
+      const isLocalEnv = process.env.NODE_ENV === "development";
 
-    if (error) {
-      throw error;
+      if (isLocalEnv) {
+        return NextResponse.redirect(`${origin}${next}`);
+      } else if (forwardedHost) {
+        return NextResponse.redirect(`https://${forwardedHost}${next}`);
+      } else {
+        return NextResponse.redirect(`${origin}${next}`);
+      }
     }
-
-    return NextResponse.redirect(new URL("/menu", requestUrl.origin));
-  } catch (error) {
-    console.error("Auth error:", error);
-    return NextResponse.redirect(new URL("/login", requestUrl.origin));
   }
+
+  // If something went wrong, redirect to login
+  return NextResponse.redirect(`${origin}/login`);
 }
