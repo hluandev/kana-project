@@ -1,5 +1,9 @@
 const MenuPage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <img src="/img/logo.svg" alt="" />
+    </div>
+  );
 };
 
 export default MenuPage;
