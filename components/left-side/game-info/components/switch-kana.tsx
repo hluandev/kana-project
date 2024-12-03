@@ -19,10 +19,10 @@ export const SwitchKana = () => {
   };
 
   return (
-    <div className="bg-black/5 border text-[0.9rem] border-black/15 shadow-inner flex-1  rounded-md p-2 grid grid-cols-2 gap-2">
+    <div className="bg-black/5 border text-[0.9rem] border-black/15 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
       <button
         onClick={() => handleKanaSwitch(true)}
-        className={`rounded-md  py-1 ${
+        className={`rounded-lg  py-1 ${
           hiragana ? "bg-white border border-black/15 shadow-sm" : ""
         }`}
       >
@@ -30,7 +30,7 @@ export const SwitchKana = () => {
       </button>
       <button
         onClick={() => handleKanaSwitch(false)}
-        className={`rounded-md py-1 ${
+        className={`rounded-lg py-1 ${
           hiragana ? "" : "bg-white border border-black/15 shadow-sm"
         }`}
       >
