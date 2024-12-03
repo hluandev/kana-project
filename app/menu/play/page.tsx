@@ -11,7 +11,7 @@ export default function Play() {
         title="Kana"
         description="Get to know Hiragana and Katakana, the two essential Japanese syllabaries."
       />
-      <ArrowRight width={32} height={32} className="text-black/80" />
+      <ArrowRight width={24} height={24} className="text-black/60" />
       <PlayBox
         linkText="Coming Soon"
         href=""

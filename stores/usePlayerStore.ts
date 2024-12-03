@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 interface PlayerInfo {
   id: string;
+  username: string;
   first_name: string;
   level: number;
   xp: number;
@@ -40,6 +41,7 @@ export const usePlayerStore = create<playerStore>((set) => ({
     losses: 0,
     matches: 0,
     highest_score: 0,
+    username: "",
     stripe_customer_id: "",
   },
   activity: [],

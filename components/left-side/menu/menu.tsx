@@ -7,7 +7,7 @@ export const Menu = () => {
     <div className="flex flex-col justify-between h-full">
       <TopInfo />
 
-      <div className="space-y-2">
+      <div className="space-y-4">
         <Support />
         <PlayerLevel />
       </div>
