@@ -36,13 +36,13 @@ export default async function MenuLayout({
 
       {/* <Support /> */}
 
-      <div className="p-4">
+      <div className="">
         <LeftSide />
       </div>
 
       <Board>{children}</Board>
 
-      <BgGradient />
+      {/* <BgGradient /> */}
     </section>
   );
 }

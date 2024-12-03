@@ -18,19 +18,19 @@ export const PlayBox = ({
   disabled,
 }: PlayBoxProps) => {
   return (
-    <div className="bg-white p-4 h-[25rem] w-[20rem] rounded-2xl flex flex-col justify-between">
-      <p className="text-2xl">Stage {stage}</p>
-      <div className="space-y-4">
-        <div className="space-y-3">
-          <p className="text-4xl font-semibold leading-none">{title}</p>
-          <p className="text-black/60">{description}</p>
+    <div className="bg-white p-4 rounded-md h-[20rem] w-[16rem] flex flex-col justify-between">
+      <p className="text-[0.9rem]">Stage {stage}</p>
+      <div className="space-y-2">
+        <div className="space-y-2">
+          <p className="text-xl font-medium leading-none">{title}</p>
+          <p className="text-black/60 text-[0.9rem]">{description}</p>
         </div>
         <Link
           prefetch={true}
           href={href}
           className={`${
-            disabled ? "bg-black/10" : "bg-[#efcb68]"
-          } block text-center  font-semibold w-full text-2xl p-3 rounded-xl`}
+            disabled ? "bg-black/10" : "mainBgColor"
+          } block text-center font-medium w-full rounded-md  p-2`}
         >
           {linkText}
         </Link>

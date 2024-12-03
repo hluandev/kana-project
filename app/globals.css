@@ -6,7 +6,7 @@
 body,
 html {
   height: 100%;
-  background-color: #ffffff;
+  background-color: #ede9ec;
   color: #131313;
 }
 
@@ -19,4 +19,8 @@ html {
 .hideScroll {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+.mainBgColor {
+  background-color: #50d0d2;
 }

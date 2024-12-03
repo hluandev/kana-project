@@ -46,7 +46,7 @@ export default function PlayerLevel() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute -top-32 space-y-2 bg-white border shadow-sm w-full p-2 rounded-2xl left-0 "
+            className="absolute -top-32 space-y-2 bg-white border shadow-sm w-full p-2 rounded-md left-0 "
           >
             <ManageSubscription />
             <button
@@ -59,18 +59,18 @@ export default function PlayerLevel() {
         )}
       </AnimatePresence>
 
-      <div className="bg-white col-span-10 w-full relative overflow-hidden rounded-full p-2 flex items-center gap-2">
-        <div className="bg-[#1d1d1f] z-20 text-white font-medium text-xl rounded-full p-2 w-12 aspect-square flex justify-center items-center">
+      <div className="bg-white col-span-10 w-full relative overflow-hidden rounded-md p-1 flex items-center gap-2">
+        <div className="bg-[#1d1d1f] z-20 text-white font-medium  rounded-md p-2 w-10 aspect-square flex justify-center items-center">
           {info.level}
         </div>
 
-        <div className="z-10">
-          <p className="text-xl font-medium">{info.first_name}</p>
+        <div className="z-10 leading-none flex flex-col justify-between">
+          <p className="font-medium">{info.first_name}</p>
           <p className="text-sm">{info.xp}/100</p>
         </div>
 
         <motion.div
-          className="bg-[#efcb68] absolute left-0 h-full "
+          className="mainBgColor absolute left-0 h-full "
           animate={{ width: `${percentage}%` }}
           transition={{ duration: 0.5 }}
         />
@@ -78,7 +78,7 @@ export default function PlayerLevel() {
 
       <div
         onClick={() => setSetting(!setting)}
-        className="p-5 bg-white z-20 cursor-pointer rounded-full flex justify-center items-center"
+        className="p-3 bg-white z-20 cursor-pointer rounded-md flex justify-center items-center"
       >
         <SettingsIcon className="" />
       </div>
