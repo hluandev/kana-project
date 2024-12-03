@@ -1,5 +1,7 @@
+"use client";
+
 import { signInWithGoogle } from "@/actions/server/google-login";
 
 export default function GoogleSignIn() {
-  return <div onClick={() => signInWithGoogle()}>GoogleSignIn</div>;
+  return <button onClick={() => signInWithGoogle()}>GoogleSignIn</button>;
 }
