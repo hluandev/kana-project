@@ -1,20 +1,11 @@
-import { signup } from "@/actions/auth";
-import { login } from "@/actions/auth";
+import GithubSignIn from "@/components/auth/github-sign-in";
 import GoogleSignIn from "@/components/auth/google-sign-in";
 
 export default function LoginPage() {
   return (
-    <div>
-      <form>
-        <label htmlFor="email">Email:</label>
-        <input id="email" name="email" type="email" required />
-        <label htmlFor="password">Password:</label>
-        <input id="password" name="password" type="password" required />
-        <button formAction={login}>Log in</button>
-        <button formAction={signup}>Sign up</button>
-      </form>
-
+    <div className="flex justify-center items-center h-full max-w-sm mx-auto">
       <GoogleSignIn />
+      <GithubSignIn />
     </div>
   );
 }
