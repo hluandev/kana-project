@@ -18,10 +18,10 @@ export const SpecialHands = () => {
         turns === 0 && mission?.target > progress && "hidden"
       } h-72 ${
         currentSpecial.length === 0 ? "aspect-square" : "w-fit"
-      } relative p-4 z-10 grid grid-cols-5 gap-2 rounded-2xl bg-white/50`}
+      } relative p-4 z-10 grid grid-cols-5 gap-2 rounded-md bg-white/50`}
     >
       {currentSpecial.length === 0 && (
-        <p className="text-center absolute top-1/2 -translate-y-1/2 text-2xl font-medium w-full text-black/40 ">
+        <p className="text-center absolute top-1/2 -translate-y-1/2 w-full text-black/40 ">
           No special cards
         </p>
       )}
@@ -34,7 +34,7 @@ export const SpecialHands = () => {
         return (
           <div
             key={card.romaji}
-            className={`flex flex-col p-2 relative overflow-hidden justify-between rounded-xl  w-44 h-full   ${
+            className={`flex flex-col p-2 relative overflow-hidden justify-between rounded-md  w-44 h-full   ${
               isSelected ? "border-yellow-500 bg-[#efcb68]" : " bg-white"
             }`}
           >

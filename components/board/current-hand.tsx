@@ -23,7 +23,7 @@ export const CurrentHand = () => {
 
   return (
     <div className="w-full z-20">
-      <motion.div layout className="flex gap-2 flex-wrap justify-center">
+      <motion.div layout className="flex gap-1 flex-wrap justify-center">
         {currentHand?.map((item) => (
           <Card card={item} key={item.id} />
         ))}
@@ -60,12 +60,12 @@ export const CurrentHand = () => {
         )}
       </AnimatePresence>
 
-      <div className="fixed flex flex-col gap-4 right-4 bottom-4">
+      <div className="fixed flex flex-col gap-1 right-2 bottom-2">
         <div
           onClick={() => setIsCombineOpen(true)}
-          className="bg-white rounded-full  h-14 w-14 flex items-center justify-center"
+          className="bg-white rounded-md  h-12 w-12 flex items-center justify-center"
         >
-          <CombineIcon />
+          <CombineIcon className="w-5 h-5" strokeWidth={1.5} />
         </div>
 
         <div
@@ -74,14 +74,14 @@ export const CurrentHand = () => {
           }}
           className={`${
             showRomaji ? "bg-white" : "bg-black text-white"
-          } rounded-full  duration-300 h-14 w-14 flex items-center justify-center`}
+          } rounded-md  duration-300 h-12 w-12 flex items-center justify-center`}
         >
-          <LanguagesIcon />
+          <LanguagesIcon className="w-5 h-5" strokeWidth={1.5} />
         </div>
 
         <Report />
 
-        <div className="bg-white rounded-full text-xl font-semibold  h-14 w-14 flex items-center justify-center">
+        <div className="bg-white rounded-md  h-12 w-12 flex items-center justify-center">
           {currentDeck.length}
         </div>
       </div>

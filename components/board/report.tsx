@@ -11,7 +11,7 @@ export const Report = () => {
     <>
       {isOpen && (
         <div className="fixed flex justify-center items-center z-50 top-0 left-0 w-full h-full bg-black/50">
-          <div className="bg-white rounded-2xl w-1/4 h-1/3 p-4 flex flex-col gap-4">
+          <div className="bg-white rounded-md w-1/4 h-1/3 p-4 flex flex-col gap-4">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-semibold">Report bugs</h2>
               <XIcon onClick={() => setIsOpen(false)} />
@@ -46,9 +46,9 @@ export const Report = () => {
 
       <div
         onClick={() => setIsOpen(true)}
-        className={`bg-white rounded-full  duration-300 h-14 w-14 flex items-center justify-center`}
+        className={`bg-white rounded-md  duration-300 h-12 w-12 flex items-center justify-center`}
       >
-        <BugIcon />
+        <BugIcon className="w-5 h-5" strokeWidth={1.5} />
       </div>
     </>
   );
