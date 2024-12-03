@@ -77,11 +77,19 @@ export default function LoginPage() {
 
       <div className="text-xs text-center max-w-xs  text-black/60">
         By continuing, you agree to Kamikana's{" "}
-        <a href="" className="underline">
+        <a
+          href="https://www.kamikana.com/terms"
+          target="_blank"
+          className="underline"
+        >
           Terms of Service
         </a>
         , and acknowledge the{" "}
-        <a href="" className="underline">
+        <a
+          href="https://www.kamikana.com/privacy"
+          target="_blank"
+          className="underline"
+        >
           Privacy Policy
         </a>
         .

@@ -24,7 +24,7 @@ export default async function MenuLayout({
   const initialLeaderboard = await fetchLeaderboard();
   const initialActivity = await fetchActivity();
   return (
-    <section className="flex h-full">
+    <section className="flex h-full bg-black/5 shadow-inner">
       <DataInit
         initialLeaderboard={initialLeaderboard ?? []}
         initialSpecial={initialSpecial ?? []}
@@ -36,7 +36,7 @@ export default async function MenuLayout({
 
       {/* <Support /> */}
 
-      <div className="">
+      <div className=" p-4">
         <LeftSide />
       </div>
 
