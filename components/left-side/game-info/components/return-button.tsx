@@ -6,7 +6,7 @@ export const ReturnButton = () => {
     <Link
       prefetch={true}
       href={"/menu"}
-      className="w-12 h-12 bg-white rounded-md flex items-center justify-center"
+      className="w-12 h-12  rounded-md flex items-center justify-center"
     >
       <Undo2Icon className="w-4 h-4" />
     </Link>

@@ -19,11 +19,11 @@ export const ScoreDamage = () => {
         <div className="text-lg font-semibold">{score * multiplier}</div>
       </div>
 
-      <div className="font-semibold text-center grid mt-4 gap-1 grid-cols-2">
-        <div className="py-2 bg-[#f2f3f7] rounded-md text-[#50d0d2]">
+      <div className="font-semibold text-center grid mt-4 gap-4 grid-cols-2">
+        <div className="py-2 bg-[#50d0d2] bg-opacity-10 shadow-sm border border-black/15 rounded-md text-[#50d0d2]">
           {score}
         </div>
-        <div className="py-2 bg-[#f2f3f7] rounded-md text-red-500">
+        <div className="py-2 bg-white bg-red-500/10 shadow-sm border border-black/15 rounded-md text-red-500">
           {multiplier}
         </div>
       </div>

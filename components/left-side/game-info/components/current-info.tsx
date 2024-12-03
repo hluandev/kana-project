@@ -10,12 +10,12 @@ export const CurrentInfo = () => {
   const { kanaMissions, currentSpecial } = useKanaStore();
 
   return (
-    <div className="grid rounded-2xl grid-cols-2 gap-1 grid-rows-2 overflow-hidden">
-      {/* Discard */}
-      <InfoBox title="Discard">{discard}</InfoBox>
-
+    <div className="rounded-2xl flex flex-col shadow-inner bg-black/5 p-6 border border-black/15 gap-1 overflow-hidden">
       {/* Turns */}
       <InfoBox title="Turns">{turns}</InfoBox>
+
+      {/* Discard */}
+      <InfoBox title="Discard">{discard}</InfoBox>
 
       {/* Matches */}
       <InfoBox title="Matches">

@@ -10,7 +10,7 @@ export const ProgressBar = ({ target }: ProgressBarProps) => {
   const percentage = (progress / target) * 100;
 
   return (
-    <div className="rounded-md bg-[#f2f3f7] overflow-hidden">
+    <div className="rounded-md bg-[#efcb68] bg-opacity-20 font-medium shadow-sm border border-black/15 overflow-hidden">
       <div className="relative h-9">
         <motion.div
           className="absolute top-0 left-0 h-full bg-[#efcb68]"

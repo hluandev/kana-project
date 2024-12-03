@@ -5,9 +5,9 @@ interface InfoBoxProps {
 
 export const InfoBox = ({ children, title }: InfoBoxProps) => {
   return (
-    <div className="rounded-md bg-white h-36 p-3 flex flex-col justify-between overflow-hidden">
-      <div className="text-neutral-400 text-[0.9rem]">{title}</div>
-      <p className="font-medium text-lg">{children}</p>
+    <div className="rounded-xl bg-white  p-3 flex items-center leading-none border border-black/15 shadow-sm justify-between overflow-hidden">
+      <div className="text-black/50 font-medium text-sm">{title}</div>
+      <p className="font-medium">{children}</p>
     </div>
   );
 };
