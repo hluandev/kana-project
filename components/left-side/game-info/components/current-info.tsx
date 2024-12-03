@@ -10,7 +10,7 @@ export const CurrentInfo = () => {
   const { kanaMissions, currentSpecial } = useKanaStore();
 
   return (
-    <div className="rounded-2xl flex flex-col p-4 bg-[#50d0d2] bg-opacity-10 border border-black/15 shadow-inner gap-2">
+    <div className="rounded-2xl flex flex-col p-4 bg-black/5 bg-opacity-10 border border-black/15 shadow-inner gap-2">
       {/* Turns */}
       <InfoBox title="Turns">{turns}</InfoBox>
 
