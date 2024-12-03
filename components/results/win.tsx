@@ -85,7 +85,7 @@ export const Win = () => {
 
   React.useEffect(() => {
     const playSound = () => {
-      const audio = new Audio("/audio/win.wav");
+      const audio = new Audio("/audio/win.mp3");
       audio.volume = 0.5;
       audio.play();
     };
@@ -131,10 +131,10 @@ export const Win = () => {
 
         if (isAlreadySelected) {
           removeSelectedSpecial(matchingSpecial);
-          playSound("/audio/deselect_card.wav");
+          playSound("/audio/deselect_card.mp3");
         } else if (selectedSpecial.length < 3) {
           addSelectedSpecial(matchingSpecial);
-          playSound("/audio/select_card.wav");
+          playSound("/audio/select_card.mp3");
         }
         setTimeout(() => setValue(""), 0);
       }
@@ -154,10 +154,10 @@ export const Win = () => {
 
         if (isAlreadySelected) {
           removeSelectedSpecial(matchingCard);
-          playSound("/audio/deselect_card.wav");
+          playSound("/audio/deselect_card.mp3");
         } else if (selectedSpecial.length < 3) {
           addSelectedSpecial(matchingCard);
-          playSound("/audio/select_card.wav");
+          playSound("/audio/select_card.mp3");
         }
         setTimeout(() => setValue(""), 0);
       }
@@ -175,11 +175,11 @@ export const Win = () => {
     // Only allow selection from one source
     if (matchingSpecial) {
       addSelectedSpecial(matchingSpecial);
-      playSound("/audio/select_card.wav");
+      playSound("/audio/select_card.mp3");
       setTimeout(() => setValue(""), 0);
     } else if (matchingCard) {
       addSelectedSpecial(matchingCard);
-      playSound("/audio/select_card.wav");
+      playSound("/audio/select_card.mp3");
       setTimeout(() => setValue(""), 0);
     }
   };
@@ -199,13 +199,13 @@ export const Win = () => {
     newSpecialCards.splice(toIndex, 0, movedItem);
 
     setCurrentSpecial(newSpecialCards);
-    playSound("/audio/select_card.wav");
+    playSound("/audio/select_card.mp3");
   };
 
   const handleFreezeCard = () => {
     if (selectedSpecial.length === 0) {
       setWarning("Select cards to freeze first");
-      playSound("/audio/error.wav");
+      playSound("/audio/error.mp3");
       return;
     }
 
@@ -225,7 +225,7 @@ export const Win = () => {
       setFrozenSpecialCards(newFrozenCards);
       setSelectedSpecial([]);
       setTimeout(() => setValue(""), 0);
-      playSound("/audio/deselect_card.wav");
+      playSound("/audio/deselect_card.mp3");
       return;
     }
 
@@ -236,7 +236,7 @@ export const Win = () => {
 
     if (!selectedFromRandom) {
       setWarning("You can only freeze cards from the shop");
-      playSound("/audio/error.wav");
+      playSound("/audio/error.mp3");
       return;
     }
 
@@ -245,7 +245,7 @@ export const Win = () => {
 
     setSelectedSpecial([]);
     setTimeout(() => setValue(""), 0);
-    playSound("/audio/freeze.wav");
+    playSound("/audio/freeze.mp3");
   };
 
   const handleSubmit = () => {
@@ -257,7 +257,7 @@ export const Win = () => {
     // Check if adding new cards would exceed the 5-card limit
     if (currentSpecial.length + selectedSpecial.length > 5) {
       setWarning("You can only have 5 special cards at a time");
-      playSound("/audio/error.wav");
+      playSound("/audio/error.mp3");
       return;
     }
 
@@ -319,10 +319,10 @@ export const Win = () => {
       setYen(yen - totalCost);
       setSelectedSpecial([]);
       setTimeout(() => setValue(""), 0);
-      playSound("/audio/buy.wav");
+      playSound("/audio/buy.mp3");
     } else {
       setWarning("You don't have enough yen");
-      playSound("/audio/error.wav");
+      playSound("/audio/error.mp3");
     }
   };
 
@@ -369,7 +369,7 @@ export const Win = () => {
     }
 
     setSelectedCard([]);
-    playSound("/audio/next_turn.wav");
+    playSound("/audio/next_turn.mp3");
     setMultiplier(0);
     setScore(0);
     setProgress(0);
@@ -415,11 +415,11 @@ export const Win = () => {
       setYen(yen - 200);
       setReroll(reroll + 1);
       setSelectedSpecial([]);
-      playSound("/audio/reroll.wav");
+      playSound("/audio/reroll.mp3");
       setTimeout(() => setValue(""), 0);
     } else {
       setWarning("You need 200 yen to refresh cards");
-      playSound("/audio/error.wav");
+      playSound("/audio/error.mp3");
     }
   };
 

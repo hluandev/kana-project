@@ -48,7 +48,7 @@ export const Lose = () => {
 
   useEffect(() => {
     const playSound = () => {
-      const audio = new Audio("/audio/lose.wav");
+      const audio = new Audio("/audio/lose.mp3");
       audio.volume = 0.5;
       audio
         .play()

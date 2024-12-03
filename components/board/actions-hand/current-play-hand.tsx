@@ -32,7 +32,7 @@ export default function CurrentPlayHand() {
 
   useEffect(() => {
     if (turns > 0) {
-      playSound("/audio/start.wav");
+      playSound("/audio/start.mp3");
     }
   }, [missionID]);
 

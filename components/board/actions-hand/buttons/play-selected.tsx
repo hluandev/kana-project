@@ -407,10 +407,10 @@ export const PlaySelected = () => {
       setMultiplier(0);
       setSelectedCard([]);
       setTurns(turns - 1);
-      playSound("/audio/play.wav");
+      playSound("/audio/play.mp3");
     } else {
       setWarning("Select cards to play first");
-      playSound("/audio/error.wav");
+      playSound("/audio/error.mp3");
     }
   };
 

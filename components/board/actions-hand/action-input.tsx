@@ -50,10 +50,10 @@ export default function ActionInput() {
 
       if (isAlreadySelected) {
         removeSelectedCard(matchedCard);
-        playSound("/audio/deselect_card.wav");
+        playSound("/audio/deselect_card.mp3");
       } else if (selectedCard.length < 5) {
         addSelectedCard(matchedCard);
-        playSound("/audio/select_card.wav");
+        playSound("/audio/select_card.mp3");
       }
       setValue("");
     }
