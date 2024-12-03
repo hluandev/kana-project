@@ -46,12 +46,12 @@ export default function PlayerLevel() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute -top-32 space-y-2 bg-white border shadow-sm w-full p-2 rounded-md left-0 "
+            className="absolute -top-32 space-y-2 bg-white border border-black/15 shadow-sm w-full p-2 rounded-md left-0 "
           >
             <ManageSubscription />
             <button
               onClick={() => signOut()}
-              className="bg-red-600 w-full text-white p-3 rounded-lg"
+              className="bg-red-600 border border-black/15 shadow-sm w-full text-white p-2 rounded-lg"
             >
               Sign Out
             </button>
@@ -67,9 +67,9 @@ export default function PlayerLevel() {
           {info.level}
         </div>
 
-        <div className="z-10 leading-none flex flex-col justify-between">
-          <p className="font-medium">{info.username}</p>
-          {/* <p className="text-sm">{info.xp}/100</p> */}
+        <div className="z-10 absolute left-1/2 -translate-x-1/2 font-medium leading-none text-center w-full">
+          {/* <p className="font-medium">{info.username}</p> */}
+          <p className="text-sm">{info.xp}/100</p>
         </div>
 
         <motion.div
