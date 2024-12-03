@@ -10,7 +10,7 @@ export const WinTheGame = () => {
 
   const handleEndlessMode = () => {
     setIsEndlessMode(true);
-    setEndlessTarget(10);
+    setEndlessTarget(1);
     // setMissionID(9);
     // setProgress(0);
     setShowShop(true);

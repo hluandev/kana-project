@@ -1,5 +1,6 @@
 import { signup } from "@/actions/auth";
 import { login } from "@/actions/auth";
+import GoogleSignIn from "@/components/auth/google-sign-in";
 
 export default function LoginPage() {
   return (
@@ -10,6 +11,8 @@ export default function LoginPage() {
       <input id="password" name="password" type="password" required />
       <button formAction={login}>Log in</button>
       <button formAction={signup}>Sign up</button>
+
+      <GoogleSignIn />
     </form>
   );
 }

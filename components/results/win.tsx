@@ -33,6 +33,9 @@ export const Win = () => {
     discard,
     addTurns,
     addDiscard,
+    isEndlessMode,
+    endlessTarget,
+    setEndlessTarget,
   } = useScoreStore();
 
   const {

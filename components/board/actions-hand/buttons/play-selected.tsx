@@ -376,10 +376,6 @@ export const PlaySelected = () => {
         const totalYen = yen + winBonus + remainingYen;
         const xpGain = 20;
 
-        if (isEndlessMode) {
-          setEndlessTarget(endlessTarget + 15000);
-        }
-
         // Batch all updates
         Promise.all([
           updatePlayerInfoServer({
