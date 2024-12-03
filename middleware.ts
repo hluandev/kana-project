@@ -52,11 +52,11 @@ export const config = {
   matcher: [
     /*
      * Match all request paths except:
+     * - auth/callback
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
-     * - public folder
      */
-    "/((?!_next/static|_next/image|favicon.ico|public).*)",
+    "/((?!auth/callback|_next/static|_next/image|favicon.ico).*)",
   ],
 };
