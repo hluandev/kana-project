@@ -1,13 +1,11 @@
 import { Box } from "@/components/box";
 import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
-import { useEffect } from "react";
 import { InfoBox } from "./infoBox";
 
 export const CurrentInfo = () => {
-  const { turns, discard, missionID, yen, addTurns, addDiscard } =
-    useScoreStore();
-  const { kanaMissions, currentSpecial } = useKanaStore();
+  const { turns, discard, missionID, yen, isEndlessMode } = useScoreStore();
+  const { kanaMissions } = useKanaStore();
 
   return (
     <div className="rounded-2xl flex flex-col p-4 bg-black/5 bg-opacity-10 border border-black/15 shadow-inner gap-2">
@@ -19,7 +17,7 @@ export const CurrentInfo = () => {
 
       {/* Matches */}
       <InfoBox title="Matches">
-        {missionID} / {kanaMissions.length}
+        {isEndlessMode ? missionID : `${missionID} / ${kanaMissions.length}`}
       </InfoBox>
 
       {/* Money */}
