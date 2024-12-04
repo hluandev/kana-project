@@ -1,10 +1,12 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { CalendarSyncIcon, Loader2Icon } from "lucide-react";
 import { useState } from "react";
 
 export default function ManageSubscription() {
   const [loading, setLoading] = useState(false);
+  const [toolTip, setTooltip] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleCancel = async () => {
@@ -38,20 +40,31 @@ export default function ManageSubscription() {
   return (
     <button
       onClick={handleCancel}
+      onMouseEnter={() => setTooltip(true)}
+      onMouseLeave={() => setTooltip(false)}
       disabled={loading}
-      className="z-10 border-b flex items-center p-3 gap-2"
+      className="z-10 relative border-b flex items-center p-3 gap-2"
     >
-      <CalendarSyncIcon strokeWidth={1.7} className="w-6 h-6" />
-
-      <p className="hover:bg-gray-100 w-full  text-left rounded-lg">
-        {error ? (
-          error
-        ) : loading ? (
-          <Loader2Icon className="animate-spin" />
-        ) : (
-          "Manage Subscription"
+      <AnimatePresence>
+        {toolTip && (
+          <motion.p
+            initial={{ opacity: 0, y: 10, x: "-50%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="hover:bg-gray-100 absolute -top-10 bg-white w-40 p-2 border border-black/15 shadow-sm left-1/2 -translate-x-1/2 flex justify-center items-center rounded-lg"
+          >
+            {error ? (
+              error
+            ) : loading ? (
+              <Loader2Icon className="animate-spin" />
+            ) : (
+              "Manage Subscription"
+            )}
+          </motion.p>
         )}
-      </p>
+      </AnimatePresence>
+
+      <CalendarSyncIcon strokeWidth={1.7} className="w-4 h-4" />
     </button>
   );
 }

@@ -33,23 +33,23 @@ export default function Leaderboard() {
 
   return (
     <div className="space-y-4 flex flex-col">
-      <div className="text-center space-y-2">
-        <h2 className="text-2xl font-semibold">Leaderboard</h2>
-        <p className="">Top 100 players with highest hand in 1 turn</p>
+      <div className="text-center ">
+        <h2 className="text-lg font-semibold">Leaderboard</h2>
+        <p className="text-sm">Top 100 players with highest score</p>
       </div>
-      <div className="flex flex-col gap-4 flex-1 overflow-y-auto bg-white/50 border border-black/15 shadow-sm p-2 rounded-2xl z-50">
+      <div className="flex flex-col gap-2 text-sm flex-1 w-96 overflow-y-auto bg-black/5 border border-black/15 shadow-inner p-2 rounded-2xl z-50">
         {leaderboard.map((player) => (
           <div
             key={player.id}
-            className="flex bg-white pl-2 py-2 pr-4 rounded-xl border border-black/15 shadow-sm items-center justify-between"
+            className="flex bg-white pl-2 py-2 pr-4 rounded-xl border border-black/20 shadow-sm items-center justify-between"
           >
             <div className="flex gap-2 items-center">
-              <div className="bg-[#efcb68] border border-black/15 shadow-sm aspect-square w-10 rounded-full flex items-center justify-center">
+              <div className="bg-[#efcb68] border border-black/15 shadow-sm aspect-square w-8 rounded-lg flex items-center justify-center">
                 {player.level}
               </div>
               <p className="font-semibold">{player.username}</p>
             </div>
-            <p className="font-semibold">{player.highest_hand}</p>
+            <p className="">{player.highest_hand}</p>
           </div>
         ))}
       </div>

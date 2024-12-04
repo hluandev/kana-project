@@ -22,8 +22,6 @@ export const GameInfo = () => {
         <CurrentInfo />
         <PlayerLevel />
       </div>
-
-      <Support />
     </div>
   );
 };

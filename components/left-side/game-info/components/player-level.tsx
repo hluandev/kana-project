@@ -3,8 +3,9 @@ import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import ManageSubscription from "@/components/subscriptions/manage-subscription";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { motion, AnimatePresence } from "framer-motion";
-import { LogOutIcon } from "lucide-react";
+import { LogOutIcon, Volume2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Support } from "../../support";
 
 export default function PlayerLevel() {
   const { info, updateLevel, setXp } = usePlayerStore();
@@ -51,35 +52,42 @@ export default function PlayerLevel() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute -top-40 text-sm  bg-white border border-black/15 shadow-sm w-full rounded-xl left-0 "
+            className="absolute -top-72 flex flex-col gap-2 text-sm  items-center justify-between  bg-white border border-black/15 shadow-sm w-full rounded-xl left-0 p-2 "
           >
-            <div className="flex justify-between border-b  items-center p-3">
-              <div className="font-medium">{info.username}</div>
-              <button
-                onClick={() => signOut()}
-                className="bg-red-600/30 border  border-black/15 shadow-sm text-white p-2 rounded-lg"
-              >
-                <LogOutIcon className="w-4 h-4 text-red-600" />
-              </button>
-            </div>
-            <div className="p-3 border-b">
-              <label className="flex items-center">
-                <input
-                  type="checkbox"
-                  className="hidden"
-                  checked={isChecked}
-                  onChange={handleCheckboxChange}
-                />
-                <span className="w-5 h-5 border p-0.5 border-gray-400 rounded-md flex items-center justify-center mr-2">
-                  {isChecked && (
-                    <span className="w-full h-full rounded-sm bg-black"></span>
-                  )}
-                </span>
-                <p className="leading-none">Sound effects</p>
-              </label>
+            <div className="flex justify-between items-center w-full bg-black/5 border border-black/15 shadow-inner p-2 rounded-xl">
+              <div className="flex justify-between  items-center">
+                <div className="font-medium">{info.username}</div>
+              </div>
+
+              <div className="flex gap-2">
+                <div className="">
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      className="hidden"
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
+                    <div className="mainBgColor  h-8 w-8 flex justify-center items-center border border-black/15 shadow-sm   rounded-lg">
+                      <Volume2Icon className="h-4 w-4" />
+                    </div>
+                  </label>
+                </div>
+
+                <button className="  h-8 w-8 flex justify-center items-center border border-black/15 shadow-sm   rounded-lg">
+                  <ManageSubscription />
+                </button>
+
+                <button
+                  onClick={() => signOut()}
+                  className="bg-red-600 h-8 w-8 flex justify-center items-center border border-black/15 shadow-sm text-white  rounded-lg"
+                >
+                  <LogOutIcon strokeWidth={1.7} className="w-4 h-4 " />
+                </button>
+              </div>
             </div>
 
-            <ManageSubscription />
+            <Support />
           </motion.div>
         )}
       </AnimatePresence>

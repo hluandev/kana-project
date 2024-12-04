@@ -38,6 +38,17 @@ export default function Shop() {
           </p>
           <p>- Select the card you want to move.</p>
           <p>- Press the number (5, 6, 7, 8, 9) you want to move it to.</p>
+
+          <p>
+            {" "}
+            Positions of the cards are important in this game. It is calculated
+            from left to right.
+          </p>
+          <p>
+            For example, with a x2 multiplier and a +5 multiplier (left to
+            right) for a high card hand: playing the hand gives a multiplier of
+            7. Switching their positions increases it to 12.
+          </p>
         </DocDesc>
 
         <DocDesc title="4. Rerolling">
