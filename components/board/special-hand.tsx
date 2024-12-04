@@ -5,6 +5,19 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import UpgradeCard from "./upgrade-card";
+
+const handRankOrder = {
+  high_card: 1,
+  pair: 2,
+  two_pairs: 3,
+  three_of_a_kind: 4,
+  straight: 5,
+  flush: 6,
+  full_house: 7,
+  four_of_a_kind: 8,
+  straight_flush: 9,
+};
+
 export const SpecialHands = () => {
   const [isHovered, setIsHovered] = useState(false);
   const {
@@ -38,9 +51,17 @@ export const SpecialHands = () => {
                 },
                 {}
               )
-            ).map(([key, { card, count }]) => (
-              <UpgradeCard key={key} card={card} count={count} />
-            ))}
+            )
+              .sort(([, { card: cardA }], [, { card: cardB }]) => {
+                const rankA =
+                  handRankOrder[cardA.combo as keyof typeof handRankOrder] || 0;
+                const rankB =
+                  handRankOrder[cardB.combo as keyof typeof handRankOrder] || 0;
+                return rankB - rankA;
+              })
+              .map(([key, { card, count }]) => (
+                <UpgradeCard key={key} card={card} count={count} />
+              ))}
           </div>
         </div>
       )}

@@ -60,6 +60,17 @@ export default function Hands() {
       </p>
 
       <ComboHelp />
+
+      <p>
+        How points are calculated? Based on the hand combination + (Upgrade
+        points)
+      </p>
+
+      <p>
+        For example: Full House is combination of Three of a kind and a pair, so
+        if you have 1 upgrade for Three of a kind and 1 upgrade for a pair, the
+        points will be calculated like this:
+      </p>
     </Doc>
   );
 }

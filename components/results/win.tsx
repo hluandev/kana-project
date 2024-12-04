@@ -284,23 +284,17 @@ export const Win = () => {
         }
       });
 
-      // Get new random cards to replace purchased upgrade cards
-      const newRandomCards = currentSpecialDeck
-        .filter(
-          (card) =>
-            !randomSpecialCards.some((rc) => rc.romaji === card.romaji) &&
-            !upgradeCards.some((uc) => uc.romaji === card.romaji)
-        )
-        .sort(() => Math.random() - 0.5)
-        .slice(0, upgradeCards.length);
+      // Remove purchased regular cards from the special deck
+      const newSpecialDeck = currentSpecialDeck.filter(
+        (card) =>
+          !regularCards.some((regular) => regular.romaji === card.romaji)
+      );
 
-      // Update random special cards by replacing purchased upgrade cards with new random ones
-      const newRandomSpecialCards = randomSpecialCards.map((card) => {
-        if (upgradeCards.some((upgrade) => upgrade.romaji === card.romaji)) {
-          return newRandomCards.pop() || card; // Replace upgrade card with new random card
-        }
-        return card;
-      });
+      // Remove purchased cards from the shop display
+      const newRandomSpecialCards = randomSpecialCards.filter(
+        (card) =>
+          !selectedSpecial.some((selected) => selected.romaji === card.romaji)
+      );
 
       const newSpecialCards = Array.from(
         new Set([...currentSpecial, ...regularCards])
@@ -310,7 +304,7 @@ export const Win = () => {
         newUpgradeCards.push(upgradeCard);
       });
 
-      setCurrentSpecialDeck(currentSpecialDeck);
+      setCurrentSpecialDeck(newSpecialDeck); // Updated special deck without purchased cards
       setCurrentSpecial(newSpecialCards);
       setCurrentUpgrades(newUpgradeCards);
       setRandomSpecialCards(newRandomSpecialCards);
