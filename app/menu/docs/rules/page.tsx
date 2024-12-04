@@ -27,11 +27,12 @@ export default function Rules() {
             For each round, you&apos;ll have a target score to beat. Beat all 8
             rounds to win the game!
           </p>
+          <p>In endless mode, every round you win will count as a win.</p>
         </DocDesc>
         <DocDesc title="3. Hand's score">
           <p>
-            Your current hand&apos;s score will be shown here. Green represents
-            points, and purple indicates the multiplier.
+            Your current hand&apos;s score will be shown here. Blue represents
+            points, and red indicates the multiplier.
           </p>
         </DocDesc>
         <DocDesc title="4. Information">
@@ -42,8 +43,8 @@ export default function Rules() {
             score.
           </p>
           <p>
-            - If you can&apos;t beat the score by turn 4, you&apos;ll lose the
-            game and have to start over.
+            - If you can&apos;t beat the target score by turn 4, you&apos;ll
+            lose the game and have to start over.
           </p>
           <p>
             - There are 8 rounds in total, and the target score increases each

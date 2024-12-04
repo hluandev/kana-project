@@ -10,9 +10,7 @@ export default function Leaderboard() {
     <div className="space-y-4 flex flex-col">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-semibold">Leaderboard</h2>
-        <p className=" ">
-          Top 100 players with highest hands in the last 30 days
-        </p>
+        <p className="">Top 100 players with highest hand in 1 turn</p>
       </div>
       <div className="flex flex-col gap-4  flex-1 overflow-y-auto bg-white/50 border border-black/15 shadow-sm p-2 rounded-2xl z-50">
         {leaderboard.map((player) => (

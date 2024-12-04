@@ -384,18 +384,23 @@ export const PlaySelected = () => {
         const totalYen = yen + winBonus + remainingYen;
         const xpGain = 20;
 
+        // Count wins for turn 8 and beyond
+        const shouldCountWin = missionID >= 8;
+
         // Batch all updates
         Promise.all([
           updatePlayerInfoServer({
             id: info.id,
             xp: info.xp + xpGain,
-            wins: info.wins + 1,
+            wins: info.wins + (shouldCountWin ? 1 : 0),
             matches: info.matches + 1,
           }),
-          updateActivityServer({ result: true }),
+          updateActivityServer({
+            result: shouldCountWin,
+          }),
           updateXp(xpGain),
           setYen(totalYen),
-          updateGameResult(true),
+          updateGameResult(shouldCountWin),
         ]);
       }
 
