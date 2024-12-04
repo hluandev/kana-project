@@ -8,7 +8,8 @@ export const SpecialHands = () => {
   const [isHovered, setIsHovered] = useState(false);
   const { currentSpecial, selectedSpecial, kanaMissions, hiragana } =
     useKanaStore();
-  const { turns, missionID, progress, reroll } = useScoreStore();
+  const { turns, missionID, progress, reroll, multiplierBonus } =
+    useScoreStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
 
@@ -106,6 +107,12 @@ export const SpecialHands = () => {
                 {card.condition === "reroll" && (
                   <span className="text-red-500">
                     +{card.reward} multiplier ({reroll}){` `}
+                  </span>
+                )}
+
+                {card.condition === "bought" && (
+                  <span className="text-red-500">
+                    +{card.reward} multiplier ({multiplierBonus}){` `}
                   </span>
                 )}
 

@@ -38,6 +38,7 @@ export const PlaySelected = () => {
     endlessTarget,
     setReroll,
     setEndlessTarget,
+    multiplierBonus,
   } = useScoreStore();
 
   const { info, updateXp, updateGameResult } = usePlayerStore();
@@ -335,6 +336,10 @@ export const PlaySelected = () => {
           currentSpecial.some((card) => card.condition === "reroll")
         ) {
           finalMultiplier += reroll + 2;
+        }
+
+        if (special.condition === "bought") {
+          finalMultiplier += multiplierBonus * 5;
         }
       });
 

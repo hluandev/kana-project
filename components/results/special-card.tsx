@@ -22,7 +22,7 @@ export default function SpecialCard({
 }: SpecialCardProps) {
   const { selectedSpecial, hiragana } = useKanaStore();
   const [hover, setHover] = useState(false);
-  const { reroll } = useScoreStore();
+  const { reroll, multiplierBonus } = useScoreStore();
 
   const isSelected = selectedSpecial.some((card) => card.romaji === romaji);
 
@@ -80,6 +80,12 @@ export default function SpecialCard({
           {card.condition === "reroll" && (
             <span className="text-red-500">
               +{card.reward} multiplier ({reroll}){` `}
+            </span>
+          )}
+
+          {card.condition === "bought" && (
+            <span className="text-red-500">
+              +{card.reward} multiplier ({multiplierBonus}){` `}
             </span>
           )}
 

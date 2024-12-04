@@ -30,6 +30,8 @@ interface scoreStore {
   setIsEndlessMode: (isEndlessMode: boolean) => void;
   setEndlessTarget: (endlessTarget: number) => void;
   incrementEndlessTarget: () => void;
+  multiplierBonus: number;
+  setMultiplierBonus: (multiplierBonus: number) => void;
 }
 
 export const useScoreStore = create<scoreStore>((set) => ({
@@ -43,6 +45,8 @@ export const useScoreStore = create<scoreStore>((set) => ({
   missionID: 1,
   progress: 0,
   warning: "",
+  multiplierBonus: 0,
+  setMultiplierBonus: (multiplierBonus) => set({ multiplierBonus }),
   leaderboard: [],
   setLeaderboard: (leaderboard) => set({ leaderboard }),
   setReroll: (reroll) => set({ reroll }),

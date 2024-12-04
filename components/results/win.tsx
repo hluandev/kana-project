@@ -34,6 +34,9 @@ export const Win = () => {
     addDiscard,
     endlessTarget,
     incrementEndlessTarget,
+    multiplier,
+    multiplierBonus,
+    setMultiplierBonus,
   } = useScoreStore();
 
   const {
@@ -270,7 +273,6 @@ export const Win = () => {
 
     if (hasCurrentSpecialCard) {
       // If card is from currentSpecial, don't charge yen
-      // Create new arrays instead of modifying existing ones
       const newSpecialDeck = currentSpecialDeck.filter((card) => {
         const isSelected = selectedSpecial.some(
           (selected) => selected.romaji === card.romaji
@@ -282,17 +284,23 @@ export const Win = () => {
         return !isSelected || isUpgrade;
       });
 
-      // Create a new array for special cards, ensuring no duplicates
       const newSpecialCards = Array.from(
         new Set([...currentSpecial, ...selectedSpecial])
       );
 
-      // Update states without changing yen
       setCurrentSpecialDeck(newSpecialDeck);
       setCurrentSpecial(newSpecialCards);
       setSelectedSpecial([]);
       setTimeout(() => setValue(""), 0);
     } else if (yen >= totalCost) {
+      // Check for special cards that give multiplier bonus for new purchases
+
+      currentSpecial.forEach((card) => {
+        if (card.condition === "bought") {
+          setMultiplierBonus(multiplierBonus + 1);
+        }
+      });
+
       // Original logic for purchasing new cards
       const newSpecialDeck = currentSpecialDeck.filter((card) => {
         const isSelected = selectedSpecial.some(
@@ -320,6 +328,7 @@ export const Win = () => {
       setRandomSpecialCards(newRandomSpecialCards);
       setYen(yen - totalCost);
       setSelectedSpecial([]);
+
       setTimeout(() => setValue(""), 0);
       playSound("/audio/buy.mp3");
     } else {
