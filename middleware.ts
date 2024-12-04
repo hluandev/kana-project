@@ -46,7 +46,7 @@ export async function middleware(request: NextRequest) {
   // If user is signed in and the current path is /login,
   // redirect the user to /menu
   if (user && request.nextUrl.pathname === "/login") {
-    return NextResponse.redirect(new URL("/menu", request.url));
+    return NextResponse.redirect(new URL("/menu/play", request.url));
   }
 
   return NextResponse.next();

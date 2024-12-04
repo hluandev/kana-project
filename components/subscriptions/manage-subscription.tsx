@@ -35,8 +35,8 @@ export default function ManageSubscription() {
   };
 
   return (
-    <div className="z-10">
-      {error && <p className="text-red-500 mb-2 text-sm">{error}</p>}
+    <div className="z-10 border-b">
+      {error && <p className="text-red-500 mb-2 text-sx">{error}</p>}
       <button
         onClick={handleCancel}
         disabled={loading}
