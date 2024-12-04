@@ -416,7 +416,7 @@ export const PlaySelected = () => {
   return (
     <ActionButton
       onClick={handlePlaySelected}
-      icon={<ArrowUp strokeWidth={1.7} />}
+      icon={<ArrowUp strokeWidth={1.7} className="w-5 h-5" />}
       descTooltip="Play your hand."
       keyboardShortcut="2"
       className="bg-[#01de5b]"

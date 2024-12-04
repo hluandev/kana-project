@@ -481,7 +481,7 @@ export const Win = () => {
             className="bg-blue-300  hover:bg-blue-300/80"
           />
 
-          <div className=" bg-white border border-black/15 shadow-sm p-2 font-medium rounded-full aspect-square w-10 flex items-center justify-center">
+          <div className=" bg-white border border-black/15 shadow-sm p-2 font-medium rounded-full aspect-square w-10 h-10 flex items-center justify-center">
             {currentSpecialDeck.length}
           </div>
         </div>
@@ -495,7 +495,12 @@ export const Win = () => {
       >
         <ActionButton
           onClick={handleSellSpecial}
-          icon={<JapaneseYenIcon strokeWidth={1.7} className="w-5 h-5" />}
+          icon={
+            <JapaneseYenIcon
+              strokeWidth={1.7}
+              className="w-[1.2rem] h-[1.2rem]"
+            />
+          }
           descTooltip="Sell special cards"
           keyboardShortcut="1"
           className="bg-[#EFCB68]  hover:bg-yellow-600/40"
@@ -518,9 +523,9 @@ export const Win = () => {
           }
           icon={
             selectedSpecial.length > 0 ? (
-              <ShoppingCartIcon strokeWidth={1.7} />
+              <ShoppingCartIcon strokeWidth={1.7} className="w-5 h-5" />
             ) : (
-              <ArrowRightIcon strokeWidth={1.7} />
+              <ArrowRightIcon strokeWidth={1.7} className="w-5 h-5" />
             )
           }
           keyboardShortcut="2"
