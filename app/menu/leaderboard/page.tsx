@@ -49,7 +49,7 @@ export default function Leaderboard() {
               </div>
               <p className="font-semibold">{player.username}</p>
             </div>
-            <p className="font-semibold">{player.highest_score}</p>
+            <p className="font-semibold">{player.highest_hand}</p>
           </div>
         ))}
       </div>
