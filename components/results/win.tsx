@@ -221,6 +221,12 @@ export const Win = () => {
       frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
     );
 
+    // if (selectedFrozenCards.length === 3) {
+    //   setWarning("You can only freeze up to 3 cards");
+    //   playSound("/audio/error.mp3");
+    //   return;
+    // }
+
     if (selectedFrozenCards.length > 0) {
       // Unfreeze the selected frozen cards
       const newFrozenCards = frozenSpecialCards.filter(
@@ -411,6 +417,7 @@ export const Win = () => {
 
   const handleRefreshCards = () => {
     if (yen >= 200) {
+      setFrozenSpecialCards([]);
       setRandomSpecialCards(
         [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
       );
@@ -428,7 +435,7 @@ export const Win = () => {
   };
 
   return (
-    <div className="w-[36rem] relative flex flex-col items-center z-10">
+    <div className="w-[36rem] relative flex flex-col items-center">
       <div className="flex flex-col gap-2">
         <motion.div
           className="text-[#cb980b] font-medium text-6xl"
@@ -463,7 +470,7 @@ export const Win = () => {
           <ActionButton
             onClick={handleRefreshCards}
             icon={<RefreshCwIcon strokeWidth={1.7} className="w-5 h-5" />}
-            descTooltip="Refresh cards to get new ones (¥200)"
+            descTooltip="Refresh cards to get new ones for ¥200. This will also cancel any frozen cards."
             keyboardShortcut="3"
             className="bg-[#ff915a]  hover:bg-[#ff915a] hover:bg-opacity-90"
           />

@@ -33,7 +33,7 @@ export default function Shop() {
         <DocDesc title="3. Move special cards">
           <p>
             During shopping, you can move your selected special cards from your
-            current special hand to another location within your curent special
+            current special hand to another location within your current special
             hand.
           </p>
           <p>- Select the card you want to move.</p>

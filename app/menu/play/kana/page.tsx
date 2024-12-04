@@ -1,5 +1,6 @@
 import CurrentPlayHand from "@/components/board/actions-hand/current-play-hand";
 import { SpecialHands } from "@/components/board/special-hand";
+import { Tools } from "@/components/board/tools";
 import Warning from "@/components/warning";
 
 const Kana = () => {
@@ -10,6 +11,8 @@ const Kana = () => {
       <Warning />
 
       <CurrentPlayHand />
+
+      <Tools />
     </div>
   );
 };

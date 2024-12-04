@@ -30,7 +30,7 @@ export default function SpecialCard({
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`flex border border-black/20 shadow-sm relative p-4 overflow-hidden duration-300 flex-col ${
+      className={`flex border border-black/20 shadow-sm relative p-4 overflow-hidden transition-colors duration-300 flex-col ${
         isSelected
           ? "border-yellow-500 bg-[#efcb68]"
           : isFrozen
