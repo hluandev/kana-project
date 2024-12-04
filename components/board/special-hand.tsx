@@ -4,7 +4,6 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SpecialCard from "../results/special-card";
 import UpgradeCard from "./upgrade-card";
 export const SpecialHands = () => {
   const [isHovered, setIsHovered] = useState(false);
