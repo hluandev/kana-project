@@ -53,8 +53,8 @@ export default function PlayerLevel() {
             exit={{ opacity: 0, y: 20 }}
             className="absolute -top-40 text-sm  bg-white border border-black/15 shadow-sm w-full rounded-xl left-0 "
           >
-            <div className="flex justify-between border-b  items-center p-2">
-              <div className="font-medium text-base">{info.username}</div>
+            <div className="flex justify-between border-b  items-center p-3">
+              <div className="font-medium">{info.username}</div>
               <button
                 onClick={() => signOut()}
                 className="bg-red-600/30 border  border-black/15 shadow-sm text-white p-2 rounded-lg"
@@ -62,7 +62,7 @@ export default function PlayerLevel() {
                 <LogOutIcon className="w-4 h-4 text-red-600" />
               </button>
             </div>
-            <div className="px-2 py-4 border-b">
+            <div className="p-3 border-b">
               <label className="flex items-center">
                 <input
                   type="checkbox"

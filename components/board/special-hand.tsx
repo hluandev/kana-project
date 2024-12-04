@@ -66,7 +66,8 @@ export const SpecialHands = () => {
         </div>
       )}
 
-      <div
+      <motion.div
+        layout
         className={`${
           turns === 0 && mission?.target > progress && "hidden"
         } h-[17rem] ${
@@ -85,7 +86,9 @@ export const SpecialHands = () => {
           );
 
           return (
-            <div
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
               key={card.romaji}
               className={`flex flex-col p-3 relative overflow-hidden justify-between border border-black/20 shadow-sm rounded-xl  w-40 h-full   ${
                 isSelected ? "border-yellow-500 bg-[#efcb68]" : " bg-white"
@@ -175,10 +178,10 @@ export const SpecialHands = () => {
                   {card.desc}
                 </p>
               </p>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 };

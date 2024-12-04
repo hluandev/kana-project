@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 interface UpgradeCardProps {
   card: any;
   count: number;
@@ -5,7 +7,11 @@ interface UpgradeCardProps {
 
 export default function UpgradeCard({ card, count }: UpgradeCardProps) {
   return (
-    <div className="bg-white border border-black/15 w-36 shadow-sm p-2 rounded-lg">
+    <motion.div
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="bg-white border border-black/15 w-36 shadow-sm p-2 rounded-lg"
+    >
       <div>
         <div className="flex justify-between items-center">
           <p>
@@ -27,6 +33,6 @@ export default function UpgradeCard({ card, count }: UpgradeCardProps) {
         </div>
         <p className="text-sm text-black/50">{card.desc.slice(8)}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }

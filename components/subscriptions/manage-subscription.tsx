@@ -1,5 +1,6 @@
 "use client";
 
+import { CalendarSyncIcon, Loader2Icon } from "lucide-react";
 import { useState } from "react";
 
 export default function ManageSubscription() {
@@ -35,15 +36,22 @@ export default function ManageSubscription() {
   };
 
   return (
-    <div className="z-10 border-b">
-      {error && <p className="text-red-500 mb-2 text-sx">{error}</p>}
-      <button
-        onClick={handleCancel}
-        disabled={loading}
-        className="hover:bg-gray-100 w-full p-3 rounded-lg"
-      >
-        {loading ? "Processing..." : "Manage Subscription"}
-      </button>
-    </div>
+    <button
+      onClick={handleCancel}
+      disabled={loading}
+      className="z-10 border-b flex items-center p-3 gap-2"
+    >
+      <CalendarSyncIcon strokeWidth={1.7} className="w-6 h-6" />
+
+      <p className="hover:bg-gray-100 w-full  text-left rounded-lg">
+        {error ? (
+          error
+        ) : loading ? (
+          <Loader2Icon className="animate-spin" />
+        ) : (
+          "Manage Subscription"
+        )}
+      </p>
+    </button>
   );
 }
