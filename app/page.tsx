@@ -8,6 +8,6 @@ export default async function Home() {
   if (error || !data?.user) {
     redirect("/login");
   } else {
-    redirect("/menu");
+    redirect("/menu/play");
   }
 }

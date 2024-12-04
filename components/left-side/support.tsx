@@ -26,7 +26,7 @@ export const Support = () => {
     <div
       className={`${isSubscribed && "hidden"} text-black p-4  ${
         pathname.split("/")[3] === "kana" ? "hidden" : "w-full"
-      } w-72 z-20 bg-[#efcb68] border border-black/15 shadow-sm bg-opacity-40 rounded-xl`}
+      } w-72 z-20 bg-[#efcb68] bg-opacity-40 border border-black/15 shadow-sm rounded-xl`}
     >
       <div className="space-y-4">
         <SubscriptionButton />

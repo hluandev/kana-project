@@ -1,9 +1,7 @@
+import { redirect } from "next/navigation";
+
 const MenuPage = () => {
-  return (
-    <div>
-      <img src="/img/logo.svg" alt="" />
-    </div>
-  );
+  redirect("/menu/play");
 };
 
 export default MenuPage;

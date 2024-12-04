@@ -24,3 +24,12 @@ html {
 .mainBgColor {
   background-color: #50d0d2;
 }
+
+.shadow-button {
+  --tw-shadow: 0px 0px 0px 1px rgba(18, 55, 105, 0.08),
+    0px 1px 2px 0px rgba(164, 172, 185, 0.24),
+    0px -1px 1px 0px rgba(18, 55, 105, 0.06) inset;
+  --tw-shadow-colored: 0px 0px 0px 1px var(--tw-shadow-color),
+    0px 1px 2px 0px var(--tw-shadow-color),
+    inset 0px -1px 1px 0px var(--tw-shadow-color);
+}

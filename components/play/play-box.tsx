@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface PlayBoxProps {
@@ -18,12 +21,14 @@ export const PlayBox = ({
   disabled,
 }: PlayBoxProps) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 200 }}
+      animate={{ opacity: 1, y: 0 }}
       className={` ${
         disabled ? "bg-neutral-400" : "bg-[#50d0d2]"
       }  bg-opacity-30 border border-black/15 shadow-sm p-4 rounded-xl h-[20rem] w-[16rem] flex flex-col justify-between`}
     >
-      <p className="text-[0.9rem] bg-white/40 w-fit rounded-lg py-1 px-3">
+      <p className="text-[0.9rem] border border-black/10 shadow-sm bg-white/50 w-fit rounded-lg py-1 px-3">
         Stage {stage}
       </p>
       <div className="space-y-4">
@@ -41,6 +46,6 @@ export const PlayBox = ({
           {linkText}
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };

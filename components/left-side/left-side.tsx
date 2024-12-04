@@ -14,7 +14,7 @@ export const LeftSide = () => {
   }, []);
 
   return (
-    <div className="w-80 z-10 relative rounded-xl h-full border border-black/15 shadow-sm bg-white/70 backdrop-blur-lg p-4 overflow-hidden">
+    <div className="w-80 z-10 relative rounded-xl h-full border border-black/15 shadow-sm bg-white backdrop-blur-lg p-4 overflow-hidden">
       {pathname.split("/")[3] === "kana" ? <GameInfo /> : <Menu />}
     </div>
   );
