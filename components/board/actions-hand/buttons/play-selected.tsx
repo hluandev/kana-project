@@ -334,7 +334,7 @@ export const PlaySelected = () => {
           special.condition === "reroll" &&
           currentSpecial.some((card) => card.condition === "reroll")
         ) {
-          finalMultiplier += reroll;
+          finalMultiplier += reroll + 2;
         }
       });
 

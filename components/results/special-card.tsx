@@ -59,7 +59,7 @@ export default function SpecialCard({
 
         <div className="font-medium text-[0.9rem]">
           {card.condition === "xmultiples" && (
-            <span className="text-red-500">x{card.reward} multiples </span>
+            <span className="text-red-500">x{card.reward} multiplier </span>
           )}
 
           {card.condition === "upgrade" && (
@@ -74,12 +74,12 @@ export default function SpecialCard({
           )}
 
           {card.condition === "multiples" && (
-            <span className="text-red-500">+{card.reward} multiples </span>
+            <span className="text-red-500">+{card.reward} multiplier </span>
           )}
 
           {card.condition === "reroll" && (
             <span className="text-red-500">
-              +{card.reward} multiples ({reroll}){` `}
+              +{card.reward} multiplier ({reroll}){` `}
             </span>
           )}
 

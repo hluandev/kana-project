@@ -79,7 +79,7 @@ export const SpecialHands = () => {
               <p className="font-medium">
                 {card.condition === "xmultiples" && (
                   <span className="text-red-500">
-                    x{card.reward} multiples{" "}
+                    x{card.reward} multiplier{" "}
                   </span>
                 )}
 
@@ -99,13 +99,13 @@ export const SpecialHands = () => {
 
                 {card.condition === "multiples" && (
                   <span className="text-red-500">
-                    +{card.reward} multiples{" "}
+                    +{card.reward} multiplier{" "}
                   </span>
                 )}
 
                 {card.condition === "reroll" && (
                   <span className="text-red-500">
-                    +{card.reward} multiples ({reroll}){` `}
+                    +{card.reward} multiplier ({reroll}){` `}
                   </span>
                 )}
 
