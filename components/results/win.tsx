@@ -463,10 +463,10 @@ export const Win = () => {
           />
         ))}
 
-        <div className="absolute -right-16 top-0 space-y-3">
+        <div className="absolute -right-12 top-0 space-y-2">
           <ActionButton
             onClick={handleRefreshCards}
-            icon={<RefreshCwIcon />}
+            icon={<RefreshCwIcon strokeWidth={1.7} className="w-5 h-5" />}
             descTooltip="Refresh cards to get new ones (¥200)"
             keyboardShortcut="3"
             className="bg-[#ff915a]  hover:bg-[#ff915a] hover:bg-opacity-90"
@@ -476,12 +476,12 @@ export const Win = () => {
           <ActionButton
             onClick={handleFreezeCard}
             descTooltip="Freeze cards to keep them in your deck until next turn."
-            icon={<SnowflakeIcon />}
+            icon={<SnowflakeIcon strokeWidth={1.7} className="w-5 h-5" />}
             keyboardShortcut="4"
             className="bg-blue-300  hover:bg-blue-300/80"
           />
 
-          <div className=" bg-white border border-black/15 shadow-sm p-2 text-xl font-medium rounded-full aspect-square w-12 flex items-center justify-center">
+          <div className=" bg-white border border-black/15 shadow-sm p-2 font-medium rounded-full aspect-square w-10 flex items-center justify-center">
             {currentSpecialDeck.length}
           </div>
         </div>
@@ -491,11 +491,11 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-white border border-black/15 shadow-sm h-full mt-10 rounded-full p-2"
+        className="flex bg-white border border-black/15 shadow-sm h-full mt-10 rounded-full p-1"
       >
         <ActionButton
           onClick={handleSellSpecial}
-          icon={<JapaneseYenIcon />}
+          icon={<JapaneseYenIcon strokeWidth={1.7} className="w-5 h-5" />}
           descTooltip="Sell special cards"
           keyboardShortcut="1"
           className="bg-[#EFCB68]  hover:bg-yellow-600/40"
@@ -518,9 +518,9 @@ export const Win = () => {
           }
           icon={
             selectedSpecial.length > 0 ? (
-              <ShoppingCartIcon />
+              <ShoppingCartIcon strokeWidth={1.7} />
             ) : (
-              <ArrowRightIcon />
+              <ArrowRightIcon strokeWidth={1.7} />
             )
           }
           keyboardShortcut="2"
