@@ -421,7 +421,9 @@ export const Win = () => {
         [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
       );
       setYen(yen - 200);
-      setReroll(reroll + 1);
+      if (currentSpecial.some((card) => card.condition === "reroll")) {
+        setReroll(reroll + 1);
+      }
       setSelectedSpecial([]);
       playSound("/audio/reroll.mp3");
       setTimeout(() => setValue(""), 0);

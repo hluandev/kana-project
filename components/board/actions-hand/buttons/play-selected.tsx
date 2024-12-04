@@ -36,6 +36,7 @@ export const PlaySelected = () => {
     reroll,
     isEndlessMode,
     endlessTarget,
+    setReroll,
     setEndlessTarget,
   } = useScoreStore();
 
@@ -329,7 +330,10 @@ export const PlaySelected = () => {
           finalScore += special.reward;
         }
 
-        if (special.condition === "reroll") {
+        if (
+          special.condition === "reroll" &&
+          currentSpecial.some((card) => card.condition === "reroll")
+        ) {
           finalMultiplier += reroll;
         }
       });
