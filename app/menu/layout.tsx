@@ -6,7 +6,6 @@ import {
   fetchKana,
   fetchKanaMissions,
   fetchKanaSpecial,
-  fetchLeaderboard,
   fetchPlayerInfo,
 } from "@/actions/fetchKana";
 import { DataInit } from "@/components/data-init";
@@ -20,12 +19,10 @@ export default async function MenuLayout({
   const initialMissions = await fetchKanaMissions();
   const initialSpecial = await fetchKanaSpecial();
   const initialPlayerInfo = await fetchPlayerInfo();
-  const initialLeaderboard = await fetchLeaderboard();
   const initialActivity = await fetchActivity();
   return (
     <section className="flex h-full bg-black/5 shadow-inner">
       <DataInit
-        initialLeaderboard={initialLeaderboard ?? []}
         initialSpecial={initialSpecial ?? []}
         initialData={initialData ?? []}
         initialMissions={initialMissions ?? []}

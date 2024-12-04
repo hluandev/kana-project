@@ -10,7 +10,6 @@ interface DataInitProps {
   initialMissions: any[];
   initialSpecial: any[];
   initialPlayerInfo: any;
-  initialLeaderboard: any[];
   initialActivity: any[];
   isSubscribed?: boolean;
 }
@@ -20,19 +19,16 @@ export const DataInit = ({
   initialMissions,
   initialSpecial,
   initialPlayerInfo,
-  initialLeaderboard,
   initialActivity,
 }: DataInitProps) => {
   const { setKana, setKanaMissions, setKanaSpecial } = useKanaStore();
   const { setInfo, setActivity } = usePlayerStore();
-  const { setLeaderboard } = useScoreStore();
 
   useEffect(() => {
     setKana(initialData);
     setKanaMissions(initialMissions);
     setKanaSpecial(initialSpecial);
     setInfo(initialPlayerInfo);
-    setLeaderboard(initialLeaderboard);
     setActivity(initialActivity);
   }, []);
 

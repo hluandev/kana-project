@@ -1,5 +1,6 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { checkAndAddToLeaderboard } from "./actions/server/check-leaderboard";
 
 export async function middleware(request: NextRequest) {
   const supabase = createServerClient(
@@ -31,6 +32,10 @@ export async function middleware(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  if (user) {
+    await checkAndAddToLeaderboard();
+  }
 
   // If user is not signed in and the current path is not /login,
   // redirect the user to /login

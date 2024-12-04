@@ -28,15 +28,6 @@ export async function fetchPlayerInfo() {
   return playerInfo;
 }
 
-export async function fetchLeaderboard() {
-  const supabase = await createClient();
-  let { data: leaderboard } = await supabase
-    .from("leaderboard")
-    .select("first_name, highest_score, level, username")
-    .order("highest_score", { ascending: false });
-  return leaderboard;
-}
-
 export async function fetchActivity() {
   const supabase = await createClient();
   let { data: activity } = await supabase
