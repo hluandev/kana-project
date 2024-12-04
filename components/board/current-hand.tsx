@@ -22,7 +22,7 @@ export const CurrentHand = () => {
   }, [setShowRomaji]);
 
   return (
-    <div className="w-full z-20">
+    <div className="w-full">
       <motion.div layout className="flex gap-2 flex-wrap justify-center">
         {currentHand?.map((item) => (
           <Card card={item} key={item.id} />
