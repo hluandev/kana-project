@@ -8,7 +8,6 @@ interface PlayerInfo {
   xp: number;
   wins: number;
   losses: number;
-  matches: number;
   highest_score: number;
 }
 
@@ -39,7 +38,6 @@ export const usePlayerStore = create<playerStore>((set) => ({
     xp: 0,
     wins: 0,
     losses: 0,
-    matches: 0,
     highest_score: 0,
     username: "",
     stripe_customer_id: "",
@@ -60,7 +58,6 @@ export const usePlayerStore = create<playerStore>((set) => ({
         ...state.info,
         wins: state.info.wins + (won ? 1 : 0),
         losses: state.info.losses + (won ? 0 : 1),
-        matches: state.info.matches + 1,
       },
     })),
 }));

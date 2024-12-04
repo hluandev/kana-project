@@ -9,7 +9,6 @@ interface UpdatePlayerInfoProps {
   xp?: number;
   wins?: number;
   level?: number;
-  matches?: number;
   losses?: number;
   highest_score?: number;
 }
@@ -19,7 +18,6 @@ export async function updatePlayerInfoServer({
   xp,
   wins,
   level,
-  matches,
   losses,
   highest_score,
 }: UpdatePlayerInfoProps) {
@@ -37,7 +35,6 @@ export async function updatePlayerInfoServer({
       xp: xp,
       wins: wins,
       level: level,
-      matches: matches,
       losses: losses,
       highest_score: Math.max(profiles.highest_score ?? 0, highest_score ?? 0),
     })

@@ -393,7 +393,6 @@ export const PlaySelected = () => {
             id: info.id,
             xp: info.xp + xpGain,
             wins: info.wins + (shouldCountWin ? 1 : 0),
-            matches: info.matches + 1,
           }),
           updateActivityServer({
             result: shouldCountWin,

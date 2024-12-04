@@ -43,7 +43,6 @@ export default function CurrentPlayHand() {
       updatePlayerInfoServer({
         id: info.id,
         losses: info.losses + 1,
-        matches: info.matches + 1,
       });
       updateActivityServer({ result: false });
       updateGameResult(false);
