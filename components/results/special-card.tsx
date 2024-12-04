@@ -7,7 +7,7 @@ interface SpecialCardProps {
   japanese_katakana: string;
   desc: string;
   romaji: string;
-  price: number;
+  price?: number;
   card: any;
   isFrozen?: boolean;
 }

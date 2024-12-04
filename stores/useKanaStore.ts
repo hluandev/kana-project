@@ -34,6 +34,10 @@ interface kanaStore {
   removeFrozenSpecialCard: (card: any) => void;
   showRomaji: boolean;
   setShowRomaji: (showRomaji: boolean) => void;
+  currentUpgrades: any[];
+  setCurrentUpgrades: (currentUpgrades: any[]) => void;
+  addCurrentUpgrade: (upgrade: any) => void;
+  removeCurrentUpgrade: (upgrade: any) => void;
 }
 
 export const useKanaStore = create<kanaStore>((set, get) => ({
@@ -116,5 +120,15 @@ export const useKanaStore = create<kanaStore>((set, get) => ({
   removeFrozenSpecialCard: (card) =>
     set((state) => ({
       frozenSpecialCards: state.frozenSpecialCards.filter((c) => c !== card),
+    })),
+  currentUpgrades: [],
+  setCurrentUpgrades: (currentUpgrades) => set({ currentUpgrades }),
+  addCurrentUpgrade: (upgrade) =>
+    set((state) => ({
+      currentUpgrades: [...state.currentUpgrades, upgrade],
+    })),
+  removeCurrentUpgrade: (upgrade) =>
+    set((state) => ({
+      currentUpgrades: state.currentUpgrades.filter((u) => u !== upgrade),
     })),
 }));

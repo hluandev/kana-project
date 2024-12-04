@@ -52,6 +52,8 @@ export const Win = () => {
     selectedSpecial,
     frozenSpecialCards,
     addFrozenSpecialCard,
+    currentUpgrades,
+    setCurrentUpgrades,
     setFrozenSpecialCards,
   } = useKanaStore();
 
@@ -259,72 +261,58 @@ export const Win = () => {
       0
     );
 
-    // Check if adding new cards would exceed the 5-card limit
-    if (currentSpecial.length + selectedSpecial.length > 5) {
+    // Separate upgrade cards from regular special cards
+    const upgradeCards = selectedSpecial.filter(
+      (card) => card.condition === "upgrade"
+    );
+    const regularCards = selectedSpecial.filter(
+      (card) => card.condition !== "upgrade"
+    );
+
+    // Check if adding new regular cards would exceed the 5-card limit
+    if (currentSpecial.length + regularCards.length > 5) {
       setWarning("You can only have 5 special cards at a time");
       playSound("/audio/error.mp3");
       return;
     }
 
-    // Check if any selected card is from currentSpecial
-    const hasCurrentSpecialCard = selectedSpecial.some((card) =>
-      currentSpecial.some((special) => special.romaji === card.romaji)
-    );
-
-    if (hasCurrentSpecialCard) {
-      // If card is from currentSpecial, don't charge yen
-      const newSpecialDeck = currentSpecialDeck.filter((card) => {
-        const isSelected = selectedSpecial.some(
-          (selected) => selected.romaji === card.romaji
-        );
-        const isUpgrade = selectedSpecial.some(
-          (selected) =>
-            selected.romaji === card.romaji && selected.condition === "upgrade"
-        );
-        return !isSelected || isUpgrade;
-      });
-
-      const newSpecialCards = Array.from(
-        new Set([...currentSpecial, ...selectedSpecial])
-      );
-
-      setCurrentSpecialDeck(newSpecialDeck);
-      setCurrentSpecial(newSpecialCards);
-      setSelectedSpecial([]);
-      setTimeout(() => setValue(""), 0);
-    } else if (yen >= totalCost) {
-      // Check for special cards that give multiplier bonus for new purchases
-
+    if (yen >= totalCost) {
+      // Handle purchasing new cards
       currentSpecial.forEach((card) => {
         if (card.condition === "bought") {
           setMultiplierBonus(multiplierBonus + 1);
         }
       });
 
-      // Original logic for purchasing new cards
-      const newSpecialDeck = currentSpecialDeck.filter((card) => {
-        const isSelected = selectedSpecial.some(
-          (selected) => selected.romaji === card.romaji
-        );
-        const isUpgrade = selectedSpecial.some(
-          (selected) =>
-            selected.romaji === card.romaji && selected.condition === "upgrade"
-        );
-        return !isSelected || isUpgrade;
+      // Get new random cards to replace purchased upgrade cards
+      const newRandomCards = currentSpecialDeck
+        .filter(
+          (card) =>
+            !randomSpecialCards.some((rc) => rc.romaji === card.romaji) &&
+            !upgradeCards.some((uc) => uc.romaji === card.romaji)
+        )
+        .sort(() => Math.random() - 0.5)
+        .slice(0, upgradeCards.length);
+
+      // Update random special cards by replacing purchased upgrade cards with new random ones
+      const newRandomSpecialCards = randomSpecialCards.map((card) => {
+        if (upgradeCards.some((upgrade) => upgrade.romaji === card.romaji)) {
+          return newRandomCards.pop() || card; // Replace upgrade card with new random card
+        }
+        return card;
       });
 
       const newSpecialCards = Array.from(
-        new Set([...currentSpecial, ...selectedSpecial])
+        new Set([...currentSpecial, ...regularCards])
       );
+      const newUpgradeCards = [...currentUpgrades];
+      upgradeCards.forEach((upgradeCard) => {
+        newUpgradeCards.push(upgradeCard);
+      });
 
-      // Remove purchased cards from randomSpecialCards
-      const newRandomSpecialCards = randomSpecialCards.filter(
-        (card) =>
-          !selectedSpecial.some((selected) => selected.romaji === card.romaji)
-      );
-
-      setCurrentSpecialDeck(newSpecialDeck);
+      setCurrentSpecialDeck(currentSpecialDeck);
       setCurrentSpecial(newSpecialCards);
+      setCurrentUpgrades(newUpgradeCards);
       setRandomSpecialCards(newRandomSpecialCards);
       setYen(yen - totalCost);
       setSelectedSpecial([]);

@@ -18,6 +18,7 @@ export const PlaySelected = () => {
     setSelectedCard,
     currentSpecial,
     kanaMissions,
+    currentUpgrades,
   } = useKanaStore();
   const {
     score,
@@ -257,7 +258,7 @@ export const PlaySelected = () => {
         ? "pair"
         : "high_card";
 
-      currentSpecial.forEach((special) => {
+      currentSpecial.concat(currentUpgrades).forEach((special) => {
         // Check all valid combinations for this hand
         const validCombos = [currentAnnouncement];
         if (hasPair) validCombos.push("pair");
