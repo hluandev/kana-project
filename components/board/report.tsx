@@ -1,9 +1,11 @@
 import { sendReport } from "@/actions/server/send-report";
+import { motion } from "framer-motion";
 import { BugIcon, Loader2, Send, XIcon } from "lucide-react";
 import { useState } from "react";
 
 export const Report = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [feedback, setFeedback] = useState(false);
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -11,9 +13,18 @@ export const Report = () => {
     <>
       {isOpen && (
         <div className="fixed flex justify-center items-center z-50 top-0 left-0 w-full h-full bg-black/50">
-          <div className="bg-white rounded-xl w-1/4 h-1/3 p-4 flex flex-col gap-4">
-            <div className="flex justify-between items-center">
-              <h2 className="text-lg font-semibold">Report bugs</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 200 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white rounded-xl w-1/4 h-1/3 p-4 flex flex-col gap-y-2"
+          >
+            <div className="flex justify-between items-center text-sm">
+              <div className="flex gap-2 items-center ">
+                <h2 className="font-semibold bg-black/5 border border-black/15 shadow-sm px-2 py-1 rounded-lg">
+                  Report bugs
+                </h2>
+                <h2 className="font-semibold">Send feedback</h2>
+              </div>
               <XIcon onClick={() => setIsOpen(false)} />
             </div>
             <textarea
@@ -38,9 +49,9 @@ export const Report = () => {
                 <Send className="w-3.5 h-3.5" />
               )}
 
-              <p className="text-[0.9rem]">Send</p>
+              <p className="text-[0.9rem]">Report</p>
             </button>
-          </div>
+          </motion.div>
         </div>
       )}
 

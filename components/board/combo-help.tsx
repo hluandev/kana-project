@@ -1,7 +1,7 @@
 export const ComboHelp = () => {
   return (
     <div className="space-y-4">
-      <div className="border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+      <div className="border border-black/15 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col ">
           <div>
             <p className="font-medium ">Straight Flush</p>
@@ -47,10 +47,10 @@ export const ComboHelp = () => {
         </div>
       </div>
 
-      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col">
           <div>
-            <p className="font-medium ">Four of a Kind</p>
+            <p className="font-medium">Four of a Kind</p>
             <p className="text-sm">4 cards of the same rank</p>
           </div>
           <div className="flex gap-2">
@@ -95,7 +95,7 @@ export const ComboHelp = () => {
         </div>
       </div>
 
-      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Full House</p>
@@ -148,7 +148,7 @@ export const ComboHelp = () => {
         </div>
       </div>
 
-      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Flush</p>
@@ -194,7 +194,7 @@ export const ComboHelp = () => {
         </div>
       </div>
 
-      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Straight</p>
@@ -242,7 +242,7 @@ export const ComboHelp = () => {
         </div>
       </div>
 
-      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Three of a Kind</p>
@@ -291,7 +291,7 @@ export const ComboHelp = () => {
         </div>
       </div>
 
-      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Two Pair</p>
@@ -345,7 +345,7 @@ export const ComboHelp = () => {
         </div>
       </div>
 
-      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Pair</p>
@@ -394,7 +394,7 @@ export const ComboHelp = () => {
         </div>
       </div>
 
-      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-4 flex justify-between rounded-lg">
+      <div className="space-y-2 border border-black/15 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">High Card</p>
