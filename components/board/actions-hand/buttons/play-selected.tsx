@@ -335,7 +335,7 @@ export const PlaySelected = () => {
           special.condition === "reroll" &&
           currentSpecial.some((card) => card.condition === "reroll")
         ) {
-          finalMultiplier += reroll + 2;
+          finalMultiplier += reroll * 2;
         }
 
         if (special.condition === "bought") {

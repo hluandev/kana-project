@@ -20,6 +20,14 @@ export default function Shop() {
             Select special cards by typing the card&apos;s romaji. Press (1) to
             sell your selected special cards, or press (2) to buy new specials.
           </p>
+          <p>
+            When you buy a new special card, it will be added to your hand and
+            removed from the shop, except for upgrade cards.
+          </p>
+          <p>
+            If you sell a special card (excluding upgrade cards), it will be
+            returned to the shop.
+          </p>
         </DocDesc>
 
         <DocDesc title="3. Move special cards">

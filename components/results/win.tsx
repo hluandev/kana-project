@@ -410,8 +410,11 @@ export const Win = () => {
         !selectedSpecial.some((selected) => selected.romaji === card.romaji)
     );
 
-    // Add sold cards back to the special deck
-    const newSpecialDeck = [...currentSpecialDeck, ...selectedSpecial];
+    // Add sold cards back to the special deck, excluding upgrade cards
+    const cardsToAddBack = selectedSpecial.filter(
+      (card) => card.condition !== "upgrade"
+    );
+    const newSpecialDeck = [...currentSpecialDeck, ...cardsToAddBack];
 
     // Calculate yen to add (300 per card)
     const yenToAdd = selectedSpecial.length * 300;
