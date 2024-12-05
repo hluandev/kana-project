@@ -18,6 +18,7 @@ export const PlaySelected = () => {
     setSelectedCard,
     currentSpecial,
     kanaMissions,
+    setActiveSpecials,
     currentUpgrades,
   } = useKanaStore();
   const {
@@ -258,6 +259,8 @@ export const PlaySelected = () => {
         ? "pair"
         : "high_card";
 
+      const activeSpecialIds: string[] = [];
+
       currentSpecial.concat(currentUpgrades).forEach((special) => {
         // Check all valid combinations for this hand
         const validCombos = [currentAnnouncement];
@@ -342,11 +345,26 @@ export const PlaySelected = () => {
         if (special.condition === "bought") {
           finalMultiplier += multiplierBonus * 5;
         }
+
+        const isActive =
+          (special.combo === "none" && special.condition === "multiples") ||
+          (validCombos.includes(special.combo) &&
+            ["upgrade", "multiples", "xmultiples", "points"].includes(
+              special.condition
+            )) ||
+          (special.condition === "reroll" &&
+            currentSpecial.some((card) => card.condition === "reroll")) ||
+          special.condition === "bought";
+
+        if (isActive) {
+          activeSpecialIds.push(special.romaji);
+        }
       });
 
       setScore(finalScore);
       setMultiplier(finalMultiplier);
       setAnnouncement(currentAnnouncement);
+      setActiveSpecials(activeSpecialIds);
     } else {
       setAnnouncement("");
       setScore(0);
@@ -380,6 +398,7 @@ export const PlaySelected = () => {
       // Check win condition
       if (newProgress >= target && newTurns >= 0) {
         // Calculate rewards
+        setActiveSpecials([]);
         const remainingYen = newTurns * 100;
         const winBonus = 500;
         const totalYen = yen + winBonus + remainingYen;

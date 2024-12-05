@@ -3,14 +3,21 @@ import { motion } from "framer-motion";
 interface UpgradeCardProps {
   card: any;
   count: number;
+  isActive?: boolean;
 }
 
-export default function UpgradeCard({ card, count }: UpgradeCardProps) {
+export default function UpgradeCard({
+  card,
+  count,
+  isActive,
+}: UpgradeCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white relative border border-black/15 w-36 shadow-sm p-2 rounded-lg"
+      className={`${
+        isActive ? "border-red-500" : "border-black/15"
+      } relative border bg-white  bg-black/5 w-36 shadow-sm p-2 rounded-lg`}
     >
       <div>
         <div className="flex justify-between items-center">

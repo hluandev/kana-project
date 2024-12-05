@@ -38,6 +38,8 @@ interface kanaStore {
   setCurrentUpgrades: (currentUpgrades: any[]) => void;
   addCurrentUpgrade: (upgrade: any) => void;
   removeCurrentUpgrade: (upgrade: any) => void;
+  activeSpecials: string[];
+  setActiveSpecials: (ids: string[]) => void;
 }
 
 export const useKanaStore = create<kanaStore>((set, get) => ({
@@ -131,4 +133,6 @@ export const useKanaStore = create<kanaStore>((set, get) => ({
     set((state) => ({
       currentUpgrades: state.currentUpgrades.filter((u) => u !== upgrade),
     })),
+  activeSpecials: [],
+  setActiveSpecials: (ids) => set({ activeSpecials: ids }),
 }));

@@ -26,6 +26,7 @@ export const SpecialHands = () => {
     kanaMissions,
     hiragana,
     currentUpgrades,
+    activeSpecials,
   } = useKanaStore();
   const { turns, missionID, progress, reroll, multiplierBonus } =
     useScoreStore();
@@ -60,7 +61,12 @@ export const SpecialHands = () => {
                 return rankB - rankA;
               })
               .map(([key, { card, count }]) => (
-                <UpgradeCard key={key} card={card} count={count} />
+                <UpgradeCard
+                  isActive={activeSpecials.includes(card.romaji)}
+                  key={key}
+                  card={card}
+                  count={count}
+                />
               ))}
           </div>
         </div>
@@ -90,7 +96,11 @@ export const SpecialHands = () => {
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               key={card.romaji}
-              className={`flex flex-col p-3 relative overflow-hidden justify-between border border-black/20 shadow-sm rounded-xl  w-40 h-full   ${
+              className={`flex flex-col p-3 ${
+                activeSpecials.includes(card.romaji)
+                  ? "border-red-300 shadow-lg shadow-red-600/70"
+                  : "border-black/20"
+              } relative overflow-hidden border justify-between shadow-sm rounded-xl  w-40 h-full   ${
                 isSelected ? "border-yellow-500 bg-[#efcb68]" : " bg-white"
               }`}
             >
