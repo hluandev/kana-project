@@ -103,10 +103,10 @@ export default function PlayerLevel() {
         )}
       </AnimatePresence>
 
-      <div className="bg-black/5 col-span-10 w-full flex flex-col gap-4 relative overflow-hidden rounded-2xl p-4 border border-black/15 shadow-inner ">
+      <div className="bg-black/5 col-span-10 w-full flex flex-col gap-2 relative overflow-hidden rounded-xl p-2 border border-black/15 shadow-inner ">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-[#efcb68] border border-black/15 shadow-sm z-20  font-medium  rounded-lg p-1 w-8 h-8 aspect-square flex justify-center items-center">
+            <div className="bg-[#efcb68] border border-black/15 shadow-sm z-20  font-medium  text-sm rounded-lg p-1 w-8 h-8 aspect-square flex justify-center items-center">
               {info.level}
             </div>
 
@@ -119,7 +119,7 @@ export default function PlayerLevel() {
             onClick={() => setSetting(!setting)}
             className="bg-white h-8 w-8 rounded-lg flex justify-center items-center border border-black/15 shadow-sm"
           >
-            <SettingsIcon strokeWidth={1.7} className="h-5 w-5" />
+            <SettingsIcon strokeWidth={1.7} className="h-4 w-4" />
           </div>
         </div>
 

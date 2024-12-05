@@ -14,12 +14,12 @@ export const Support = () => {
     <>
       {!isSubscribed && (
         <div
-          className={`text-black p-4 w-full z-20 bg-[#efcb68] bg-opacity-40 border border-black/15 shadow-sm rounded-xl`}
+          className={`text-black p-2 pb-3  w-full z-20 bg-[#efcb68] bg-opacity-40 border border-black/15 shadow-sm rounded-xl`}
         >
-          <div className="space-y-4">
+          <div className="space-y-3">
             <SubscriptionButton />
 
-            <div className="flex flex-col font-medium text-[0.9rem] gap-4">
+            <div className="flex flex-col font-medium text-[0.9rem] gap-[10px]">
               <SupportBox text="Support this project." />
               <SupportBox text="Gain early access to Stage 2 as soon as it's ready." />
               <SupportBox text="Unlock Endless Mode." />
