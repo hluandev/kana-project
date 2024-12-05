@@ -4,6 +4,7 @@ import { ChangeEventHandler, useCallback, useState } from "react";
 import { useKanaStore } from "@/stores/useKanaStore";
 import React from "react";
 import { useScoreStore } from "@/stores/useScoreStore";
+import { playSound } from "@/actions/client/play-sound";
 
 export default function ActionInput() {
   const [value, setValue] = useState("");
@@ -19,16 +20,6 @@ export default function ActionInput() {
 
     return () => clearTimeout(timer);
   }, [missionID]);
-
-  const playSound = useCallback((sound: string) => {
-    if (sound) {
-      const audio = new Audio(sound);
-      audio.volume = 0.5;
-      audio
-        .play()
-        .catch((error) => console.log("Audio playback failed:", error));
-    }
-  }, []);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const inputValue = e.target.value.toLowerCase();

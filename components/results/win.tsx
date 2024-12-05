@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
 import { motion } from "framer-motion";
-import { usePlayerStore } from "@/stores/usePlayerStore";
 
 export const Win = () => {
   const {

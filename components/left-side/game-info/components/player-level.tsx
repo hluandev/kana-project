@@ -6,11 +6,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { LogOutIcon, Volume2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Support } from "../../support";
+import { useSettingStore } from "@/stores/useSettingStore";
 
 export default function PlayerLevel() {
   const { info, updateLevel, setXp } = usePlayerStore();
+  const { isMuted, setIsMuted } = useSettingStore();
   const [setting, setSetting] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
 
   const percentage = (info.xp / 100) * 100;
 
@@ -40,8 +41,13 @@ export default function PlayerLevel() {
     handleLevelUp();
   }, [info.xp]);
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
+  useEffect(() => {
+    const storedMuted = localStorage.getItem("isMuted") === "true";
+    setIsMuted(storedMuted);
+  }, []);
+
+  const handleSoundToggle = () => {
+    setIsMuted(!isMuted);
   };
 
   return (
@@ -61,17 +67,14 @@ export default function PlayerLevel() {
 
               <div className="flex gap-2">
                 <div className="">
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      className="hidden"
-                      checked={isChecked}
-                      onChange={handleCheckboxChange}
-                    />
-                    <div className="mainBgColor  h-8 w-8 flex justify-center items-center border border-black/15 shadow-sm   rounded-lg">
-                      <Volume2Icon className="h-4 w-4" />
-                    </div>
-                  </label>
+                  <div
+                    onClick={handleSoundToggle}
+                    className={`${
+                      !isMuted ? "mainBgColor" : "bg-black/5"
+                    } h-8 w-8 flex justify-center items-center border border-black/15 shadow-sm rounded-lg`}
+                  >
+                    <Volume2Icon className="h-4 w-4" />
+                  </div>
                 </div>
 
                 <button className="  h-8 w-8 flex justify-center items-center border border-black/15 shadow-sm   rounded-lg">
