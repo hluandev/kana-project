@@ -41,7 +41,7 @@ export async function middleware(request: NextRequest) {
       .eq("id", user.id)
       .single();
 
-    await checkAndAddToLeaderboard();
+    // await checkAndAddToLeaderboard();
 
     // If user is authenticated but has no username, redirect to username page
     // except if they're already on the username page

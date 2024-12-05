@@ -12,11 +12,12 @@ export async function checkUsername(username: string) {
     .ilike("username", username)
     .single();
 
-  if (error && error.code === "PGRST116") {
-    return { available: true };
+  if (error) {
+    console.log(error);
+    return true;
   }
 
-  return { available: false };
+  return false;
 }
 
 export async function updateUsername(username: string) {
@@ -30,10 +31,14 @@ export async function updateUsername(username: string) {
     throw new Error("User not found");
   }
 
-  const { data, error } = await supabase
-    .from("profiles")
-    .update({ username })
-    .eq("id", user.id);
+  await supabase.from("profiles").update({ username }).eq("id", user.id);
+
+  await supabase.from("leaderboard").insert([
+    {
+      id: user.id,
+      username,
+    },
+  ]);
 
   redirect("/menu/play");
 }

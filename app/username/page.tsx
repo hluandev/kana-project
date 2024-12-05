@@ -17,14 +17,14 @@ export default function UsernamePage() {
     setIsChecking(true);
     setError("");
 
-    const { available } = await checkUsername(username.toLowerCase());
+    const usernameAvailable = await checkUsername(username);
 
-    if (!available) {
+    if (usernameAvailable === false) {
       setError("This username is already taken");
       setIsChecking(false);
       return;
     } else {
-      await updateUsername(username.toLowerCase());
+      await updateUsername(username);
       setIsChecking(false);
       return;
     }
@@ -50,7 +50,7 @@ export default function UsernamePage() {
           />
           <p className="text-red-500 text-sm text-center">{error}</p>
           <button
-            className="mainBgColor py-1.5 w-full rounded-lg border border-black/15 shadow-sm disabled:opacity-50"
+            className="mainBgColor flex justify-center items-center py-1.5 w-full rounded-lg border border-black/15 shadow-sm disabled:opacity-50"
             type="submit"
           >
             {isChecking ? <Loader2 className="animate-spin" /> : "Save"}
