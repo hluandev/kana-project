@@ -111,7 +111,7 @@ export const SpecialHands = () => {
                   )
                 ) && (
                   <motion.div
-                    className="absolute top-2 left-2  bg-black/80 border border-black/15 shadow-sm text-white aspect-square w-7 flex justify-center items-center rounded-lg  z-50  "
+                    className="absolute top-2 left-2  bg-black/80 border border-black/15 shadow-sm text-white aspect-square w-7 flex justify-center items-center rounded-lg   "
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   >
