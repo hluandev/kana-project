@@ -22,6 +22,8 @@ export async function updatePlayerInfoServer({
 }: UpdatePlayerInfoProps) {
   const supabase = await createClient();
 
+  console.log(highest_score);
+
   // Get current profile data
   let { data: profiles } = await supabase
     .from("profiles")
@@ -48,9 +50,9 @@ export async function updatePlayerInfoServer({
       wins: wins ?? profiles.wins,
     };
 
-    // Only update highest_hand if we have a new highest score
+    // Only update highest_score if we have a new highest score
     if (highest_score) {
-      updateData.highest_hand = Math.max(
+      updateData.highest_score = Math.max(
         profiles.highest_score ?? 0,
         highest_score
       );

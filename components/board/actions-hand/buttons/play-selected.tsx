@@ -406,7 +406,7 @@ export const PlaySelected = () => {
 
       updatePlayerInfoServer({
         id: info.id,
-        highest_score: score * multiplier,
+        highest_score: newProgress,
       });
       updateActivityServer({
         highest_score: score * multiplier,

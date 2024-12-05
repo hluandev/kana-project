@@ -10,23 +10,19 @@ export default function UpgradeCard({ card, count }: UpgradeCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white border border-black/15 w-36 shadow-sm p-2 rounded-lg"
+      className="bg-white relative border border-black/15 w-36 shadow-sm p-2 rounded-lg"
     >
       <div>
         <div className="flex justify-between items-center">
           <p>
-            <span>
-              <span className="text-blue-600">
-                +{card.reward_points * count}
-              </span>{" "}
-              /{" "}
-              <span className="text-red-500">
-                +{card.reward_multiplier * count}
-              </span>{" "}
-            </span>
+            <span className="text-blue-600">+{card.reward_points * count}</span>{" "}
+            /{" "}
+            <span className="text-red-500">
+              +{card.reward_multiplier * count}
+            </span>{" "}
           </p>
           {count > 1 && (
-            <span className="text-sm bg-black/5 px-2 py-0.5 border border-black/15 shadow-sm rounded-md">
+            <span className="text-sm absolute right-2 top-2 bg-black/5 px-1 py-0.5 border border-black/15 shadow-sm rounded-md">
               x{count}
             </span>
           )}

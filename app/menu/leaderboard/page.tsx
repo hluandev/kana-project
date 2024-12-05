@@ -35,7 +35,7 @@ export default function Leaderboard() {
     <div className="space-y-4 flex flex-col">
       <div className="text-center ">
         <h2 className="text-lg font-semibold">Leaderboard</h2>
-        <p className="text-sm">Top 100 players with highest score</p>
+        <p className="text-sm">Top 50 players with highest score</p>
       </div>
       <div className="flex flex-col gap-2 text-sm flex-1 w-96 overflow-y-auto bg-black/5 border border-black/15 shadow-inner p-2 rounded-2xl z-50">
         {leaderboard.map((player) => (
@@ -49,7 +49,7 @@ export default function Leaderboard() {
               </div>
               <p className="font-semibold">{player.username}</p>
             </div>
-            <p className="">{player.highest_hand}</p>
+            <p className="">{player.highest_score}</p>
           </div>
         ))}
       </div>
