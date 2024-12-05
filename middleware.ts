@@ -1,6 +1,5 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { checkAndAddToLeaderboard } from "./actions/server/check-leaderboard";
 
 export async function middleware(request: NextRequest) {
   const supabase = createServerClient(

@@ -296,10 +296,13 @@ export const Win = () => {
           !regularCards.some((regular) => regular.romaji === card.romaji)
       );
 
-      // Remove purchased cards from the shop display
+      // Remove purchased cards and their frozen versions from the shop display
       const newRandomSpecialCards = randomSpecialCards.filter(
         (card) =>
-          !selectedSpecial.some((selected) => selected.romaji === card.romaji)
+          !selectedSpecial.some(
+            (selected) => selected.romaji === card.romaji
+          ) &&
+          !frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
       );
 
       const newSpecialCards = Array.from(
@@ -310,10 +313,17 @@ export const Win = () => {
         newUpgradeCards.push(upgradeCard);
       });
 
-      setCurrentSpecialDeck(newSpecialDeck); // Updated special deck without purchased cards
+      // Clear frozen status of purchased cards
+      const newFrozenCards = frozenSpecialCards.filter(
+        (frozen) =>
+          !selectedSpecial.some((selected) => selected.romaji === frozen.romaji)
+      );
+
+      setCurrentSpecialDeck(newSpecialDeck);
       setCurrentSpecial(newSpecialCards);
       setCurrentUpgrades(newUpgradeCards);
       setRandomSpecialCards(newRandomSpecialCards);
+      setFrozenSpecialCards(newFrozenCards);
       setYen(yen - totalCost);
       setSelectedSpecial([]);
 
@@ -321,6 +331,7 @@ export const Win = () => {
       playSound("/audio/buy.mp3");
     } else {
       setWarning("You don't have enough yen");
+      setTimeout(() => setValue(""), 0);
       playSound("/audio/error.mp3");
     }
   };
