@@ -34,7 +34,20 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   if (user) {
+    // Get user's profile
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("username")
+      .eq("id", user.id)
+      .single();
+
     await checkAndAddToLeaderboard();
+
+    // If user is authenticated but has no username, redirect to username page
+    // except if they're already on the username page
+    if (!profile?.username && request.nextUrl.pathname !== "/username") {
+      return NextResponse.redirect(new URL("/username", request.url));
+    }
   }
 
   // If user is not signed in and the current path is not /login,
