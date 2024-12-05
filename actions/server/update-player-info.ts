@@ -22,8 +22,6 @@ export async function updatePlayerInfoServer({
 }: UpdatePlayerInfoProps) {
   const supabase = await createClient();
 
-  console.log(highest_score);
-
   // Get current profile data
   let { data: profiles } = await supabase
     .from("profiles")

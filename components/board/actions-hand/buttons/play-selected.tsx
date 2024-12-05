@@ -418,22 +418,21 @@ export const PlaySelected = () => {
             xp: info.xp + xpGain,
             wins: info.wins + (shouldCountWin ? 1 : 0),
           }),
-          updateActivityServer({
-            result: shouldCountWin,
-          }),
+          shouldCountWin &&
+            updateActivityServer({
+              result: true,
+              highest_score: newProgress,
+            }),
           updateXp(xpGain),
-          setYen(totalYen),
           updateGameResult(shouldCountWin),
+          setYen(totalYen),
         ]);
       } else if (newTurns === 0 && newProgress < target) {
-        updateActivityServer({ result: false });
+        updateActivityServer({ result: false, highest_score: newProgress });
       }
 
       updatePlayerInfoServer({
         id: info.id,
-        highest_score: newProgress,
-      });
-      updateActivityServer({
         highest_score: newProgress,
       });
 
