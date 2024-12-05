@@ -95,12 +95,13 @@ export const SpecialHands = () => {
             <motion.div
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
+              layout
               key={card.romaji}
               className={`flex flex-col p-3 ${
                 activeSpecials.includes(card.romaji)
-                  ? "border-red-300 shadow-lg shadow-red-600/70"
-                  : "border-black/20"
-              } relative overflow-hidden border justify-between shadow-sm rounded-xl  w-40 h-full   ${
+                  ? "[background:linear-gradient(45deg,#fff,theme(colors.white)_50%,#fff)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.red.600/.48)_0%,theme(colors.red.500)_20%,theme(colors.indigo.300)_40%,theme(colors.indigo.500)_60%,theme(colors.slate.600/.48)_100%)_border-box] rounded-2xl border-2 border-transparent animate-border"
+                  : "border-white"
+              } relative overflow-hidden  justify-between border-2 rounded-xl  w-40 h-full   ${
                 isSelected ? "border-yellow-500 bg-[#efcb68]" : " bg-white"
               }`}
             >
