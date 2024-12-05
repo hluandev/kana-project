@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface LinkNavProps {
   href: string;
@@ -7,6 +8,8 @@ interface LinkNavProps {
 }
 
 export const LinkNav = ({ href, children, icon }: LinkNavProps) => {
+  const pathname = usePathname();
+
   return (
     <Link
       prefetch={true}

@@ -28,7 +28,7 @@ export const PlayBox = ({
         disabled ? "bg-neutral-400" : "bg-[#50d0d2]"
       }  bg-opacity-30 border border-black/15 shadow-sm p-4 rounded-xl h-[20rem] w-[16rem] flex flex-col justify-between`}
     >
-      <p className="text-[0.9rem] border border-black/10 shadow-sm bg-white/50 w-fit rounded-lg py-1 px-3">
+      <p className="text-sm border border-black/15 shadow-sm bg-white/50 w-fit rounded-lg py-1 px-2">
         Stage {stage}
       </p>
       <div className="space-y-4">

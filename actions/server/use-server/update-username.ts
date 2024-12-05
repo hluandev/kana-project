@@ -7,17 +7,17 @@ export async function checkUsername(username: string) {
   const supabase = await createClient();
 
   const { error } = await supabase
-    .from("profiles")
+    .from("leaderboard")
     .select("username")
     .ilike("username", username)
+    .limit(1)
     .single();
 
   if (error) {
-    console.log(error);
+    return false;
+  } else {
     return true;
   }
-
-  return false;
 }
 
 export async function updateUsername(username: string) {
@@ -36,7 +36,7 @@ export async function updateUsername(username: string) {
   await supabase.from("leaderboard").insert([
     {
       id: user.id,
-      username,
+      username: username,
     },
   ]);
 

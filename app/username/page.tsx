@@ -9,18 +9,18 @@ import { useState } from "react";
 
 export default function UsernamePage() {
   const [username, setUsername] = useState("");
-  const [error, setError] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const [isChecking, setIsChecking] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsChecking(true);
-    setError("");
+    setErrorMsg("");
 
     const usernameAvailable = await checkUsername(username);
 
-    if (usernameAvailable === false) {
-      setError("This username is already taken");
+    if (usernameAvailable === true) {
+      setErrorMsg("This username is already taken");
       setIsChecking(false);
       return;
     } else {
@@ -48,7 +48,7 @@ export default function UsernamePage() {
             placeholder="Username"
             name="username"
           />
-          <p className="text-red-500 text-sm text-center">{error}</p>
+          <p className="text-red-500 text-sm text-center">{errorMsg}</p>
           <button
             className="mainBgColor flex justify-center items-center py-1.5 w-full rounded-lg border border-black/15 shadow-sm disabled:opacity-50"
             type="submit"
