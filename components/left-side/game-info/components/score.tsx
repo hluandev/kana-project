@@ -12,8 +12,8 @@ export const Score = () => {
     : kanaMissions.find((mission) => mission.id === missionID)?.target || 0;
 
   return (
-    <Box className="space-y-1 p-2">
-      <div className="text-black/40 font-medium text-[0.9rem] flex justify-center items-center pb-8 ">
+    <Box className="space-y-1">
+      <div className="text-black/50 text-sm flex justify-center items-center pb-8 ">
         Score at least {target} points to clear this round.
       </div>
       <ProgressBar target={target} />

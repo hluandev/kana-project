@@ -7,7 +7,7 @@ export const CurrentInfo = () => {
   const { kanaMissions } = useKanaStore();
 
   return (
-    <div className="rounded-2xl flex flex-col p-4 bg-black/5 bg-opacity-10 border border-black/15 shadow-inner gap-2">
+    <div className="rounded-2xl flex flex-col p-2 bg-black/5 bg-opacity-10 border border-black/15 shadow-inner gap-2">
       {/* Turns */}
       <InfoBox title="Turns">{turns}</InfoBox>
 
@@ -15,7 +15,7 @@ export const CurrentInfo = () => {
       <InfoBox title="Discard">{discard}</InfoBox>
 
       {/* Matches */}
-      <InfoBox title="Matches">
+      <InfoBox title="Round">
         {isEndlessMode ? missionID : `${missionID} / ${kanaMissions.length}`}
       </InfoBox>
 
