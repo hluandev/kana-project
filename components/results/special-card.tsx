@@ -35,6 +35,8 @@ export default function SpecialCard({
           ? "border-yellow-500 bg-[#efcb68]"
           : isFrozen
           ? "border-blue-500 bg-blue-200"
+          : card.condition === "upgrade"
+          ? "bg-purple-100"
           : "bg-white"
       } rounded-xl`}
     >
