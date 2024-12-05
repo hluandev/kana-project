@@ -52,7 +52,7 @@ export default function Shop() {
         </DocDesc>
 
         <DocDesc title="4. Rerolling">
-          <p>Press (3) to reroll your current hand. Each reroll costs ¥100.</p>
+          <p>Press (3) to reroll your current hand. Each reroll costs ¥200.</p>
         </DocDesc>
 
         <DocDesc title="5. Freezing cards">

@@ -17,7 +17,13 @@ export default function Docs() {
       </p>
       <p>
         If you&apos;re completely new, don&apos;t worry! We&apos;ll explain
-        everything. It&apos;s very simple to learn.
+        everything. It&apos;s very simple to learn. Within a few rounds,
+        you&apos;ll be a pro! and hope you got addicted to it.
+      </p>
+      <p>
+        When you play this game, focus on winning the rounds. Naturally, as you
+        go through the game, the Japanese you type will stick in your memory
+        without needing to study it directly.
       </p>
     </Doc>
   );
