@@ -31,7 +31,7 @@ export default function CurrentPlayHand() {
   }, [kana]);
 
   useEffect(() => {
-    if (turns > 0) {
+    if (turns === 4) {
       playSound("/audio/start.mp3");
     }
   }, [missionID]);
@@ -46,7 +46,6 @@ export default function CurrentPlayHand() {
         losses: info.losses + 1,
       });
       updateActivityServer({ result: false });
-      updateGameResult(false);
     }
   }, [turns === 0]);
 

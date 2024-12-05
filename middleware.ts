@@ -40,10 +40,31 @@ export async function middleware(request: NextRequest) {
       .eq("id", user.id)
       .single();
 
-    // await checkAndAddToLeaderboard();
+    // Check for today's activity record
+    const today = new Date();
+    today.setUTCHours(0, 0, 0, 0);
+
+    const { data: existingRecord } = await supabase
+      .from("activity")
+      .select("*")
+      .gte("created_at", today.toISOString())
+      .lt("created_at", new Date(today.getTime() + 86400000).toISOString())
+      .single();
+
+    // If no record exists for today, create one
+    if (!existingRecord) {
+      await supabase.from("activity").insert([
+        {
+          id: user.id,
+          created_at: today.toISOString(),
+          wins: 0,
+          losses: 0,
+          highest_hand: 0,
+        },
+      ]);
+    }
 
     // If user is authenticated but has no username, redirect to username page
-    // except if they're already on the username page
     if (!profile?.username && request.nextUrl.pathname !== "/username") {
       return NextResponse.redirect(new URL("/username", request.url));
     }
