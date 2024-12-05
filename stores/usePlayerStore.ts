@@ -28,9 +28,11 @@ interface playerStore {
   setIsSubscribed: (isSubscribed: boolean) => void;
   activity: Activity[];
   setActivity: (activity: Activity[]) => void;
+  checkSubscription: () => Promise<void>;
+  hasCheckedSubscription: boolean;
 }
 
-export const usePlayerStore = create<playerStore>((set) => ({
+export const usePlayerStore = create<playerStore>((set, get) => ({
   info: {
     id: "",
     first_name: "",
@@ -45,7 +47,19 @@ export const usePlayerStore = create<playerStore>((set) => ({
   activity: [],
   setActivity: (activity: Activity[]) => set({ activity }),
   isSubscribed: false,
-  setIsSubscribed: (isSubscribed: boolean) => set({ isSubscribed }),
+  hasCheckedSubscription: false,
+  setIsSubscribed: (isSubscribed) => set({ isSubscribed }),
+  checkSubscription: async () => {
+    const state = get();
+    if (!state.hasCheckedSubscription) {
+      const response = await fetch("/api/stripe/status");
+      const { isSubscribed } = await response.json();
+      set({
+        isSubscribed,
+        hasCheckedSubscription: true,
+      });
+    }
+  },
   setInfo: (info: PlayerInfo) => set({ info }),
   setXp: (xp: number) => set((state) => ({ info: { ...state.info, xp } })),
   updateXp: (xp: number) =>

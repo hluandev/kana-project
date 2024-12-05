@@ -7,15 +7,18 @@ import { LogOutIcon, Volume2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Support } from "../../support";
 import { useSettingStore } from "@/stores/useSettingStore";
-import { useSubscription } from "@/actions/client/useSubscription";
 
 export default function PlayerLevel() {
-  const { info, updateLevel, setXp } = usePlayerStore();
+  const { info, updateLevel, setXp, isSubscribed, checkSubscription } =
+    usePlayerStore();
   const { isMuted, setIsMuted } = useSettingStore();
-  const { isSubscribed } = useSubscription();
   const [setting, setSetting] = useState(false);
 
   const percentage = (info.xp / 100) * 100;
+
+  useEffect(() => {
+    checkSubscription();
+  }, []);
 
   useEffect(() => {
     const handleLevelUp = async () => {
@@ -56,7 +59,9 @@ export default function PlayerLevel() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute -top-72 flex flex-col gap-2 text-sm  items-center justify-between  bg-white border border-black/15 shadow-sm w-full rounded-xl left-0 p-2 "
+            className={`${
+              isSubscribed ? "-top-20" : "-top-72"
+            } absolute flex flex-col gap-2 text-sm  items-center justify-between  bg-white border border-black/15 shadow-sm w-full rounded-xl left-0 p-2`}
           >
             <div className="flex justify-between items-center w-full bg-black/5 border border-black/15 shadow-inner p-2 rounded-xl">
               <div className="flex justify-between  items-center">
