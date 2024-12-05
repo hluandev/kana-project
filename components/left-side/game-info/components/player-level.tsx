@@ -108,7 +108,7 @@ export default function PlayerLevel() {
 
         <div className="z-10 absolute left-1/2 -translate-x-1/2 font-medium leading-none text-center w-full">
           {/* <p className="font-medium">{info.username}</p> */}
-          <p className="text-sm">{info.xp}/100</p>
+          <p className="text-sm">{info.xp} / 100</p>
         </div>
 
         <motion.div

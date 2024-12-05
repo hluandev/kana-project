@@ -21,9 +21,9 @@ export const Support = () => {
 
             <div className="flex flex-col font-medium text-[0.9rem] gap-4">
               <SupportBox text="Support this project." />
-              <SupportBox text="Gain early access to Stage 2 when it is ready." />
-              <SupportBox text="Unblock Endless Mode." />
-              <SupportBox text="Bypass level 10." />
+              <SupportBox text="Gain early access to Stage 2 as soon as it's ready." />
+              <SupportBox text="Unlock Endless Mode." />
+              <SupportBox text="Unlock the level cap at 10." />
             </div>
           </div>
         </div>

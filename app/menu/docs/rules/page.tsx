@@ -55,21 +55,24 @@ export default function Rules() {
             special cards in the shop.
           </p>
         </DocDesc>
-        <DocDesc title="5. Special cards">
+        <DocDesc title="5. Levels">
+          <p>Everytime you win a round, you gain 20xp.</p>
+        </DocDesc>
+        <DocDesc title="6. Special cards">
           <p>
             Special cards provide extra points or multipliers. Choose wisely, as
             you can only hold up to 5 special cards in your hand.
           </p>
         </DocDesc>
 
-        <DocDesc title="6. Upgrade cards">
+        <DocDesc title="7. Upgrade cards">
           <p>
             You can use upgrade cards to make your hands stronger. There&apos;s
             no limit, so upgrade as much as you like!
           </p>
         </DocDesc>
 
-        <DocDesc title="7. Current cards">
+        <DocDesc title="8. Current cards">
           <p>
             There are 56 cards in total. Each round, you&apos;ll be given 8
             cards to choose from. You can select up to 5 cards to either discard
@@ -77,7 +80,7 @@ export default function Rules() {
           </p>
         </DocDesc>
 
-        <DocDesc title="8. Romaji input">
+        <DocDesc title="9. Romaji input">
           <p>
             To select or deselect a card, simply type the romaji of the card.
             Then, click the right button (2) to play the card or the left button
