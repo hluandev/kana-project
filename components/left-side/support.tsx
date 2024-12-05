@@ -1,26 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
-import { useState } from "react";
-import { Box } from "../box";
 import { SubscriptionButton } from "../subscription-button";
 import { SupportBox } from "./support-box";
 import { usePathname } from "next/navigation";
+import { useSubscription } from "@/actions/client/useSubscription";
 
 export const Support = () => {
-  const [isSubscribed, setIsSubscribed] = useState(false);
-
   const pathname = usePathname();
 
-  useEffect(() => {
-    const checkSubscription = async () => {
-      const response = await fetch("/api/stripe/status");
-      const { isSubscribed } = await response.json();
-      setIsSubscribed(isSubscribed);
-    };
-
-    checkSubscription();
-  }, []);
+  const { isSubscribed, loading } = useSubscription();
 
   return (
     <div

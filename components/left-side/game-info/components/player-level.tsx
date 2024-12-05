@@ -7,10 +7,12 @@ import { LogOutIcon, Volume2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Support } from "../../support";
 import { useSettingStore } from "@/stores/useSettingStore";
+import { useSubscription } from "@/actions/client/useSubscription";
 
 export default function PlayerLevel() {
   const { info, updateLevel, setXp } = usePlayerStore();
   const { isMuted, setIsMuted } = useSettingStore();
+  const { isSubscribed } = useSubscription();
   const [setting, setSetting] = useState(false);
 
   const percentage = (info.xp / 100) * 100;
@@ -18,13 +20,9 @@ export default function PlayerLevel() {
   useEffect(() => {
     const handleLevelUp = async () => {
       if (info.xp >= 100) {
-        if (info.level === 10) {
-          const response = await fetch("/api/stripe/status");
-          const { isSubscribed } = await response.json();
-          if (!isSubscribed) {
-            setXp(100);
-            return;
-          }
+        if (info.level >= 10 && !isSubscribed) {
+          setXp(100);
+          return;
         }
 
         const remainingXp = info.xp - 100;

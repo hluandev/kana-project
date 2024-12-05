@@ -6,9 +6,11 @@ interface SettingStore {
 }
 
 export const useSettingStore = create<SettingStore>((set) => ({
-  isMuted: localStorage.getItem("isMuted") === "true" || false,
+  isMuted: false,
   setIsMuted: (value) => {
-    localStorage.setItem("isMuted", value.toString());
+    if (typeof window !== "undefined") {
+      localStorage.setItem("isMuted", value.toString());
+    }
     set({ isMuted: value });
   },
 }));
