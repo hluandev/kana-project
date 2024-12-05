@@ -12,17 +12,17 @@ export default function Activity() {
         <div className="grid grid-cols-4 gap-4">
           <ActivityBox title="Matches" value={info.wins + info.losses} />
           <ActivityBox
-            textColor="text-blue-300"
+            textColor="text-blue-600"
             title="Wins"
             value={info.wins}
           />
           <ActivityBox
-            textColor="text-[#ff915a]"
+            textColor="text-red-500"
             title="Losses"
             value={info.losses}
           />
           <ActivityBox
-            textColor="text-[#efcb68]"
+            textColor="text-purple-500"
             title="All Time Highest Hand"
             value={info.highest_score}
           />

@@ -46,7 +46,7 @@ export const GraphTable = ({ highestHandsTable }: GraphTableProps) => {
             tickMargin={14}
             dataKey="created_at"
             tickFormatter={formatDate}
-            style={{ fontSize: "18px", fontWeight: "400" }}
+            style={{ fontSize: "14px", fontWeight: "400" }}
           />
           {/* <YAxis
             strokeWidth={2}
@@ -58,13 +58,13 @@ export const GraphTable = ({ highestHandsTable }: GraphTableProps) => {
             type="monotone"
             dataKey={highestHandsTable ? "wins" : "highest_hand"}
             stroke={highestHandsTable ? "#93c5fd" : "#efcb68"}
-            strokeWidth={4}
+            strokeWidth={2}
           >
             <LabelList
               dataKey={highestHandsTable ? "wins" : "highest_hand"}
               position="top"
               offset={16}
-              fontSize={24}
+              fontSize={18}
               fill="black"
               fontWeight={600}
             />
@@ -74,13 +74,13 @@ export const GraphTable = ({ highestHandsTable }: GraphTableProps) => {
               type="monotone"
               dataKey="losses"
               stroke="#ff915a"
-              strokeWidth={4}
+              strokeWidth={2}
             >
               <LabelList
                 dataKey="losses"
                 position="top"
                 offset={16}
-                fontSize={24}
+                fontSize={18}
                 fill="black"
                 fontWeight={600}
               />

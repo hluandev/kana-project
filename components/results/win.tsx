@@ -91,13 +91,7 @@ export const Win = () => {
   }, [missionID]);
 
   React.useEffect(() => {
-    const playSound = () => {
-      const audio = new Audio("/audio/win.mp3");
-      audio.volume = 0.5;
-      audio.play();
-    };
-
-    playSound();
+    playSound("/audio/win.mp3");
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
