@@ -2,9 +2,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import { RotateCcwIcon } from "lucide-react";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
-import { playSound } from "@/actions/client/play-sound";
 
 export const Lose = () => {
   const {
@@ -47,9 +45,9 @@ export const Lose = () => {
     setCurrentSpecial([]);
   };
 
-  useEffect(() => {
-    playSound("/audio/lose.mp3");
-  }, []);
+  // useEffect(() => {
+  //   playSound("/audio/lose.mp3");
+  // }, []);
 
   return (
     <div className="relative flex items-center  h-full z-10">
