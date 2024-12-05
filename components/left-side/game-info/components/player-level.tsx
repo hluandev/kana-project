@@ -112,7 +112,7 @@ export default function PlayerLevel() {
         </div>
 
         <motion.div
-          className="bg-[#efcb68] bg-opacity-40 absolute left-0 h-full "
+          className="bg-[#efcb68] bg-opacity-50 absolute left-0 h-full "
           animate={{ width: `${percentage}%` }}
           transition={{ duration: 0.5 }}
         />
