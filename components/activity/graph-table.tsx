@@ -56,12 +56,12 @@ export const GraphTable = ({ highestHandsTable }: GraphTableProps) => {
           <Tooltip labelFormatter={formatDate} formatter={formatTooltipValue} />
           <Line
             type="monotone"
-            dataKey={highestHandsTable ? "wins" : "highest_hand"}
+            dataKey={highestHandsTable ? "wins" : "highest_score"}
             stroke={highestHandsTable ? "#93c5fd" : "#efcb68"}
             strokeWidth={2}
           >
             <LabelList
-              dataKey={highestHandsTable ? "wins" : "highest_hand"}
+              dataKey={highestHandsTable ? "wins" : "highest_score"}
               position="top"
               offset={16}
               fontSize={18}

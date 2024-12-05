@@ -10,7 +10,6 @@ interface DataInitProps {
   initialMissions: any[];
   initialSpecial: any[];
   initialPlayerInfo: any;
-  initialActivity: any[];
   isSubscribed?: boolean;
 }
 
@@ -19,7 +18,6 @@ export const DataInit = ({
   initialMissions,
   initialSpecial,
   initialPlayerInfo,
-  initialActivity,
 }: DataInitProps) => {
   const { setKana, setKanaMissions, setKanaSpecial } = useKanaStore();
   const { setInfo, setActivity } = usePlayerStore();
@@ -29,7 +27,6 @@ export const DataInit = ({
     setKanaMissions(initialMissions);
     setKanaSpecial(initialSpecial);
     setInfo(initialPlayerInfo);
-    setActivity(initialActivity);
   }, []);
 
   return null;

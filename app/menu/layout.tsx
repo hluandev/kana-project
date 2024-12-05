@@ -2,7 +2,6 @@ import { BgGradient } from "@/components/bgGradient";
 import { Board } from "@/components/board/board";
 import { LeftSide } from "@/components/left-side/left-side";
 import {
-  fetchActivity,
   fetchKana,
   fetchKanaMissions,
   fetchKanaSpecial,
@@ -19,7 +18,6 @@ export default async function MenuLayout({
   const initialMissions = await fetchKanaMissions();
   const initialSpecial = await fetchKanaSpecial();
   const initialPlayerInfo = await fetchPlayerInfo();
-  const initialActivity = await fetchActivity();
   return (
     <section className="flex h-full bg-black/5 shadow-inner">
       <DataInit
@@ -27,7 +25,6 @@ export default async function MenuLayout({
         initialData={initialData ?? []}
         initialMissions={initialMissions ?? []}
         initialPlayerInfo={initialPlayerInfo ?? []}
-        initialActivity={initialActivity ?? []}
       />
 
       <div className=" p-4">
