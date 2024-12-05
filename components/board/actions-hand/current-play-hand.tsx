@@ -11,7 +11,6 @@ import { WinTheGame } from "@/components/results/win-the-game";
 import { playSound } from "@/actions/client/play-sound";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
-import { updateActivityServer } from "@/actions/server/activity-server-actions";
 
 export default function CurrentPlayHand() {
   const { kana, drawHand, drawSpecial, kanaMissions } = useKanaStore();
@@ -32,7 +31,7 @@ export default function CurrentPlayHand() {
 
   useEffect(() => {
     if (turns === 4) {
-      playSound("/audio/start.mp3");
+      playSound("START");
     }
   }, [missionID]);
 
@@ -40,7 +39,7 @@ export default function CurrentPlayHand() {
     const hasLost = turns === 0 && progress < target;
 
     if (hasLost) {
-      playSound("/audio/lose.mp3");
+      playSound("LOSE");
       updatePlayerInfoServer({
         id: info.id,
         losses: info.losses + 1,

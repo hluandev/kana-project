@@ -22,7 +22,7 @@ export const DiscardSelected = () => {
   const onHandleDiscard = () => {
     if (selectedCard.length === 0) {
       setWarning("Select cards to discard first");
-      playSound("/audio/error.mp3");
+      playSound("ERROR");
       return;
     }
 
@@ -45,10 +45,10 @@ export const DiscardSelected = () => {
       setScore(0);
       setMultiplier(0);
       setDiscard(discard - 1);
-      playSound("/audio/discard.mp3");
+      playSound("DISCARD");
     } else {
       setWarning("You can't discard anymore cards");
-      playSound("/audio/error.mp3");
+      playSound("ERROR");
     }
   };
 

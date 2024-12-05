@@ -131,10 +131,10 @@ export const Win = () => {
 
         if (isAlreadySelected) {
           removeSelectedSpecial(matchingSpecial);
-          playSound("/audio/deselect_card.mp3");
+          playSound("DESELECT");
         } else if (selectedSpecial.length < 3) {
           addSelectedSpecial(matchingSpecial);
-          playSound("/audio/select_card.mp3");
+          playSound("SELECT");
         }
         setTimeout(() => setValue(""), 0);
       }
@@ -154,10 +154,10 @@ export const Win = () => {
 
         if (isAlreadySelected) {
           removeSelectedSpecial(matchingCard);
-          playSound("/audio/deselect_card.mp3");
+          playSound("DESELECT");
         } else if (selectedSpecial.length < 3) {
           addSelectedSpecial(matchingCard);
-          playSound("/audio/select_card.mp3");
+          playSound("SELECT");
         }
         setTimeout(() => setValue(""), 0);
       }
@@ -175,11 +175,11 @@ export const Win = () => {
     // Only allow selection from one source
     if (matchingSpecial) {
       addSelectedSpecial(matchingSpecial);
-      playSound("/audio/select_card.mp3");
+      playSound("SELECT");
       setTimeout(() => setValue(""), 0);
     } else if (matchingCard) {
       addSelectedSpecial(matchingCard);
-      playSound("/audio/select_card.mp3");
+      playSound("SELECT");
       setTimeout(() => setValue(""), 0);
     }
   };
@@ -199,13 +199,13 @@ export const Win = () => {
     newSpecialCards.splice(toIndex, 0, movedItem);
 
     setCurrentSpecial(newSpecialCards);
-    playSound("/audio/select_card.mp3");
+    playSound("SELECT");
   };
 
   const handleFreezeCard = () => {
     if (selectedSpecial.length === 0) {
       setWarning("Select cards to freeze first");
-      playSound("/audio/error.mp3");
+      playSound("ERROR");
       return;
     }
 
@@ -216,7 +216,7 @@ export const Win = () => {
 
     // if (selectedFrozenCards.length === 3) {
     //   setWarning("You can only freeze up to 3 cards");
-    //   playSound("/audio/error.mp3");
+    //   playSound("ERROR");
     //   return;
     // }
 
@@ -231,7 +231,7 @@ export const Win = () => {
       setFrozenSpecialCards(newFrozenCards);
       setSelectedSpecial([]);
       setTimeout(() => setValue(""), 0);
-      playSound("/audio/deselect_card.mp3");
+      playSound("DESELECT");
       return;
     }
 
@@ -242,7 +242,7 @@ export const Win = () => {
 
     if (!selectedFromRandom) {
       setWarning("You can only freeze cards from the shop");
-      playSound("/audio/error.mp3");
+      playSound("ERROR");
       return;
     }
 
@@ -251,7 +251,7 @@ export const Win = () => {
 
     setSelectedSpecial([]);
     setTimeout(() => setValue(""), 0);
-    playSound("/audio/freeze.mp3");
+    playSound("FREEZE");
   };
 
   const handleSubmit = () => {
@@ -271,7 +271,7 @@ export const Win = () => {
     // Check if adding new regular cards would exceed the 5-card limit
     if (currentSpecial.length + regularCards.length > 5) {
       setWarning("You can only have 5 special cards at a time");
-      playSound("/audio/error.mp3");
+      playSound("ERROR");
       return;
     }
 
@@ -321,11 +321,11 @@ export const Win = () => {
       setSelectedSpecial([]);
 
       setTimeout(() => setValue(""), 0);
-      playSound("/audio/buy.mp3");
+      playSound("BUY");
     } else {
       setWarning("You don't have enough yen");
       setTimeout(() => setValue(""), 0);
-      playSound("/audio/error.mp3");
+      playSound("ERROR");
     }
   };
 
@@ -378,7 +378,7 @@ export const Win = () => {
     }
 
     setSelectedCard([]);
-    playSound("/audio/next_turn.mp3");
+    playSound("NEXT_TURN");
     setMultiplier(0);
     setScore(0);
     setProgress(0);
@@ -430,11 +430,11 @@ export const Win = () => {
         setReroll(reroll + 1);
       }
       setSelectedSpecial([]);
-      playSound("/audio/reroll.mp3");
+      playSound("REROLL");
       setTimeout(() => setValue(""), 0);
     } else {
       setWarning("You need 200 yen to refresh cards");
-      playSound("/audio/error.mp3");
+      playSound("ERROR");
       setTimeout(() => setValue(""), 0);
     }
   };

@@ -407,7 +407,7 @@ export const PlaySelected = () => {
         const winBonus = 500;
         const totalYen = yen + winBonus + remainingYen;
         const xpGain = 20;
-        playSound("/audio/win.mp3");
+        playSound("WIN");
         // Count wins for turn 8 and beyond
         const shouldCountWin = missionID >= 8;
 
@@ -444,10 +444,10 @@ export const PlaySelected = () => {
       setMultiplier(0);
       setSelectedCard([]);
       setTurns(turns - 1);
-      playSound("/audio/play.mp3");
+      playSound("PLAY");
     } else {
       setWarning("Select cards to play first");
-      playSound("/audio/error.mp3");
+      playSound("ERROR");
     }
   };
 
