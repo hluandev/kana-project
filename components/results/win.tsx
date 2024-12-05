@@ -90,9 +90,9 @@ export const Win = () => {
     return () => clearTimeout(timer);
   }, [missionID]);
 
-  React.useEffect(() => {
-    playSound("/audio/win.mp3");
-  }, []);
+  // React.useEffect(() => {
+  //   playSound("/audio/win.mp3");
+  // }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);

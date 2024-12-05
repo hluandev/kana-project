@@ -407,7 +407,7 @@ export const PlaySelected = () => {
         const winBonus = 500;
         const totalYen = yen + winBonus + remainingYen;
         const xpGain = 20;
-
+        playSound("/audio/win.mp3");
         // Count wins for turn 8 and beyond
         const shouldCountWin = missionID >= 8;
 

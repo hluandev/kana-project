@@ -4,6 +4,7 @@ import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import { RotateCcwIcon } from "lucide-react";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { playSound } from "@/actions/client/play-sound";
 
 export const Lose = () => {
   const {
@@ -47,15 +48,7 @@ export const Lose = () => {
   };
 
   useEffect(() => {
-    const playSound = () => {
-      const audio = new Audio("/audio/lose.mp3");
-      audio.volume = 0.5;
-      audio
-        .play()
-        .catch((error) => console.log("Audio playback failed:", error));
-    };
-
-    playSound();
+    playSound("/audio/lose.mp3");
   }, []);
 
   return (
@@ -65,18 +58,19 @@ export const Lose = () => {
           initial={{ opacity: 0, y: 20, scale: 2 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 2 }}
-          className="text-red-600 text-8xl"
+          className="text-red-600 text-7xl"
         >
           You Died
         </motion.div>
-        <div className="bg-white flex items-center gap-2 rounded-full py-2 pl-2 pr-4">
+        <div className="bg-white border border-black/20 shadow-sm flex items-center gap-2 rounded-full py-1 pl-1 pr-4">
           <ActionButton
             onClick={handleLoseSubmit}
-            icon={<RotateCcwIcon />}
+            icon={<RotateCcwIcon strokeWidth={1.7} className="w-5 h-5" />}
             keyboardShortcut="1"
+            descTooltip="You got this! :)"
             className="bg-red-600 text-white rounded-full"
           />
-          <p className="text-xl font-medium">Play again</p>
+          <p className=" font-medium">Play again</p>
         </div>
       </div>
     </div>
