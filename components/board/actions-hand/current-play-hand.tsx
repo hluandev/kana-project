@@ -45,7 +45,6 @@ export default function CurrentPlayHand() {
         id: info.id,
         losses: info.losses + 1,
       });
-      updateActivityServer({ result: false });
     }
   }, [turns === 0]);
 

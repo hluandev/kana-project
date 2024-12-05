@@ -425,6 +425,8 @@ export const PlaySelected = () => {
           setYen(totalYen),
           updateGameResult(shouldCountWin),
         ]);
+      } else if (newTurns === 0 && newProgress < target) {
+        updateActivityServer({ result: false });
       }
 
       updatePlayerInfoServer({
@@ -432,7 +434,7 @@ export const PlaySelected = () => {
         highest_score: newProgress,
       });
       updateActivityServer({
-        highest_score: score * multiplier,
+        highest_score: newProgress,
       });
 
       // Update game state
