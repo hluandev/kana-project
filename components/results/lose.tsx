@@ -51,7 +51,7 @@ export const Lose = () => {
 
   return (
     <div className="relative flex items-center  h-full z-10">
-      <div className="flex items-center flex-col space-y-6 rounded-2xl bg-black/5 border border-black/15 shadow-inner p-10">
+      <div className="flex items-center flex-col space-y-6 ">
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 2 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -60,15 +60,13 @@ export const Lose = () => {
         >
           You Died
         </motion.div>
-        <div>
-          <p>Your highest score for this run was 7486</p>
-        </div>
+
         <div className="bg-white border border-black/20 shadow-sm flex items-center gap-2 rounded-full py-1 pl-1 pr-4">
           <ActionButton
+            hideTooltip
             onClick={handleLoseSubmit}
             icon={<RotateCcwIcon strokeWidth={1.7} className="w-5 h-5" />}
             keyboardShortcut="1"
-            descTooltip="You got this! :)"
             className="bg-red-600 text-white rounded-full"
           />
           <p className=" font-medium">Play again</p>

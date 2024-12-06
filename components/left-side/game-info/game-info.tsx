@@ -10,7 +10,7 @@ import { SwitchKana } from "./components/switch-kana";
 export const GameInfo = () => {
   return (
     <div className="flex flex-col h-full justify-between">
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div className="flex gap-1 w-full">
           <ReturnButton />
           <SwitchKana />
@@ -18,7 +18,7 @@ export const GameInfo = () => {
         <Score />
         <ScoreDamage />
       </div>
-      <div className="space-y-4">
+      <div className="space-y-3">
         <CurrentInfo />
         <PlayerLevel />
       </div>
