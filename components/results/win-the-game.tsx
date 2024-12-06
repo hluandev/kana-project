@@ -11,8 +11,6 @@ export const WinTheGame = () => {
   const handleEndlessMode = () => {
     setIsEndlessMode(true);
     setEndlessTarget(1);
-    // setMissionID(9);
-    // setProgress(0);
     setShowShop(true);
   };
 
@@ -21,28 +19,37 @@ export const WinTheGame = () => {
       {showShop ? (
         <Win />
       ) : (
-        <div className="flex flex-col items-center justify-center gap-10">
-          <div className="flex flex-col items-center gap-4">
-            <h2 className="text-5xl font-semibold">Congratulation!</h2>
-            <p className="text-lg text-neutral-500">
-              You won the game. You can now play again or play Endless Mode.
+        <div className="flex  flex-col items-center justify-center gap-6">
+          <div className="flex flex-col items-center gap-2">
+            <h2 className="text-4xl font-semibold">Congratulation!</h2>
+            <p className=" text-neutral-500 max-w-md text-center">
+              Congratulations on winning the game! You can now choose to play
+              again or dive into Endless Mode.
             </p>
           </div>
 
           <div className="flex gap-4">
-            <div className="bg-white rounded-2xl flex flex-col justify-between p-4 aspect-square w-60">
-              <h1 className="text-2xl font-semibold">Play again</h1>
-              <p className="text-neutral-500">
-                Play the game again from the beginning.
+            <div
+              onClick={handleEndlessMode}
+              className="bg-white rounded-2xl flex flex-col justify-between p-3 border border-black/15 shadow-sm aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+            >
+              <div>
+                <h1 className=" font-semibold">Play again</h1>
+              </div>
+              <p className="text-neutral-700 text-sm">
+                Start the game from the beginning.
               </p>
             </div>
 
             <div
               onClick={handleEndlessMode}
-              className="bg-[#efcb68] rounded-2xl flex flex-col justify-between p-4 aspect-square w-60 cursor-pointer hover:bg-opacity-90"
+              className="bg-[#efcb68] rounded-2xl flex flex-col justify-between p-3 border border-black/15 shadow-sm aspect-square h-48 cursor-pointer hover:bg-opacity-90"
             >
-              <h1 className="text-2xl font-semibold">Play endless</h1>
-              <p className="text-neutral-700">
+              <div>
+                <h1 className=" font-semibold">Play endless</h1>
+                <p className="text-sm text-black/50">Premium required</p>
+              </div>
+              <p className="text-neutral-700 text-sm">
                 Play the game in endless mode and keep scoring higher and
                 higher.
               </p>
