@@ -440,7 +440,7 @@ export const Win = () => {
   };
 
   return (
-    <div className="w-[36rem] relative flex flex-col items-center">
+    <div className="w-[34rem] relative flex flex-col items-center">
       <div className="flex flex-col gap-2">
         <motion.div
           className="text-[#cb980b] font-medium text-6xl"
@@ -455,7 +455,7 @@ export const Win = () => {
           Buy or sell special cards to enchance the next round
         </p>
       </div>
-      <div className="h-72 relative grid mt-10 grid-cols-3 gap-4 p-4 bg-black/5 border border-black/15 shadow-inner rounded-2xl">
+      <div className="h-72 relative grid mt-10 grid-cols-3 gap-2 p-2 bg-black/5 border border-black/15 shadow-inner rounded-2xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             japanese_katakana={card.japanese_katakana}
