@@ -20,10 +20,10 @@ export const ScoreDamage = () => {
       </div>
 
       <div className="font-medium text-center grid mt-2 gap-2 grid-cols-2">
-        <div className="py-1.5 bg-white shadow-sm border border-black/15 rounded-md text-blue-600">
+        <div className="py-1.5 bg-white shadow-sm border border-black/15 rounded-lg text-blue-600">
           {score}
         </div>
-        <div className="py-1.5 bg-white shadow-sm border border-black/15 rounded-md text-red-500">
+        <div className="py-1.5 bg-white shadow-sm border border-black/15 rounded-lg text-red-500">
           {multiplier}
         </div>
       </div>

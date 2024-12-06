@@ -61,7 +61,7 @@ export default function PlayerLevel() {
             exit={{ opacity: 0, y: 20 }}
             className={`${
               isSubscribed ? "-top-20" : "-top-72"
-            } absolute flex flex-col gap-2 text-sm  items-center justify-between  bg-white border border-black/15 shadow-sm w-full rounded-xl left-0 p-2`}
+            } absolute flex flex-col gap-2 text-sm  items-center justify-between  bg-[#fafafa] border border-black/15 shadow-sm w-full rounded-xl left-0 p-2`}
           >
             <div className="flex justify-between items-center w-full bg-black/5 border border-black/15 shadow-inner p-2 rounded-xl">
               <div className="flex justify-between  items-center">
@@ -98,7 +98,7 @@ export default function PlayerLevel() {
         )}
       </AnimatePresence>
 
-      <div className="bg-black/5 col-span-10 w-full flex flex-col gap-2 relative overflow-hidden rounded-xl p-2 border border-black/15 shadow-inner ">
+      <div className="bg-[#fafafa] col-span-10 w-full flex flex-col gap-2 relative overflow-hidden rounded-xl p-2 border border-black/15 shadow-sm ">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="bg-[#efcb68] border border-black/15 shadow-sm z-20  font-medium  text-sm rounded-lg p-1 w-8 h-8 aspect-square flex justify-center items-center">
@@ -118,13 +118,18 @@ export default function PlayerLevel() {
           </div>
         </div>
 
-        <div className="bg-white h-8 overflow-hidden relative rounded-lg border border-black/15 shadow-sm">
-          <p className="relative z-10 text-center text-xs flex items-center justify-center h-full">
+        <div className=" h-8 overflow-hidden relative rounded-lg">
+          <p className="relative z-20 text-center text-xs flex items-center justify-center h-full">
             {info.xp} / 100
           </p>
           <motion.div
-            className="bg-[#efcb68] absolute top-0 left-0 flex justify-center items-center h-8 py-2 text-sm"
+            className="bg-[#efcb68] absolute top-0 left-0 flex justify-center border-y border-l border-black/15 items-center h-8 rounded-l-lg"
             animate={{ width: `${percentage}%` }}
+            transition={{ duration: 0.5 }}
+          ></motion.div>
+          <motion.div
+            className="bg-white absolute top-0 right-0 flex justify-center border-y border-r border-black/15 items-center h-8 rounded-r-lg"
+            animate={{ width: `${100 - percentage}%` }}
             transition={{ duration: 0.5 }}
           ></motion.div>
         </div>
