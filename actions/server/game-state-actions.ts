@@ -14,6 +14,8 @@ interface GameStateData {
   currentSpecial: any[];
   currentSpecialDeck: any[];
   yen: number;
+  discard: number;
+  currentUpgrades: any[];
 }
 
 export async function saveGameState(gameState: GameStateData) {

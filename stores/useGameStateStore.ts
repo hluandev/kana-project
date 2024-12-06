@@ -34,6 +34,8 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
       currentSpecial: kanaState.currentSpecial,
       currentSpecialDeck: kanaState.currentSpecialDeck,
       yen: scoreState.yen,
+      discard: scoreState.discard,
+      currentUpgrades: kanaState.currentUpgrades,
     });
   },
 
@@ -49,6 +51,7 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
           progress: data.progress,
           missionID: data.missionID,
           yen: data.yen,
+          discard: data.discard,
         });
 
         useKanaStore.setState({
@@ -56,6 +59,7 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
           currentHand: data.currentHand || [],
           currentDeck: data.currentDeck || [],
           currentSpecial: data.currentSpecial || [],
+          currentUpgrades: data.currentUpgrades || [],
         });
 
         set({ hasSavedGame: true });
