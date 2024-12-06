@@ -38,12 +38,11 @@ export const PlaySelected = () => {
     reroll,
     isEndlessMode,
     endlessTarget,
-    setReroll,
-    setEndlessTarget,
+
     multiplierBonus,
   } = useScoreStore();
 
-  const { info, updateXp, updateGameResult } = usePlayerStore();
+  const { info, updateXp, updateLosses, updateWins } = usePlayerStore();
   const rankCount = new Map<string, number>();
 
   const checkHand = () => {
@@ -420,16 +419,26 @@ export const PlaySelected = () => {
           }),
           shouldCountWin &&
             updateActivityServer({
-              result: true,
               highest_score: newProgress,
+              wins: info.wins + 1,
             }),
           updateXp(xpGain),
-          updateGameResult(shouldCountWin),
           setYen(totalYen),
+          updateWins(info.wins + 1),
         ]);
       } else if (newTurns === 0 && newProgress < target) {
-        updateActivityServer({ result: false, highest_score: newProgress });
+        playSound("LOSE");
+        updatePlayerInfoServer({
+          id: info.id,
+          losses: info.losses + 1,
+        });
+        updateActivityServer({
+          highest_score: score * multiplier,
+          losses: info.losses + 1,
+        });
+        updateLosses(info.losses + 1);
       }
+      updateActivityServer({ highest_score: newProgress });
 
       updatePlayerInfoServer({
         id: info.id,

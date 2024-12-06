@@ -22,7 +22,6 @@ interface playerStore {
   updateXp: (xp: number) => void;
   updateLevel: (level: number) => void;
   setXp: (xp: number) => void;
-  updateGameResult: (won: boolean) => void;
   isSubscribed: boolean;
   setIsSubscribed: (isSubscribed: boolean) => void;
   activity: Activity[];
@@ -30,6 +29,8 @@ interface playerStore {
   checkSubscription: () => Promise<void>;
   hasCheckedSubscription: boolean;
   updateHighestScore: (highest_score: number) => void;
+  updateWins: (wins: number) => void;
+  updateLosses: (losses: number) => void;
 }
 
 export const usePlayerStore = create<playerStore>((set, get) => ({
@@ -64,14 +65,10 @@ export const usePlayerStore = create<playerStore>((set, get) => ({
     set((state) => ({ info: { ...state.info, xp: state.info.xp + xp } })),
   updateLevel: (level: number) =>
     set((state) => ({ info: { ...state.info, level } })),
-  updateGameResult: (won: boolean) =>
-    set((state) => ({
-      info: {
-        ...state.info,
-        wins: state.info.wins + (won ? 1 : 0),
-        losses: state.info.losses + (won ? 0 : 1),
-      },
-    })),
+  updateWins: (wins: number) =>
+    set((state) => ({ info: { ...state.info, wins } })),
+  updateLosses: (losses: number) =>
+    set((state) => ({ info: { ...state.info, losses } })),
   updateHighestScore: (highest_score: number) =>
     set((state) => ({
       info: { ...state.info, highest_score },

@@ -4,13 +4,15 @@ import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 
 interface UpdateActivityProps {
-  result?: boolean;
   highest_score?: number;
+  wins?: number;
+  losses?: number;
 }
 
 export async function updateActivityServer({
-  result,
   highest_score,
+  wins,
+  losses,
 }: UpdateActivityProps) {
   const supabase = await createClient();
   const {
@@ -37,8 +39,7 @@ export async function updateActivityServer({
       {
         id: user.id,
         created_at: today.toISOString(),
-        wins: result ? 1 : 0,
-        losses: result ? 0 : 1,
+
         highest_score: highest_score ?? 0,
       },
     ]);
@@ -46,12 +47,12 @@ export async function updateActivityServer({
     await supabase
       .from("activity")
       .update({
-        wins: activity.wins + (result ? 1 : 0),
-        losses: activity.losses + (result ? 0 : 1),
         highest_score: Math.max(
           activity.highest_score ?? 0,
           highest_score ?? 0
         ),
+        wins: wins,
+        losses: losses,
       })
       .eq("id", user.id)
       .eq("created_at", activity.created_at);

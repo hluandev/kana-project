@@ -11,12 +11,20 @@ import { WinTheGame } from "@/components/results/win-the-game";
 import { playSound } from "@/actions/client/play-sound";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
+import { updateActivityServer } from "@/actions/server/activity-server-actions";
 
 export default function CurrentPlayHand() {
   const { kana, drawHand, drawSpecial, kanaMissions } = useKanaStore();
-  const { turns, missionID, progress, isEndlessMode, endlessTarget } =
-    useScoreStore();
-  const { info, updateGameResult } = usePlayerStore();
+  const {
+    turns,
+    missionID,
+    progress,
+    isEndlessMode,
+    endlessTarget,
+    score,
+    multiplier,
+  } = useScoreStore();
+  const { info, updateLosses } = usePlayerStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
   const target = isEndlessMode ? endlessTarget : mission?.target;
@@ -34,17 +42,24 @@ export default function CurrentPlayHand() {
     }
   }, [missionID]);
 
-  useEffect(() => {
-    const hasLost = turns === 0 && progress < target;
+  // useEffect(() => {
+  //   const hasLost = turns === 0 && progress < target;
 
-    if (hasLost) {
-      playSound("LOSE");
-      updatePlayerInfoServer({
-        id: info.id,
-        losses: info.losses + 1,
-      });
-    }
-  }, [turns === 0]);
+  //   if (hasLost) {
+  //     playSound("LOSE");
+
+  //     updatePlayerInfoServer({
+  //       id: info.id,
+  //       losses: info.losses + 1,
+  //     });
+  //     updateActivityServer({
+  //       highest_score: score * multiplier,
+  //       losses: info.losses + 1,
+  //     });
+
+  //     updateLosses(info.losses + 1);
+  //   }
+  // }, [turns === 0]);
 
   const renderOutcome = () => {
     if (hasWonGame) {
