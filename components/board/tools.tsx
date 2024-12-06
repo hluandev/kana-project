@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Report } from "./report";
 import { ComboHelp } from "./combo-help";
 import { useScoreStore } from "@/stores/useScoreStore";
+import { ResetGame } from "./reset-game";
 
 export const Tools = () => {
   const { currentDeck, setShowRomaji, showRomaji, kanaMissions } =
@@ -82,6 +83,8 @@ export const Tools = () => {
             </div>
 
             <Report />
+
+            <ResetGame />
 
             <div className="bg-white rounded-xl border border-black/15 shadow-sm  h-12 w-12 flex items-center justify-center">
               {currentDeck.length}

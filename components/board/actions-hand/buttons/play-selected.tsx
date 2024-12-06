@@ -386,7 +386,7 @@ export const PlaySelected = () => {
   }, [selectedCard]);
 
   const handlePlaySelected = async () => {
-    if (missionID >= 8 && !isSubscribed) {
+    if (missionID > 8 && !isSubscribed) {
       setWarning("Premium required to continue beyond round 8");
       playSound("ERROR");
       return;
