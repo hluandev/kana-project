@@ -55,14 +55,14 @@ export default function ActionInput() {
       onSubmit={(e) => {
         e.preventDefault();
       }}
-      className="h-full"
+      className="flex items-center"
     >
       <input
         ref={inputRef}
         type="text"
         value={value}
         placeholder="Type here"
-        className=" text-center w-52 h-full text-[0.9rem] placeholder:text-neutral-400 outline-none rounded-md"
+        className="text-center w-52 h-8 bg-white text-[0.9rem] placeholder:text-neutral-400 outline-none rounded-md"
         onChange={handleChange}
       />
       <input className="hidden" type="submit" />
