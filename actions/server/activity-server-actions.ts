@@ -19,26 +19,43 @@ export async function updateActivityServer({
 
   if (!user) return;
 
+  const now = new Date();
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
 
   const { data: activity } = await supabase
     .from("activity")
     .select("*")
+    .lte("created_at", now.toISOString())
     .gte("created_at", today.toISOString())
-    .lt("created_at", new Date(today.getTime() + 86400000).toISOString())
+    .order("created_at", { ascending: false })
+    .limit(1)
     .single();
 
-  await supabase
-    .from("activity")
-    .update({
-      wins: activity.wins + (result ? 1 : 0),
-      losses: activity?.losses + (result ? 0 : 1),
-      highest_score: Math.max(activity.highest_score ?? 0, highest_score ?? 0),
-    })
-    .eq("id", user.id)
-    .gte("created_at", today.toISOString())
-    .lt("created_at", new Date(today.getTime() + 86400000).toISOString());
+  if (!activity) {
+    await supabase.from("activity").insert([
+      {
+        id: user.id,
+        created_at: today.toISOString(),
+        wins: result ? 1 : 0,
+        losses: result ? 0 : 1,
+        highest_score: highest_score ?? 0,
+      },
+    ]);
+  } else {
+    await supabase
+      .from("activity")
+      .update({
+        wins: activity.wins + (result ? 1 : 0),
+        losses: activity.losses + (result ? 0 : 1),
+        highest_score: Math.max(
+          activity.highest_score ?? 0,
+          highest_score ?? 0
+        ),
+      })
+      .eq("id", user.id)
+      .eq("created_at", activity.created_at);
+  }
 
   revalidatePath("/menu/", "page");
 }

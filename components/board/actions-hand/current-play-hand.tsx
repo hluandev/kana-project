@@ -23,7 +23,6 @@ export default function CurrentPlayHand() {
 
   const hasWonGame = !isEndlessMode && missionID === 8 && progress >= target;
   const hasWonEndless = isEndlessMode && progress >= target;
-  const hasLost = turns === 0 && progress < target;
   useEffect(() => {
     drawHand();
     drawSpecial();
