@@ -12,6 +12,9 @@ import {
 } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
 import { motion } from "framer-motion";
+import { usePlayerStore } from "@/stores/usePlayerStore";
+import { updateActivityServer } from "@/actions/server/activity-server-actions";
+import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 
 export const Win = () => {
   const {
@@ -55,6 +58,8 @@ export const Win = () => {
     setCurrentUpgrades,
     setFrozenSpecialCards,
   } = useKanaStore();
+
+  const { info, updateMatches } = usePlayerStore();
 
   const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
     [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)

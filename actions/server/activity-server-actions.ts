@@ -7,12 +7,14 @@ interface UpdateActivityProps {
   highest_score?: number;
   wins?: number;
   losses?: number;
+  matches?: number;
 }
 
 export async function updateActivityServer({
   highest_score,
   wins,
   losses,
+  matches,
 }: UpdateActivityProps) {
   const supabase = await createClient();
   const {
@@ -53,6 +55,7 @@ export async function updateActivityServer({
         ),
         wins: wins,
         losses: losses,
+        matches: matches,
       })
       .eq("id", user.id)
       .eq("created_at", activity.created_at);

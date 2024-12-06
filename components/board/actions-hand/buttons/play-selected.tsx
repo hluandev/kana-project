@@ -42,7 +42,8 @@ export const PlaySelected = () => {
     multiplierBonus,
   } = useScoreStore();
 
-  const { info, updateXp, updateLosses, updateWins } = usePlayerStore();
+  const { info, updateXp, updateLosses, updateWins, updateMatches } =
+    usePlayerStore();
   const rankCount = new Map<string, number>();
 
   const checkHand = () => {
@@ -415,28 +416,34 @@ export const PlaySelected = () => {
           updatePlayerInfoServer({
             id: info.id,
             xp: info.xp + xpGain,
+            matches: info.matches + 1,
             wins: info.wins + (shouldCountWin ? 1 : 0),
           }),
           shouldCountWin &&
             updateActivityServer({
               highest_score: newProgress,
               wins: info.wins + 1,
+              matches: info.matches + 1,
             }),
           updateXp(xpGain),
           setYen(totalYen),
           updateWins(info.wins + 1),
+          updateMatches(info.matches + 1),
         ]);
       } else if (newTurns === 0 && newProgress < target) {
         playSound("LOSE");
         updatePlayerInfoServer({
           id: info.id,
           losses: info.losses + 1,
+          matches: info.matches + 1,
         });
         updateActivityServer({
           highest_score: score * multiplier,
           losses: info.losses + 1,
+          matches: info.matches + 1,
         });
         updateLosses(info.losses + 1);
+        updateMatches(info.matches + 1);
       }
       updateActivityServer({ highest_score: newProgress });
 

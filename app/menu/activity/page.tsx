@@ -43,7 +43,7 @@ export default function Activity() {
     <div className="h-full w-full">
       <div className="flex flex-col space-y-4 rounded-2xl w-full h-full">
         <div className="grid grid-cols-4 gap-4">
-          <ActivityBox title="Matches" value={info.wins + info.losses} />
+          <ActivityBox title="Matches" value={info.matches} />
           <ActivityBox
             textColor="text-blue-600"
             title="Wins"

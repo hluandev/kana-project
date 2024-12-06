@@ -10,6 +10,7 @@ interface UpdatePlayerInfoProps {
   level?: number;
   losses?: number;
   highest_score?: number;
+  matches?: number;
 }
 
 export async function updatePlayerInfoServer({
@@ -19,6 +20,7 @@ export async function updatePlayerInfoServer({
   level,
   losses,
   highest_score,
+  matches,
 }: UpdatePlayerInfoProps) {
   const supabase = await createClient();
 
@@ -37,6 +39,7 @@ export async function updatePlayerInfoServer({
       wins: wins,
       level: level,
       losses: losses,
+      matches: matches,
       highest_score: Math.max(profiles.highest_score ?? 0, highest_score ?? 0),
     })
     .eq("id", id);

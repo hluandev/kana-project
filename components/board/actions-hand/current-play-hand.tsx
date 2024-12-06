@@ -24,7 +24,7 @@ export default function CurrentPlayHand() {
     score,
     multiplier,
   } = useScoreStore();
-  const { info, updateLosses } = usePlayerStore();
+  const { info, updateLosses, updateMatches } = usePlayerStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
   const target = isEndlessMode ? endlessTarget : mission?.target;
@@ -41,25 +41,6 @@ export default function CurrentPlayHand() {
       playSound("START");
     }
   }, [missionID]);
-
-  // useEffect(() => {
-  //   const hasLost = turns === 0 && progress < target;
-
-  //   if (hasLost) {
-  //     playSound("LOSE");
-
-  //     updatePlayerInfoServer({
-  //       id: info.id,
-  //       losses: info.losses + 1,
-  //     });
-  //     updateActivityServer({
-  //       highest_score: score * multiplier,
-  //       losses: info.losses + 1,
-  //     });
-
-  //     updateLosses(info.losses + 1);
-  //   }
-  // }, [turns === 0]);
 
   const renderOutcome = () => {
     if (hasWonGame) {

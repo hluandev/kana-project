@@ -8,6 +8,7 @@ interface PlayerInfo {
   wins: number;
   losses: number;
   highest_score: number;
+  matches: number;
 }
 
 interface Activity {
@@ -31,6 +32,7 @@ interface playerStore {
   updateHighestScore: (highest_score: number) => void;
   updateWins: (wins: number) => void;
   updateLosses: (losses: number) => void;
+  updateMatches: (matches: number) => void;
 }
 
 export const usePlayerStore = create<playerStore>((set, get) => ({
@@ -42,8 +44,11 @@ export const usePlayerStore = create<playerStore>((set, get) => ({
     losses: 0,
     highest_score: 0,
     username: "",
+    matches: 0,
   },
   activity: [],
+  updateMatches: (matches: number) =>
+    set((state) => ({ info: { ...state.info, matches } })),
   setActivity: (activity: Activity[]) => set({ activity }),
   isSubscribed: false,
   hasCheckedSubscription: false,
