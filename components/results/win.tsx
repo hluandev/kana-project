@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { updateActivityServer } from "@/actions/server/activity-server-actions";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
+import { useGameStateStore } from "@/stores/useGameStateStore";
 
 export const Win = () => {
   const {
@@ -60,7 +61,7 @@ export const Win = () => {
   } = useKanaStore();
 
   const { info, updateMatches } = usePlayerStore();
-
+  const { saveGame } = useGameStateStore();
   const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
     [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
   );
@@ -334,7 +335,7 @@ export const Win = () => {
     }
   };
 
-  const handleNextTurn = () => {
+  const handleNextTurn = async () => {
     // Keep frozen cards and add new random cards to fill remaining slots
     const newRandomCards = [
       ...currentSpecialDeck
@@ -388,6 +389,7 @@ export const Win = () => {
     setScore(0);
     setProgress(0);
     setMissionID(missionID + 1);
+    await saveGame();
   };
 
   const handleSellSpecial = () => {

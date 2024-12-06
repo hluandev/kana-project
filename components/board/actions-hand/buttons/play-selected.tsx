@@ -7,6 +7,7 @@ import { playSound } from "@/actions/client/play-sound";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { updateActivityServer } from "@/actions/server/activity-server-actions";
+import { useGameStateStore } from "@/stores/useGameStateStore";
 
 export const PlaySelected = () => {
   const {
@@ -41,6 +42,8 @@ export const PlaySelected = () => {
 
     multiplierBonus,
   } = useScoreStore();
+
+  const { saveGame } = useGameStateStore();
 
   const { info, updateXp, updateLosses, updateWins, updateMatches } =
     usePlayerStore();
@@ -376,7 +379,7 @@ export const PlaySelected = () => {
     setActiveSpecials(activeSpecialIds);
   }, [selectedCard]);
 
-  const handlePlaySelected = () => {
+  const handlePlaySelected = async () => {
     if (selectedCard.length > 0) {
       const newHand = currentHand.filter(
         (card) => !selectedCard.includes(card)
@@ -456,10 +459,12 @@ export const PlaySelected = () => {
       setProgress(newProgress);
       setCurrentHand(sortedHand);
       setCurrentDeck(newDeck);
+      await saveGame();
       setScore(0);
       setMultiplier(0);
       setSelectedCard([]);
       setTurns(turns - 1);
+
       playSound("PLAY");
     } else {
       setWarning("Select cards to play first");

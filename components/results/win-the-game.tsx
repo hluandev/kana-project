@@ -5,12 +5,13 @@ import { useState } from "react";
 import { Win } from "./win";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { useKanaStore } from "@/stores/useKanaStore";
+import { useGameStateStore } from "@/stores/useGameStateStore";
 
 export const WinTheGame = () => {
   const { isSubscribed } = usePlayerStore();
   const [showShop, setShowShop] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const { saveGame } = useGameStateStore();
   const {
     setTurns,
     setScore,
@@ -62,7 +63,7 @@ export const WinTheGame = () => {
     }
   };
 
-  const handleLoseSubmit = () => {
+  const handleLoseSubmit = async () => {
     setIsEndlessMode(false);
     setFrozenSpecialCards([]);
     setTurns(4);
@@ -78,6 +79,7 @@ export const WinTheGame = () => {
     drawSpecial();
     setSelectedCard([]);
     setCurrentSpecial([]);
+    await saveGame();
   };
 
   return (

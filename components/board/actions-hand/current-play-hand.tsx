@@ -12,6 +12,7 @@ import { playSound } from "@/actions/client/play-sound";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import { updateActivityServer } from "@/actions/server/activity-server-actions";
+import { useGameStateStore } from "@/stores/useGameStateStore";
 
 export default function CurrentPlayHand() {
   const { kana, drawHand, drawSpecial, kanaMissions } = useKanaStore();
@@ -25,6 +26,7 @@ export default function CurrentPlayHand() {
     multiplier,
   } = useScoreStore();
   const { info, updateLosses, updateMatches } = usePlayerStore();
+  const { loadGame } = useGameStateStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
   const target = isEndlessMode ? endlessTarget : mission?.target;
@@ -35,6 +37,10 @@ export default function CurrentPlayHand() {
     drawHand();
     drawSpecial();
   }, [kana]);
+
+  useEffect(() => {
+    loadGame();
+  }, []);
 
   useEffect(() => {
     if (turns === 4) {

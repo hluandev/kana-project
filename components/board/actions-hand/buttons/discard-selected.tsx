@@ -5,6 +5,7 @@ import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { XIcon } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
+import { useGameStateStore } from "@/stores/useGameStateStore";
 
 export const DiscardSelected = () => {
   const {
@@ -16,10 +17,12 @@ export const DiscardSelected = () => {
     setSelectedCard,
   } = useKanaStore();
 
+  const { saveGame } = useGameStateStore();
+
   const { discard, setDiscard, setScore, setMultiplier, setWarning } =
     useScoreStore();
 
-  const onHandleDiscard = () => {
+  const onHandleDiscard = async () => {
     if (selectedCard.length === 0) {
       setWarning("Select cards to discard first");
       playSound("ERROR");
@@ -46,6 +49,7 @@ export const DiscardSelected = () => {
       setMultiplier(0);
       setDiscard(discard - 1);
       playSound("DISCARD");
+      await saveGame();
     } else {
       setWarning("You can't discard anymore cards");
       playSound("ERROR");
