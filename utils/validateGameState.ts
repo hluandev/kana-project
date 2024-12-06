@@ -21,7 +21,7 @@ export async function validateGameState(state: GameState): Promise<boolean> {
   // Validate basic ranges
   if (
     state.turns < 0 ||
-    state.turns > 4 ||
+    state.turns > 5 ||
     state.score < 0 ||
     state.multiplier < 0 ||
     state.progress < 0 ||
