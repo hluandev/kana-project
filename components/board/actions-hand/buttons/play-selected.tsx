@@ -45,8 +45,14 @@ export const PlaySelected = () => {
 
   const { saveGame } = useGameStateStore();
 
-  const { info, updateXp, updateLosses, updateWins, updateMatches } =
-    usePlayerStore();
+  const {
+    info,
+    updateXp,
+    updateLosses,
+    updateWins,
+    updateMatches,
+    isSubscribed,
+  } = usePlayerStore();
   const rankCount = new Map<string, number>();
 
   const checkHand = () => {
@@ -380,6 +386,12 @@ export const PlaySelected = () => {
   }, [selectedCard]);
 
   const handlePlaySelected = async () => {
+    if (missionID >= 8 && !isSubscribed) {
+      setWarning("Premium required to continue beyond round 8");
+      playSound("ERROR");
+      return;
+    }
+
     if (selectedCard.length > 0) {
       const newHand = currentHand.filter(
         (card) => !selectedCard.includes(card)
