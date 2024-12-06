@@ -17,6 +17,7 @@ export const WinTheGame = () => {
     setScore,
     setMultiplier,
     setProgress,
+    setMultiplierBonus,
     setMissionID,
     setDiscard,
     setYen,
@@ -70,6 +71,7 @@ export const WinTheGame = () => {
     setTurns(4);
     setScore(0);
     setMultiplier(0);
+    setMultiplierBonus(0);
     setProgress(0);
     setAnnouncement("");
     setMissionID(1);

@@ -18,6 +18,7 @@ export const Lose = () => {
     setReroll,
 
     setIsEndlessMode,
+    setMultiplierBonus,
   } = useScoreStore();
 
   const { saveGame } = useGameStateStore();
@@ -37,6 +38,7 @@ export const Lose = () => {
     setScore(0);
     setMultiplier(0);
     setProgress(0);
+    setMultiplierBonus(0);
     setAnnouncement("");
     setMissionID(1);
     setDiscard(4);

@@ -21,6 +21,7 @@ export const ResetGame = () => {
     setReroll,
     setEndlessTarget,
     setIsEndlessMode,
+    setMultiplierBonus,
   } = useScoreStore();
 
   const {
@@ -39,6 +40,7 @@ export const ResetGame = () => {
     setScore(0);
     setMultiplier(0);
     setProgress(0);
+    setMultiplierBonus(0);
     setAnnouncement("");
     setMissionID(1);
     setDiscard(4);
