@@ -20,6 +20,7 @@ interface GameStateData {
   reroll: number;
   isEndlessMode: boolean;
   endlessTarget: number;
+  multiplierBonus: number;
 }
 
 export async function saveGameState(gameState: GameStateData) {

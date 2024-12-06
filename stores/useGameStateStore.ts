@@ -40,6 +40,7 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
       discard: scoreState.discard,
       currentUpgrades: kanaState.currentUpgrades,
       randomSpecialCards: kanaState.randomSpecialCards,
+      multiplierBonus: scoreState.multiplierBonus,
     });
   },
 
@@ -59,6 +60,7 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
           reroll: data.reroll,
           yen: data.yen,
           discard: data.discard,
+          multiplierBonus: data.multiplierBonus,
         });
 
         useKanaStore.setState({
