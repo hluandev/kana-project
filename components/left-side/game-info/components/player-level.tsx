@@ -119,11 +119,11 @@ export default function PlayerLevel() {
         </div>
 
         <div className=" h-8 overflow-hidden relative rounded-lg">
-          <p className="relative z-20 text-center text-xs flex items-center justify-center h-full">
+          <p className="relative z-20 text-center font-medium text-sm flex items-center justify-center h-full">
             {info.xp} / 100
           </p>
           <motion.div
-            className="bg-[#efcb68] absolute top-0 left-0 flex justify-center border-y border-l border-black/15 items-center h-8 rounded-l-lg"
+            className="bg-[#efcb68] absolute top-0 left-0 flex justify-center border border-black/15 items-center h-8 rounded-l-lg"
             animate={{ width: `${percentage}%` }}
             transition={{ duration: 0.5 }}
           ></motion.div>
