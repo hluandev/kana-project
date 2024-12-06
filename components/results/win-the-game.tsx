@@ -3,15 +3,81 @@
 import { useScoreStore } from "@/stores/useScoreStore";
 import { useState } from "react";
 import { Win } from "./win";
+import { usePlayerStore } from "@/stores/usePlayerStore";
+import { useKanaStore } from "@/stores/useKanaStore";
 
 export const WinTheGame = () => {
-  const { setIsEndlessMode, setEndlessTarget } = useScoreStore();
+  const { isSubscribed } = usePlayerStore();
   const [showShop, setShowShop] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const {
+    setTurns,
+    setScore,
+    setMultiplier,
+    setProgress,
+    setMissionID,
+    setDiscard,
+    setYen,
+    setAnnouncement,
+    setReroll,
+    setEndlessTarget,
+    setIsEndlessMode,
+  } = useScoreStore();
+
+  const {
+    setSelectedCard,
+    drawHand,
+    drawSpecial,
+    setCurrentSpecial,
+    setFrozenSpecialCards,
+  } = useKanaStore();
+
+  const handleSubscribe = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch("/api/stripe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleEndlessMode = () => {
-    setIsEndlessMode(true);
-    setEndlessTarget(1);
-    setShowShop(true);
+    if (isSubscribed) {
+      setIsEndlessMode(true);
+      setEndlessTarget(1);
+      setShowShop(true);
+    } else {
+      handleSubscribe();
+    }
+  };
+
+  const handleLoseSubmit = () => {
+    setIsEndlessMode(false);
+    setFrozenSpecialCards([]);
+    setTurns(4);
+    setScore(0);
+    setMultiplier(0);
+    setProgress(0);
+    setAnnouncement("");
+    setMissionID(1);
+    setDiscard(4);
+    setYen(0);
+    setReroll(0);
+    drawHand();
+    drawSpecial();
+    setSelectedCard([]);
+    setCurrentSpecial([]);
   };
 
   return (
@@ -30,7 +96,7 @@ export const WinTheGame = () => {
 
           <div className="flex gap-4">
             <div
-              onClick={handleEndlessMode}
+              onClick={handleLoseSubmit}
               className="bg-white rounded-2xl flex flex-col justify-between p-3 border border-black/15 shadow-sm aspect-square h-48 cursor-pointer hover:bg-opacity-90"
             >
               <div>
