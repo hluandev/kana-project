@@ -29,13 +29,17 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
       multiplier: scoreState.multiplier,
       progress: scoreState.progress,
       missionID: scoreState.missionID,
+      reroll: scoreState.reroll,
       currentHand: kanaState.currentHand,
       currentDeck: kanaState.currentDeck,
       currentSpecial: kanaState.currentSpecial,
       currentSpecialDeck: kanaState.currentSpecialDeck,
+      isEndlessMode: scoreState.isEndlessMode,
+      endlessTarget: scoreState.endlessTarget,
       yen: scoreState.yen,
       discard: scoreState.discard,
       currentUpgrades: kanaState.currentUpgrades,
+      randomSpecialCards: kanaState.randomSpecialCards,
     });
   },
 
@@ -50,6 +54,9 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
           multiplier: data.multiplier,
           progress: data.progress,
           missionID: data.missionID,
+          isEndlessMode: data.isEndlessMode,
+          endlessTarget: data.endlessTarget,
+          reroll: data.reroll,
           yen: data.yen,
           discard: data.discard,
         });
@@ -60,6 +67,7 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
           currentDeck: data.currentDeck || [],
           currentSpecial: data.currentSpecial || [],
           currentUpgrades: data.currentUpgrades || [],
+          randomSpecialCards: data.randomSpecialCards || [],
         });
 
         set({ hasSavedGame: true });

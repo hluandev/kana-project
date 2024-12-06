@@ -15,7 +15,13 @@ import { updateActivityServer } from "@/actions/server/activity-server-actions";
 import { useGameStateStore } from "@/stores/useGameStateStore";
 
 export default function CurrentPlayHand() {
-  const { kana, drawHand, drawSpecial, kanaMissions } = useKanaStore();
+  const {
+    kana,
+    drawHand,
+    drawSpecial,
+    kanaMissions,
+    generateRandomSpecialCards,
+  } = useKanaStore();
   const {
     turns,
     missionID,
@@ -45,6 +51,7 @@ export default function CurrentPlayHand() {
   useEffect(() => {
     if (turns === 4) {
       playSound("START");
+      generateRandomSpecialCards();
     }
   }, [missionID]);
 

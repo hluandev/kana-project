@@ -11,6 +11,7 @@ interface GameState {
   yen: number;
   discard: number;
   currentUpgrades: any[];
+  randomSpecialCards: any[];
   lastUpdated: string;
 }
 
@@ -38,7 +39,8 @@ export async function validateGameState(state: GameState): Promise<boolean> {
     !Array.isArray(state.currentDeck) ||
     !Array.isArray(state.currentSpecial) ||
     !Array.isArray(state.currentSpecialDeck) ||
-    !Array.isArray(state.currentUpgrades)
+    !Array.isArray(state.currentUpgrades) ||
+    !Array.isArray(state.randomSpecialCards)
   ) {
     console.log("Failed array validation");
     return false;

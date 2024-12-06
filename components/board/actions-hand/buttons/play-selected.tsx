@@ -385,6 +385,8 @@ export const PlaySelected = () => {
         (card) => !selectedCard.includes(card)
       );
 
+      playSound("PLAY");
+
       const cardsNeeded = 8 - newHand.length;
       const newCards = currentDeck.slice(0, cardsNeeded);
       const newDeck = currentDeck.slice(cardsNeeded);
@@ -459,13 +461,11 @@ export const PlaySelected = () => {
       setProgress(newProgress);
       setCurrentHand(sortedHand);
       setCurrentDeck(newDeck);
-      await saveGame();
       setScore(0);
       setMultiplier(0);
       setSelectedCard([]);
       setTurns(turns - 1);
-
-      playSound("PLAY");
+      await saveGame();
     } else {
       setWarning("Select cards to play first");
       playSound("ERROR");

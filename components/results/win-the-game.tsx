@@ -32,6 +32,7 @@ export const WinTheGame = () => {
     drawSpecial,
     setCurrentSpecial,
     setFrozenSpecialCards,
+    setCurrentUpgrades,
   } = useKanaStore();
 
   const handleSubscribe = async () => {
@@ -77,8 +78,9 @@ export const WinTheGame = () => {
     setReroll(0);
     drawHand();
     drawSpecial();
-    setSelectedCard([]);
     setCurrentSpecial([]);
+    setSelectedCard([]);
+    setCurrentUpgrades([]);
     await saveGame();
   };
 

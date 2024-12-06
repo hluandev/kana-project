@@ -58,28 +58,19 @@ export const Win = () => {
     currentUpgrades,
     setCurrentUpgrades,
     setFrozenSpecialCards,
+    randomSpecialCards,
+    setRandomSpecialCards,
+    generateRandomSpecialCards,
   } = useKanaStore();
 
   const { info, updateMatches } = usePlayerStore();
   const { saveGame } = useGameStateStore();
-  const [randomSpecialCards, setRandomSpecialCards] = React.useState(() =>
-    [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
-  );
 
   // This will only run once when the component mounts
   React.useEffect(() => {
-    const initialCards = [
-      ...frozenSpecialCards,
-      ...currentSpecialDeck
-        .filter(
-          (card) =>
-            !frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
-        )
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 3 - frozenSpecialCards.length),
-    ];
-
-    setRandomSpecialCards(initialCards);
+    // if (randomSpecialCards.length === 0) {
+    //   generateRandomSpecialCards();
+    // }
     setFrozenSpecialCards([]);
   }, []);
 
@@ -336,19 +327,7 @@ export const Win = () => {
   };
 
   const handleNextTurn = async () => {
-    // Keep frozen cards and add new random cards to fill remaining slots
-    const newRandomCards = [
-      ...currentSpecialDeck
-        .filter(
-          (card) =>
-            !frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
-        )
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 3 - frozenSpecialCards.length),
-    ];
-
-    // Combine frozen cards with new random cards
-    setRandomSpecialCards([...frozenSpecialCards, ...newRandomCards]);
+    generateRandomSpecialCards();
 
     drawHand();
     setTurns(4);
@@ -429,9 +408,7 @@ export const Win = () => {
   const handleRefreshCards = () => {
     if (yen >= 200) {
       setFrozenSpecialCards([]);
-      setRandomSpecialCards(
-        [...currentSpecialDeck].sort(() => Math.random() - 0.5).slice(0, 3)
-      );
+      generateRandomSpecialCards();
       setYen(yen - 200);
       if (currentSpecial.some((card) => card.condition === "reroll")) {
         setReroll(reroll + 1);

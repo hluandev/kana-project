@@ -40,6 +40,9 @@ interface kanaStore {
   removeCurrentUpgrade: (upgrade: any) => void;
   activeSpecials: string[];
   setActiveSpecials: (ids: string[]) => void;
+  randomSpecialCards: any[];
+  setRandomSpecialCards: (cards: any[]) => void;
+  generateRandomSpecialCards: () => void;
 }
 
 export const useKanaStore = create<kanaStore>((set, get) => ({
@@ -51,6 +54,28 @@ export const useKanaStore = create<kanaStore>((set, get) => ({
   },
   hiragana: true,
   setHiragana: (hiragana) => set({ hiragana }),
+  randomSpecialCards: [],
+  setRandomSpecialCards: (cards) => set({ randomSpecialCards: cards }),
+  generateRandomSpecialCards: () => {
+    const { currentSpecialDeck, frozenSpecialCards, kanaSpecial } = get();
+
+    // If currentSpecialDeck is empty, reset it from kanaSpecial
+    const deckToUse =
+      currentSpecialDeck.length > 0 ? currentSpecialDeck : [...kanaSpecial];
+
+    const initialCards = [
+      ...frozenSpecialCards,
+      ...deckToUse
+        .filter(
+          (card) =>
+            !frozenSpecialCards.some((frozen) => frozen.romaji === card.romaji)
+        )
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3 - frozenSpecialCards.length),
+    ];
+
+    set({ randomSpecialCards: initialCards });
+  },
   currentDeck: [],
   currentHand: [],
   currentSpecialDeck: [],

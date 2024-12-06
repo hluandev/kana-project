@@ -16,6 +16,10 @@ interface GameStateData {
   yen: number;
   discard: number;
   currentUpgrades: any[];
+  randomSpecialCards: any[];
+  reroll: number;
+  isEndlessMode: boolean;
+  endlessTarget: number;
 }
 
 export async function saveGameState(gameState: GameStateData) {

@@ -3,6 +3,7 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import { RotateCcwIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { useGameStateStore } from "@/stores/useGameStateStore";
 
 export const Lose = () => {
   const {
@@ -19,15 +20,17 @@ export const Lose = () => {
     setIsEndlessMode,
   } = useScoreStore();
 
+  const { saveGame } = useGameStateStore();
   const {
     setSelectedCard,
     drawHand,
     drawSpecial,
     setCurrentSpecial,
+    setCurrentUpgrades,
     setFrozenSpecialCards,
   } = useKanaStore();
 
-  const handleLoseSubmit = () => {
+  const handleLoseSubmit = async () => {
     setIsEndlessMode(false);
     setFrozenSpecialCards([]);
     setTurns(4);
@@ -43,6 +46,8 @@ export const Lose = () => {
     drawSpecial();
     setSelectedCard([]);
     setCurrentSpecial([]);
+    setCurrentUpgrades([]);
+    await saveGame();
   };
 
   // useEffect(() => {

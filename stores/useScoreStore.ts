@@ -68,6 +68,6 @@ export const useScoreStore = create<scoreStore>((set) => ({
   setEndlessTarget: (endlessTarget) => set({ endlessTarget }),
   incrementEndlessTarget: () =>
     set((state) => {
-      return { endlessTarget: state.endlessTarget + 10 };
+      return { endlessTarget: state.endlessTarget + 50 };
     }),
 }));
