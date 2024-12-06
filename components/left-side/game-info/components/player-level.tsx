@@ -3,12 +3,7 @@ import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import ManageSubscription from "@/components/subscriptions/manage-subscription";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  LogOutIcon,
-  Settings2Icon,
-  SettingsIcon,
-  Volume2Icon,
-} from "lucide-react";
+import { LogOutIcon, SettingsIcon, Volume2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Support } from "../../support";
 import { useSettingStore } from "@/stores/useSettingStore";

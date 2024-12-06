@@ -1,20 +1,26 @@
 "use client";
 
 import { fetchActivityServer } from "@/actions/server/use-server/fetch-activity-server";
+import { fetchHighestScoreServer } from "@/actions/server/use-server/fetch-highest-score-server";
 import { ActivityBox } from "@/components/activity/activity-box";
 import { GraphTable } from "@/components/activity/graph-table";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { useEffect, useState } from "react";
 
 export default function Activity() {
-  const { info, setActivity } = usePlayerStore();
+  const { info, setActivity, updateHighestScore } = usePlayerStore();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchActivityServer();
-        setActivity(data || []);
+        const [activityData, highestScore] = await Promise.all([
+          fetchActivityServer(),
+          fetchHighestScoreServer(),
+        ]);
+
+        setActivity(activityData || []);
+        updateHighestScore(highestScore);
       } catch (error) {
         console.error("Error fetching activity:", error);
       } finally {

@@ -3,7 +3,6 @@ import { create } from "zustand";
 interface PlayerInfo {
   id: string;
   username: string;
-  first_name: string;
   level: number;
   xp: number;
   wins: number;
@@ -30,19 +29,18 @@ interface playerStore {
   setActivity: (activity: Activity[]) => void;
   checkSubscription: () => Promise<void>;
   hasCheckedSubscription: boolean;
+  updateHighestScore: (highest_score: number) => void;
 }
 
 export const usePlayerStore = create<playerStore>((set, get) => ({
   info: {
     id: "",
-    first_name: "",
     level: 0,
     xp: 0,
     wins: 0,
     losses: 0,
     highest_score: 0,
     username: "",
-    stripe_customer_id: "",
   },
   activity: [],
   setActivity: (activity: Activity[]) => set({ activity }),
@@ -73,5 +71,9 @@ export const usePlayerStore = create<playerStore>((set, get) => ({
         wins: state.info.wins + (won ? 1 : 0),
         losses: state.info.losses + (won ? 0 : 1),
       },
+    })),
+  updateHighestScore: (highest_score: number) =>
+    set((state) => ({
+      info: { ...state.info, highest_score },
     })),
 }));
