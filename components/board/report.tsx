@@ -56,7 +56,11 @@ export const Report = () => {
             <button
               onClick={async () => {
                 setLoading(true);
-                feedback ? await sendFeedback(text) : await sendReport(text);
+                if (feedback) {
+                  await sendFeedback(text);
+                } else {
+                  await sendReport(text);
+                }
                 setText("");
                 setIsOpen(false);
                 setLoading(false);
