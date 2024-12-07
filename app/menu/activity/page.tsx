@@ -31,37 +31,36 @@ export default function Activity() {
     fetchData();
   }, []);
 
-  if (isLoading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#efcb68]"></div>
-      </div>
-    );
-  }
-
   return (
-    <div className="h-full w-full">
+    <div className="overflow-hidden w-full">
       <div className="flex flex-col space-y-4 rounded-2xl w-full h-full">
         <div className="grid grid-cols-4 gap-4">
-          <ActivityBox title="Matches" value={info.matches} />
           <ActivityBox
+            loading={isLoading}
+            title="Matches"
+            value={info.matches}
+          />
+          <ActivityBox
+            loading={isLoading}
             textColor="text-blue-600"
             title="Wins"
             value={info.wins}
           />
           <ActivityBox
+            loading={isLoading}
             textColor="text-red-500"
             title="Losses"
             value={info.losses}
           />
           <ActivityBox
+            loading={isLoading}
             textColor="text-purple-500"
             title="All Time Highest Hand"
             value={info.highest_score}
           />
         </div>
 
-        <div className="flex h-full gap-4 w-full">
+        <div className="flex h-full gap-4">
           <GraphTable highestHandsTable={true} />
           <GraphTable highestHandsTable={false} />
         </div>
