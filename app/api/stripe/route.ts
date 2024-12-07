@@ -37,6 +37,7 @@ export async function POST(request: Request) {
 
     return Response.json({ url: session.url });
   } catch (error) {
+    console.error(error);
     return new Response("Error creating checkout session", { status: 500 });
   }
 }
