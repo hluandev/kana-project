@@ -269,6 +269,7 @@ export const Win = () => {
     if (currentSpecial.length + regularCards.length > 5) {
       setWarning("You can only have 5 special cards at a time");
       playSound("ERROR");
+      setTimeout(() => setValue(""), 0);
       return;
     }
 

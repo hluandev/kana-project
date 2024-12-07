@@ -118,16 +118,18 @@ export default function PlayerLevel() {
           </div>
         </div>
 
-        <div className="rounded-lg font-medium  overflow-hidden">
+        <div className="rounded-lg font-medium overflow-hidden">
           <div className="relative h-8">
             <motion.div
-              className="absolute top-0 left-0 h-full bg-[#efcb68] border rounded-l-lg shadow-sm border-black/15"
+              className={`absolute ${
+                percentage === 0 ? "border-r rounded-lg" : "rounded-r-lg"
+              } top-0 left-0 h-full bg-[#efcb68] border rounded-l-lg shadow-sm border-black/15`}
               animate={{ width: `${percentage}%` }}
               transition={{ duration: 0.5 }}
             />
             <motion.div
-              className={`absolute top-0 right-0 h-full bg-white border-y border-r rounded-r-lg shadow-sm border-black/15 ${
-                percentage === 0 ? "border-l" : ""
+              className={`absolute top-0 right-0 h-full bg-white border-y border-r shadow-sm border-black/15 ${
+                percentage === 0 ? "border-l rounded-lg" : "rounded-r-lg"
               } ${percentage === 100 ? "hidden" : ""}`}
               animate={{ width: `${100 - percentage}%` }}
               transition={{ duration: 0.5 }}
