@@ -60,10 +60,10 @@ export default function PlayerLevel() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             className={`${
-              isSubscribed ? "-top-20" : "-top-72"
-            } absolute flex flex-col gap-2 text-sm  items-center justify-between  bg-[#fafafa] border border-black/15 shadow-sm w-full rounded-xl left-0 p-2`}
+              isSubscribed ? "-top-16" : "-top-72"
+            } absolute flex flex-col gap-2 text-sm  items-center justify-between  bg-[#fafafa] border border-black/15 shadow-sm w-full rounded-xl left-0 p-1`}
           >
-            <div className="flex justify-between items-center w-full bg-black/5 border border-black/15 shadow-inner p-2 rounded-xl">
+            <div className="flex justify-between items-center w-full bg-[#fafafa] border border-black/15 shadow-sm p-2 rounded-xl">
               <div className="flex justify-between  items-center">
                 <div className="flex items-center gap-2">
                   <div className="">
