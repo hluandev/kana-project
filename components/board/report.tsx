@@ -1,4 +1,4 @@
-import { sendReport } from "@/actions/server/send-report";
+import { sendFeedback, sendReport } from "@/actions/server/send-report";
 import { motion } from "framer-motion";
 import { BugIcon, Loader2, Send, XIcon } from "lucide-react";
 import { useState } from "react";
@@ -20,15 +20,35 @@ export const Report = () => {
           >
             <div className="flex justify-between items-center text-sm">
               <div className="flex gap-2 items-center ">
-                <h2 className="font-semibold bg-black/5 border border-black/15 shadow-sm px-2 py-1 rounded-lg">
+                <h2
+                  onClick={() => setFeedback(false)}
+                  className={`font-semibold ${
+                    feedback
+                      ? "bg-[#fafafa]"
+                      : "bg-black/5  border border-black/15 shadow-sm "
+                  } px-2 py-1 rounded-lg`}
+                >
                   Report bugs
                 </h2>
-                <h2 className="font-semibold">Send feedback</h2>
+                <h2
+                  onClick={() => setFeedback(true)}
+                  className={`font-semibold ${
+                    feedback
+                      ? " bg-black/5  border border-black/15 shadow-sm"
+                      : "bg-[#fafafa] "
+                  } px-2 py-1 rounded-lg`}
+                >
+                  Send feedback
+                </h2>
               </div>
               <XIcon onClick={() => setIsOpen(false)} />
             </div>
             <textarea
-              placeholder="Please describe the bug in details as much as possible and steps to reproduce it. Thank you!"
+              placeholder={
+                feedback
+                  ? "Any feedback would be highly appreciated. Thank you!"
+                  : "Please describe the bug in details as much as possible and steps to reproduce it. Thank you!"
+              }
               className="w-full border text-[0.9rem] h-full border-black/20 rounded-lg p-2"
               value={text}
               onChange={(e) => setText(e.target.value)}
@@ -36,7 +56,7 @@ export const Report = () => {
             <button
               onClick={async () => {
                 setLoading(true);
-                await sendReport(text);
+                feedback ? await sendFeedback(text) : await sendReport(text);
                 setText("");
                 setIsOpen(false);
                 setLoading(false);
@@ -49,7 +69,7 @@ export const Report = () => {
                 <Send className="w-3.5 h-3.5" />
               )}
 
-              <p className="text-[0.9rem]">Report</p>
+              <p className="text-[0.9rem]">{feedback ? "Send" : "Report"}</p>
             </button>
           </motion.div>
         </div>
