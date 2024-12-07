@@ -7,11 +7,13 @@ import {
 
 import { signup } from "@/actions/server/use-server/sign-up";
 import { SignInButton } from "@/components/auth/sign-in-button";
+import { Loader2Icon } from "lucide-react";
 import { useState } from "react";
 
 export default function LoginPage() {
   const [emailOpen, setEmailOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
   const [confirmEmail, setConfirmEmail] = useState("");
 
   return (
@@ -50,13 +52,15 @@ export default function LoginPage() {
 
             <button
               onClick={async () => {
+                setLoading(true);
                 await signup({ email });
                 setConfirmEmail("confirm");
+                setLoading(false);
               }}
               className="w-64 h-11 bg-white hover:bg-neutral-100 duration-200 flex justify-center items-center rounded-md text-[0.9rem] border border-black/15 shadow-sm"
               type="submit"
             >
-              Continue
+              {loading ? <Loader2Icon className="animate-spin" /> : "Continue"}
             </button>
           </form>
         )}
@@ -86,7 +90,6 @@ export default function LoginPage() {
               </svg>
             }
             brand="Email"
-            signInWith={signInWithGoogle}
           />
         )}
         {!emailOpen && (

@@ -461,7 +461,7 @@ export const PlaySelected = () => {
             }),
           updateXp(xpGain),
           setYen(totalYen),
-          updateWins(info.wins + 1),
+          shouldCountWin && updateWins(info.wins + 1),
           updateMatches(info.matches + 1),
         ]);
       } else if (newTurns === 0 && newProgress < target) {
