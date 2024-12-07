@@ -277,7 +277,13 @@ export const PlaySelected = () => {
 
     const activeSpecialIds: string[] = [];
 
+    // First pass: Process all non-xmultiples cards
     currentSpecial.concat(currentUpgrades).forEach((special) => {
+      // Skip xmultiples cards for now
+      if (special.condition === "xmultiples") {
+        return;
+      }
+
       // Check all valid combinations for this hand
       const validCombos = [currentAnnouncement];
       if (hasPair) validCombos.push("pair");
@@ -302,7 +308,7 @@ export const PlaySelected = () => {
         validCombos.push("straight_flush", "straight", "flush");
       }
 
-      // Effects
+      // Process regular effects
       if (special.combo === "none" && special.condition === "multiples") {
         finalMultiplier += special.reward;
       }
@@ -312,6 +318,7 @@ export const PlaySelected = () => {
         special.condition === "upgrade"
       ) {
         finalMultiplier += special.reward_multiplier;
+        finalScore += special.reward_points;
       }
 
       if (
@@ -321,22 +328,8 @@ export const PlaySelected = () => {
         finalMultiplier += special.reward;
       }
 
-      if (
-        validCombos.includes(special.combo) &&
-        special.condition === "xmultiples"
-      ) {
-        finalMultiplier *= special.reward;
-      }
-
       if (special.combo === "none" && special.condition === "points") {
         finalScore += special.reward;
-      }
-
-      if (
-        validCombos.includes(special.combo) &&
-        special.condition === "upgrade"
-      ) {
-        finalScore += special.reward_points;
       }
 
       if (
@@ -358,24 +351,54 @@ export const PlaySelected = () => {
       }
 
       const isActive =
-        // Base points special (no combo requirement)
         (special.combo === "none" && special.condition === "points") ||
-        // Combo-specific points
         (validCombos.includes(special.combo) &&
           special.condition === "points") ||
-        // Base multiplier special
         (special.combo === "none" && special.condition === "multiples") ||
-        // Combo-specific multiplier
         (validCombos.includes(special.combo) &&
-          ["upgrade", "multiples", "xmultiples"].includes(special.condition)) ||
-        // Reroll bonus
+          ["upgrade", "multiples"].includes(special.condition)) ||
         (special.condition === "reroll" &&
           currentSpecial.some((card) => card.condition === "reroll")) ||
-        // Bought bonus
         special.condition === "bought";
 
       if (isActive) {
         activeSpecialIds.push(special.romaji);
+      }
+    });
+
+    // Second pass: Process xmultiples cards last
+    currentSpecial.concat(currentUpgrades).forEach((special) => {
+      if (special.condition === "xmultiples") {
+        const validCombos = [currentAnnouncement];
+        if (hasPair) validCombos.push("pair");
+        if (hasTwoPair) validCombos.push("two_pairs", "pair");
+        if (hasThreeOfKind) validCombos.push("three_of_a_kind", "pair");
+        if (hasStraight) validCombos.push("straight");
+        if (hasFlush) validCombos.push("flush");
+        if (hasFullHouse) {
+          validCombos.push(
+            "full_house",
+            "three_of_a_kind",
+            "pair",
+            "two_pairs"
+          );
+        }
+        if (hasFourOfKind) {
+          validCombos.push(
+            "four_of_a_kind",
+            "three_of_a_kind",
+            "pair",
+            "two_pairs"
+          );
+        }
+        if (hasStraightFlush) {
+          validCombos.push("straight_flush", "straight", "flush");
+        }
+
+        if (validCombos.includes(special.combo)) {
+          finalMultiplier *= special.reward;
+          activeSpecialIds.push(special.romaji);
+        }
       }
     });
 
