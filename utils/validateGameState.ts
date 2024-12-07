@@ -16,8 +16,6 @@ interface GameState {
 }
 
 export async function validateGameState(state: GameState): Promise<boolean> {
-  console.log("Validating state:", state);
-
   // Validate basic ranges
   if (
     state.turns < 0 ||
