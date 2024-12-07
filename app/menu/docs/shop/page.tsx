@@ -52,12 +52,16 @@ export default function Shop() {
         </DocDesc>
 
         <DocDesc title="4. Rerolling">
-          <p>Press (3) to reroll your current hand. Each reroll costs ¥200.</p>
+          <p>
+            Click on reroll(3) to reroll your current hand. Each reroll costs
+            ¥200.
+          </p>
         </DocDesc>
 
         <DocDesc title="5. Freezing cards">
           <p>
-            Press (4) to freeze your selected special cards. Freezing is free.
+            Click on snowflake(4) to freeze your selected special cards.
+            Freezing is free.
           </p>
         </DocDesc>
       </div>

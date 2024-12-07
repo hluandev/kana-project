@@ -38,20 +38,20 @@ export const ExampleBoard = ({ shop }: Props) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 bg-black/5 p-3 rounded-xl border border-black/15 shadow-inner">
-          <div className="bg-white border border-black/15 shadow-sm font-medium rounded-lg  p-2 flex justify-between">
+        <div className="grid grid-cols-2 gap-1 bg-black/5 p-1 rounded-xl border border-black/15 shadow-inner">
+          <div className="bg-white border border-black/15 shadow-sm font-medium rounded-lg  p-2 flex flex-col gap-8 justify-between">
             <p>Turns</p>
             <p className="font-semibold">4</p>
           </div>
-          <div className="bg-white border border-black/15 shadow-sm font-medium rounded-lg  p-2 flex justify-between">
+          <div className="bg-white border border-black/15 shadow-sm font-medium rounded-lg  p-2 flex flex-col gap-8 justify-between">
             <p>Discards</p>
             <p className="font-semibold">4</p>
           </div>
-          <div className="bg-white border border-black/15 shadow-sm font-medium rounded-lg  p-2 flex justify-between">
+          <div className="bg-white border border-black/15 shadow-sm font-medium rounded-lg  p-2 flex flex-col gap-8 justify-between">
             <p>Matches</p>
             <p className="font-semibold">1/8</p>
           </div>
-          <div className="bg-white border border-black/15 shadow-sm font-medium rounded-lg  p-2 flex justify-between">
+          <div className="bg-white border border-black/15 shadow-sm font-medium rounded-lg  p-2 flex flex-col gap-8 justify-between">
             <p>Money</p>
             <p className="font-semibold">¥0</p>
           </div>
