@@ -7,14 +7,16 @@ interface LinkNavProps {
   icon?: React.ReactNode;
 }
 
-export const LinkNav = ({ href, children, icon }: LinkNavProps) => {
+export const LinkNav = ({ href, children }: LinkNavProps) => {
   const pathname = usePathname();
 
   return (
     <Link
       prefetch={true}
       href={href}
-      className="flex hover:text-neutral-950 text-black/60 font-medium text-[0.9rem] duration-300 p-1 rounded-md items-center "
+      className={`flex hover:text-neutral-950 ${
+        pathname === href ? "text-black" : "text-black/50"
+      } font-medium text-[0.9rem] duration-300 p-1 rounded-md items-center`}
     >
       <p>{children}</p>
     </Link>
