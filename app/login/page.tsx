@@ -4,18 +4,15 @@ import {
   signInWithGithub,
   signInWithGoogle,
 } from "@/actions/server/google-login";
-import { checkIfUserAvailable } from "@/actions/server/use-server/check-if-user-available";
-import { login, signup } from "@/actions/server/use-server/sign-up";
 
+import { signup } from "@/actions/server/use-server/sign-up";
 import { SignInButton } from "@/components/auth/sign-in-button";
 import { useState } from "react";
 
 export default function LoginPage() {
   const [emailOpen, setEmailOpen] = useState(false);
   const [email, setEmail] = useState("");
-  const [passwordOpen, setPasswordOpen] = useState(false);
-  const [password, setPassword] = useState("");
-  const [buttonName, SetButtonName] = useState("continue");
+  const [confirmEmail, setConfirmEmail] = useState("");
 
   return (
     <div className="flex flex-col gap-6 justify-center items-center h-full max-w-sm mx-auto">
@@ -34,7 +31,7 @@ export default function LoginPage() {
       </svg>
 
       <div className="border border-black/15 bg-black/5 shadow-inner p-6 gap-2 rounded-xl flex flex-col">
-        {emailOpen && (
+        {emailOpen && confirmEmail === "" && (
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -50,45 +47,22 @@ export default function LoginPage() {
               name="email"
               placeholder="Email"
             />
-            {passwordOpen && (
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="p-2 w-64 h-11 outline-none rounded-md shadow-sm border border-black/15"
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            )}
-            {buttonName === "continue" && (
-              <button
-                onClick={async () => {
-                  const isAvailable = await checkIfUserAvailable(email);
-                  if (isAvailable) {
-                    setPasswordOpen(true);
-                    SetButtonName("login");
-                  } else {
-                    setPasswordOpen(true);
-                    SetButtonName("signup");
-                  }
-                }}
-                className="w-64 h-11 bg-white hover:bg-neutral-100 duration-200 flex justify-center items-center rounded-md text-[0.9rem] border border-black/15 shadow-sm"
-                type="submit"
-              >
-                Continue
-              </button>
-            )}
 
-            {buttonName === "signup" && (
-              <button onClick={() => signup({ email, password })}>
-                Sign up
-              </button>
-            )}
-
-            {buttonName === "login" && (
-              <button onClick={() => login({ email, password })}>Login</button>
-            )}
+            <button
+              onClick={async () => {
+                await signup({ email });
+                setConfirmEmail("confirm");
+              }}
+              className="w-64 h-11 bg-white hover:bg-neutral-100 duration-200 flex justify-center items-center rounded-md text-[0.9rem] border border-black/15 shadow-sm"
+              type="submit"
+            >
+              Continue
+            </button>
           </form>
+        )}
+
+        {confirmEmail === "confirm" && (
+          <p className="text-sm">Please check your email for the magic link</p>
         )}
 
         {!emailOpen && (

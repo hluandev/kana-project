@@ -6,26 +6,12 @@ import { redirect } from "next/navigation";
 
 interface SignUpProps {
   email: string;
-  password: string;
 }
 
-export async function signup({ email, password }: SignUpProps) {
+export async function signup({ email }: SignUpProps) {
   const supabase = await createClient();
 
-  const { error } = await supabase.auth.signUp({ email, password });
-
-  if (error) {
-    redirect("/error");
-  }
-
-  revalidatePath("/", "layout");
-  redirect("/");
-}
-
-export async function login({ email, password }: SignUpProps) {
-  const supabase = await createClient();
-
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  const { error } = await supabase.auth.signInWithOtp({ email });
 
   if (error) {
     redirect("/error");
