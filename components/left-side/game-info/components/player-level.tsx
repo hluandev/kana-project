@@ -118,20 +118,24 @@ export default function PlayerLevel() {
           </div>
         </div>
 
-        <div className=" h-8 overflow-hidden relative rounded-lg">
-          <p className="relative z-20 text-center font-medium text-sm flex items-center justify-center h-full">
-            {info.xp} / 100
-          </p>
-          <motion.div
-            className="bg-[#efcb68] absolute top-0 left-0 flex justify-center border border-black/15 items-center h-8 rounded-l-lg"
-            animate={{ width: `${percentage}%` }}
-            transition={{ duration: 0.5 }}
-          ></motion.div>
-          <motion.div
-            className="bg-white absolute top-0 right-0 flex justify-center border-y border-r border-black/15 items-center h-8 rounded-r-lg"
-            animate={{ width: `${100 - percentage}%` }}
-            transition={{ duration: 0.5 }}
-          ></motion.div>
+        <div className="rounded-lg font-medium  overflow-hidden">
+          <div className="relative h-8">
+            <motion.div
+              className="absolute top-0 left-0 h-full bg-[#efcb68] border rounded-l-lg shadow-sm border-black/15"
+              animate={{ width: `${percentage}%` }}
+              transition={{ duration: 0.5 }}
+            />
+            <motion.div
+              className={`absolute top-0 right-0 h-full bg-white border-y border-r rounded-r-lg shadow-sm border-black/15 ${
+                percentage === 0 ? "border-l" : ""
+              } ${percentage === 100 ? "hidden" : ""}`}
+              animate={{ width: `${100 - percentage}%` }}
+              transition={{ duration: 0.5 }}
+            />
+            <div className="absolute leading-none text-sm w-full h-full flex gap-1 items-center justify-center text-center z-10">
+              <p>{info.xp}</p> <p className="text-sm">/</p> <p>100</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
