@@ -61,8 +61,8 @@ export default function Activity() {
         </div>
 
         <div className="flex h-full gap-4">
-          <GraphTable highestHandsTable={true} />
-          <GraphTable highestHandsTable={false} />
+          <GraphTable loading={isLoading} highestHandsTable={true} />
+          <GraphTable loading={isLoading} highestHandsTable={false} />
         </div>
       </div>
     </div>
