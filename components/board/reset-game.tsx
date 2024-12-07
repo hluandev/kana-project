@@ -1,7 +1,7 @@
 import { useGameStateStore } from "@/stores/useGameStateStore";
 import { useKanaStore } from "@/stores/useKanaStore";
 import { useScoreStore } from "@/stores/useScoreStore";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { BugIcon, Loader2, RotateCwIcon, Send, XIcon } from "lucide-react";
 import { useState } from "react";
 
@@ -19,7 +19,6 @@ export const ResetGame = () => {
     setYen,
     setAnnouncement,
     setReroll,
-    setEndlessTarget,
     setIsEndlessMode,
     setMultiplierBonus,
   } = useScoreStore();
@@ -57,20 +56,42 @@ export const ResetGame = () => {
 
   return (
     <>
-      {isOpen && (
-        <div className="fixed flex justify-center items-center z-50 top-0 left-0 w-full h-full bg-black/50">
+      <AnimatePresence>
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 200 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-xl w-1/4 h-1/3 p-4 flex flex-col gap-y-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed flex justify-center items-center z-[9999] top-0 left-0 w-full h-full bg-black/40"
           >
-            <div className="flex justify-between items-center text-sm">
-              Do you want to reset the game?
-            </div>
-            <button onClick={handleLoseSubmit}>Yes</button>
+            <motion.div
+              initial={{ opacity: 0, y: 200 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 200 }}
+              className="bg-[#fafafa] rounded-xl w-[16rem] p-4 flex flex-col gap-y-2"
+            >
+              <div className="flex justify-between items-center text-sm">
+                Do you want to reset the game?
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="bg-blue-600 p-2 rounded-lg border border-black/15 shadow-sm text-white"
+                >
+                  No
+                </button>
+                <button
+                  onClick={handleLoseSubmit}
+                  className="bg-red-600 p-2 rounded-lg border border-black/15 shadow-sm text-white"
+                >
+                  Yes
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
       <div
         onClick={() => setIsOpen(true)}
         className={`bg-white rounded-xl border border-black/15 shadow-sm  duration-300 h-12 w-12 flex items-center justify-center`}
