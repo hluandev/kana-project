@@ -2,12 +2,9 @@
 
 import { SubscriptionButton } from "../subscription-button";
 import { SupportBox } from "./support-box";
-import { usePathname } from "next/navigation";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 
 export const Support = () => {
-  const pathname = usePathname();
-
   const { isSubscribed } = usePlayerStore();
 
   return (

@@ -7,12 +7,14 @@ import { LogOutIcon, SettingsIcon, Volume2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Support } from "../../support";
 import { useSettingStore } from "@/stores/useSettingStore";
+import { usePathname } from "next/navigation";
 
 export default function PlayerLevel() {
   const { info, updateLevel, setXp, isSubscribed, checkSubscription } =
     usePlayerStore();
   const { isMuted, setIsMuted } = useSettingStore();
   const [setting, setSetting] = useState(false);
+  const pathname = usePathname();
 
   const percentage = (info.xp / 100) * 100;
 
@@ -51,6 +53,8 @@ export default function PlayerLevel() {
     setIsMuted(!isMuted);
   };
 
+  const isPlayKanaPath = pathname === "/menu/play/kana";
+
   return (
     <div className="relative flex gap-2 items-center">
       <AnimatePresence>
@@ -60,8 +64,12 @@ export default function PlayerLevel() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             className={`${
-              isSubscribed ? "-top-16" : "-top-72"
-            } absolute flex flex-col gap-2 text-sm  items-center justify-between  bg-[#fafafa] border border-black/15 shadow-sm w-full rounded-xl left-0 p-1`}
+              isSubscribed
+                ? "-top-[4rem]"
+                : isPlayKanaPath
+                ? "-top-[17.5rem]"
+                : "-top-[5rem]"
+            } absolute flex flex-col gap-2 text-sm items-center justify-between bg-[#fafafa] border border-black/15 shadow-sm w-full rounded-xl left-0 p-2`}
           >
             <div className="flex justify-between items-center w-full bg-[#fafafa] border border-black/15 shadow-sm p-2 rounded-xl">
               <div className="flex justify-between  items-center">
@@ -93,7 +101,7 @@ export default function PlayerLevel() {
               </div>
             </div>
 
-            <Support />
+            {isPlayKanaPath && <Support />}
           </motion.div>
         )}
       </AnimatePresence>
