@@ -10,7 +10,8 @@ export default function ActionInput() {
   const [value, setValue] = useState("");
   const { addSelectedCard, currentHand, selectedCard, removeSelectedCard } =
     useKanaStore();
-  const { missionID } = useScoreStore();
+  const { missionID, setWarning } = useScoreStore();
+
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
@@ -40,11 +41,14 @@ export default function ActionInput() {
       );
 
       if (isAlreadySelected) {
-        removeSelectedCard(matchedCard);
         playSound("DESELECT");
+        removeSelectedCard(matchedCard);
       } else if (selectedCard.length < 5) {
-        addSelectedCard(matchedCard);
         playSound("SELECT");
+        addSelectedCard(matchedCard);
+      } else {
+        playSound("ERROR");
+        setWarning("You can only select up to 5 cards");
       }
       setValue("");
     }

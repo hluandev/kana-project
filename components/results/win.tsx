@@ -13,8 +13,6 @@ import {
 import { playSound } from "@/actions/client/play-sound";
 import { motion } from "framer-motion";
 import { usePlayerStore } from "@/stores/usePlayerStore";
-import { updateActivityServer } from "@/actions/server/activity-server-actions";
-import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import { useGameStateStore } from "@/stores/useGameStateStore";
 
 export const Win = () => {
@@ -127,11 +125,11 @@ export const Win = () => {
         );
 
         if (isAlreadySelected) {
-          removeSelectedSpecial(matchingSpecial);
           playSound("DESELECT");
+          removeSelectedSpecial(matchingSpecial);
         } else if (selectedSpecial.length < 3) {
-          addSelectedSpecial(matchingSpecial);
           playSound("SELECT");
+          addSelectedSpecial(matchingSpecial);
         }
         setTimeout(() => setValue(""), 0);
       }
@@ -150,11 +148,11 @@ export const Win = () => {
         );
 
         if (isAlreadySelected) {
-          removeSelectedSpecial(matchingCard);
           playSound("DESELECT");
+          removeSelectedSpecial(matchingCard);
         } else if (selectedSpecial.length < 3) {
-          addSelectedSpecial(matchingCard);
           playSound("SELECT");
+          addSelectedSpecial(matchingCard);
         }
         setTimeout(() => setValue(""), 0);
       }
@@ -171,17 +169,18 @@ export const Win = () => {
 
     // Only allow selection from one source
     if (matchingSpecial) {
-      addSelectedSpecial(matchingSpecial);
       playSound("SELECT");
+      addSelectedSpecial(matchingSpecial);
       setTimeout(() => setValue(""), 0);
     } else if (matchingCard) {
-      addSelectedSpecial(matchingCard);
       playSound("SELECT");
+      addSelectedSpecial(matchingCard);
       setTimeout(() => setValue(""), 0);
     }
   };
 
   const handleReorderSpecial = (fromIndex: number, toIndex: number) => {
+    playSound("SELECT");
     if (
       fromIndex < 0 ||
       fromIndex >= currentSpecial.length ||
@@ -196,13 +195,14 @@ export const Win = () => {
     newSpecialCards.splice(toIndex, 0, movedItem);
 
     setCurrentSpecial(newSpecialCards);
-    playSound("SELECT");
   };
 
   const handleFreezeCard = () => {
+    playSound("FREEZE");
+
     if (selectedSpecial.length === 0) {
-      setWarning("Select cards to freeze first");
       playSound("ERROR");
+      setWarning("Select cards to freeze first");
       return;
     }
 
@@ -218,6 +218,7 @@ export const Win = () => {
     // }
 
     if (selectedFrozenCards.length > 0) {
+      playSound("DESELECT");
       // Unfreeze the selected frozen cards
       const newFrozenCards = frozenSpecialCards.filter(
         (frozen) =>
@@ -228,7 +229,6 @@ export const Win = () => {
       setFrozenSpecialCards(newFrozenCards);
       setSelectedSpecial([]);
       setTimeout(() => setValue(""), 0);
-      playSound("DESELECT");
       return;
     }
 
@@ -238,8 +238,8 @@ export const Win = () => {
     );
 
     if (!selectedFromRandom) {
-      setWarning("You can only freeze cards from the shop");
       playSound("ERROR");
+      setWarning("You can only freeze cards from the shop");
       return;
     }
 
@@ -248,10 +248,10 @@ export const Win = () => {
 
     setSelectedSpecial([]);
     setTimeout(() => setValue(""), 0);
-    playSound("FREEZE");
   };
 
   const handleSubmit = () => {
+    playSound("BUY");
     const totalCost = selectedSpecial.reduce(
       (sum, card) => sum + card.price,
       0
@@ -319,17 +319,16 @@ export const Win = () => {
       setSelectedSpecial([]);
 
       setTimeout(() => setValue(""), 0);
-      playSound("BUY");
     } else {
+      playSound("ERROR");
       setWarning("You don't have enough yen");
       setTimeout(() => setValue(""), 0);
-      playSound("ERROR");
     }
   };
 
   const handleNextTurn = async () => {
+    playSound("NEXT_TURN");
     generateRandomSpecialCards();
-
     drawHand();
     setTurns(4);
     setDiscard(4);
@@ -364,7 +363,6 @@ export const Win = () => {
     }
 
     setSelectedCard([]);
-    playSound("NEXT_TURN");
     setMultiplier(0);
     setScore(0);
     setProgress(0);
@@ -373,6 +371,7 @@ export const Win = () => {
   };
 
   const handleSellSpecial = () => {
+    playSound("BUY");
     // Check if there are selected cards and they exist in currentSpecial
     const selectedCardsInCurrent = selectedSpecial.every((card) =>
       currentSpecial.some((current) => current.romaji === card.romaji)
@@ -408,6 +407,7 @@ export const Win = () => {
 
   const handleRefreshCards = () => {
     if (yen >= 200) {
+      playSound("REROLL");
       setFrozenSpecialCards([]);
       generateRandomSpecialCards();
       setYen(yen - 200);
@@ -415,11 +415,10 @@ export const Win = () => {
         setReroll(reroll + 1);
       }
       setSelectedSpecial([]);
-      playSound("REROLL");
       setTimeout(() => setValue(""), 0);
     } else {
-      setWarning("You need 200 yen to refresh cards");
       playSound("ERROR");
+      setWarning("You need 200 yen to refresh cards");
       setTimeout(() => setValue(""), 0);
     }
   };
