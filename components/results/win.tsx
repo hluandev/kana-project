@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
 import { motion } from "framer-motion";
-import { usePlayerStore } from "@/stores/usePlayerStore";
 import { useGameStateStore } from "@/stores/useGameStateStore";
 
 export const Win = () => {
@@ -61,7 +60,6 @@ export const Win = () => {
     generateRandomSpecialCards,
   } = useKanaStore();
 
-  const { info, updateMatches } = usePlayerStore();
   const { saveGame } = useGameStateStore();
 
   // This will only run once when the component mounts
@@ -334,7 +332,7 @@ export const Win = () => {
     setDiscard(4);
 
     if (isEndlessMode && endlessTarget === 1) {
-      setEndlessTarget(10);
+      setEndlessTarget(30000);
     } else if (isEndlessMode) {
       incrementEndlessTarget();
     }
