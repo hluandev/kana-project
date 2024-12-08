@@ -4,7 +4,7 @@ import DocDesc from "@/components/docs/doc-desc";
 export default function Rules() {
   return (
     <Doc title="2. Rules">
-      <div className="max-w-2xl mx-auto space-y-8">
+      <div className="max-w-md mx-auto space-y-8">
         <DocDesc title="Hiragana and Katakana">
           <p>
             The cards are divided into two categories: Hiragana and Katakana.

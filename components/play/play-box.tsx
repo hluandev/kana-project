@@ -25,7 +25,7 @@ export const PlayBox = ({
       initial={{ opacity: 0, y: 200 }}
       animate={{ opacity: 1, y: 0 }}
       className={` ${
-        disabled ? "bg-neutral-400" : "bg-[#50d0d2]"
+        disabled ? "bg-neutral-400" : "bg-[#00b6df]"
       }  bg-opacity-30 border border-black/10 shadow-sm p-3 rounded-xl h-[20rem] w-[16rem] flex flex-col justify-between`}
     >
       <p className="text-sm border border-black/10 bg-white/30 w-fit rounded-lg py-1 px-2">

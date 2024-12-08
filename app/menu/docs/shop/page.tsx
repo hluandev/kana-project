@@ -7,7 +7,7 @@ export default function Shop() {
     <Doc title="4. Shop">
       {/* <ExampleBoard shop /> */}
 
-      <div className="font-medium  mx-auto max-w-2xl space-y-8 pb-8">
+      <div className="font-medium  mx-auto max-w-md space-y-8 pb-8">
         <DocDesc title="Rewards">
           <p>
             After each round, you earn ¥500. Unused turns are rewarded with ¥100
