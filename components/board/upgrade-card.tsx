@@ -36,7 +36,13 @@ export default function UpgradeCard({
             </span>
           )}
         </div>
-        <p className="text-sm text-black/50">{card.desc.slice(8)}</p>
+        <p className="text-sm text-black/50">
+          {card.desc
+            .slice(8)
+            .split(" ")
+            .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")}
+        </p>
       </div>
     </motion.div>
   );
