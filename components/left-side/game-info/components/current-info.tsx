@@ -12,7 +12,7 @@ export const CurrentInfo = () => {
       <InfoBox title="Turns">{turns}</InfoBox>
 
       {/* Discard */}
-      <InfoBox title="Discard">{discard}</InfoBox>
+      <InfoBox title="Discards">{discard}</InfoBox>
 
       {/* Matches */}
       <InfoBox title="Round">

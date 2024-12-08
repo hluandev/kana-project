@@ -418,7 +418,7 @@ export const Win = () => {
       setTimeout(() => setValue(""), 0);
     } else {
       playSound("ERROR");
-      setWarning("You need 200 yen to refresh cards");
+      setWarning("You need ¥200 to refresh cards");
       setTimeout(() => setValue(""), 0);
     }
   };
