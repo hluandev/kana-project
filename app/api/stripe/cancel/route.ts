@@ -29,16 +29,9 @@ export async function POST(request: Request) {
       );
     }
 
-    const returnUrl = new URL(
-      "/",
-      process.env.NEXT_PUBLIC_SITE_URL?.startsWith("http")
-        ? process.env.NEXT_PUBLIC_SITE_URL
-        : `https://${process.env.NEXT_PUBLIC_SITE_URL}`
-    ).toString();
-
     const session = await stripe.billingPortal.sessions.create({
       customer: profile.stripe_customer_id,
-      return_url: returnUrl,
+      return_url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
     });
 
     return Response.json({ url: session.url });
