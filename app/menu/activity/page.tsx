@@ -33,7 +33,7 @@ export default function Activity() {
 
   return (
     <div className="overflow-hidden w-full">
-      <div className="flex flex-col space-y-2 rounded-2xl w-full h-full">
+      <div className="flex flex-col space-y-2 rounded-xl w-full h-full">
         <div className="grid grid-cols-4 gap-2">
           <ActivityBox
             loading={isLoading}

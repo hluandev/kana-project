@@ -1,5 +1,6 @@
 import { useGameStateStore } from "@/stores/useGameStateStore";
 import { useKanaStore } from "@/stores/useKanaStore";
+import { usePlayerStore } from "@/stores/usePlayerStore";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { AnimatePresence, motion } from "framer-motion";
 import { BugIcon, Loader2, RotateCwIcon, Send, XIcon } from "lucide-react";
@@ -9,6 +10,7 @@ export const ResetGame = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { saveGame } = useGameStateStore();
+  const { updateLosses, info } = usePlayerStore();
   const {
     setTurns,
     setScore,
@@ -33,6 +35,7 @@ export const ResetGame = () => {
   } = useKanaStore();
 
   const handleLoseSubmit = async () => {
+    updateLosses(info.losses + 1);
     setIsEndlessMode(false);
     setFrozenSpecialCards([]);
     setTurns(4);
@@ -68,13 +71,16 @@ export const ResetGame = () => {
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 200 }}
-              className="bg-[#fafafa] rounded-xl w-[16rem] p-4 flex flex-col gap-y-2"
+              className="bg-[#fafafa] rounded-xl w-[16rem] p-3 text-sm flex flex-col gap-y-2"
             >
-              <div className="flex justify-between items-center text-sm">
-                Do you want to reset the game?
+              <div className="flex flex-col">
+                <p className="font-medium">Do you want to reset the game?</p>
+                <p className="text-black/50">
+                  This round will be counted as a loss.
+                </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 text-sm">
+              <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setIsOpen(false)}
                   className="bg-blue-600 p-2 rounded-lg border border-black/10 shadow-sm text-white"

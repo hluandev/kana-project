@@ -17,7 +17,7 @@ export default function UpgradeCard({
       animate={{ opacity: 1, y: 0 }}
       className={`${
         isActive
-          ? "[background:linear-gradient(45deg,#fff,theme(colors.white)_50%,#fff)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.red.600/.48)_0%,theme(colors.red.500)_20%,theme(colors.indigo.300)_40%,theme(colors.indigo.500)_60%,theme(colors.slate.600/.48)_100%)_border-box] rounded-2xl border-2 border-transparent animate-border"
+          ? "[background:linear-gradient(45deg,#fff,theme(colors.white)_50%,#fff)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.red.600/.48)_0%,theme(colors.red.500)_20%,theme(colors.indigo.300)_40%,theme(colors.indigo.500)_60%,theme(colors.slate.600/.48)_100%)_border-box] rounded-xl border-2 border-transparent animate-border"
           : "border-white"
       } relative bg-white border-2 bg-black/5 w-36 shadow-sm xl:p-2 p-1 rounded-lg`}
     >

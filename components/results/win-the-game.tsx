@@ -120,7 +120,7 @@ export const WinTheGame = () => {
           <div className="flex gap-4">
             <div
               onClick={handleLoseSubmit}
-              className="bg-white rounded-2xl flex flex-col justify-between p-3 border border-black/10 shadow-sm aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+              className="bg-white rounded-xl flex flex-col justify-between p-3 border border-black/10 shadow-sm aspect-square h-48 cursor-pointer hover:bg-opacity-90"
             >
               <div>
                 <h1 className=" font-semibold">Play again</h1>
@@ -132,7 +132,7 @@ export const WinTheGame = () => {
 
             <div
               onClick={handleEndlessMode}
-              className="bg-[#efcb68] rounded-2xl flex flex-col justify-between p-3 border border-black/10 shadow-sm aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+              className="bg-[#efcb68] rounded-xl flex flex-col justify-between p-3 border border-black/10 shadow-sm aspect-square h-48 cursor-pointer hover:bg-opacity-90"
             >
               <div>
                 <h1 className=" font-semibold">Play endless</h1>

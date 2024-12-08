@@ -7,7 +7,7 @@ export default function DocsLayout({
 }) {
   return (
     <div className="h-full w-full">
-      <div className="bg-white border border-black/10 shadow-sm flex gap-4 h-full rounded-2xl">
+      <div className="bg-white border border-black/10 shadow-sm flex gap-4 h-full rounded-xl">
         <LeftDocs />
         <div className="w-full overflow-y-auto hideScroll py-4 pr-4">
           {children}

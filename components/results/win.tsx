@@ -439,7 +439,7 @@ export const Win = () => {
           Buy or sell special cards to enchance the next round
         </p>
       </div>
-      <div className="relative grid mt-5 grid-cols-3 gap-2 p-2 bg-black/5 border border-black/10 shadow-inner rounded-2xl">
+      <div className="relative grid mt-5 grid-cols-3 gap-2 p-2 bg-black/5 border border-black/10 shadow-inner rounded-xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             japanese_katakana={card.japanese_katakana}

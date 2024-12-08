@@ -33,7 +33,7 @@ export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
   };
 
   return (
-    <div className="bg-white border border-black/10 shadow-sm p-4 w-full  overflow-hidden h-full rounded-2xl">
+    <div className="bg-white border border-black/10 shadow-sm p-4 w-full  overflow-hidden h-full rounded-xl">
       {loading ? (
         <div className="flex justify-center h-full items-center">
           <Loader2Icon className="animate-spin" />

@@ -30,7 +30,7 @@ export default function Leaderboard() {
         <h2 className="text-lg font-semibold">Leaderboard</h2>
         <p className="text-sm">Top 50 players with highest score</p>
       </div>
-      <div className="flex flex-col gap-2 text-sm flex-1 w-96 overflow-y-auto bg-black/5 border border-black/10 shadow-inner p-2 rounded-2xl z-50">
+      <div className="flex flex-col gap-2 text-sm flex-1 w-96 overflow-y-auto bg-black/5 border border-black/10 shadow-inner p-2 rounded-xl z-50">
         {!isLoading ? (
           leaderboard.map((player) => (
             <div
