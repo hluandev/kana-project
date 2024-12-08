@@ -114,7 +114,7 @@ export default function PlayerLevel() {
             </div>
 
             <div className="z-10 font-medium leading-none text-center w-full">
-              <p className="font-medium text-[0.9rem]">{info.username}</p>
+              <p className="font-medium text-sm">{info.username}</p>
             </div>
           </div>
 

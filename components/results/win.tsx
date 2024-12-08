@@ -501,7 +501,7 @@ export const Win = () => {
           value={value}
           onChange={handleInputChange}
           placeholder="Type here"
-          className="flex text-center text-[0.9rem] outline-none rounded-md"
+          className="flex text-center text-sm outline-none rounded-md"
         />
 
         <ActionButton

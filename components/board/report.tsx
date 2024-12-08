@@ -73,7 +73,7 @@ export const Report = () => {
                 <Send className="w-3.5 h-3.5" />
               )}
 
-              <p className="text-[0.9rem]">{feedback ? "Send" : "Report"}</p>
+              <p className="text-sm">{feedback ? "Send" : "Report"}</p>
             </button>
           </motion.div>
         </div>

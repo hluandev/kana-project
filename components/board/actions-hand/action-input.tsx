@@ -66,7 +66,7 @@ export default function ActionInput() {
         type="text"
         value={value}
         placeholder="Type here"
-        className="text-center w-52 h-8 bg-white text-[0.9rem] placeholder:text-neutral-400 outline-none rounded-md"
+        className="text-center w-52 h-8 bg-white text-sm placeholder:text-neutral-400 outline-none rounded-md"
         onChange={handleChange}
       />
       <input className="hidden" type="submit" />

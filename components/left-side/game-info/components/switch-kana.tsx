@@ -19,7 +19,7 @@ export const SwitchKana = () => {
   };
 
   return (
-    <div className="bg-black/5 text-sm border text-[0.9rem] border-black/10 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
+    <div className="bg-black/5 text-sm border text-sm border-black/10 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
       <button
         onClick={() => handleKanaSwitch(true)}
         className={`rounded-lg  py-2 ${

@@ -60,7 +60,7 @@ export const Card = ({ card }: CardProps) => {
       </p>
 
       {showRomaji && (
-        <p className="absolute bottom-3 text-[0.9rem] text-center left-1/2 -translate-x-1/2">
+        <p className="absolute bottom-3 text-sm text-center left-1/2 -translate-x-1/2">
           {card?.romaji}
         </p>
       )}

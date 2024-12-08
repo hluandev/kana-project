@@ -16,7 +16,7 @@ export const Support = () => {
           <div className="space-y-3">
             <SubscriptionButton />
 
-            <div className="flex flex-col font-medium text-[0.9rem] gap-[10px]">
+            <div className="flex flex-col font-medium text-sm gap-[10px]">
               <SupportBox text="Support this project." />
               <SupportBox text="Gain early access to Stage 2 as soon as it's ready." />
               <SupportBox text="Unlock Endless Mode." />

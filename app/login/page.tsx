@@ -57,7 +57,7 @@ export default function LoginPage() {
                 setConfirmEmail("confirm");
                 setLoading(false);
               }}
-              className="w-64 h-11 bg-white hover:bg-neutral-100 duration-200 flex justify-center items-center rounded-md text-[0.9rem] border border-black/10 shadow-sm"
+              className="w-64 h-11 bg-white hover:bg-neutral-100 duration-200 flex justify-center items-center rounded-md text-sm border border-black/10 shadow-sm"
               type="submit"
             >
               {loading ? <Loader2Icon className="animate-spin" /> : "Continue"}
