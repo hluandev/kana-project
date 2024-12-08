@@ -30,7 +30,7 @@ export default function SpecialCard({
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`flex border border-black/20 shadow-sm relative p-4 overflow-hidden transition-colors duration-300 flex-col ${
+      className={`flex border border-black/20 shadow-sm relative p-3 overflow-hidden transition-colors duration-300 flex-col ${
         isSelected
           ? "border-yellow-500 bg-[#efcb68]"
           : isFrozen
@@ -47,9 +47,9 @@ export default function SpecialCard({
       </div>
 
       <div
-        className={`text-center px-4 flex border border-black/10 shadow-sm items-center font-medium justify-center relative ${
+        className={`text-center xl:px-4 px-2 flex border border-black/10 shadow-sm items-center font-medium justify-center relative ${
           isSelected ? "bg-black/80 text-white" : "bg-black/5"
-        } rounded-lg h-32`}
+        } rounded-lg xl:h-32 h-24`}
       >
         <p
           className={`absolute ${
@@ -59,7 +59,7 @@ export default function SpecialCard({
           ¥{price}
         </p>
 
-        <div className="font-medium text-[0.9rem]">
+        <div className="font-medium xl:text-sm text-xs">
           {card.condition === "xmultiples" && (
             <span className="text-red-500">x{card.reward} multiplier </span>
           )}

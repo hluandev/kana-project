@@ -424,7 +424,7 @@ export const Win = () => {
   };
 
   return (
-    <div className="w-[34rem] relative flex flex-col items-center">
+    <div className="xl:w-[34rem] w-[28rem] relative flex flex-col items-center">
       <div className="flex flex-col gap-2">
         <motion.div
           className="text-[#cb980b] font-medium text-6xl"
@@ -439,7 +439,7 @@ export const Win = () => {
           Buy or sell special cards to enchance the next round
         </p>
       </div>
-      <div className="h-72 relative grid mt-10 grid-cols-3 gap-2 p-2 bg-black/5 border border-black/15 shadow-inner rounded-2xl">
+      <div className="xl:h-72 h-52 relative grid mt-10 grid-cols-3 gap-2 p-2 bg-black/5 border border-black/15 shadow-inner rounded-2xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             japanese_katakana={card.japanese_katakana}
@@ -483,7 +483,7 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-white border border-black/15 shadow-sm h-full mt-10 rounded-full p-1"
+        className="flex bg-white border border-black/15 shadow-sm h-full xl:mt-10 mt-4 rounded-full p-1"
       >
         <ActionButton
           onClick={handleSellSpecial}

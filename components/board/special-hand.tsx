@@ -39,7 +39,7 @@ export const SpecialHands = () => {
       {!hasWonGame && (
         <div>
           {currentUpgrades.length > 0 && (
-            <div className="fixed right-4 top-4 space-y-2">
+            <div className="fixed xl:right-4 xl:top-4 right-2 top-2 space-y-2">
               <div className="grid gap-2">
                 {Object.entries(
                   currentUpgrades.reduce(
@@ -82,7 +82,7 @@ export const SpecialHands = () => {
             layout
             className={`${
               turns === 0 && mission?.target > progress && "hidden"
-            } h-[17rem] ${
+            } xl:h-[17rem] h-[14rem] ${
               currentSpecial.length === 0 ? "aspect-square" : "w-fit"
             } relative p-2 grid grid-cols-5 gap-2 rounded-xl bg-black/5 border border-black/15 shadow-inner`}
           >
