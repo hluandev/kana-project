@@ -8,6 +8,7 @@ import { Report } from "./report";
 import { ComboHelp } from "./combo-help";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { ResetGame } from "./reset-game";
+import { ToolButton } from "./actions-hand/buttons/tool-button";
 
 export const Tools = () => {
   const { currentDeck, setShowRomaji, showRomaji, kanaMissions } =
@@ -25,6 +26,17 @@ export const Tools = () => {
       setShowRomaji(stored === "true");
     }
   }, [setShowRomaji]);
+
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === "0") {
+        setIsCombineOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
+  }, []);
 
   return (
     <>
@@ -64,27 +76,24 @@ export const Tools = () => {
           </AnimatePresence>
 
           <div className="fixed flex flex-col gap-2 right-4 bottom-4">
-            <div
+            <ToolButton
+              keyboardShortcut="0"
               onClick={() => setIsCombineOpen(true)}
-              className="bg-white rounded-xl border border-black/15 shadow-sm  h-12 w-12 flex items-center justify-center"
-            >
-              <CombineIcon className="w-5 h-5" strokeWidth={1.5} />
-            </div>
+              icon={<CombineIcon className="w-5 h-5" strokeWidth={1.5} />}
+              label="Show hand combos"
+            />
 
-            <div
-              onClick={() => {
-                setShowRomaji(!showRomaji);
-              }}
-              className={`${
-                showRomaji ? "bg-white" : "bg-black text-white"
-              } rounded-xl border border-black/15 shadow-sm  duration-300 h-12 w-12 flex items-center justify-center`}
-            >
-              <LanguagesIcon className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-
-            <Report />
+            <ToolButton
+              keyboardShortcut="9"
+              onClick={() => setShowRomaji(!showRomaji)}
+              icon={<LanguagesIcon className="w-5 h-5" strokeWidth={1.5} />}
+              isActive={showRomaji}
+              label="Hide romaji"
+            />
 
             <ResetGame />
+
+            <Report />
 
             <div className="bg-white rounded-xl border border-black/15 shadow-sm  h-12 w-12 flex items-center justify-center">
               {currentDeck.length}
