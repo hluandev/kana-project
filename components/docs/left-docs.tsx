@@ -7,7 +7,7 @@ export const LeftDocs = () => {
   const pathname = usePathname();
 
   return (
-    <div className="border-r border-black/20 w-64 p-4 text-[0.9rem] flex flex-col gap-2 items-start">
+    <div className="border-r border-black/10 w-56 p-4 text-[0.9rem] flex flex-col gap-2 items-start">
       <Link
         href={"/menu/docs"}
         className={`pl-0.5 ${

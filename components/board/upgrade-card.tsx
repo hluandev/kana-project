@@ -31,7 +31,7 @@ export default function UpgradeCard({
             </span>{" "}
           </p>
           {count > 1 && (
-            <span className="text-sm absolute right-2 top-2 bg-black/5 px-1 py-0.5 border border-black/15 shadow-sm rounded-md">
+            <span className="text-sm absolute right-2 top-2 bg-black/5 px-1 py-0.5 border border-black/10 shadow-sm rounded-md">
               x{count}
             </span>
           )}

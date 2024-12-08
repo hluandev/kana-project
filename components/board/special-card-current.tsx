@@ -46,7 +46,7 @@ export const SpecialCardCurrent = ({
       } relative overflow-hidden  justify-between border-2 rounded-xl  h-52 w-36   ${
         isSelected
           ? "border-yellow-500 bg-[#efcb68]"
-          : " bg-white border-black/15"
+          : " bg-white border-black/10"
       }`}
     >
       {selectedSpecial.length > 0 &&
@@ -54,7 +54,7 @@ export const SpecialCardCurrent = ({
           selectedSpecial.some((selected) => selected.romaji === special.romaji)
         ) && (
           <motion.div
-            className="absolute top-2 left-2  bg-black/80 border border-black/15 shadow-sm text-white aspect-square w-7 flex justify-center items-center rounded-lg"
+            className="absolute top-2 left-2  bg-black/80 border border-black/10 shadow-sm text-white aspect-square w-7 flex justify-center items-center rounded-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -79,7 +79,7 @@ export const SpecialCardCurrent = ({
           <p
             className={`text-sm ${
               isSelected ? "bg-black/90" : "bg-[#efcb68]"
-            } absolute px-1.5 py-0.5 font-medium border border-black/15 -top-0 -translate-y-1/2 rounded-full`}
+            } absolute px-1.5 py-0.5 font-medium border border-black/10 -top-0 -translate-y-1/2 rounded-full`}
           >
             ¥300
           </p>

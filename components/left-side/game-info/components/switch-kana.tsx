@@ -19,11 +19,11 @@ export const SwitchKana = () => {
   };
 
   return (
-    <div className="bg-black/5 text-sm border text-[0.9rem] border-black/15 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
+    <div className="bg-black/5 text-sm border text-[0.9rem] border-black/10 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
       <button
         onClick={() => handleKanaSwitch(true)}
         className={`rounded-lg  py-2 ${
-          hiragana ? "bg-white border border-black/15 shadow-sm" : ""
+          hiragana ? "bg-white border border-black/10 shadow-sm" : ""
         }`}
       >
         Hiragana
@@ -31,7 +31,7 @@ export const SwitchKana = () => {
       <button
         onClick={() => handleKanaSwitch(false)}
         className={`rounded-lg py-2 ${
-          hiragana ? "" : "bg-white border border-black/15 shadow-sm"
+          hiragana ? "" : "bg-white border border-black/10 shadow-sm"
         }`}
       >
         Katakana

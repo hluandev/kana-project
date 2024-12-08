@@ -5,9 +5,7 @@ import { ExampleBoard } from "@/components/docs/example-board";
 export default function Rules() {
   return (
     <Doc title="2. Rules">
-      <ExampleBoard />
-
-      <div className="max-w-2xl mx-auto space-y-10 pt-6">
+      <div className="max-w-2xl mx-auto space-y-8 pt-6">
         <DocDesc title="1. Hiragana and Katakana">
           <p>
             The cards are divided into two categories: Hiragana and Katakana.

@@ -54,7 +54,7 @@ export default function SpecialCard({
         <p
           className={`absolute ${
             isSelected ? "bg-black/90 text-[#efcb68]" : "bg-[#efcb68]"
-          } left-1/2 -translate-x-1/2 -top-3.5 border border-black/15 text-sm rounded-full z-50 justify-center items-center px-1.5 py-0.5 font-medium flex `}
+          } left-1/2 -translate-x-1/2 -top-3.5 border border-black/10 text-sm rounded-full z-50 justify-center items-center px-1.5 py-0.5 font-medium flex `}
         >
           ¥{price}
         </p>

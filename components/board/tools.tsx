@@ -95,7 +95,7 @@ export const Tools = () => {
 
             <Report />
 
-            <div className="bg-white rounded-xl border border-black/15 shadow-sm  h-11 w-11 flex items-center justify-center">
+            <div className="bg-white rounded-xl border border-black/10 shadow-sm  h-11 w-11 flex items-center justify-center">
               {currentDeck.length}
             </div>
           </div>

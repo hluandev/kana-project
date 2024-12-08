@@ -5,7 +5,7 @@ import { ExampleBoard } from "@/components/docs/example-board";
 export default function Shop() {
   return (
     <Doc title="4. Shop">
-      <ExampleBoard shop />
+      {/* <ExampleBoard shop /> */}
 
       <div className="font-medium  mx-auto max-w-2xl space-y-10 pb-10 pt-4">
         <DocDesc title="1. Rewards">

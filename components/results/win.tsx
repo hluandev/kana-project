@@ -439,7 +439,7 @@ export const Win = () => {
           Buy or sell special cards to enchance the next round
         </p>
       </div>
-      <div className="relative grid mt-5 grid-cols-3 gap-2 p-2 bg-black/5 border border-black/15 shadow-inner rounded-2xl">
+      <div className="relative grid mt-5 grid-cols-3 gap-2 p-2 bg-black/5 border border-black/10 shadow-inner rounded-2xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             japanese_katakana={card.japanese_katakana}
@@ -473,7 +473,7 @@ export const Win = () => {
             className="bg-blue-300  hover:bg-blue-300/80"
           />
 
-          <div className=" bg-white border border-black/15 shadow-sm p-2 font-medium rounded-full aspect-square w-10 h-10 flex items-center justify-center">
+          <div className=" bg-white border border-black/10 shadow-sm p-2 font-medium rounded-full aspect-square w-10 h-10 flex items-center justify-center">
             {currentSpecialDeck.length}
           </div>
         </div>
@@ -483,7 +483,7 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-white border border-black/15 shadow-sm h-full mb-2 mt-4 rounded-full p-2"
+        className="flex bg-white border border-black/10 shadow-sm h-full mb-2 mt-4 rounded-full p-2"
       >
         <ActionButton
           onClick={handleSellSpecial}

@@ -15,7 +15,7 @@ export const ProgressBar = ({ target }: ProgressBarProps) => {
         <motion.div
           className={`absolute ${
             percentage === 0 ? "hidden" : ""
-          } top-0 left-0 h-full bg-[#efcb68] border rounded-l-lg shadow-sm border-black/15 ${
+          } top-0 left-0 h-full bg-[#efcb68] border rounded-l-lg shadow-sm border-black/10 ${
             percentage === 100 ? "rounded-r-lg" : ""
           }`}
           initial={{ width: 0 }}
@@ -23,7 +23,7 @@ export const ProgressBar = ({ target }: ProgressBarProps) => {
           transition={{ duration: 0.5 }}
         />
         <motion.div
-          className={`absolute top-0 right-0 h-full bg-white border-y border-r shadow-sm border-black/15 ${
+          className={`absolute top-0 right-0 h-full bg-white border-y border-r shadow-sm border-black/10 ${
             percentage === 0 ? "border-l rounded-lg" : "rounded-r-lg"
           } ${percentage >= 100 ? "hidden" : ""}`}
           initial={{ width: "100%" }}

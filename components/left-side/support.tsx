@@ -11,7 +11,7 @@ export const Support = () => {
     <>
       {!isSubscribed && (
         <div
-          className={`text-black p-2 pb-3  w-full z-20 bg-[#efcb68] bg-opacity-40 border border-black/15 shadow-sm rounded-xl`}
+          className={`text-black p-2 pb-3  w-full z-20 bg-[#efcb68] bg-opacity-40 border border-black/10 shadow-sm rounded-xl`}
         >
           <div className="space-y-3">
             <SubscriptionButton />

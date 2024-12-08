@@ -26,7 +26,7 @@ export const PlayBox = ({
       animate={{ opacity: 1, y: 0 }}
       className={` ${
         disabled ? "bg-neutral-400" : "bg-[#50d0d2]"
-      }  bg-opacity-30 border border-black/15 shadow-sm p-3 rounded-xl h-[20rem] w-[16rem] flex flex-col justify-between`}
+      }  bg-opacity-30 border border-black/10 shadow-sm p-3 rounded-xl h-[20rem] w-[16rem] flex flex-col justify-between`}
     >
       <p className="text-sm border border-black/10 bg-white/30 w-fit rounded-lg py-1 px-2">
         Stage {stage}
@@ -41,7 +41,7 @@ export const PlayBox = ({
           href={href}
           className={`${
             disabled ? "bg-black/10" : "mainBgColor"
-          } block border text-sm border-black/15 shadow-sm text-center font-medium w-full rounded-lg  p-1.5`}
+          } block border text-sm border-black/10 shadow-sm text-center font-medium w-full rounded-lg  p-1.5`}
         >
           {linkText}
         </Link>

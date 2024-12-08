@@ -46,7 +46,7 @@ export function SubscriptionButton() {
     <button
       onClick={handleSubscribe}
       disabled={loading}
-      className="bg-[#efcb68] border border-black/15 text-sm shadow-sm hover:bg-yellow-600/40 py-1.5 w-full flex items-center justify-center text-center font-medium rounded-lg"
+      className="bg-[#efcb68] border border-black/10 text-sm shadow-sm hover:bg-yellow-600/40 py-1.5 w-full flex items-center justify-center text-center font-medium rounded-lg"
     >
       {loading ? <Loader2 className="animate-spin" /> : "Upgrade to Premium"}
     </button>
