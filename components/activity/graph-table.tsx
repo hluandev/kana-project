@@ -67,7 +67,7 @@ export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
             <Line
               type="monotone"
               dataKey={highestHandsTable ? "wins" : "highest_score"}
-              stroke={highestHandsTable ? "#93c5fd" : "#efcb68"}
+              stroke={highestHandsTable ? "#2563eb" : "#efcb68"}
               strokeWidth={2}
             >
               <LabelList
@@ -83,7 +83,7 @@ export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
               <Line
                 type="monotone"
                 dataKey="losses"
-                stroke="#ff915a"
+                stroke="#ef4444"
                 strokeWidth={2}
               >
                 <LabelList

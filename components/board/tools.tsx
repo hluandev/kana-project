@@ -80,7 +80,7 @@ export const Tools = () => {
               keyboardShortcut="0"
               onClick={() => setIsCombineOpen(true)}
               icon={<CombineIcon className="w-5 h-5" strokeWidth={1.5} />}
-              label="Show hand combos"
+              label="Show hands"
             />
 
             <ToolButton
