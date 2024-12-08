@@ -14,7 +14,6 @@ export default function PlayerLevel() {
     usePlayerStore();
   const { isMuted, setIsMuted } = useSettingStore();
   const [setting, setSetting] = useState(false);
-  const pathname = usePathname();
 
   const percentage = (info.xp / 100) * 100;
 
@@ -53,8 +52,6 @@ export default function PlayerLevel() {
     setIsMuted(!isMuted);
   };
 
-  const isPlayKanaPath = pathname === "/menu/play/kana";
-
   return (
     <div className="relative flex gap-2 items-center">
       <AnimatePresence>
@@ -64,11 +61,7 @@ export default function PlayerLevel() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             className={`${
-              isSubscribed
-                ? "-top-[4.5rem]"
-                : isPlayKanaPath
-                ? "-top-[17.5rem]"
-                : "-top-[5rem]"
+              isSubscribed ? "-top-[4.5rem]" : "-top-[17.5rem]"
             } absolute flex flex-col gap-2 text-sm items-center justify-between bg-[#fafafa] border border-black/10 shadow-sm w-full rounded-xl left-0 p-2`}
           >
             <div className="flex justify-between items-center w-full bg-[#fafafa] border border-black/10 shadow-sm p-2 rounded-xl">
@@ -101,7 +94,7 @@ export default function PlayerLevel() {
               </div>
             </div>
 
-            {isPlayKanaPath && <Support />}
+            <Support />
           </motion.div>
         )}
       </AnimatePresence>

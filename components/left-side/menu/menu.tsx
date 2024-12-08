@@ -8,7 +8,6 @@ export const Menu = () => {
       <TopInfo />
 
       <div className="space-y-4">
-        <Support />
         <PlayerLevel />
       </div>
     </div>
