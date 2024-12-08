@@ -9,6 +9,7 @@ export const LeftDocs = () => {
   return (
     <div className="border-r border-black/10 w-56 p-4 text-[0.9rem] flex flex-col gap-2 items-start">
       <Link
+        prefetch={true}
         href={"/menu/docs"}
         className={`pl-0.5 ${
           pathname === "/menu/docs" ? "font-semibold" : "text-neutral-500"
@@ -17,6 +18,7 @@ export const LeftDocs = () => {
         1. Introduction
       </Link>
       <Link
+        prefetch={true}
         href={"/menu/docs/rules"}
         className={`${
           pathname === "/menu/docs/rules" ? "font-semibold" : "text-neutral-500"
@@ -25,6 +27,7 @@ export const LeftDocs = () => {
         2. Rules
       </Link>
       <Link
+        prefetch={true}
         href={"/menu/docs/hands"}
         className={`${
           pathname === "/menu/docs/hands" ? "font-semibold" : "text-neutral-500"
@@ -33,6 +36,7 @@ export const LeftDocs = () => {
         3. Hands
       </Link>
       <Link
+        prefetch={true}
         href={"/menu/docs/shop"}
         className={`${
           pathname === "/menu/docs/shop" ? "font-semibold" : "text-neutral-500"
