@@ -65,7 +65,7 @@ export default function PlayerLevel() {
             exit={{ opacity: 0, y: 20 }}
             className={`${
               isSubscribed
-                ? "-top-[4rem]"
+                ? "-top-[4.5rem]"
                 : isPlayKanaPath
                 ? "-top-[17.5rem]"
                 : "-top-[5rem]"
@@ -120,7 +120,9 @@ export default function PlayerLevel() {
 
           <div
             onClick={() => setSetting(!setting)}
-            className="bg-white h-8 w-8 rounded-lg flex justify-center items-center border border-black/15 shadow-sm"
+            className={`${
+              setting ? "bg-black text-white" : "bg-white text-black"
+            }  h-8 w-8 rounded-lg flex justify-center items-center border border-black/15 shadow-sm`}
           >
             <SettingsIcon strokeWidth={1.7} className="h-4 w-4" />
           </div>
