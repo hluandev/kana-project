@@ -37,7 +37,10 @@ export default function Shop() {
             hand.
           </p>
           <p>- Select the card you want to move.</p>
-          <p>- Press the number (5, 6, 7, 8, 9) you want to move it to.</p>
+          <p>
+            - Press the number (5, 6, 7, 8, or 9) to move it to the desired
+            position
+          </p>
 
           <p>
             {" "}
