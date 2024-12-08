@@ -1,3 +1,5 @@
+import { updateActivityServer } from "@/actions/server/activity-server-actions";
+import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import { useGameStateStore } from "@/stores/useGameStateStore";
 import { useKanaStore } from "@/stores/useKanaStore";
 import { usePlayerStore } from "@/stores/usePlayerStore";
@@ -53,6 +55,15 @@ export const ResetGame = () => {
     setCurrentSpecial([]);
     setSelectedCard([]);
     setCurrentUpgrades([]);
+    updatePlayerInfoServer({
+      id: info.id,
+      losses: info.losses + 1,
+      matches: info.matches + 1,
+    });
+    updateActivityServer({
+      losses: info.losses + 1,
+      matches: info.matches + 1,
+    });
     setIsOpen(false);
     await saveGame();
   };
