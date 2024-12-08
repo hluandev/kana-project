@@ -32,11 +32,11 @@ export default function UsernamePage() {
 
   return (
     <div className="flex justify-center items-center h-full flex-col">
-      <div className="bg-black/5 flex flex-col gap-3 w-80 border border-black/15 shadow-inner p-5 rounded-xl">
+      <div className="bg-black/5 flex flex-col gap-2 w-80 border border-black/15 shadow-inner p-5 rounded-xl">
         <div>
           <p className="font-medium">What do you like to be called?</p>
           <p className="text-sm text-black/50">
-            This name will be seen on leaderboard.
+            This username will be seen on leaderboard.
           </p>
         </div>
         <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
