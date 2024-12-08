@@ -43,7 +43,7 @@ export const SpecialCardCurrent = ({
       className={`flex flex-col p-3 ${
         activeSpecials.includes(card.romaji) &&
         "[background:linear-gradient(45deg,#fff,theme(colors.white)_50%,#fff)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.red.600/.48)_0%,theme(colors.red.500)_20%,theme(colors.indigo.300)_40%,theme(colors.indigo.500)_60%,theme(colors.slate.600/.48)_100%)_border-box] rounded-2xl border-2 border-transparent animate-border"
-      } relative overflow-hidden  justify-between border-2 rounded-xl  w-36 h-full   ${
+      } relative overflow-hidden  justify-between border-2 rounded-xl  h-52 w-36   ${
         isSelected
           ? "border-yellow-500 bg-[#efcb68]"
           : " bg-white border-black/15"
@@ -79,7 +79,7 @@ export const SpecialCardCurrent = ({
           <p
             className={`text-sm ${
               isSelected ? "bg-black/90" : "bg-[#efcb68]"
-            } absolute px-2 py-1 font-medium border border-black/15 -top-0 -translate-y-1/2 rounded-full`}
+            } absolute px-1.5 py-0.5 font-medium border border-black/15 -top-0 -translate-y-1/2 rounded-full`}
           >
             ¥300
           </p>
