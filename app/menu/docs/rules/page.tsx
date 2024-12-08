@@ -6,7 +6,7 @@ export default function Rules() {
     <Doc title="2. Rules">
       <div className="max-w-md mx-auto space-y-8">
         <DocDesc title="Hiragana and Katakana">
-          <div className="bg-black/5 w-1/2 text-sm border text-sm border-black/10 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
+          <div className="bg-[#fafafa] w-1/2 border text-sm border-black/10 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
             <button
               className={`rounded-lg  py-2 bg-white border border-black/10 shadow-sm
         }`}
