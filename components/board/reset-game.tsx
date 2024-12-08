@@ -94,7 +94,7 @@ export const ResetGame = () => {
       </AnimatePresence>
       <div
         onClick={() => setIsOpen(true)}
-        className={`bg-white rounded-xl border border-black/15 shadow-sm  duration-300 h-12 w-12 flex items-center justify-center`}
+        className={`bg-white rounded-xl border border-black/15 shadow-sm  duration-300 h-11 w-11 flex items-center justify-center`}
       >
         <RotateCwIcon className="w-5 h-5" strokeWidth={1.5} />
       </div>

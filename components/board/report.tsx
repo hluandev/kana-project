@@ -49,7 +49,7 @@ export const Report = () => {
                   ? "Any feedback would be highly appreciated. Thank you!"
                   : "Please describe the bug in details as much as possible and steps to reproduce it. Thank you!"
               }
-              className="w-full border text-[0.9rem] h-full border-black/20 rounded-lg p-2"
+              className="w-full border text-sm h-full border-black/20 rounded-lg p-2"
               value={text}
               onChange={(e) => setText(e.target.value)}
             ></textarea>
@@ -81,7 +81,7 @@ export const Report = () => {
 
       <div
         onClick={() => setIsOpen(true)}
-        className={`bg-white rounded-xl border border-black/15 shadow-sm  duration-300 h-12 w-12 flex items-center justify-center`}
+        className={`bg-white rounded-xl border border-black/15 shadow-sm  duration-300 h-11 w-11 flex items-center justify-center`}
       >
         <BugIcon className="w-5 h-5" strokeWidth={1.5} />
       </div>

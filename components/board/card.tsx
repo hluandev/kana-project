@@ -26,7 +26,7 @@ export const Card = ({ card }: CardProps) => {
       }}
       onMouseEnter={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
-      className={`flex relative duration-300 border border-black/15 shadow-sm hover:scale-110 hover:shadow-lg hover:z-50 hover:-mt-5 h-40 w-28 xl:w-36 xl:h-52 p-2  ${
+      className={`flex relative duration-300 border border-black/15 shadow-sm hover:scale-110 hover:shadow-lg hover:z-50 hover:-mt-5 h-44 w-[7.5rem] p-2  ${
         isSelected ? "bg-[#1d1d1f] text-white -mt-10" : "bg-white"
       }  rounded-xl  `}
     >

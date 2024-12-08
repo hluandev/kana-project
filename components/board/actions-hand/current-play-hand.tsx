@@ -68,7 +68,7 @@ export default function CurrentPlayHand() {
     return progress >= target ? (
       <Win />
     ) : (
-      <div className="flex items-center flex-col pb-10">
+      <div className="flex items-center flex-col pb-2">
         <CurrentHand />
         <ActionsHand />
       </div>

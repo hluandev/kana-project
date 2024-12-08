@@ -75,7 +75,7 @@ export const Tools = () => {
             )}
           </AnimatePresence>
 
-          <div className="fixed flex flex-col gap-2 xl:right-4 xl:bottom-4 right-2 bottom-2">
+          <div className="fixed flex flex-col gap-2 right-2 bottom-2">
             <ToolButton
               keyboardShortcut="0"
               onClick={() => setIsCombineOpen(true)}
@@ -95,7 +95,7 @@ export const Tools = () => {
 
             <Report />
 
-            <div className="bg-white rounded-xl border border-black/15 shadow-sm  h-12 w-12 flex items-center justify-center">
+            <div className="bg-white rounded-xl border border-black/15 shadow-sm  h-11 w-11 flex items-center justify-center">
               {currentDeck.length}
             </div>
           </div>

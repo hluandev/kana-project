@@ -49,7 +49,7 @@ export const ToolButton = ({
         onClick={handleClick}
         className={`${
           isActive ? "bg-white" : "bg-black text-white"
-        } rounded-xl border border-black/15 shadow-sm duration-300 h-12 w-12 flex items-center justify-center`}
+        } rounded-xl border border-black/15 shadow-sm duration-300 h-11 w-11 flex items-center justify-center`}
       >
         {icon}
       </button>

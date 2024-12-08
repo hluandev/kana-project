@@ -5,7 +5,7 @@ interface InfoBoxProps {
 
 export const InfoBox = ({ children, title }: InfoBoxProps) => {
   return (
-    <div className="rounded-xl bg-white p-3 xl:h-32 h-24 flex flex-col justify-between leading-none border border-black/15 shadow-sm  overflow-hidden">
+    <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border border-black/15 shadow-sm  overflow-hidden">
       <div className="text-black/50 text-sm">{title}</div>
       <p className="font-medium">{children}</p>
     </div>

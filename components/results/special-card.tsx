@@ -47,14 +47,14 @@ export default function SpecialCard({
       </div>
 
       <div
-        className={`text-center xl:px-4 px-2 flex border border-black/10 shadow-sm items-center font-medium justify-center relative ${
+        className={`text-center px-2 flex border border-black/10 shadow-sm items-center font-medium justify-center relative ${
           isSelected ? "bg-black/80 text-white" : "bg-black/5"
-        } rounded-lg xl:h-32 h-24`}
+        } rounded-lg  h-24`}
       >
         <p
           className={`absolute ${
             isSelected ? "bg-black/90 text-[#efcb68]" : "bg-[#efcb68]"
-          } left-1/2 -translate-x-1/2 -top-3.5 border border-black/15 text-sm rounded-full z-50 justify-center items-center px-2 py-1 font-medium flex `}
+          } left-1/2 -translate-x-1/2 -top-3.5 border border-black/15 text-sm rounded-full z-50 justify-center items-center px-1.5 py-0.5 font-medium flex `}
         >
           ¥{price}
         </p>

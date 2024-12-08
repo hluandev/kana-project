@@ -5,7 +5,7 @@ export const ScoreDamage = () => {
   const { score, multiplier, announcement } = useScoreStore();
 
   return (
-    <Box className="p-2 flex flex-col xl:gap-6 gap-2">
+    <Box className="p-2 flex flex-col gap-1">
       <div className="flex flex-col gap-1">
         <div className="text-sm">
           {announcement === ""
