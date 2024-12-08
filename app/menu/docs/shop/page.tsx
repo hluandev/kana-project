@@ -7,15 +7,15 @@ export default function Shop() {
     <Doc title="4. Shop">
       {/* <ExampleBoard shop /> */}
 
-      <div className="font-medium  mx-auto max-w-2xl space-y-10 pb-10 pt-4">
-        <DocDesc title="1. Rewards">
+      <div className="font-medium  mx-auto max-w-2xl space-y-8 pb-8">
+        <DocDesc title="Rewards">
           <p>
             After each round, you earn ¥500. Unused turns are rewarded with ¥100
             each.
           </p>
         </DocDesc>
 
-        <DocDesc title="2. Buying and selling">
+        <DocDesc title="Buying and selling">
           <p>
             Select special cards by typing the card&apos;s romaji. Press (1) to
             sell your selected special cards, or press (2) to buy new specials.
@@ -30,7 +30,7 @@ export default function Shop() {
           </p>
         </DocDesc>
 
-        <DocDesc title="3. Move special cards">
+        <DocDesc title="Move special cards">
           <p>
             During shopping, you can move your selected special cards from your
             current special hand to another location within your current special
@@ -51,14 +51,14 @@ export default function Shop() {
           </p>
         </DocDesc>
 
-        <DocDesc title="4. Rerolling">
+        <DocDesc title="Rerolling">
           <p>
             Click on reroll(3) to reroll your current hand. Each reroll costs
             ¥200.
           </p>
         </DocDesc>
 
-        <DocDesc title="5. Freezing cards">
+        <DocDesc title="Freezing cards">
           <p>
             Click on snowflake(4) to freeze your selected special cards.
             Freezing is free.
