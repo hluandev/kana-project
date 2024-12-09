@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import CurrentPlayHand from "@/components/board/actions-hand/current-play-hand";
 import { ShowMenuMobile } from "@/components/board/show-menu-mobile";
 import { ShowUpgradeButton } from "@/components/board/show-upgrade-button";
@@ -14,6 +15,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 
 const Kana = () => {
   const { currentUpgrades } = useKanaStore();
+  const [showMobileTools, setShowMobileTools] = useState(false);
 
   return (
     <div className="flex relative flex-col items-center justify-between h-full">
@@ -37,10 +39,15 @@ const Kana = () => {
 
       <CurrentPlayHand />
 
-      <Tools />
+      <div className={`${!showMobileTools && "max-lg:hidden"}`}>
+        <Tools />
+      </div>
 
       <div className="lg:hidden fixed bottom-1 left-1">
-        <ShowMenuMobile />
+        <ShowMenuMobile
+          onClick={() => setShowMobileTools(!showMobileTools)}
+          isActive={showMobileTools}
+        />
       </div>
 
       {currentUpgrades.length > 0 && (

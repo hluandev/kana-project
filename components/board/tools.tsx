@@ -130,13 +130,14 @@ export const Tools = () => {
               label="Hide romaji"
             />
 
-            <ToolButton
-              keyboardShortcut="9"
-              onClick={() => handleKanaSwitch(!hiragana)}
-              icon={"仮名"}
-              isActive={hiragana}
-              label="Switch kana"
-            />
+            <div className="lg:hidden">
+              <ToolButton
+                onClick={() => handleKanaSwitch(!hiragana)}
+                icon={"仮名"}
+                isActive={hiragana}
+                label="Switch kana"
+              />
+            </div>
 
             <ResetGame />
 
