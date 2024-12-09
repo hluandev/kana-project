@@ -43,8 +43,8 @@ export const VirtualKeyboard = ({
         ))}
       </div>
       {/* Bottom row */}
-      <div className="grid grid-cols-7 w-fit gap-1">
-        {["z", "x", "c", "v", "b", "n", "m"].map((item) => (
+      <div className="grid grid-cols-8 w-fit gap-1">
+        {["z", "x", "c", "v", "b", "n", "m", "/"].map((item) => (
           <button
             onClick={() => handleChange(createSyntheticEvent(item))}
             key={item}
