@@ -7,6 +7,7 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import { playSound } from "@/actions/client/play-sound";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { VirtualKeyboard } from "./virtual-keyboard";
+import { DeleteIcon } from "lucide-react";
 
 export default function ActionInput() {
   const [value, setValue] = useState("");
@@ -84,6 +85,13 @@ export default function ActionInput() {
       />
 
       <input className="hidden" type="submit" />
+
+      <div
+        onClick={() => setValue(value.slice(0, -1))}
+        className="lg:hidden absolute -right-16  top-1/2 -translate-y-1/2 bg-white rounded-xl border border-black/10 shadow-sm p-1.5"
+      >
+        <DeleteIcon className="w-4 h-4" />
+      </div>
 
       <VirtualKeyboard handleChange={handleChange} value={value} />
     </form>

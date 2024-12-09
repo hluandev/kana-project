@@ -27,7 +27,7 @@ export const Card = ({ card }: CardProps) => {
       onMouseEnter={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
       className={`flex relative duration-300 border border-black/10 shadow-sm hover:scale-110 hover:shadow-lg hover:z-50 hover:-mt-5 h-24 w-16 p-1 lg:h-44 lg:w-[7.5rem] lg:p-2  ${
-        isSelected ? "bg-[#1d1d1f] text-white -mt-10" : "bg-white"
+        isSelected ? "bg-[#1d1d1f] text-white lg:-mt-10" : "bg-white"
       }  rounded-xl`}
     >
       {!showRomaji && onHover && (
