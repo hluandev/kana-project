@@ -249,6 +249,19 @@ export const Win = () => {
   };
 
   const handleSubmit = () => {
+    // Check if any selected cards are from currentSpecial
+    const hasCurrentSpecialCards = selectedSpecial.some((card) =>
+      currentSpecial.some((currentCard) => currentCard.romaji === card.romaji)
+    );
+
+    if (hasCurrentSpecialCards) {
+      playSound("ERROR");
+      setWarning("You already own these cards!");
+      setSelectedSpecial([]);
+      setTimeout(() => setValue(""), 0);
+      return;
+    }
+
     playSound("BUY");
     const totalCost = selectedSpecial.reduce(
       (sum, card) => sum + card.price,
