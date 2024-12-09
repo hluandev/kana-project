@@ -13,6 +13,7 @@ import {
 import { playSound } from "@/actions/client/play-sound";
 import { useGameStateStore } from "@/stores/useGameStateStore";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { motion } from "framer-motion";
 
 export const Win = () => {
   const isMobile = useIsMobile();
@@ -440,7 +441,7 @@ export const Win = () => {
 
   return (
     <div className="w-fit relative gap-1 flex flex-col items-center">
-      {/* <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center">
         <motion.div
           className="text-[#cb980b] font-medium lg:text-6xl text-xl"
           initial={{ opacity: 0, scale: 2 }}
@@ -453,7 +454,7 @@ export const Win = () => {
         <p className="font-medium text-xs lg:text-base text-black/90">
           Buy or sell special cards to enchance the next round
         </p>
-      </div> */}
+      </div>
       <div className="relative grid lg:mt-5 grid-cols-3 lg:gap-2 gap-0.5 lg:p-2 p-0.5 bg-black/5 border border-black/10 shadow-inner rounded-xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
