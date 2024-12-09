@@ -1,4 +1,3 @@
-import { Logo } from "./logo";
 import { Nav } from "./nav";
 
 export const TopInfo = () => {
