@@ -89,7 +89,7 @@ export const SpecialHands = () => {
               currentSpecial.length === 0
                 ? "lg:h-[14rem] h-[8rem] aspect-square"
                 : "w-fit"
-            } relative lg:p-2 p-0.5 grid grid-cols-5 gap-2 rounded-xl bg-black/5 border border-black/10 shadow-inner`}
+            } relative lg:p-2 grid grid-cols-5 gap-1 w-full  rounded-xl bg-black/5 border border-black/10 shadow-inner`}
           >
             {currentSpecial.length === 0 && (
               <p className="text-center absolute top-1/2 text-xs lg:text-sm -translate-y-1/2 w-full text-black/40 ">

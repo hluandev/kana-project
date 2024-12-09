@@ -50,7 +50,7 @@ export const SpecialCardCurrent = ({
       className={`flex flex-col lg:p-3 p-1 ${
         activeSpecials.includes(card.romaji) &&
         "[background:linear-gradient(45deg,#fff,theme(colors.white)_50%,#fff)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.red.600/.48)_0%,theme(colors.red.500)_20%,theme(colors.indigo.300)_40%,theme(colors.indigo.500)_60%,theme(colors.slate.600/.48)_100%)_border-box] rounded-xl border-2 border-transparent animate-border"
-      } relative justify-between border-2 rounded-xl h-32 w-20 lg:h-52 lg:w-36   ${
+      } relative justify-between border-2 rounded-xl h-32 w-[4.8rem] lg:h-52 lg:w-36   ${
         isSelected
           ? "border-yellow-500 bg-[#efcb68]"
           : " bg-white border-black/10"
