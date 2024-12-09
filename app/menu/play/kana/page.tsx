@@ -39,7 +39,7 @@ const Kana = () => {
 
       <CurrentPlayHand />
 
-      <div className={`${!showMobileTools && "max-lg:hidden"}`}>
+      <div className={`fixed ${!showMobileTools && "max-lg:hidden"}`}>
         <Tools />
       </div>
 
