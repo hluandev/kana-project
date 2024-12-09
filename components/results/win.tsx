@@ -98,75 +98,25 @@ export const Win = () => {
       const newValue = typeof e === "string" ? value + inputValue : inputValue;
       setValue(newValue);
 
-      // If we already have selected special cards from currentSpecial
-      if (
-        selectedSpecial.length > 0 &&
-        currentSpecial.some((card) => card.romaji === selectedSpecial[0].romaji)
-      ) {
-        // Check if input is a number 5-9 for reordering
-        const input = parseInt(newValue);
-        if (!isNaN(input) && input >= 5 && input <= 9) {
-          const targetIndex = input - 5;
-          if (targetIndex < currentSpecial.length) {
-            const selectedCardIndex = currentSpecial.findIndex(
-              (card) => card.romaji === selectedSpecial[0].romaji
-            );
-
-            if (selectedCardIndex !== -1) {
-              handleReorderSpecial(selectedCardIndex, targetIndex);
-              setSelectedSpecial([]);
-              setTimeout(() => setValue(""), 0);
-              return;
-            }
-          }
-        }
-
-        // Existing card selection logic
-        const matchingSpecial = currentSpecial.find(
-          (card) => card.romaji.toLowerCase() === newValue
-        );
-
-        if (matchingSpecial) {
-          const isAlreadySelected = selectedSpecial.some(
-            (card) => card.romaji === matchingSpecial.romaji
+      // Handle number inputs for reordering
+      const input = parseInt(newValue);
+      if (!isNaN(input) && input >= 5 && input <= 9) {
+        const targetIndex = input - 5;
+        if (targetIndex < currentSpecial.length && selectedSpecial.length > 0) {
+          const selectedCardIndex = currentSpecial.findIndex(
+            (card) => card.romaji === selectedSpecial[0].romaji
           );
 
-          if (isAlreadySelected) {
-            playSound("DESELECT");
-            removeSelectedSpecial(matchingSpecial);
-          } else if (selectedSpecial.length < 3) {
-            playSound("SELECT");
-            addSelectedSpecial(matchingSpecial);
+          if (selectedCardIndex !== -1) {
+            handleReorderSpecial(selectedCardIndex, targetIndex);
+            setSelectedSpecial([]);
+            setValue("");
+            return;
           }
-          setTimeout(() => setValue(""), 0);
         }
-        return;
       }
 
-      // If we already have selected cards from randomSpecialCards
-      if (selectedSpecial.length > 0) {
-        const matchingCard = randomSpecialCards.find(
-          (card) => card.romaji.toLowerCase() === newValue
-        );
-
-        if (matchingCard) {
-          const isAlreadySelected = selectedSpecial.some(
-            (card) => card.romaji === matchingCard.romaji
-          );
-
-          if (isAlreadySelected) {
-            playSound("DESELECT");
-            removeSelectedSpecial(matchingCard);
-          } else if (selectedSpecial.length < 3) {
-            playSound("SELECT");
-            addSelectedSpecial(matchingCard);
-          }
-          setTimeout(() => setValue(""), 0);
-        }
-        return;
-      }
-
-      // If no cards are selected yet, determine the source of the first selection
+      // Simple exact match for special cards
       const matchingCard = randomSpecialCards.find(
         (card) => card.romaji.toLowerCase() === newValue
       );
@@ -174,18 +124,42 @@ export const Win = () => {
         (card) => card.romaji.toLowerCase() === newValue
       );
 
-      // Only allow selection from one source
       if (matchingSpecial) {
-        playSound("SELECT");
-        addSelectedSpecial(matchingSpecial);
-        setTimeout(() => setValue(""), 0);
+        const isAlreadySelected = selectedSpecial.some(
+          (card) => card.romaji === matchingSpecial.romaji
+        );
+
+        if (isAlreadySelected) {
+          playSound("DESELECT");
+          removeSelectedSpecial(matchingSpecial);
+        } else if (selectedSpecial.length < 3) {
+          playSound("SELECT");
+          addSelectedSpecial(matchingSpecial);
+        }
+        setValue("");
       } else if (matchingCard) {
-        playSound("SELECT");
-        addSelectedSpecial(matchingCard);
-        setTimeout(() => setValue(""), 0);
+        const isAlreadySelected = selectedSpecial.some(
+          (card) => card.romaji === matchingCard.romaji
+        );
+
+        if (isAlreadySelected) {
+          playSound("DESELECT");
+          removeSelectedSpecial(matchingCard);
+        } else if (selectedSpecial.length < 3) {
+          playSound("SELECT");
+          addSelectedSpecial(matchingCard);
+        }
+        setValue("");
       }
     },
-    [value, currentSpecial, selectedSpecial, randomSpecialCards]
+    [
+      value,
+      currentSpecial,
+      selectedSpecial,
+      randomSpecialCards,
+      addSelectedSpecial,
+      removeSelectedSpecial,
+    ]
   );
 
   const handleReorderSpecial = (fromIndex: number, toIndex: number) => {
@@ -566,10 +540,7 @@ export const Win = () => {
         </div>
       </form>
 
-      <VirtualKeyboard
-        handleChange={(value) => handleInputChange(value)}
-        value={value}
-      />
+      <VirtualKeyboard handleChange={handleInputChange} value={value} />
     </div>
   );
 };

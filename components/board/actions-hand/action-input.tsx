@@ -44,14 +44,6 @@ export default function ActionInput() {
         return;
       }
 
-      const possibleRomaji = currentHand.map((card) =>
-        card.romaji.toLowerCase()
-      );
-
-      const isValidPrefix = possibleRomaji.some((romaji) =>
-        romaji.startsWith(newValue)
-      );
-
       const matchedCard = currentHand.find(
         (card) => card.romaji.toLowerCase() === newValue
       );
@@ -71,8 +63,6 @@ export default function ActionInput() {
           playSound("ERROR");
           setWarning("You can only select up to 5 cards");
         }
-        setValue("");
-      } else if (!isValidPrefix) {
         setValue("");
       }
     },
