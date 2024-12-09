@@ -43,6 +43,8 @@ interface kanaStore {
   randomSpecialCards: any[];
   setRandomSpecialCards: (cards: any[]) => void;
   generateRandomSpecialCards: () => void;
+  showUpgrades: boolean;
+  setShowUpgrades: (show: boolean) => void;
 }
 
 export const useKanaStore = create<kanaStore>((set, get) => ({
@@ -160,4 +162,6 @@ export const useKanaStore = create<kanaStore>((set, get) => ({
     })),
   activeSpecials: [],
   setActiveSpecials: (ids) => set({ activeSpecials: ids }),
+  showUpgrades: true,
+  setShowUpgrades: (show) => set({ showUpgrades: show }),
 }));

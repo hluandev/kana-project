@@ -6,6 +6,7 @@ import React from "react";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { playSound } from "@/actions/client/play-sound";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { VirtualKeyboard } from "./virtual-keyboard";
 
 export default function ActionInput() {
   const [value, setValue] = useState("");
@@ -70,7 +71,7 @@ export default function ActionInput() {
       onSubmit={(e) => {
         e.preventDefault();
       }}
-      className="flex items-center max-lg:w-[17rem] relative"
+      className="flex items-center relative"
     >
       <input
         ref={inputRef}
@@ -84,46 +85,7 @@ export default function ActionInput() {
 
       <input className="hidden" type="submit" />
 
-      <div className="lg:hidden absolute w-full -bottom-14 grid grid-cols-11 grid-rows-2 left-1/2 -translate-x-1/2">
-        {[
-          "q",
-          "w",
-          "e",
-          "r",
-          "t",
-          "y",
-          "u",
-          "i",
-          "o",
-          "p",
-          "a",
-          "s",
-          "d",
-          "f",
-          "g",
-          "h",
-          "j",
-          "k",
-          "z",
-          "b",
-          "n",
-          "m",
-        ].map((item) => (
-          <button
-            onClick={() => {
-              const syntheticEvent = {
-                target: { value: item },
-                type: "click",
-              } as React.ChangeEvent<HTMLInputElement>;
-              handleChange(syntheticEvent);
-            }}
-            key={item}
-            className="bg-white border border-black/10 shadow-sm rounded-md aspect-square w-6 text-sm"
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+      <VirtualKeyboard handleChange={handleChange} value={value} />
     </form>
   );
 }

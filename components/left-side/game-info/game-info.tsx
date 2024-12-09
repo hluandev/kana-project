@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { Support } from "../support";
 import { CurrentInfo } from "./components/current-info";
 import PlayerLevel from "./components/player-level";
 import { ReturnButton } from "./components/return-button";

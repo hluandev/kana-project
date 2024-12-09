@@ -8,8 +8,11 @@ export const CurrentHand = () => {
   const { currentHand } = useKanaStore();
 
   return (
-    <div className="w-full">
-      <motion.div layout className="flex gap-1 flex-wrap justify-center">
+    <div className="lg:w-full w-fit">
+      <motion.div
+        layout
+        className="lg:flex  max-lg:grid max-lg:grid-cols-4 gap-1 lg:flex-wrap justify-center"
+      >
         {currentHand?.map((item) => (
           <Card card={item} key={item.id} />
         ))}

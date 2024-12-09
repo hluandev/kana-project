@@ -5,6 +5,7 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import { motion } from "framer-motion";
 import UpgradeCard from "./upgrade-card";
 import { SpecialCardCurrent } from "./special-card-current";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const handRankOrder = {
   high_card: 1,
@@ -19,6 +20,7 @@ const handRankOrder = {
 };
 
 export const SpecialHands = () => {
+  const isMobile = useIsMobile();
   const {
     currentSpecial,
     selectedSpecial,
@@ -26,6 +28,7 @@ export const SpecialHands = () => {
     hiragana,
     currentUpgrades,
     activeSpecials,
+    showUpgrades,
   } = useKanaStore();
   const { turns, missionID, progress, reroll, multiplierBonus, isEndlessMode } =
     useScoreStore();
@@ -38,9 +41,9 @@ export const SpecialHands = () => {
     <>
       {!hasWonGame && (
         <div>
-          {currentUpgrades.length > 0 && (
+          {currentUpgrades.length > 0 && (!isMobile || showUpgrades) && (
             <div className="fixed right-2 top-2 space-y-2">
-              <div className="grid gap-2">
+              <div className="grid gap-2 bg-white p-1 border border-black/10 rounded-lg">
                 {Object.entries(
                   currentUpgrades.reduce(
                     (

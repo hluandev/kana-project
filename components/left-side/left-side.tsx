@@ -12,7 +12,11 @@ export const LeftSide = () => {
   // }, []);
 
   return (
-    <div className="w-52 lg:w-64 z-10 relative rounded-xl h-full border border-black/10 shadow-sm bg-white backdrop-blur-lg lg:p-2 p-1 overflow-hidden">
+    <div
+      className={`lg:w-64 z-10 ${
+        pathname.split("/")[3] === "kana" && "max-lg:hidden"
+      } relative rounded-xl h-full border border-black/10 shadow-sm bg-white backdrop-blur-lg lg:p-2 p-1 overflow-hidden`}
+    >
       {pathname.split("/")[3] === "kana" ? <GameInfo /> : <Menu />}
     </div>
   );

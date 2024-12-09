@@ -1,9 +1,9 @@
 import { PlayBox } from "@/components/play/play-box";
-import { ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 
 export default function Play() {
   return (
-    <div className="z-10 gap-2 lg:gap-8 flex justify-center items-center">
+    <div className="z-10 gap-2 lg:gap-8 flex max-lg:flex-col justify-center items-center">
       <PlayBox
         linkText="Play"
         href="/menu/play/kana"
@@ -11,7 +11,13 @@ export default function Play() {
         title="Kana"
         description="Get to know Hiragana and Katakana, the two essential Japanese syllabaries."
       />
-      <ArrowRight width={24} height={24} className="text-black/60" />
+      <ArrowRight
+        width={24}
+        height={24}
+        className="text-black/60 max-lg:hidden"
+      />
+
+      <ArrowDown width={24} height={24} className="text-black/60 lg:hidden" />
       <PlayBox
         linkText="Coming Soon"
         href=""

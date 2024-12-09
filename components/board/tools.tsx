@@ -49,7 +49,7 @@ export const Tools = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center"
+                className="fixed  top-0 left-0 w-full h-full z-50 flex items-center justify-center"
               >
                 <motion.div
                   initial={{ y: 200 }}
@@ -85,7 +85,7 @@ export const Tools = () => {
             />
           </div> */}
 
-          <div className="fixed flex flex-col lg:gap-2 gap-0.5 right-1 bottom-1 lg:right-2 lg:bottom-2">
+          <div className="fixed flex flex-col lg:gap-2 gap-0.5 max-lg:left-1 max-lg:top-1/2 max-lg:-translate-y-1/2 lg:right-2 lg:bottom-2">
             <ToolButton
               keyboardShortcut="0"
               onClick={() => setIsCombineOpen(true)}

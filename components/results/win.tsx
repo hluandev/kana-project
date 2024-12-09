@@ -14,6 +14,7 @@ import { playSound } from "@/actions/client/play-sound";
 import { useGameStateStore } from "@/stores/useGameStateStore";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { motion } from "framer-motion";
+import { VirtualKeyboard } from "../board/actions-hand/virtual-keyboard";
 
 export const Win = () => {
   const isMobile = useIsMobile();
@@ -509,7 +510,7 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-white relative border border-black/10 shadow-sm h-full mb-14  lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
+        className="flex bg-white relative border border-black/10 shadow-sm h-full mb-24  lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
       >
         <ActionButton
           onClick={handleSellSpecial}
@@ -553,46 +554,7 @@ export const Win = () => {
         />
       </form>
 
-      <div className="lg:hidden w-[16.5rem] absolute bottom-1 grid grid-cols-11 grid-rows-2  left-1/2 -translate-x-1/2">
-        {[
-          "q",
-          "w",
-          "e",
-          "r",
-          "t",
-          "y",
-          "u",
-          "i",
-          "o",
-          "p",
-          "a",
-          "s",
-          "d",
-          "f",
-          "g",
-          "h",
-          "j",
-          "k",
-          "z",
-          "b",
-          "n",
-          "m",
-        ].map((item) => (
-          <button
-            onClick={() => {
-              const syntheticEvent = {
-                target: { value: item },
-                type: "click",
-              } as React.ChangeEvent<HTMLInputElement>;
-              handleInputChange(syntheticEvent);
-            }}
-            key={item}
-            className="bg-white border border-black/10 shadow-sm rounded-md aspect-square w-6 text-sm"
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+      <VirtualKeyboard handleChange={handleInputChange} value={value} />
     </div>
   );
 };

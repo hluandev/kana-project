@@ -1,3 +1,5 @@
+"use client";
+
 import { Box } from "@/components/box";
 import { ProgressBar } from "./progress-bar";
 import { useKanaStore } from "@/stores/useKanaStore";
@@ -12,8 +14,8 @@ export const Score = () => {
     : kanaMissions.find((mission) => mission.id === missionID)?.target || 0;
 
   return (
-    <Box className="space-y-1">
-      <div className="text-black/50 flex justify-center items-center lg:pb-4 ">
+    <Box className="space-y-1 max-lg:flex max-lg:flex-col max-lg:justify-between">
+      <div className="text-black/50 max-lg:text-xs flex justify-center items-center lg:pb-4 ">
         Score at least {target} points to clear this round.
       </div>
       <ProgressBar target={target} />

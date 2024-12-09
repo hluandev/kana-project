@@ -13,6 +13,7 @@ import { usePlayerStore } from "@/stores/usePlayerStore";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import { updateActivityServer } from "@/actions/server/activity-server-actions";
 import { useGameStateStore } from "@/stores/useGameStateStore";
+import { VirtualKeyboard } from "./virtual-keyboard";
 
 export default function CurrentPlayHand() {
   const {
@@ -68,7 +69,7 @@ export default function CurrentPlayHand() {
     return progress >= target ? (
       <Win />
     ) : (
-      <div className="flex items-center flex-col lg:pb-2 pb-14">
+      <div className="flex items-center flex-col lg:pb-2 pb-24">
         <CurrentHand />
         <ActionsHand />
       </div>
