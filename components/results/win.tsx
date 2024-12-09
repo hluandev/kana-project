@@ -443,9 +443,9 @@ export const Win = () => {
 
   return (
     <div className="w-fit relative gap-1 flex flex-col items-center">
-      <div className="flex flex-col items-center max-lg:hidden">
+      <div className="flex flex-col items-center">
         <motion.div
-          className="text-[#cb980b] font-medium lg:text-6xl text-xl"
+          className="text-[#cb980b] font-medium lg:text-6xl text-4xl"
           initial={{ opacity: 0, scale: 2 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2 }}
@@ -457,7 +457,7 @@ export const Win = () => {
           Buy or sell special cards to enchance the next round
         </p>
       </div>
-      <div className="relative grid lg:mt-5 grid-cols-3 lg:gap-2 gap-0.5 lg:p-2 p-0.5 bg-black/5 border border-black/10 shadow-inner rounded-xl">
+      <div className="relative grid lg:mt-5 mt-4 grid-cols-3 lg:gap-2 gap-0.5 lg:p-2 p-0.5 bg-black/5 border border-black/10 shadow-inner rounded-xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             japanese_katakana={card.japanese_katakana}
