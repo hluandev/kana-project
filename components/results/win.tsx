@@ -5,6 +5,7 @@ import React from "react";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import {
   ArrowRightIcon,
+  DeleteIcon,
   JapaneseYenIcon,
   RefreshCwIcon,
   ShoppingCartIcon,
@@ -510,7 +511,7 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-white relative border border-black/10 shadow-sm h-full mb-24  lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
+        className="flex bg-white relative border border-black/10 shadow-sm h-full mb-28 mt-1 lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
       >
         <ActionButton
           onClick={handleSellSpecial}
@@ -552,6 +553,13 @@ export const Win = () => {
           keyboardShortcut="2"
           className="bg-[#EFCB68]  hover:bg-yellow-600/40"
         />
+
+        <div
+          onClick={() => setValue(value.slice(0, -1))}
+          className="lg:hidden absolute -right-9  top-1/2 -translate-y-1/2 bg-white rounded-xl border border-black/10 shadow-sm p-1.5"
+        >
+          <DeleteIcon className="w-4 h-4" />
+        </div>
       </form>
 
       <VirtualKeyboard handleChange={handleInputChange} value={value} />

@@ -52,7 +52,7 @@ export const SpecialCardCurrent = ({
       {turns >= 0 && mission?.target <= progress && (
         <p
           className={`text-sm ${
-            isSelected ? "bg-black/90" : "bg-[#efcb68]"
+            isSelected ? "bg-black/90 text-[#efcb68]" : "bg-[#efcb68]"
           } absolute left-1/2 -translate-x-1/2 lg:px-1.5 lg:py-0.5 px-1 max-lg:text-xs font-medium border border-black/10 -top-0 -translate-y-1/2 rounded-full`}
         >
           ¥300
@@ -64,7 +64,7 @@ export const SpecialCardCurrent = ({
           selectedSpecial.some((selected) => selected.romaji === special.romaji)
         ) && (
           <motion.div
-            className="absolute top-2 left-2  bg-black/80 border border-black/10 shadow-sm text-white aspect-square w-7 flex justify-center items-center rounded-lg"
+            className="absolute lg:top-2 lg:left-2 top-0 left-0 text-xs lg:text-sm  bg-black/80 border border-black/10 shadow-sm text-white aspect-square lg:w-7 w-5 flex justify-center items-center rounded-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
