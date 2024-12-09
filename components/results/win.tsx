@@ -441,7 +441,7 @@ export const Win = () => {
 
   return (
     <div className="w-fit relative gap-1 flex flex-col items-center">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center max-lg:hidden">
         <motion.div
           className="text-[#cb980b] font-medium lg:text-6xl text-xl"
           initial={{ opacity: 0, scale: 2 }}
