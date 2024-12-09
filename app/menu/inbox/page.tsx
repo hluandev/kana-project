@@ -16,9 +16,7 @@ export default function Inbox() {
       <div className="space-y-3">
         {messages.length === 0 ? (
           <div className="flex justify-center items-center h-full">
-            <p className="text-xs text-gray-500 leading-none">
-              <Loader2 className="animate-spin" />
-            </p>
+            <p className=" text-gray-500 leading-none">Your inbox is empty</p>
           </div>
         ) : (
           messages.map((item) => (
