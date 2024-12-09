@@ -1,4 +1,8 @@
+import { playSound } from "@/actions/client/play-sound";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import { useKanaStore } from "@/stores/useKanaStore";
 import { motion } from "framer-motion";
+import { ArrowLeftRightIcon } from "lucide-react";
 import { useState } from "react";
 
 interface SpecialCardCurrentProps {
@@ -32,6 +36,9 @@ export const SpecialCardCurrent = ({
 }: SpecialCardCurrentProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const isMobile = useIsMobile();
+  const { setCurrentSpecial, setSelectedSpecial } = useKanaStore();
+
   return (
     <motion.div
       onMouseEnter={() => setIsHovered(true)}
@@ -64,11 +71,40 @@ export const SpecialCardCurrent = ({
           selectedSpecial.some((selected) => selected.romaji === special.romaji)
         ) && (
           <motion.div
-            className="absolute lg:top-2 lg:left-2 top-0 left-0 text-xs lg:text-sm  bg-black/80 border border-black/10 shadow-sm text-white aspect-square lg:w-7 w-5 flex justify-center items-center rounded-lg"
+            onClick={() => {
+              // Find current index of selected card
+              const selectedCardIndex = currentSpecial.findIndex(
+                (card) => card.romaji === selectedSpecial[0].romaji
+              );
+
+              // Calculate target position (index + 5 represents the displayed number)
+              const targetIndex = index;
+
+              if (
+                selectedCardIndex !== -1 &&
+                selectedCardIndex !== targetIndex
+              ) {
+                // Play sound effect
+                playSound("SELECT");
+
+                // Reorder the cards
+                const newSpecialCards = [...currentSpecial];
+                const [movedItem] = newSpecialCards.splice(
+                  selectedCardIndex,
+                  1
+                );
+                newSpecialCards.splice(targetIndex, 0, movedItem);
+
+                // Update state
+                setCurrentSpecial(newSpecialCards);
+                setSelectedSpecial([]);
+              }
+            }}
+            className="absolute lg:top-2 lg:left-2 z-50 max-lg:-bottom-9 max-lg:left-1/2 max-lg:-translate-x-1/2 text-xs lg:text-sm bg-black/80 border border-black/10 shadow-sm text-white aspect-square lg:w-7 w-6 flex justify-center items-center rounded-lg cursor-pointer hover:bg-black"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            {index + 5}
+            {isMobile ? <ArrowLeftRightIcon className="h-4 w-4" /> : index + 5}
           </motion.div>
         )}
 
