@@ -9,10 +9,17 @@ import { ComboHelp } from "./combo-help";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { ResetGame } from "./reset-game";
 import { ToolButton } from "./actions-hand/buttons/tool-button";
+import { ReturnButton } from "../left-side/game-info/components/return-button";
 
 export const Tools = () => {
-  const { currentDeck, setShowRomaji, showRomaji, kanaMissions } =
-    useKanaStore();
+  const {
+    currentDeck,
+    setShowRomaji,
+    showRomaji,
+    kanaMissions,
+    hiragana,
+    setHiragana,
+  } = useKanaStore();
   const { missionID, progress, isEndlessMode } = useScoreStore();
   const [isCombineOpen, setIsCombineOpen] = useState(false);
   const [showTools, setShowTools] = useState(true);
@@ -38,6 +45,18 @@ export const Tools = () => {
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, []);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("hiragana");
+    if (stored !== null) {
+      setHiragana(stored === "true");
+    }
+  }, [setHiragana]);
+
+  const handleKanaSwitch = (value: boolean) => {
+    setHiragana(value);
+    localStorage.setItem("hiragana", value.toString());
+  };
 
   return (
     <>
@@ -85,7 +104,7 @@ export const Tools = () => {
             />
           </div> */}
 
-          <div className="fixed flex flex-col lg:gap-2 gap-0.5 max-lg:left-1 max-lg:top-1/2 max-lg:-translate-y-1/2 lg:right-2 lg:bottom-2">
+          <div className="fixed flex flex-col lg:gap-2 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-2 lg:bottom-2">
             <ToolButton
               keyboardShortcut="0"
               onClick={() => setIsCombineOpen(true)}
@@ -111,12 +130,24 @@ export const Tools = () => {
               label="Hide romaji"
             />
 
+            <ToolButton
+              keyboardShortcut="9"
+              onClick={() => handleKanaSwitch(!hiragana)}
+              icon={"仮名"}
+              isActive={hiragana}
+              label="Switch kana"
+            />
+
             <ResetGame />
 
             <Report />
 
             <div className="bg-white rounded-xl border text-xs lg:text-sm border-black/10 shadow-sm  lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center">
               {currentDeck.length}
+            </div>
+
+            <div className="lg:hidden">
+              <ReturnButton />
             </div>
           </div>
         </>

@@ -162,6 +162,6 @@ export const useKanaStore = create<kanaStore>((set, get) => ({
     })),
   activeSpecials: [],
   setActiveSpecials: (ids) => set({ activeSpecials: ids }),
-  showUpgrades: true,
+  showUpgrades: false,
   setShowUpgrades: (show) => set({ showUpgrades: show }),
 }));

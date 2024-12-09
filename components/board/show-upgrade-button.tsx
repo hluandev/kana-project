@@ -12,10 +12,10 @@ export const ShowUpgradeButton = () => {
     <button
       onClick={() => setShowUpgrades(!showUpgrades)}
       className={`${
-        showUpgrades ? "bg-black/10" : "bg-white"
-      } border border-black/10 shadow-sm h-8 w-8 flex items-center justify-center rounded-lg transition-colors`}
+        showUpgrades ? "bg-black text-white" : "bg-white text-black"
+      } border border-black/10 shadow-sm h-8 w-8 flex items-center justify-center rounded-xl transition-colors`}
     >
-      <CircleFadingArrowUp className="w-5 h-5" />
+      <CircleFadingArrowUp strokeWidth={1.7} className="w-5 h-5" />
     </button>
   );
 };

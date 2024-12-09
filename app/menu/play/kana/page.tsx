@@ -1,6 +1,7 @@
 "use client";
 
 import CurrentPlayHand from "@/components/board/actions-hand/current-play-hand";
+import { ShowMenuMobile } from "@/components/board/show-menu-mobile";
 import { ShowUpgradeButton } from "@/components/board/show-upgrade-button";
 import { SpecialHands } from "@/components/board/special-hand";
 import { Tools } from "@/components/board/tools";
@@ -38,12 +39,12 @@ const Kana = () => {
 
       <Tools />
 
-      <div className="lg:hidden fixed bottom-2.5 left-2">
-        <ReturnButton />
+      <div className="lg:hidden fixed bottom-1 left-1">
+        <ShowMenuMobile />
       </div>
 
       {currentUpgrades.length > 0 && (
-        <div className="lg:hidden fixed bottom-2 right-2">
+        <div className="lg:hidden fixed bottom-1 right-1">
           <ShowUpgradeButton />
         </div>
       )}
