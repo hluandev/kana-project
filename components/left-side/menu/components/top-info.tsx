@@ -2,7 +2,7 @@ import { Nav } from "./nav";
 
 export const TopInfo = () => {
   return (
-    <div className="lg:space-y-10">
+    <div className="">
       {/* <Logo /> */}
       <Nav />
     </div>
