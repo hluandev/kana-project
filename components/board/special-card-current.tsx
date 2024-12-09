@@ -53,7 +53,7 @@ export const SpecialCardCurrent = ({
         <p
           className={`text-sm ${
             isSelected ? "bg-black/90" : "bg-[#efcb68]"
-          } absolute left-1/2 -translate-x-1/2 lg:px-1.5 lg:py-0.5 px-1 text-xs font-medium border border-black/10 -top-0 -translate-y-1/2 rounded-full`}
+          } absolute left-1/2 -translate-x-1/2 lg:px-1.5 lg:py-0.5 px-1 max-lg:text-xs font-medium border border-black/10 -top-0 -translate-y-1/2 rounded-full`}
         >
           ¥300
         </p>
@@ -85,7 +85,7 @@ export const SpecialCardCurrent = ({
           isSelected ? "bg-black/80 text-white" : "bg-black/5"
         } backdrop-blur-lg`}
       >
-        <p className="font-medium text-xs">
+        <p className="font-medium max-lg:text-xs">
           {card.condition === "xmultiples" && (
             <span className="text-red-500">x{card.reward} mul </span>
           )}
