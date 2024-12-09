@@ -20,7 +20,7 @@ export const ActivityBox = ({
           <Loader2Icon className="animate-spin" />
         </div>
       ) : (
-        <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col justify-between lg:gap-2 h-full">
           <p className=" text-sm">{title}</p>
           <p className={` font-semibold ${textColor}`}>{value}</p>
         </div>
