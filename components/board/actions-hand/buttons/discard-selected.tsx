@@ -59,7 +59,7 @@ export const DiscardSelected = () => {
   return (
     <ActionButton
       onClick={onHandleDiscard}
-      icon={<XIcon strokeWidth={1.7} className="w-5 h-5" />}
+      icon={<XIcon strokeWidth={1.7} className="lg:w-5 lg:h-5 w-4 h-4" />}
       descTooltip="Discard selected cards."
       keyboardShortcut="1"
       className="bg-[#e4e4e6]"

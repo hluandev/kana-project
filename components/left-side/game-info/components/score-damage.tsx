@@ -5,7 +5,7 @@ export const ScoreDamage = () => {
   const { score, multiplier, announcement } = useScoreStore();
 
   return (
-    <Box className="p-2 flex flex-col gap-1">
+    <Box className="flex flex-col lg:gap-1">
       <div className="flex flex-col gap-1">
         <div className="text-sm">
           {announcement === ""
@@ -16,10 +16,12 @@ export const ScoreDamage = () => {
                 .replace(/\b\w/g, (char) => char.toUpperCase())}
         </div>
 
-        <div className="text-xl font-semibold">{score * multiplier}</div>
+        <div className="text-xl font-semibold max-lg:leading-none ">
+          {score * multiplier}
+        </div>
       </div>
 
-      <div className="font-medium text-center grid mt-2 gap-2 grid-cols-2">
+      <div className="font-medium text-center grid lg:mt-2 mt-1 gap-2 grid-cols-2">
         <div className="py-1.5 bg-white shadow-sm border border-black/10 rounded-lg text-blue-600">
           {score}
         </div>

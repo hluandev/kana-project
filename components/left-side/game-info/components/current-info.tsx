@@ -7,7 +7,7 @@ export const CurrentInfo = () => {
   const { kanaMissions } = useKanaStore();
 
   return (
-    <div className="rounded-xl grid grid-cols-2 grid-rows-2 p-2 bg-[#fafafa] border border-black/10 shadow-sm gap-2">
+    <div className="rounded-xl grid grid-cols-2 grid-rows-2 p-1 lg:p-2 bg-[#fafafa] border border-black/10 shadow-sm gap-1 lg:gap-2">
       {/* Turns */}
       <InfoBox title="Turns">{turns}</InfoBox>
 

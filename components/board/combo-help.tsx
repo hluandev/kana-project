@@ -1,6 +1,6 @@
 export const ComboHelp = () => {
   return (
-    <div className="space-y-4">
+    <div className="lg:space-y-4 space-y-2">
       <div className="border border-black/10 shadow-sm bg-black/10 p-2 flex justify-between rounded-lg">
         <div className="space-y-1.5 flex flex-col ">
           <div>

@@ -11,10 +11,12 @@ import {
   SnowflakeIcon,
 } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
-import { motion } from "framer-motion";
 import { useGameStateStore } from "@/stores/useGameStateStore";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export const Win = () => {
+  const isMobile = useIsMobile();
+
   const {
     missionID,
     setMissionID,
@@ -87,7 +89,9 @@ export const Win = () => {
   // }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const inputValue = e.target.value.toLowerCase();
+    const newValue = e.type === "click" ? value + inputValue : inputValue;
+    setValue(newValue);
 
     // If we already have selected special cards from currentSpecial
     if (
@@ -95,9 +99,9 @@ export const Win = () => {
       currentSpecial.some((card) => card.romaji === selectedSpecial[0].romaji)
     ) {
       // Check if input is a number 5-9 for reordering
-      const input = parseInt(e.target.value);
+      const input = parseInt(newValue);
       if (!isNaN(input) && input >= 5 && input <= 9) {
-        const targetIndex = input - 5; // Convert 5-9 to 0-4
+        const targetIndex = input - 5;
         if (targetIndex < currentSpecial.length) {
           const selectedCardIndex = currentSpecial.findIndex(
             (card) => card.romaji === selectedSpecial[0].romaji
@@ -114,7 +118,7 @@ export const Win = () => {
 
       // Existing card selection logic
       const matchingSpecial = currentSpecial.find(
-        (card) => card.romaji.toLowerCase() === e.target.value
+        (card) => card.romaji.toLowerCase() === newValue
       );
 
       if (matchingSpecial) {
@@ -137,7 +141,7 @@ export const Win = () => {
     // If we already have selected cards from randomSpecialCards
     if (selectedSpecial.length > 0) {
       const matchingCard = randomSpecialCards.find(
-        (card) => card.romaji.toLowerCase() === e.target.value
+        (card) => card.romaji.toLowerCase() === newValue
       );
 
       if (matchingCard) {
@@ -159,10 +163,10 @@ export const Win = () => {
 
     // If no cards are selected yet, determine the source of the first selection
     const matchingCard = randomSpecialCards.find(
-      (card) => card.romaji.toLowerCase() === e.target.value
+      (card) => card.romaji.toLowerCase() === newValue
     );
     const matchingSpecial = currentSpecial.find(
-      (card) => card.romaji.toLowerCase() === e.target.value
+      (card) => card.romaji.toLowerCase() === newValue
     );
 
     // Only allow selection from one source
@@ -435,10 +439,10 @@ export const Win = () => {
   };
 
   return (
-    <div className="w-fit relative flex flex-col items-center">
-      <div className="flex flex-col">
+    <div className="w-fit relative gap-1 flex flex-col items-center">
+      {/* <div className="flex flex-col items-center">
         <motion.div
-          className="text-[#cb980b] font-medium text-6xl"
+          className="text-[#cb980b] font-medium lg:text-6xl text-xl"
           initial={{ opacity: 0, scale: 2 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2 }}
@@ -446,11 +450,11 @@ export const Win = () => {
           You Defeated
         </motion.div>
 
-        <p className="font-medium text-black/90">
+        <p className="font-medium text-xs lg:text-base text-black/90">
           Buy or sell special cards to enchance the next round
         </p>
-      </div>
-      <div className="relative grid mt-5 grid-cols-3 gap-2 p-2 bg-black/5 border border-black/10 shadow-inner rounded-xl">
+      </div> */}
+      <div className="relative grid lg:mt-5 grid-cols-3 lg:gap-2 gap-0.5 lg:p-2 p-0.5 bg-black/5 border border-black/10 shadow-inner rounded-xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             japanese_katakana={card.japanese_katakana}
@@ -466,10 +470,15 @@ export const Win = () => {
           />
         ))}
 
-        <div className="absolute -right-12 top-0 space-y-2">
+        <div className="absolute lg:-right-12 -right-8 top-0 space-y-2">
           <ActionButton
             onClick={handleRefreshCards}
-            icon={<RefreshCwIcon strokeWidth={1.7} className="w-5 h-5" />}
+            icon={
+              <RefreshCwIcon
+                strokeWidth={1.7}
+                className="lg:w-5 lg:h-5 w-4 h-4"
+              />
+            }
             descTooltip="Refresh cards to get new ones for ¥200. This will also cancel any frozen cards."
             keyboardShortcut="3"
             className="bg-[#ff915a]  hover:bg-[#ff915a] hover:bg-opacity-90"
@@ -479,12 +488,17 @@ export const Win = () => {
           <ActionButton
             onClick={handleFreezeCard}
             descTooltip="Freeze cards to keep them in your deck until next turn."
-            icon={<SnowflakeIcon strokeWidth={1.7} className="w-5 h-5" />}
+            icon={
+              <SnowflakeIcon
+                strokeWidth={1.7}
+                className="lg:w-5 lg:h-5 w-4 h-4"
+              />
+            }
             keyboardShortcut="4"
             className="bg-blue-300  hover:bg-blue-300/80"
           />
 
-          <div className=" bg-white border border-black/10 shadow-sm p-2 font-medium rounded-full aspect-square w-10 h-10 flex items-center justify-center">
+          <div className=" bg-white border border-black/10 shadow-sm p-2 font-medium rounded-full aspect-square lg:w-10 lg:h-10 w-6 text-xs h-6 flex items-center justify-center">
             {currentSpecialDeck.length}
           </div>
         </div>
@@ -494,7 +508,7 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-white border border-black/10 shadow-sm h-full mb-2 mt-4 rounded-full p-2"
+        className="flex bg-white relative border border-black/10 shadow-sm h-full mb-14  lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
       >
         <ActionButton
           onClick={handleSellSpecial}
@@ -508,12 +522,14 @@ export const Win = () => {
           keyboardShortcut="1"
           className="bg-[#EFCB68]  hover:bg-yellow-600/40"
         />
+
         <input
           ref={inputRef}
           type="text"
           value={value}
+          readOnly={isMobile}
           onChange={handleInputChange}
-          placeholder="Type here"
+          placeholder={isMobile ? "Choose text below" : "Type here"}
           className="flex text-center text-sm outline-none rounded-md"
         />
 
@@ -535,6 +551,47 @@ export const Win = () => {
           className="bg-[#EFCB68]  hover:bg-yellow-600/40"
         />
       </form>
+
+      <div className="lg:hidden w-[16.5rem] absolute bottom-1 grid grid-cols-11 grid-rows-2  left-1/2 -translate-x-1/2">
+        {[
+          "q",
+          "w",
+          "e",
+          "r",
+          "t",
+          "y",
+          "u",
+          "i",
+          "o",
+          "p",
+          "a",
+          "s",
+          "d",
+          "f",
+          "g",
+          "h",
+          "j",
+          "k",
+          "z",
+          "b",
+          "n",
+          "m",
+        ].map((item) => (
+          <button
+            onClick={() => {
+              const syntheticEvent = {
+                target: { value: item },
+                type: "click",
+              } as React.ChangeEvent<HTMLInputElement>;
+              handleInputChange(syntheticEvent);
+            }}
+            key={item}
+            className="bg-white border border-black/10 shadow-sm rounded-md aspect-square w-6 text-sm"
+          >
+            {item}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

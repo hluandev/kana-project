@@ -5,6 +5,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import React from "react";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { playSound } from "@/actions/client/play-sound";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function ActionInput() {
   const [value, setValue] = useState("");
@@ -13,6 +14,7 @@ export default function ActionInput() {
   const { missionID, setWarning } = useScoreStore();
 
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const isMobile = useIsMobile();
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,15 +26,22 @@ export default function ActionInput() {
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     const inputValue = e.target.value.toLowerCase();
-    setValue(inputValue);
+    const newValue = e.type === "click" ? value + inputValue : inputValue;
+    setValue(newValue);
 
-    if (["1", "2", "3"].includes(inputValue)) {
+    if (["1", "2", "3"].includes(newValue)) {
       setValue("");
       return;
     }
 
+    const possibleRomaji = currentHand.map((card) => card.romaji.toLowerCase());
+
+    const isValidPrefix = possibleRomaji.some((romaji) =>
+      romaji.startsWith(newValue)
+    );
+
     const matchedCard = currentHand.find(
-      (card) => card.romaji.toLowerCase() === inputValue
+      (card) => card.romaji.toLowerCase() === newValue
     );
 
     if (matchedCard) {
@@ -51,6 +60,8 @@ export default function ActionInput() {
         setWarning("You can only select up to 5 cards");
       }
       setValue("");
+    } else if (!isValidPrefix) {
+      setValue("");
     }
   };
 
@@ -59,17 +70,60 @@ export default function ActionInput() {
       onSubmit={(e) => {
         e.preventDefault();
       }}
-      className="flex items-center"
+      className="flex items-center w-[17rem] lg:w-0 relative"
     >
       <input
         ref={inputRef}
         type="text"
         value={value}
-        placeholder="Type here"
-        className="text-center w-52 h-8 bg-white text-sm placeholder:text-neutral-400 outline-none rounded-md"
+        placeholder={isMobile ? "Choose text below" : "Type here"}
+        readOnly={isMobile}
+        className="text-center w-full lg:w-52 lg:h-8 bg-white text-xs lg:text-sm placeholder:text-neutral-400 outline-none rounded-md"
         onChange={handleChange}
       />
+
       <input className="hidden" type="submit" />
+
+      <div className="lg:hidden absolute w-full -bottom-14 grid grid-cols-11 grid-rows-2 left-1/2 -translate-x-1/2">
+        {[
+          "q",
+          "w",
+          "e",
+          "r",
+          "t",
+          "y",
+          "u",
+          "i",
+          "o",
+          "p",
+          "a",
+          "s",
+          "d",
+          "f",
+          "g",
+          "h",
+          "j",
+          "k",
+          "z",
+          "b",
+          "n",
+          "m",
+        ].map((item) => (
+          <button
+            onClick={() => {
+              const syntheticEvent = {
+                target: { value: item },
+                type: "click",
+              } as React.ChangeEvent<HTMLInputElement>;
+              handleChange(syntheticEvent);
+            }}
+            key={item}
+            className="bg-white border border-black/10 shadow-sm rounded-md aspect-square w-6 text-sm"
+          >
+            {item}
+          </button>
+        ))}
+      </div>
     </form>
   );
 }

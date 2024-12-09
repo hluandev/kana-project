@@ -16,7 +16,7 @@ export const Report = () => {
           <motion.div
             initial={{ opacity: 0, y: 200 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-xl w-1/4 h-1/3 p-4 flex flex-col gap-y-2"
+            className="bg-white rounded-xl w-1/2 h-2/3 lg:w-1/4 lg:h-1/3 lg:p-4 p-2 flex flex-col gap-y-2"
           >
             <div className="flex justify-between items-center text-sm">
               <div className="flex gap-2 items-center ">
@@ -81,9 +81,9 @@ export const Report = () => {
 
       <div
         onClick={() => setIsOpen(true)}
-        className={`bg-white rounded-xl border border-black/10 shadow-sm  duration-300 h-11 w-11 flex items-center justify-center`}
+        className={`bg-white rounded-xl border border-black/10 shadow-sm  duration-300 lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center`}
       >
-        <BugIcon className="w-5 h-5" strokeWidth={1.5} />
+        <BugIcon className="lg:w-5 lg:h-5 w-4 h-4" strokeWidth={1.5} />
       </div>
     </>
   );

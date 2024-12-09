@@ -26,9 +26,9 @@ export const Card = ({ card }: CardProps) => {
       }}
       onMouseEnter={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
-      className={`flex relative duration-300 border border-black/10 shadow-sm hover:scale-110 hover:shadow-lg hover:z-50 hover:-mt-5 h-44 w-[7.5rem] p-2  ${
+      className={`flex relative duration-300 border border-black/10 shadow-sm hover:scale-110 hover:shadow-lg hover:z-50 hover:-mt-5 h-24 w-16 p-1 lg:h-44 lg:w-[7.5rem] lg:p-2  ${
         isSelected ? "bg-[#1d1d1f] text-white -mt-10" : "bg-white"
-      }  rounded-xl  `}
+      }  rounded-xl`}
     >
       {!showRomaji && onHover && (
         <p
@@ -41,7 +41,7 @@ export const Card = ({ card }: CardProps) => {
       )}
 
       <div className="flex justify-between w-full">
-        <p className="pl-1 text-lg">{card?.rank}</p>
+        <p className="pl-1 lg:text-lg">{card?.rank}</p>
 
         <p
           className={`${card?.suit === "あ" && "bg-[#ff915a] text-black"} ${
@@ -50,17 +50,17 @@ export const Card = ({ card }: CardProps) => {
             card?.suit === "い" && "bg-[#ffe65e] text-black"
           } ${
             card?.suit === "え" && "bg-[#fc96df] text-black"
-          }  border border-black/10 shadow-sm h-7 w-7 rounded-md flex items-center justify-center`}
+          }  border border-black/10 shadow-sm lg:h-7 lg:w-7 h-5 w-5 rounded-md flex items-center justify-center`}
         >
           {hiragana ? card?.suit : card?.suit_katakana}
         </p>
       </div>
-      <p className="absolute top-1/2 font-medium text-4xl -translate-x-1/2 left-1/2 -translate-y-1/2">
+      <p className="absolute top-1/2 font-medium lg:text-4xl text-2xl -translate-x-1/2 left-1/2 -translate-y-1/2">
         {hiragana ? card?.japanese : card?.japanese_katakana}
       </p>
 
       {showRomaji && (
-        <p className="absolute bottom-3 text-sm text-center left-1/2 -translate-x-1/2">
+        <p className="absolute lg:bottom-3 bottom-1 text-xs text-center left-1/2 -translate-x-1/2">
           {card?.romaji}
         </p>
       )}

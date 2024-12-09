@@ -2,7 +2,7 @@
 
 import { useKanaStore } from "@/stores/useKanaStore";
 import { AnimatePresence, motion } from "framer-motion";
-import { CombineIcon, LanguagesIcon, XIcon } from "lucide-react";
+import { ChevronUp, CombineIcon, LanguagesIcon, XIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Report } from "./report";
 import { ComboHelp } from "./combo-help";
@@ -15,6 +15,7 @@ export const Tools = () => {
     useKanaStore();
   const { missionID, progress, isEndlessMode } = useScoreStore();
   const [isCombineOpen, setIsCombineOpen] = useState(false);
+  const [showTools, setShowTools] = useState(true);
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
   const hasWonGame =
@@ -54,7 +55,7 @@ export const Tools = () => {
                   initial={{ y: 200 }}
                   animate={{ y: 0 }}
                   exit={{ y: 200 }}
-                  className="bg-white rounded-xl relative z-[9999] h-2/3 hideScroll overflow-y-scroll p-4 space-y-2"
+                  className="bg-white rounded-xl relative z-[9999] lg:h-2/3 h-3/4 hideScroll overflow-y-scroll lg:p-4 p-2 space-y-2"
                 >
                   <div className="flex items-center justify-between">
                     <div className="text-2xl font-semibold text-center">
@@ -75,18 +76,37 @@ export const Tools = () => {
             )}
           </AnimatePresence>
 
-          <div className="fixed flex flex-col gap-2 right-2 bottom-2">
+          {/* <div className="fixed lg:hidden right-1 bottom-1">
+            <ToolButton
+              onClick={() => setShowTools(!showTools)}
+              icon={<ChevronUp className="w-5 h-5" strokeWidth={1.5} />}
+              isActive={showTools}
+              label="Show tools"
+            />
+          </div> */}
+
+          <div className="fixed flex flex-col lg:gap-2 gap-0.5 right-1 bottom-1 lg:right-2 lg:bottom-2">
             <ToolButton
               keyboardShortcut="0"
               onClick={() => setIsCombineOpen(true)}
-              icon={<CombineIcon className="w-5 h-5" strokeWidth={1.5} />}
+              icon={
+                <CombineIcon
+                  className="lg:w-5 lg:h-5 w-4 h-4"
+                  strokeWidth={1.5}
+                />
+              }
               label="Show hands"
             />
 
             <ToolButton
               keyboardShortcut="9"
               onClick={() => setShowRomaji(!showRomaji)}
-              icon={<LanguagesIcon className="w-5 h-5" strokeWidth={1.5} />}
+              icon={
+                <LanguagesIcon
+                  className="lg:w-5 lg:h-5 w-4 h-4"
+                  strokeWidth={1.5}
+                />
+              }
               isActive={showRomaji}
               label="Hide romaji"
             />
@@ -95,7 +115,7 @@ export const Tools = () => {
 
             <Report />
 
-            <div className="bg-white rounded-xl border border-black/10 shadow-sm  h-11 w-11 flex items-center justify-center">
+            <div className="bg-white rounded-xl border text-xs lg:text-sm border-black/10 shadow-sm  lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center">
               {currentDeck.length}
             </div>
           </div>

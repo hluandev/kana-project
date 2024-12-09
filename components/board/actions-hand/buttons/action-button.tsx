@@ -1,3 +1,4 @@
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import React, { useEffect, useCallback, useState } from "react";
@@ -31,6 +32,8 @@ export const ActionButton = ({
     }
   }, [sound]);
 
+  const isMobile = useIsMobile();
+
   const [showTooltip, setShowTooltip] = useState(false);
 
   const handleClick = () => {
@@ -56,11 +59,11 @@ export const ActionButton = ({
     <div
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
-      className={`flex relative items-center border border-black/10 shadow-sm justify-center gap-2 w-9 aspect-square text-center rounded-full duration-200 cursor-pointer ${className}`}
+      className={`flex relative items-center border border-black/10 shadow-sm justify-center gap-2 w-6 lg:w-9 aspect-square text-center rounded-full duration-200 cursor-pointer ${className}`}
       onClick={handleClick}
     >
       <AnimatePresence>
-        {showTooltip && (
+        {showTooltip && !isMobile && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

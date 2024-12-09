@@ -14,16 +14,16 @@ export const ActivityBox = ({
   loading,
 }: ActivityBoxProps) => {
   return (
-    <div className="bg-white p-4 border border-black/10 shadow-sm rounded-xl space-y-3">
+    <div className="bg-white lg:p-4 p-2 border border-black/10 shadow-sm rounded-xl ">
       {loading ? (
         <div className="flex justify-center items-center">
           <Loader2Icon className="animate-spin" />
         </div>
       ) : (
-        <>
+        <div className="flex flex-col justify-between h-full">
           <p className=" text-sm">{title}</p>
           <p className={` font-semibold ${textColor}`}>{value}</p>
-        </>
+        </div>
       )}
     </div>
   );

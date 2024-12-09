@@ -62,7 +62,7 @@ export default function PlayerLevel() {
             exit={{ opacity: 0, y: 20 }}
             className={`${
               isSubscribed ? "-top-[4.5rem]" : "-top-[17.5rem]"
-            } absolute flex flex-col gap-2 text-sm items-center justify-between bg-[#fafafa] border border-black/10 shadow-sm w-full rounded-xl left-0 p-2`}
+            } absolute flex flex-col gap-2 text-sm items-center justify-between bg-[#fafafa] border border-black/10 shadow-sm w-full rounded-xl left-0 lg:p-2 p-1`}
           >
             <div className="flex justify-between items-center w-full bg-[#fafafa] border border-black/10 shadow-sm p-2 rounded-xl">
               <div className="flex justify-between  items-center">
@@ -99,15 +99,15 @@ export default function PlayerLevel() {
         )}
       </AnimatePresence>
 
-      <div className="bg-[#fafafa] col-span-10 w-full flex flex-col gap-2 relative overflow-hidden rounded-xl p-2 border border-black/10 shadow-sm ">
+      <div className="bg-[#fafafa] col-span-10 w-full flex flex-col lg:gap-2 gap-1 relative overflow-hidden rounded-xl lg:p-2 p-1 border border-black/10 shadow-sm ">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-[#efcb68] border border-black/10 shadow-sm z-20  font-medium  text-sm rounded-lg p-1 w-8 h-8 aspect-square flex justify-center items-center">
+            <div className="bg-[#efcb68] border border-black/10 shadow-sm z-20  font-medium rounded-lg p-1 lg:w-8 lg:h-8 h-6 w-6 aspect-square flex justify-center items-center">
               {info.level}
             </div>
 
             <div className="z-10 font-medium leading-none text-center w-full">
-              <p className="font-medium text-sm">{info.username}</p>
+              <p className="font-medium ">{info.username}</p>
             </div>
           </div>
 
@@ -115,14 +115,14 @@ export default function PlayerLevel() {
             onClick={() => setSetting(!setting)}
             className={`${
               setting ? "bg-black text-white" : "bg-white text-black"
-            }  h-8 w-8 rounded-lg flex justify-center items-center border border-black/10 shadow-sm`}
+            }  h-6 w-6 lg:h-8 lg:w-8 rounded-lg flex justify-center items-center border border-black/10 shadow-sm`}
           >
             <SettingsIcon strokeWidth={1.7} className="h-4 w-4" />
           </div>
         </div>
 
         <div className="rounded-lg font-medium overflow-hidden">
-          <div className="relative h-8">
+          <div className="relative lg:h-8 h-6">
             <motion.div
               className={`absolute ${
                 percentage === 0 ? "hidden" : ""
@@ -140,8 +140,8 @@ export default function PlayerLevel() {
               animate={{ width: `${100 - percentage}%` }}
               transition={{ duration: 0.5 }}
             />
-            <div className="absolute leading-none text-sm w-full h-full flex gap-1 items-center justify-center text-center z-10">
-              <p>{info.xp}</p> <p className="text-sm">/</p> <p>100</p>
+            <div className="absolute leading-none w-full h-full flex gap-1 items-center justify-center text-center z-10">
+              <p>{info.xp}</p> <p className="">/</p> <p>100</p>
             </div>
           </div>
         </div>

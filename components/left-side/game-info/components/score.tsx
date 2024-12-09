@@ -13,7 +13,7 @@ export const Score = () => {
 
   return (
     <Box className="space-y-1">
-      <div className="text-black/50 text-sm flex justify-center items-center pb-4 ">
+      <div className="text-black/50 flex justify-center items-center lg:pb-4 ">
         Score at least {target} points to clear this round.
       </div>
       <ProgressBar target={target} />
