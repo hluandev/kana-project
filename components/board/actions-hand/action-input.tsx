@@ -26,46 +26,65 @@ export default function ActionInput() {
     return () => clearTimeout(timer);
   }, [missionID]);
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const inputValue = e.target.value.toLowerCase();
-    const newValue = e.type === "click" ? value + inputValue : inputValue;
-    setValue(newValue);
+  const handleChange = useCallback(
+    (
+      e:
+        | React.ChangeEvent<HTMLInputElement>
+        | React.MouseEvent<HTMLButtonElement>
+    ) => {
+      const inputValue =
+        "value" in e.target
+          ? e.target.value.toLowerCase()
+          : e.currentTarget.getAttribute("data-value")?.toLowerCase() || "";
+      const newValue = e.type === "click" ? value + inputValue : inputValue;
+      setValue(newValue);
 
-    if (["1", "2", "3"].includes(newValue)) {
-      setValue("");
-      return;
-    }
+      if (["1", "2", "3"].includes(newValue)) {
+        setValue("");
+        return;
+      }
 
-    const possibleRomaji = currentHand.map((card) => card.romaji.toLowerCase());
-
-    const isValidPrefix = possibleRomaji.some((romaji) =>
-      romaji.startsWith(newValue)
-    );
-
-    const matchedCard = currentHand.find(
-      (card) => card.romaji.toLowerCase() === newValue
-    );
-
-    if (matchedCard) {
-      const isAlreadySelected = selectedCard.some(
-        (card) => card.romaji === matchedCard.romaji
+      const possibleRomaji = currentHand.map((card) =>
+        card.romaji.toLowerCase()
       );
 
-      if (isAlreadySelected) {
-        playSound("DESELECT");
-        removeSelectedCard(matchedCard);
-      } else if (selectedCard.length < 5) {
-        playSound("SELECT");
-        addSelectedCard(matchedCard);
-      } else {
-        playSound("ERROR");
-        setWarning("You can only select up to 5 cards");
+      const isValidPrefix = possibleRomaji.some((romaji) =>
+        romaji.startsWith(newValue)
+      );
+
+      const matchedCard = currentHand.find(
+        (card) => card.romaji.toLowerCase() === newValue
+      );
+
+      if (matchedCard) {
+        const isAlreadySelected = selectedCard.some(
+          (card) => card.romaji === matchedCard.romaji
+        );
+
+        if (isAlreadySelected) {
+          playSound("DESELECT");
+          removeSelectedCard(matchedCard);
+        } else if (selectedCard.length < 5) {
+          playSound("SELECT");
+          addSelectedCard(matchedCard);
+        } else {
+          playSound("ERROR");
+          setWarning("You can only select up to 5 cards");
+        }
+        setValue("");
+      } else if (!isValidPrefix) {
+        setValue("");
       }
-      setValue("");
-    } else if (!isValidPrefix) {
-      setValue("");
-    }
-  };
+    },
+    [
+      value,
+      currentHand,
+      selectedCard,
+      addSelectedCard,
+      removeSelectedCard,
+      setWarning,
+    ]
+  );
 
   return (
     <form
@@ -93,7 +112,16 @@ export default function ActionInput() {
         <DeleteIcon className="w-4 h-4" />
       </div>
 
-      <VirtualKeyboard handleChange={handleChange} value={value} />
+      <VirtualKeyboard
+        handleChange={(value) => {
+          handleChange({
+            type: "click",
+            currentTarget: { getAttribute: () => value },
+            target: { value },
+          } as any);
+        }}
+        value={value}
+      />
     </form>
   );
 }

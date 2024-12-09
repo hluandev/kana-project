@@ -1,19 +1,16 @@
 import { ChangeEventHandler } from "react";
 
 interface VirtualKeyboardProps {
-  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleChange: (value: string) => void;
   value: string;
 }
 
-export const VirtualKeyboard = ({
+export const VirtualKeyboard: React.FC<VirtualKeyboardProps> = ({
   handleChange,
   value,
-}: VirtualKeyboardProps) => {
-  const createSyntheticEvent = (item: string) => {
-    return {
-      target: { value: item },
-      type: "click",
-    } as React.ChangeEvent<HTMLInputElement>;
+}) => {
+  const handleClick = (key: string) => {
+    handleChange(key);
   };
 
   return (
@@ -22,8 +19,8 @@ export const VirtualKeyboard = ({
       <div className="grid grid-cols-10 gap-1">
         {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((item) => (
           <button
-            onClick={() => handleChange(createSyntheticEvent(item))}
             key={item}
+            onClick={() => handleClick(item)}
             className="bg-white border active:bg-black/20 border-black/10 shadow-sm rounded-md aspect-square w-8 text-sm"
           >
             {item}
@@ -34,8 +31,8 @@ export const VirtualKeyboard = ({
       <div className="grid grid-cols-9 gap-1">
         {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((item) => (
           <button
-            onClick={() => handleChange(createSyntheticEvent(item))}
             key={item}
+            onClick={() => handleClick(item)}
             className="bg-white border active:bg-black/20 border-black/10 shadow-sm rounded-md aspect-square w-8 text-sm"
           >
             {item}
@@ -46,8 +43,8 @@ export const VirtualKeyboard = ({
       <div className="grid grid-cols-8 w-fit gap-1">
         {["z", "x", "c", "v", "b", "n", "m", "/"].map((item) => (
           <button
-            onClick={() => handleChange(createSyntheticEvent(item))}
             key={item}
+            onClick={() => handleClick(item)}
             className="bg-white border active:bg-black/20 border-black/10 shadow-sm rounded-md aspect-square w-8 text-sm"
           >
             {item}
