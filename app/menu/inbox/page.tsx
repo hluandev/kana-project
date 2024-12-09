@@ -10,13 +10,13 @@ export default function Inbox() {
 
   return (
     <div className="space-y-3 bg-white p-3 rounded-xl border border-black/10 shadow-sm max-w-xl text-sm mx-auto h-full overflow-y-auto">
-      <h1 className="text-base leading-none font-medium text-black/50">
+      <h1 className=" leading-none font-medium text-black/50">
         Inbox for your reports and feedbacks
       </h1>
       <div className="space-y-3">
         {messages.length === 0 ? (
           <div className="flex justify-center items-center h-full">
-            <p className=" text-gray-500 leading-none">Your inbox is empty</p>
+            <p className="text-black/40 leading-none">Your inbox is empty</p>
           </div>
         ) : (
           messages.map((item) => (
