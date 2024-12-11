@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { BossHp } from "./boss-hp";
+import { PlayerHp } from "../player-hp";
 
 interface AvatarsProps {
   videoSrc?: string;
   name: string;
+  player?: boolean;
 }
 
-export const Avatars = ({ videoSrc, name }: AvatarsProps) => {
+export const Avatars = ({ videoSrc, name, player }: AvatarsProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 200 }}
@@ -23,9 +25,7 @@ export const Avatars = ({ videoSrc, name }: AvatarsProps) => {
         <source src={videoSrc} type="video/mp4" />
       </video>
 
-      <div className="relative z-10">
-        <BossHp />
-      </div>
+      <div className="relative z-10">{player ? <PlayerHp /> : <BossHp />}</div>
 
       <div className="space-y-4 flex items-end justify-between relative z-10">
         <div className="space-y-2">

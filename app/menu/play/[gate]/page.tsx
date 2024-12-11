@@ -13,11 +13,13 @@ import Warning from "@/components/warning";
 import { useKanaStore } from "@/stores/useKanaStore";
 import { Avatars } from "@/components/board/avatars";
 import { usePlayerStore } from "@/stores/usePlayerStore";
+import { useScoreStore } from "@/stores/useScoreStore";
 
 const Kana = () => {
   const { currentUpgrades } = useKanaStore();
   const { info } = usePlayerStore();
   const [showMobileTools, setShowMobileTools] = useState(false);
+  const { turns } = useScoreStore();
 
   return (
     <div className="flex relative w-full flex-col items-center justify-between h-full">
@@ -43,7 +45,7 @@ const Kana = () => {
       <CurrentPlayHand />
 
       <div className="absolute flex justify-between w-full left-0 px-20 top-1/2 -translate-y-1/2 z-10">
-        <Avatars name={info.username} videoSrc="/video/player.mp4" />
+        <Avatars player name={info.username} videoSrc="/video/player.mp4" />
 
         <Avatars name="Hiragana" videoSrc="/video/hiragana2.mp4" />
       </div>

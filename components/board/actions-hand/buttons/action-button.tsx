@@ -59,7 +59,7 @@ export const ActionButton = ({
     <div
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
-      className={`flex relative items-center border   justify-center gap-2 w-6 lg:w-9 aspect-square text-center rounded-full duration-200 cursor-pointer ${className}`}
+      className={`flex relative items-center text-black justify-center gap-2 w-6 lg:w-9 aspect-square text-center rounded-full duration-200 cursor-pointer ${className}`}
       onClick={handleClick}
     >
       <AnimatePresence>

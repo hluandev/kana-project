@@ -2,7 +2,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { ActionButton } from "./action-button";
 import { useScoreStore } from "@/stores/useScoreStore";
 import { useEffect, useState } from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, SwordIcon } from "lucide-react";
 import { playSound } from "@/actions/client/play-sound";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import { usePlayerStore } from "@/stores/usePlayerStore";
@@ -504,7 +504,7 @@ export const PlaySelected = () => {
   return (
     <ActionButton
       onClick={handlePlaySelected}
-      icon={<ArrowUp strokeWidth={1.7} className="lg:w-5 lg:h-5 w-4 h-4" />}
+      icon={<SwordIcon strokeWidth={1.7} className="lg:w-5 lg:h-5 w-4 h-4" />}
       descTooltip="Play your hand."
       keyboardShortcut="2"
       className="bg-[#01de5b]"
