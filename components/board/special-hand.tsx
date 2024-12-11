@@ -40,10 +40,10 @@ export const SpecialHands = () => {
   return (
     <>
       {!hasWonGame && (
-        <div className="relative z-10">
+        <div className="relative z-10 pt-2">
           {currentUpgrades.length > 0 && (!isMobile || showUpgrades) && (
             <div className="fixed right-2 top-2 space-y-2">
-              <div className="grid gap-2 bg-white p-1 border  rounded-lg">
+              <div className="grid gap-2 rounded-lg">
                 {Object.entries(
                   currentUpgrades.reduce(
                     (
@@ -89,7 +89,7 @@ export const SpecialHands = () => {
               currentSpecial.length === 0
                 ? "lg:h-[14rem] h-[8rem] aspect-square"
                 : "w-fit"
-            } relative lg:p-2 grid grid-cols-5 gap-1 w-full  rounded-xl bg-black/5 border  shadow-inner`}
+            } relative lg:p-2 grid grid-cols-5 gap-2 w-full  rounded-xl bg-black/20 border border-white/10 shadow-inner`}
           >
             {currentSpecial.length === 0 && (
               <p className="text-center absolute top-1/2 text-xs lg: -translate-y-1/2 w-full text-black/40 ">

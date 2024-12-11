@@ -32,7 +32,6 @@ export default function CurrentPlayHand() {
     score,
     multiplier,
   } = useScoreStore();
-  const { info, updateLosses, updateMatches } = usePlayerStore();
   const { loadGame } = useGameStateStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
