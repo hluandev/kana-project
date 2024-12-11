@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEventHandler, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { useKanaStore } from "@/stores/useKanaStore";
 import React from "react";
 import { useScoreStore } from "@/stores/useScoreStore";

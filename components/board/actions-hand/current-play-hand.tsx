@@ -14,6 +14,8 @@ import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import { updateActivityServer } from "@/actions/server/activity-server-actions";
 import { useGameStateStore } from "@/stores/useGameStateStore";
 import { VirtualKeyboard } from "./virtual-keyboard";
+import { ProgressBar } from "@/components/left-side/game-info/components/progress-bar";
+import { Score } from "@/components/left-side/game-info/components/score";
 
 export default function CurrentPlayHand() {
   const {
@@ -68,7 +70,8 @@ export default function CurrentPlayHand() {
     return progress >= target ? (
       <Win />
     ) : (
-      <div className="flex items-center  w-full flex-col lg:pb-6 pb-28">
+      <div className="flex items-center  w-full flex-col lg:pb-6 pb-28 space-y-2">
+        <Score />
         <CurrentHand />
         <ActionsHand />
       </div>
