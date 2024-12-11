@@ -39,7 +39,8 @@ export const PlaySelected = () => {
     reroll,
     isEndlessMode,
     endlessTarget,
-
+    bossHp,
+    setBossHp,
     multiplierBonus,
   } = useScoreStore();
 
@@ -425,6 +426,8 @@ export const PlaySelected = () => {
         if (parseInt(a.rank) > parseInt(b.rank)) return 1;
         return 0;
       });
+
+      setBossHp(bossHp - score * multiplier);
 
       // Calculate new progress
       const newProgress = progress + score * multiplier;

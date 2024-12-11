@@ -16,6 +16,7 @@ import { useGameStateStore } from "@/stores/useGameStateStore";
 import { VirtualKeyboard } from "./virtual-keyboard";
 import { ProgressBar } from "@/components/left-side/game-info/components/progress-bar";
 import { Score } from "@/components/left-side/game-info/components/score";
+import { ScoreDamage } from "@/components/left-side/game-info/components/score-damage";
 
 export default function CurrentPlayHand() {
   const {
@@ -71,7 +72,10 @@ export default function CurrentPlayHand() {
       <Win />
     ) : (
       <div className="flex items-center  w-full flex-col lg:pb-6 pb-28 space-y-2">
-        <Score />
+        <div className="flex justify-between items-end w-full">
+          <Score />
+          <ScoreDamage />
+        </div>
         <CurrentHand />
         <ActionsHand />
       </div>
