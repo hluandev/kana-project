@@ -50,16 +50,21 @@ export const Nav = () => {
       </div>
 
       <div className="max-lg:hidden flex flex-col">
-        <LinkNav href="/menu/play">Play</LinkNav>
-        <LinkNav href="/menu/docs">How to play</LinkNav>
-        <LinkNav href="/menu/leaderboard">Leaderboard</LinkNav>
-        <LinkNav href="/menu/activity">Activity</LinkNav>
-        <LinkNav onClick={handleInboxClick} href="/menu/inbox">
-          Inbox ({unreadCount})
-        </LinkNav>
-        <LinkNav blank href="https://x.com/ru_an_ng">
-          Social
-        </LinkNav>
+        <div className="flex flex-col gap-2">
+          <p>Arena</p>
+          <LinkNav href="/menu/play">Play</LinkNav>
+          <LinkNav href="/menu/docs">How to play</LinkNav>
+          <LinkNav href="/menu/leaderboard">Leaderboard</LinkNav>
+          <LinkNav href="/menu/activity">Activity</LinkNav>
+        </div>
+        <div className="flex flex-col gap-2">
+          <LinkNav onClick={handleInboxClick} href="/menu/inbox">
+            Inbox ({unreadCount})
+          </LinkNav>
+          <LinkNav blank href="https://x.com/ru_an_ng">
+            Social
+          </LinkNav>
+        </div>
       </div>
     </>
   );

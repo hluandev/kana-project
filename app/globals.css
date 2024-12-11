@@ -6,8 +6,8 @@
 body,
 html {
   height: 100%;
-  background-color: #fafafa;
-  color: #131313;
+  background-color: black;
+  color: white;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
