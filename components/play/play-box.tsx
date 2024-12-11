@@ -10,6 +10,7 @@ interface PlayBoxProps {
   linkText: string;
   href: string;
   disabled?: boolean;
+  videoSrc?: string;
 }
 
 export const PlayBox = ({
@@ -19,29 +20,43 @@ export const PlayBox = ({
   linkText,
   href,
   disabled,
+  videoSrc,
 }: PlayBoxProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 200 }}
       animate={{ opacity: 1, y: 0 }}
-      className={` ${
-        disabled ? "bg-neutral-400" : "bg-[#00b6df]"
-      }  bg-opacity-30 border border-black/10 shadow-sm p-3 rounded-xl h-[15rem] lg:h-[20rem] w-[13rem] lg:w-[16rem] flex flex-col justify-between`}
+      className={`relative overflow-hidden text-white ${
+        disabled ? "bg-neutral-700" : ""
+      }  flex flex-col p-2 justify-between`}
     >
-      <p className=" border border-black/10 bg-white/30 w-fit rounded-lg py-1 px-2">
-        Stage {stage}
-      </p>
-      <div className="space-y-4">
+      {videoSrc && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
+        >
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      )}
+
+      <div className="relative z-10">
+        <p className=" bg-white/20 w-fit rounded-lg py-1 px-2">Gate {stage}</p>
+      </div>
+
+      <div className="space-y-4 relative z-10">
         <div className="space-y-2">
-          <p className="text-xl font-medium leading-none">{title}</p>
-          <p className="text-black/60 ">{description}</p>
+          <p className="text-2xl font-semibold leading-none">{title}</p>
+          <p className="">{description}</p>
         </div>
         <Link
           prefetch={true}
           href={href}
           className={`${
-            disabled ? "bg-black/10" : "mainBgColor"
-          } block border  border-black/10 shadow-sm text-center font-medium w-full rounded-lg  p-1.5`}
+            disabled ? "" : "bg-black"
+          } block  text-center font-medium w-full rounded-lg p-2`}
         >
           {linkText}
         </Link>

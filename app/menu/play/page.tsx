@@ -3,21 +3,72 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 
 export default function Play() {
   return (
-    <div className="z-10 gap-2 lg:gap-8 flex max-lg:flex-col justify-center items-center">
+    <div className="w-full grid grid-cols-5 gap-2 ">
       <PlayBox
         linkText="Play"
-        href="/menu/play/kana"
+        href="/menu/play/gate1"
         stage={1}
-        title="Kana"
-        description="Get to know Hiragana and Katakana, the two essential Japanese syllabaries."
-      />
-      <ArrowRight
-        width={24}
-        height={24}
-        className="text-black/60 max-lg:hidden"
+        title="ひらがな"
+        description="Hiragana the first challenger."
+        videoSrc="/video/hiragana.mp4"
       />
 
-      <ArrowDown width={24} height={24} className="text-black/60 lg:hidden" />
+      <PlayBox
+        linkText="Coming Soon"
+        href=""
+        stage={2}
+        title="Kanji"
+        description="Get familiar with Kanji characters and expand your vocabulary in Japanese."
+        disabled={true}
+      />
+      <PlayBox
+        linkText="Coming Soon"
+        href=""
+        stage={2}
+        title="Kanji"
+        description="Get familiar with Kanji characters and expand your vocabulary in Japanese."
+        disabled={true}
+      />
+      <PlayBox
+        linkText="Coming Soon"
+        href=""
+        stage={2}
+        title="Kanji"
+        description="Get familiar with Kanji characters and expand your vocabulary in Japanese."
+        disabled={true}
+      />
+      <PlayBox
+        linkText="Coming Soon"
+        href=""
+        stage={2}
+        title="Kanji"
+        description="Get familiar with Kanji characters and expand your vocabulary in Japanese."
+        disabled={true}
+      />
+      <PlayBox
+        linkText="Coming Soon"
+        href=""
+        stage={2}
+        title="Kanji"
+        description="Get familiar with Kanji characters and expand your vocabulary in Japanese."
+        disabled={true}
+      />
+      <PlayBox
+        linkText="Coming Soon"
+        href=""
+        stage={2}
+        title="Kanji"
+        description="Get familiar with Kanji characters and expand your vocabulary in Japanese."
+        disabled={true}
+      />
+      <PlayBox
+        linkText="Coming Soon"
+        href=""
+        stage={2}
+        title="Kanji"
+        description="Get familiar with Kanji characters and expand your vocabulary in Japanese."
+        disabled={true}
+      />
       <PlayBox
         linkText="Coming Soon"
         href=""

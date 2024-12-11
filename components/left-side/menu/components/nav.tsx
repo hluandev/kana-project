@@ -51,8 +51,7 @@ export const Nav = () => {
       </div>
 
       <div className="max-lg:hidden flex flex-col gap-6 pt-2">
-
-          <img src="/img/logo.svg" alt="Kamikana" className="w-12 h-12" />
+          <img src="/img/logo.svg" alt="Kamikana" className="w-11 h-11" />
 
         <div className="flex flex-col gap-1">
           <p className="px-2.5 font-semibold text-neutral-500">Arena</p>
