@@ -40,7 +40,7 @@ export const ToolButton = ({
   return (
     <div className="relative">
       {tooltip && !isMobile && (
-        <div className="absolute top-1/2 -translate-y-1/2 -left-28 w-24   p-2 rounded-md bg-white border border-black/10 shadow-sm">
+        <div className="absolute top-1/2 -translate-y-1/2 -left-28 w-24   p-2 rounded-md bg-white border  ">
           <p className="font-medium">Shortcut: {keyboardShortcut}</p>
           <p>{label}</p>
         </div>
@@ -52,7 +52,7 @@ export const ToolButton = ({
         onClick={handleClick}
         className={`${
           isActive ? "bg-white" : "bg-black text-white"
-        } rounded-xl border text-[0.6rem]  font-bold border-black/10 shadow-sm duration-300 lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center`}
+        } rounded-xl border text-[0.6rem]  font-bold   duration-300 lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center`}
       >
         {icon}
       </button>

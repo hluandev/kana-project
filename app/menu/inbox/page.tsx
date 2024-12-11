@@ -9,7 +9,7 @@ export default function Inbox() {
   const { messages, setMessages } = useInboxStore();
 
   return (
-    <div className="space-y-3 bg-white p-3 rounded-xl border border-black/10 shadow-sm max-w-xl  mx-auto h-full overflow-y-auto">
+    <div className="space-y-3 bg-white p-3 rounded-xl border   max-w-xl  mx-auto h-full overflow-y-auto">
       <h1 className=" leading-none font-medium text-black/50">
         Inbox for your reports and feedbacks
       </h1>
@@ -22,7 +22,7 @@ export default function Inbox() {
           messages.map((item) => (
             <div
               key={item.report_id}
-              className="flex flex-col gap-2 bg-black/5 p-2 rounded-xl border border-black/10 shadow-inner"
+              className="flex flex-col gap-2 bg-black/5 p-2 rounded-xl border  shadow-inner"
             >
               <div className="flex justify-between">
                 <p className="text-xs text-gray-500 leading-none">
@@ -37,13 +37,13 @@ export default function Inbox() {
               </div>
 
               <div className="flex items-start flex-col gap-2 ">
-                <p className=" bg-white rounded-lg p-2 w-2/3 border border-black/20 shadow-sm">
+                <p className=" bg-white rounded-lg p-2 w-2/3 border border-black/20 ">
                   {item.text}
                 </p>
               </div>
               {item.response && (
                 <div className="flex justify-end">
-                  <p className=" bg-[#efcb68] w-2/3 rounded-lg p-2 border border-black/10 shadow-sm">
+                  <p className=" bg-[#efcb68] w-2/3 rounded-lg p-2 border  ">
                     {item.response}
                   </p>
                 </div>

@@ -30,7 +30,7 @@ export default function SpecialCard({
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={`flex border lg:h-52 lg:w-36 h-32 w-20 border-black/20 shadow-sm relative lg:p-3 p-1 transition-colors duration-300 flex-col ${
+      className={`flex border lg:h-52 lg:w-36 h-32 w-20 border-black/20  relative lg:p-3 p-1 transition-colors duration-300 flex-col ${
         isSelected
           ? "border-yellow-500 bg-[#efcb68]"
           : isFrozen
@@ -43,7 +43,7 @@ export default function SpecialCard({
       <p
         className={`absolute ${
           isSelected ? "bg-black/90 text-[#efcb68]" : "bg-[#efcb68]"
-        } left-1/2 -translate-x-1/2 lg:-top-3.5 -top-2 border border-black/10 max-lg:text-xs rounded-full justify-center items-center lg:px-1.5 px-1 lg:py-0.5  font-medium flex `}
+        } left-1/2 -translate-x-1/2 lg:-top-3.5 -top-2 border  max-lg:text-xs rounded-full justify-center items-center lg:px-1.5 px-1 lg:py-0.5  font-medium flex `}
       >
         ¥{price}
       </p>
@@ -55,7 +55,7 @@ export default function SpecialCard({
       </div>
 
       <div
-        className={`text-center lg:px-2 px-1 flex border border-black/10 shadow-sm items-center font-medium justify-center relative ${
+        className={`text-center lg:px-2 px-1 flex border   items-center font-medium justify-center relative ${
           isSelected ? "bg-black/80 text-white" : "bg-black/5"
         } rounded-lg  lg:h-24 h-20`}
       >

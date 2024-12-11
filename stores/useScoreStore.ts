@@ -5,6 +5,8 @@ interface scoreStore {
   multiplier: number;
   turns: number;
   discard: number;
+  bossHp: number;
+  setBossHp: (bossHp: number) => void;
   setScore: (score: number) => void;
   setMultiplier: (multiplier: number) => void;
   setTurns: (turns: number) => void;
@@ -39,6 +41,8 @@ export const useScoreStore = create<scoreStore>((set) => ({
   multiplier: 0,
   turns: 4,
   discard: 4,
+  bossHp: 33900,
+  setBossHp: (bossHp) => set({ bossHp }),
   yen: 0,
   reroll: 0,
   announcement: "",

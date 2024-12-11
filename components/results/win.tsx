@@ -435,7 +435,7 @@ export const Win = () => {
           Buy or sell special cards to enchance the next round
         </p>
       </div>
-      <div className="relative grid lg:mt-5 mt-4 grid-cols-3 lg:gap-2 gap-0.5 lg:p-2 p-0.5 bg-black/5 border border-black/10 shadow-inner rounded-xl">
+      <div className="relative grid lg:mt-5 mt-4 grid-cols-3 lg:gap-2 gap-0.5 lg:p-2 p-0.5 bg-black/5 border  shadow-inner rounded-xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             japanese_katakana={card.japanese_katakana}
@@ -479,7 +479,7 @@ export const Win = () => {
             className="bg-blue-300  hover:bg-blue-300/80"
           />
 
-          <div className=" bg-white border border-black/10 shadow-sm p-2 font-medium rounded-full aspect-square lg:w-10 lg:h-10 w-6 text-xs h-6 flex items-center justify-center">
+          <div className=" bg-white border   p-2 font-medium rounded-full aspect-square lg:w-10 lg:h-10 w-6 text-xs h-6 flex items-center justify-center">
             {currentSpecialDeck.length}
           </div>
         </div>
@@ -489,7 +489,7 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-white relative border border-black/10 shadow-sm h-full mb-28 mt-1 lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
+        className="flex bg-white relative border   h-full mb-28 mt-1 lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
       >
         <ActionButton
           onClick={handleSellSpecial}
@@ -534,7 +534,7 @@ export const Win = () => {
 
         <div
           onClick={() => setValue(value.slice(0, -1))}
-          className="lg:hidden absolute -right-9  top-1/2 -translate-y-1/2 bg-white rounded-xl border border-black/10 shadow-sm p-1.5"
+          className="lg:hidden absolute -right-9  top-1/2 -translate-y-1/2 bg-white rounded-xl border   p-1.5"
         >
           <DeleteIcon className="w-4 h-4" />
         </div>

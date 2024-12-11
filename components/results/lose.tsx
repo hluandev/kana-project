@@ -68,7 +68,7 @@ export const Lose = () => {
           You Died
         </motion.div>
 
-        <div className="bg-white border border-black/20 shadow-sm flex items-center gap-2 rounded-full py-1 pl-1 pr-4">
+        <div className="bg-white border border-black/20  flex items-center gap-2 rounded-full py-1 pl-1 pr-4">
           <ActionButton
             hideTooltip
             onClick={handleLoseSubmit}

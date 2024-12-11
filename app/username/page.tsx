@@ -32,7 +32,7 @@ export default function UsernamePage() {
 
   return (
     <div className="flex justify-center items-center h-full flex-col">
-      <div className="bg-black/5 flex flex-col gap-2 w-80 border border-black/10 shadow-inner p-5 rounded-xl">
+      <div className="bg-black/5 flex flex-col gap-2 w-80 border  shadow-inner p-5 rounded-xl">
         <div>
           <p className="font-medium">What do you like to be called?</p>
           <p className=" text-black/50">
@@ -43,14 +43,14 @@ export default function UsernamePage() {
           <input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="bg-white border text-center w-full border-black/10 shadow-sm rounded-lg p-1.5"
+            className="bg-white border text-center w-full   rounded-lg p-1.5"
             type="text"
             placeholder="Username"
             name="username"
           />
           <p className="text-red-500  text-center">{errorMsg}</p>
           <button
-            className="mainBgColor flex justify-center items-center py-1.5 w-full rounded-lg border border-black/10 shadow-sm disabled:opacity-50"
+            className="mainBgColor flex justify-center items-center py-1.5 w-full rounded-lg border   disabled:opacity-50"
             type="submit"
           >
             {isChecking ? <Loader2 className="animate-spin" /> : "Save"}

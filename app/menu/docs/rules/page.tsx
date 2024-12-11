@@ -6,9 +6,9 @@ export default function Rules() {
     <Doc title="2. Rules">
       <div className="max-w-md mx-auto space-y-8">
         <DocDesc title="Hiragana and Katakana">
-          <div className="bg-[#fafafa] w-1/2 border  border-black/10 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
+          <div className="bg-[#fafafa] w-1/2 border   shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
             <button
-              className={`rounded-lg  py-2 bg-white border border-black/10 shadow-sm
+              className={`rounded-lg  py-2 bg-white border  
         }`}
             >
               Hiragana
@@ -36,7 +36,7 @@ export default function Rules() {
         </DocDesc>
         <DocDesc title="Round score">
           <div
-            className={`rounded-xl w-1/2 border border-black/10 shadow-sm bg-[#fafafa] p-2 overflow-hidden `}
+            className={`rounded-xl w-1/2 border   bg-[#fafafa] p-2 overflow-hidden `}
           >
             <div className="text-black/50  flex justify-center items-center pb-4 ">
               Score at least 300 points to clear this round.
@@ -45,7 +45,7 @@ export default function Rules() {
             <div className="rounded-lg font-medium overflow-hidden">
               <div className="relative h-8">
                 <div
-                  className={`absolute top-0 w-full rounded-xl right-0 h-full bg-white shadow-sm border border-black/10`}
+                  className={`absolute top-0 w-full rounded-xl right-0 h-full bg-white  border `}
                 />
                 <div className="absolute leading-none  w-full h-full flex gap-1 items-center justify-center text-center z-10">
                   <p>0</p> <p className="">/</p> <p>300</p>
@@ -62,7 +62,7 @@ export default function Rules() {
         </DocDesc>
         <DocDesc title="Hand's score">
           <div
-            className={`rounded-xl w-1/2 border border-black/10 shadow-sm bg-[#fafafa] p-2 overflow-hidden `}
+            className={`rounded-xl w-1/2 border   bg-[#fafafa] p-2 overflow-hidden `}
           >
             <div className="flex flex-col gap-1">
               <div className="">Hand</div>
@@ -71,10 +71,10 @@ export default function Rules() {
             </div>
 
             <div className="font-medium text-center grid mt-2 gap-2 grid-cols-2">
-              <div className="py-1.5 bg-white shadow-sm border border-black/10 rounded-lg text-blue-600">
+              <div className="py-1.5 bg-white  border  rounded-lg text-blue-600">
                 0
               </div>
-              <div className="py-1.5 bg-white shadow-sm border border-black/10 rounded-lg text-red-500">
+              <div className="py-1.5 bg-white  border  rounded-lg text-red-500">
                 0
               </div>
             </div>
@@ -86,21 +86,21 @@ export default function Rules() {
         </DocDesc>
         <DocDesc title="Information">
           <div
-            className={`rounded-xl grid grid-cols-2 w-1/2 grid-rows-2 p-2 bg-[#fafafa] border border-black/10 shadow-sm gap-2`}
+            className={`rounded-xl grid grid-cols-2 w-1/2 grid-rows-2 p-2 bg-[#fafafa] border   gap-2`}
           >
-            <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border border-black/10 shadow-sm  overflow-hidden">
+            <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border    overflow-hidden">
               <div className="text-black/50 ">Turns</div>
               <p className="font-medium">4</p>
             </div>
-            <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border border-black/10 shadow-sm  overflow-hidden">
+            <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border    overflow-hidden">
               <div className="text-black/50 ">Discards</div>
               <p className="font-medium">4</p>
             </div>
-            <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border border-black/10 shadow-sm  overflow-hidden">
+            <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border    overflow-hidden">
               <div className="text-black/50 ">Round</div>
               <p className="font-medium">4</p>
             </div>
-            <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border border-black/10 shadow-sm  overflow-hidden">
+            <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border    overflow-hidden">
               <div className="text-black/50 ">Money</div>
               <p className="font-medium">4</p>
             </div>
@@ -137,7 +137,7 @@ export default function Rules() {
 
         <DocDesc title="Upgrade cards">
           <div
-            className={`${"[background:linear-gradient(45deg,#fff,theme(colors.white)_50%,#fff)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.red.600/.48)_0%,theme(colors.red.500)_20%,theme(colors.indigo.300)_40%,theme(colors.indigo.500)_60%,theme(colors.slate.600/.48)_100%)_border-box] rounded-xl border-2 border-transparent animate-border"} relative bg-white border-2 bg-black/5 w-36 shadow-sm xl:p-2 p-1 rounded-lg`}
+            className={`${"[background:linear-gradient(45deg,#fff,theme(colors.white)_50%,#fff)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.red.600/.48)_0%,theme(colors.red.500)_20%,theme(colors.indigo.300)_40%,theme(colors.indigo.500)_60%,theme(colors.slate.600/.48)_100%)_border-box] rounded-xl border-2 border-transparent animate-border"} relative bg-white border-2 bg-black/5 w-36  xl:p-2 p-1 rounded-lg`}
           >
             <div>
               <div className="flex justify-between items-center">

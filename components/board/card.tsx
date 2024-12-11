@@ -19,15 +19,19 @@ export const Card = ({ card }: CardProps) => {
       initial={{
         opacity: 0,
         y: -100,
+        skew: 50,
       }}
       animate={{
         opacity: 1,
         y: 0,
+        skew: 0,
       }}
       onMouseEnter={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
-      className={`flex relative duration-300 border border-black/10 shadow-sm hover:scale-110 hover:shadow-lg hover:z-50 hover:-mt-5 h-24 w-16 p-1 lg:h-44 lg:w-[7.5rem] lg:p-2  ${
-        isSelected ? "bg-[#1d1d1f] text-white lg:-mt-10" : "bg-white"
+      className={`flex relative duration-300  hover:scale-110 hover:shadow-lg hover:z-50 hover:-mt-5 h-24 w-16 p-1 lg:h-44 lg:w-[7.5rem] lg:p-2  ${
+        isSelected
+          ? "bg-[#1d1d1f] text-white lg:-mt-10"
+          : "bg-black/80 backdrop-blur-xl"
       }  rounded-xl`}
     >
       {!showRomaji && onHover && (
@@ -50,7 +54,7 @@ export const Card = ({ card }: CardProps) => {
             card?.suit === "い" && "bg-[#ffe65e] text-black"
           } ${
             card?.suit === "え" && "bg-[#fc96df] text-black"
-          }  border border-black/10 shadow-sm lg:h-7 lg:w-7 h-5 w-5 rounded-md flex items-center justify-center`}
+          }   lg:h-7 lg:w-7 h-5 w-5 rounded-md flex items-center justify-center`}
         >
           {hiragana ? card?.suit : card?.suit_katakana}
         </p>

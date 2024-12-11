@@ -89,7 +89,7 @@ export default function ActionInput() {
         value={value}
         placeholder={isMobile ? "Choose text below" : "Type here"}
         readOnly={isMobile}
-        className="text-center w-full lg:w-52 lg:h-8 bg-white text-xs lg: placeholder:text-neutral-400 outline-none rounded-md"
+        className="text-center w-full lg:w-52 lg:h-8 bg-transparent placeholder:text-neutral-400 outline-none "
         onChange={handleChange}
       />
 
@@ -97,7 +97,7 @@ export default function ActionInput() {
 
       <div
         onClick={() => setValue(value.slice(0, -1))}
-        className="lg:hidden absolute -right-16  top-1/2 -translate-y-1/2 bg-white rounded-xl border border-black/10 shadow-sm p-1.5"
+        className="lg:hidden absolute -right-16 top-1/2 -translate-y-1/2 bg-white rounded-xl border p-1.5"
       >
         <DeleteIcon className="w-4 h-4" />
       </div>

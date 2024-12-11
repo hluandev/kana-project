@@ -21,7 +21,7 @@ export const VirtualKeyboard: React.FC<VirtualKeyboardProps> = ({
           <button
             key={item}
             onClick={() => handleClick(item)}
-            className="bg-white border active:bg-black/20 border-black/10 shadow-sm rounded-md aspect-square w-8 "
+            className="bg-white border active:bg-black/20   rounded-md aspect-square w-8 "
           >
             {item}
           </button>
@@ -33,7 +33,7 @@ export const VirtualKeyboard: React.FC<VirtualKeyboardProps> = ({
           <button
             key={item}
             onClick={() => handleClick(item)}
-            className="bg-white border active:bg-black/20 border-black/10 shadow-sm rounded-md aspect-square w-8 "
+            className="bg-white border active:bg-black/20   rounded-md aspect-square w-8 "
           >
             {item}
           </button>
@@ -45,7 +45,7 @@ export const VirtualKeyboard: React.FC<VirtualKeyboardProps> = ({
           <button
             key={item}
             onClick={() => handleClick(item)}
-            className="bg-white border active:bg-black/20 border-black/10 shadow-sm rounded-md aspect-square w-8 "
+            className="bg-white border active:bg-black/20   rounded-md aspect-square w-8 "
           >
             {item}
           </button>

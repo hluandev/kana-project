@@ -69,7 +69,7 @@ export default function CurrentPlayHand() {
     return progress >= target ? (
       <Win />
     ) : (
-      <div className="flex items-center flex-col lg:pb-2 pb-28">
+      <div className="flex items-center  w-full flex-col lg:pb-6 pb-28">
         <CurrentHand />
         <ActionsHand />
       </div>
@@ -77,7 +77,11 @@ export default function CurrentPlayHand() {
   };
 
   return (
-    <div className={`${turns === 0 && target > progress && "h-full"}`}>
+    <div
+      className={`${
+        turns === 0 && target > progress && "h-full"
+      } relative z-10`}
+    >
       {renderOutcome()}
     </div>
   );

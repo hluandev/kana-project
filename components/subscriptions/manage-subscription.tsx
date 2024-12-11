@@ -51,7 +51,7 @@ export default function ManageSubscription() {
             initial={{ opacity: 0, y: 10, x: "-50%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="hover:bg-gray-100 absolute -top-10 bg-white w-40 p-2 border border-black/10 shadow-sm left-1/2 -translate-x-1/2 flex justify-center items-center rounded-lg"
+            className="hover:bg-gray-100 absolute -top-10 bg-white w-40 p-2 border   left-1/2 -translate-x-1/2 flex justify-center items-center rounded-lg"
           >
             {error ? (
               error

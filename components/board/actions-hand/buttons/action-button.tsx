@@ -59,7 +59,7 @@ export const ActionButton = ({
     <div
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
-      className={`flex relative items-center border border-black/10 shadow-sm justify-center gap-2 w-6 lg:w-9 aspect-square text-center rounded-full duration-200 cursor-pointer ${className}`}
+      className={`flex relative items-center border   justify-center gap-2 w-6 lg:w-9 aspect-square text-center rounded-full duration-200 cursor-pointer ${className}`}
       onClick={handleClick}
     >
       <AnimatePresence>
@@ -68,7 +68,7 @@ export const ActionButton = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className={`absolute flex  flex-col p-2 gap-2 text-left bottom-10 z-50 left-6  w-32 bg-white  border border-black/10 shadow-sm rounded-xl ${
+            className={`absolute flex  flex-col p-2 gap-2 text-left bottom-10 z-50 left-6  w-32 bg-white  border   rounded-xl ${
               hideTooltip ? "hidden" : ""
             }`}
           >

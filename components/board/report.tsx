@@ -23,9 +23,7 @@ export const Report = () => {
                 <h2
                   onClick={() => setFeedback(false)}
                   className={`font-semibold ${
-                    feedback
-                      ? "bg-[#fafafa]"
-                      : "bg-black/5  border border-black/10 shadow-sm "
+                    feedback ? "bg-[#fafafa]" : "bg-black/5  border   "
                   } px-2 py-1 rounded-lg`}
                 >
                   Report bugs
@@ -33,9 +31,7 @@ export const Report = () => {
                 <h2
                   onClick={() => setFeedback(true)}
                   className={`font-semibold ${
-                    feedback
-                      ? " bg-black/5  border border-black/10 shadow-sm"
-                      : "bg-[#fafafa] "
+                    feedback ? " bg-black/5  border  " : "bg-[#fafafa] "
                   } px-2 py-1 rounded-lg`}
                 >
                   Send feedback
@@ -81,7 +77,7 @@ export const Report = () => {
 
       <div
         onClick={() => setIsOpen(true)}
-        className={`bg-white rounded-xl border border-black/10 shadow-sm  duration-300 lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center`}
+        className={`bg-white rounded-xl border    duration-300 lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center`}
       >
         <BugIcon className="lg:w-5 lg:h-5 w-4 h-4" strokeWidth={1.5} />
       </div>

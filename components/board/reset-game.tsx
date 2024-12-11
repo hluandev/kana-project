@@ -94,13 +94,13 @@ export const ResetGame = () => {
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="bg-blue-600 p-2 rounded-lg border border-black/10 shadow-sm text-white"
+                  className="bg-blue-600 p-2 rounded-lg border   text-white"
                 >
                   No
                 </button>
                 <button
                   onClick={handleLoseSubmit}
-                  className="bg-red-600 p-2 rounded-lg border border-black/10 shadow-sm text-white"
+                  className="bg-red-600 p-2 rounded-lg border   text-white"
                 >
                   Yes
                 </button>
@@ -111,7 +111,7 @@ export const ResetGame = () => {
       </AnimatePresence>
       <div
         onClick={() => setIsOpen(true)}
-        className={`bg-white rounded-xl border border-black/10 shadow-sm  duration-300 lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center`}
+        className={`bg-white rounded-xl border    duration-300 lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center`}
       >
         <RotateCwIcon className="lg:w-5 lg:h-5 w-4 h-4" strokeWidth={1.5} />
       </div>
