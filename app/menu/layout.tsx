@@ -27,9 +27,7 @@ export default async function MenuLayout({
         initialPlayerInfo={initialPlayerInfo ?? []}
       />
 
-      <div className="lg:p-2 p-1">
-        <LeftSide />
-      </div>
+      <LeftSide />
 
       <Board>{children}</Board>
 
