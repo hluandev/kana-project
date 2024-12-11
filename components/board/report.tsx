@@ -18,7 +18,7 @@ export const Report = () => {
             animate={{ opacity: 1, y: 0 }}
             className="bg-white rounded-xl w-1/2 h-2/3 lg:w-1/4 lg:h-1/3 lg:p-4 p-2 flex flex-col gap-y-2"
           >
-            <div className="flex justify-between items-center text-sm">
+            <div className="flex justify-between items-center ">
               <div className="flex gap-2 items-center ">
                 <h2
                   onClick={() => setFeedback(false)}
@@ -49,7 +49,7 @@ export const Report = () => {
                   ? "Any feedback would be highly appreciated. Thank you!"
                   : "Please describe the bug in details as much as possible and steps to reproduce it. Thank you!"
               }
-              className="w-full border text-sm h-full border-black/20 rounded-lg p-2"
+              className="w-full border  h-full border-black/20 rounded-lg p-2"
               value={text}
               onChange={(e) => setText(e.target.value)}
             ></textarea>
@@ -73,7 +73,7 @@ export const Report = () => {
                 <Send className="w-3.5 h-3.5" />
               )}
 
-              <p className="text-sm">{feedback ? "Send" : "Report"}</p>
+              <p className="">{feedback ? "Send" : "Report"}</p>
             </button>
           </motion.div>
         </div>

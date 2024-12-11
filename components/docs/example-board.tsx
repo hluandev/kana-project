@@ -6,7 +6,7 @@ interface Props {
 
 export const ExampleBoard = ({ shop }: Props) => {
   return (
-    <div className="grid grid-cols-12 gap-2 h-[40rem] bg-black/10 text-sm rounded-xl p-2">
+    <div className="grid grid-cols-12 gap-2 h-[40rem] bg-black/10  rounded-xl p-2">
       <div className="col-span-2 bg-white/50 rounded-xl p-2 flex flex-col justify-between">
         <div className="space-y-2">
           <div className="grid grid-cols-2 border border-black/10 shadow-inner text-center items-center  bg-black/5 rounded-md p-1">

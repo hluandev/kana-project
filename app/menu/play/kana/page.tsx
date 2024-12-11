@@ -7,7 +7,6 @@ import { ShowUpgradeButton } from "@/components/board/show-upgrade-button";
 import { SpecialHands } from "@/components/board/special-hand";
 import { Tools } from "@/components/board/tools";
 import { CurrentInfo } from "@/components/left-side/game-info/components/current-info";
-import { ReturnButton } from "@/components/left-side/game-info/components/return-button";
 import { Score } from "@/components/left-side/game-info/components/score";
 import { ScoreDamage } from "@/components/left-side/game-info/components/score-damage";
 import Warning from "@/components/warning";

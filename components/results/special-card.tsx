@@ -59,7 +59,7 @@ export default function SpecialCard({
           isSelected ? "bg-black/80 text-white" : "bg-black/5"
         } rounded-lg  lg:h-24 h-20`}
       >
-        <div className="font-medium xl:text-sm text-xs">
+        <div className="font-medium xl: text-xs">
           {card.condition === "xmultiples" && (
             <span className="text-red-500">x{card.reward} mul </span>
           )}

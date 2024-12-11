@@ -19,7 +19,7 @@ export default async function MenuLayout({
   const initialSpecial = await fetchKanaSpecial();
   const initialPlayerInfo = await fetchPlayerInfo();
   return (
-    <section className="flex max-lg:flex-col-reverse h-full bg-black/5 shadow-inner">
+    <section className="flex max-lg:flex-col-reverse h-full">
       <DataInit
         initialSpecial={initialSpecial ?? []}
         initialData={initialData ?? []}

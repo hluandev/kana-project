@@ -30,8 +30,8 @@ export const ProgressBar = ({ target }: ProgressBarProps) => {
           animate={{ width: `${100 - percentage}%` }}
           transition={{ duration: 0.5 }}
         />
-        <div className="absolute leading-none text-sm w-full h-full flex gap-1 items-center justify-center text-center z-10">
-          <p>{progress}</p> <p className="text-sm">/</p> <p>{target}</p>
+        <div className="absolute leading-none  w-full h-full flex gap-1 items-center justify-center text-center z-10">
+          <p>{progress}</p> <p className="">/</p> <p>{target}</p>
         </div>
       </div>
     </div>

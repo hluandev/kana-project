@@ -125,7 +125,7 @@ export const WinTheGame = () => {
               <div>
                 <h1 className=" font-semibold">Play again</h1>
               </div>
-              <p className="text-neutral-700 text-sm">
+              <p className="text-neutral-700 ">
                 Start the game from the beginning.
               </p>
             </div>
@@ -136,9 +136,9 @@ export const WinTheGame = () => {
             >
               <div>
                 <h1 className=" font-semibold">Play endless</h1>
-                <p className="text-sm text-black/50">Premium required</p>
+                <p className=" text-black/50">Premium required</p>
               </div>
-              <p className="text-neutral-700 text-sm">
+              <p className="text-neutral-700 ">
                 Play the game in endless mode and keep scoring higher and
                 higher.
               </p>

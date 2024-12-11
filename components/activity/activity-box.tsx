@@ -21,7 +21,7 @@ export const ActivityBox = ({
         </div>
       ) : (
         <div className="flex flex-col justify-between lg:gap-2 h-full">
-          <p className=" text-sm">{title}</p>
+          <p className=" ">{title}</p>
           <p className={` font-semibold ${textColor}`}>{value}</p>
         </div>
       )}

@@ -6,7 +6,7 @@ export default function Rules() {
     <Doc title="2. Rules">
       <div className="max-w-md mx-auto space-y-8">
         <DocDesc title="Hiragana and Katakana">
-          <div className="bg-[#fafafa] w-1/2 border text-sm border-black/10 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
+          <div className="bg-[#fafafa] w-1/2 border  border-black/10 shadow-inner flex-1  rounded-xl p-1 grid grid-cols-2 gap-2">
             <button
               className={`rounded-lg  py-2 bg-white border border-black/10 shadow-sm
         }`}
@@ -38,7 +38,7 @@ export default function Rules() {
           <div
             className={`rounded-xl w-1/2 border border-black/10 shadow-sm bg-[#fafafa] p-2 overflow-hidden `}
           >
-            <div className="text-black/50 text-sm flex justify-center items-center pb-4 ">
+            <div className="text-black/50  flex justify-center items-center pb-4 ">
               Score at least 300 points to clear this round.
             </div>
 
@@ -47,8 +47,8 @@ export default function Rules() {
                 <div
                   className={`absolute top-0 w-full rounded-xl right-0 h-full bg-white shadow-sm border border-black/10`}
                 />
-                <div className="absolute leading-none text-sm w-full h-full flex gap-1 items-center justify-center text-center z-10">
-                  <p>0</p> <p className="text-sm">/</p> <p>300</p>
+                <div className="absolute leading-none  w-full h-full flex gap-1 items-center justify-center text-center z-10">
+                  <p>0</p> <p className="">/</p> <p>300</p>
                 </div>
               </div>
             </div>
@@ -65,7 +65,7 @@ export default function Rules() {
             className={`rounded-xl w-1/2 border border-black/10 shadow-sm bg-[#fafafa] p-2 overflow-hidden `}
           >
             <div className="flex flex-col gap-1">
-              <div className="text-sm">Hand</div>
+              <div className="">Hand</div>
 
               <div className="text-xl font-semibold">0</div>
             </div>
@@ -89,19 +89,19 @@ export default function Rules() {
             className={`rounded-xl grid grid-cols-2 w-1/2 grid-rows-2 p-2 bg-[#fafafa] border border-black/10 shadow-sm gap-2`}
           >
             <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border border-black/10 shadow-sm  overflow-hidden">
-              <div className="text-black/50 text-sm">Turns</div>
+              <div className="text-black/50 ">Turns</div>
               <p className="font-medium">4</p>
             </div>
             <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border border-black/10 shadow-sm  overflow-hidden">
-              <div className="text-black/50 text-sm">Discards</div>
+              <div className="text-black/50 ">Discards</div>
               <p className="font-medium">4</p>
             </div>
             <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border border-black/10 shadow-sm  overflow-hidden">
-              <div className="text-black/50 text-sm">Round</div>
+              <div className="text-black/50 ">Round</div>
               <p className="font-medium">4</p>
             </div>
             <div className="rounded-xl bg-white p-3 h-24 flex flex-col justify-between leading-none border border-black/10 shadow-sm  overflow-hidden">
-              <div className="text-black/50 text-sm">Money</div>
+              <div className="text-black/50 ">Money</div>
               <p className="font-medium">4</p>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function Rules() {
                   <span className="text-red-500">+3</span>{" "}
                 </p>
               </div>
-              <p className="text-sm text-black/50">Three Of A Kind</p>
+              <p className=" text-black/50">Three Of A Kind</p>
             </div>
           </div>
 

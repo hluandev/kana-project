@@ -7,9 +7,9 @@ export const Menu = () => {
     <div className="flex flex-col justify-between h-full">
       <TopInfo />
 
-      <div className="space-y-4 max-lg:hidden">
+      {/* <div className="space-y-4 max-lg:hidden">
         <PlayerLevel />
-      </div>
+      </div> */}
     </div>
   );
 };

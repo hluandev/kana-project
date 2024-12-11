@@ -9,7 +9,7 @@ interface LinkNavProps {
   onClick?: () => void;
 }
 
-export const LinkNav = ({ href, children, blank, onClick }: LinkNavProps) => {
+export const LinkNav = ({ href, children, blank, onClick, icon }: LinkNavProps) => {
   const pathname = usePathname();
 
   return (
@@ -18,10 +18,11 @@ export const LinkNav = ({ href, children, blank, onClick }: LinkNavProps) => {
       prefetch={true}
       href={href}
       target={blank ? "_blank" : undefined}
-      className={`flex hover:text-neutral-950 ${
-        pathname === href ? "underline" : ""
-      } font-medium text-sm duration-300 p-1 rounded-md items-center`}
+      className={`flex gap-2 hover:text-neutral-950 w-fit rounded-full ${
+        pathname === href ? "bg-black/20 " : ""
+      } font-medium  duration-300 px-2.5 py-1 items-center`}
     >
+      <div>{icon}</div>
       <p>{children}</p>
     </Link>
   );

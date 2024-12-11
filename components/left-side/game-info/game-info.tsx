@@ -7,7 +7,7 @@ import { SwitchKana } from "./components/switch-kana";
 
 export const GameInfo = () => {
   return (
-    <div className="flex flex-col text-xs lg:text-sm h-full justify-between">
+    <div className="flex flex-col text-xs lg: h-full justify-between">
       <div className="lg:space-y-2 space-y-1">
         <div className="flex gap-1 w-full">
           <ReturnButton />

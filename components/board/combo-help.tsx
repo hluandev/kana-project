@@ -5,7 +5,7 @@ export const ComboHelp = () => {
         <div className="space-y-1.5 flex flex-col ">
           <div>
             <p className="font-medium ">Straight Flush</p>
-            <p className="text-sm">5 cards in sequence with the same suit</p>
+            <p className="">5 cards in sequence with the same suit</p>
           </div>
           <div className="flex gap-2 bg-white/50 border border-black/10 shadow-sm p-2 rounded-lg w-fit">
             <div className="flex items-center gap-1.5">
@@ -51,7 +51,7 @@ export const ComboHelp = () => {
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium">Four of a Kind</p>
-            <p className="text-sm">4 cards of the same rank</p>
+            <p className="">4 cards of the same rank</p>
           </div>
           <div className="flex gap-2">
             <div className="flex gap-2 bg-white/50 border border-black/10 shadow-sm p-2 rounded-lg">
@@ -99,7 +99,7 @@ export const ComboHelp = () => {
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Full House</p>
-            <p className="text-sm">
+            <p className="">
               3 cards of the same rank and 2 cards of another rank
             </p>
           </div>
@@ -152,7 +152,7 @@ export const ComboHelp = () => {
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Flush</p>
-            <p className="text-sm">5 cards of the same suit</p>
+            <p className="">5 cards of the same suit</p>
           </div>
           <div className="flex gap-2 bg-white/50 border border-black/10 shadow-sm p-2 rounded-lg w-fit">
             <div className="flex items-center gap-1.5">
@@ -198,7 +198,7 @@ export const ComboHelp = () => {
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Straight</p>
-            <p className="text-sm">5 cards in sequence</p>
+            <p className="">5 cards in sequence</p>
           </div>
           <div className="flex gap-2 bg-white/50 border border-black/10 shadow-sm p-2 rounded-lg w-fit">
             <div className="flex items-center gap-1.5">
@@ -246,7 +246,7 @@ export const ComboHelp = () => {
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Three of a Kind</p>
-            <p className="text-sm">3 cards of the same rank</p>
+            <p className="">3 cards of the same rank</p>
           </div>
           <div className="flex gap-2">
             <div className="flex gap-2 bg-white/50 border border-black/10 shadow-sm p-2 rounded-lg">
@@ -295,7 +295,7 @@ export const ComboHelp = () => {
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Two Pair</p>
-            <p className="text-sm">
+            <p className="">
               2 cards of the same rank and 2 cards of another rank
             </p>
           </div>
@@ -349,7 +349,7 @@ export const ComboHelp = () => {
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">Pair</p>
-            <p className="text-sm">2 cards of the same rank</p>
+            <p className="">2 cards of the same rank</p>
           </div>
           <div className="flex gap-2">
             <div className="flex gap-2 bg-white/50 border border-black/10 shadow-sm p-2 rounded-lg">
@@ -398,7 +398,7 @@ export const ComboHelp = () => {
         <div className="space-y-1.5 flex flex-col">
           <div>
             <p className="font-medium ">High Card</p>
-            <p className="text-sm">No hand combination</p>
+            <p className="">No hand combination</p>
           </div>
           <div className="flex gap-2">
             <div className="flex items-center gap-1.5">

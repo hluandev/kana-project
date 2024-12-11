@@ -92,7 +92,7 @@ export const SpecialHands = () => {
             } relative lg:p-2 grid grid-cols-5 gap-1 w-full  rounded-xl bg-black/5 border border-black/10 shadow-inner`}
           >
             {currentSpecial.length === 0 && (
-              <p className="text-center absolute top-1/2 text-xs lg:text-sm -translate-y-1/2 w-full text-black/40 ">
+              <p className="text-center absolute top-1/2 text-xs lg: -translate-y-1/2 w-full text-black/40 ">
                 No special cards
               </p>
             )}

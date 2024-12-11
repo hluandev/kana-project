@@ -9,7 +9,7 @@ export default function Inbox() {
   const { messages, setMessages } = useInboxStore();
 
   return (
-    <div className="space-y-3 bg-white p-3 rounded-xl border border-black/10 shadow-sm max-w-xl text-sm mx-auto h-full overflow-y-auto">
+    <div className="space-y-3 bg-white p-3 rounded-xl border border-black/10 shadow-sm max-w-xl  mx-auto h-full overflow-y-auto">
       <h1 className=" leading-none font-medium text-black/50">
         Inbox for your reports and feedbacks
       </h1>

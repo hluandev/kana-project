@@ -82,7 +82,7 @@ export const ResetGame = () => {
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 200 }}
-              className="bg-[#fafafa] rounded-xl w-[16rem] p-3 text-sm flex flex-col gap-y-2"
+              className="bg-[#fafafa] rounded-xl w-[16rem] p-3  flex flex-col gap-y-2"
             >
               <div className="flex flex-col">
                 <p className="font-medium">Do you want to reset the game?</p>

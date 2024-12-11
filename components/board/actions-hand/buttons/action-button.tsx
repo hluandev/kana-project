@@ -68,7 +68,7 @@ export const ActionButton = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className={`absolute flex text-sm flex-col p-2 gap-2 text-left bottom-10 z-50 left-6  w-32 bg-white  border border-black/10 shadow-sm rounded-xl ${
+            className={`absolute flex  flex-col p-2 gap-2 text-left bottom-10 z-50 left-6  w-32 bg-white  border border-black/10 shadow-sm rounded-xl ${
               hideTooltip ? "hidden" : ""
             }`}
           >

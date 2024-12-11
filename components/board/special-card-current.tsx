@@ -58,7 +58,7 @@ export const SpecialCardCurrent = ({
     >
       {turns >= 0 && mission?.target <= progress && (
         <p
-          className={`text-sm ${
+          className={` ${
             isSelected ? "bg-black/90 text-[#efcb68]" : "bg-[#efcb68]"
           } absolute left-1/2 -translate-x-1/2 lg:px-1.5 lg:py-0.5 px-1 max-lg:text-xs font-medium border border-black/10 -top-0 -translate-y-1/2 rounded-full`}
         >
@@ -100,7 +100,7 @@ export const SpecialCardCurrent = ({
                 setSelectedSpecial([]);
               }
             }}
-            className="absolute lg:top-2 lg:left-2 z-50 max-lg:-bottom-9 max-lg:left-1/2 max-lg:-translate-x-1/2 text-xs lg:text-sm bg-black/80 border border-black/10 shadow-sm text-white aspect-square lg:w-7 w-6 flex justify-center items-center rounded-lg cursor-pointer hover:bg-black"
+            className="absolute lg:top-2 lg:left-2 z-50 max-lg:-bottom-9 max-lg:left-1/2 max-lg:-translate-x-1/2 text-xs lg: bg-black/80 border border-black/10 shadow-sm text-white aspect-square lg:w-7 w-6 flex justify-center items-center rounded-lg cursor-pointer hover:bg-black"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -117,7 +117,7 @@ export const SpecialCardCurrent = ({
       </p>
 
       <p
-        className={`text-center lg:rounded-xl rounded-lg border border-black/10 text-sm shadow-sm relative lg:px-2 lg:h-60 px-1 h-60 flex justify-center items-center  ${
+        className={`text-center lg:rounded-xl rounded-lg border border-black/10  shadow-sm relative lg:px-2 lg:h-60 px-1 h-60 flex justify-center items-center  ${
           isSelected ? "bg-black/80 text-white" : "bg-black/5"
         } backdrop-blur-lg`}
       >

@@ -511,7 +511,7 @@ export const Win = () => {
           readOnly={isMobile}
           onChange={handleInputChange}
           placeholder={isMobile ? "Choose text below" : "Type here"}
-          className="flex text-center text-sm outline-none rounded-md"
+          className="flex text-center  outline-none rounded-md"
         />
 
         <ActionButton

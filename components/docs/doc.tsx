@@ -7,8 +7,8 @@ interface DocProps {
 export const Doc = ({ title, children, mxAuto = false }: DocProps) => {
   return (
     <div className={`space-y-4 ${mxAuto && "mx-auto max-w-md"}`}>
-      <h2 className="pl-0.5 font-medium mx-auto text-sm max-w-md">{title}</h2>
-      <div className="space-y-4 text-sm">{children}</div>
+      <h2 className="pl-0.5 font-medium mx-auto  max-w-md">{title}</h2>
+      <div className="space-y-4 ">{children}</div>
     </div>
   );
 };

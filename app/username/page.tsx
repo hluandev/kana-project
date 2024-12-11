@@ -35,7 +35,7 @@ export default function UsernamePage() {
       <div className="bg-black/5 flex flex-col gap-2 w-80 border border-black/10 shadow-inner p-5 rounded-xl">
         <div>
           <p className="font-medium">What do you like to be called?</p>
-          <p className="text-sm text-black/50">
+          <p className=" text-black/50">
             This username will be seen on leaderboard.
           </p>
         </div>
@@ -48,7 +48,7 @@ export default function UsernamePage() {
             placeholder="Username"
             name="username"
           />
-          <p className="text-red-500 text-sm text-center">{errorMsg}</p>
+          <p className="text-red-500  text-center">{errorMsg}</p>
           <button
             className="mainBgColor flex justify-center items-center py-1.5 w-full rounded-lg border border-black/10 shadow-sm disabled:opacity-50"
             type="submit"

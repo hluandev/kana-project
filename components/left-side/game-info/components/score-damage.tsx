@@ -9,7 +9,7 @@ export const ScoreDamage = () => {
   return (
     <Box className="flex flex-col max-lg:justify-between lg:gap-1">
       <div className="flex flex-col gap-1">
-        <div className="text-sm">
+        <div className="">
           {announcement === ""
             ? "Hand"
             : announcement

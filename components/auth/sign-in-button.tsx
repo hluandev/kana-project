@@ -32,7 +32,7 @@ export const SignInButton = ({ brand, signInWith, icon, onClick }: Props) => {
 
   return (
     <button
-      className="bg-white hover:bg-neutral-100 duration-200 flex justify-center items-center w-64 text-sm rounded-md h-11 border border-black/10 shadow-sm"
+      className="bg-white hover:bg-neutral-100 duration-200 flex justify-center items-center w-64  rounded-md h-11 border border-black/10 shadow-sm"
       onClick={onClick || handleSignIn}
     >
       {loading ? (
