@@ -36,16 +36,16 @@ export default function SpecialCard({
           : isFrozen
           ? "border-blue-500 bg-blue-200"
           : card.condition === "upgrade"
-          ? "bg-purple-100"
-          : "bg-white"
+          ? "bg-black/90 backdrop-blur-xl"
+          : "bg-black/70 backdrop-blur-xl"
       } rounded-xl`}
     >
       <p
         className={`absolute ${
-          isSelected ? "bg-black/90 text-[#efcb68]" : "bg-[#efcb68]"
-        } left-1/2 -translate-x-1/2 lg:-top-3.5 -top-2 border  max-lg:text-xs rounded-full justify-center items-center lg:px-1.5 px-1 lg:py-0.5  font-medium flex `}
+          isSelected ? "bg-black/90 text-[#efcb68]" : "bg-[#efcb68] text-black"
+        } left-1/2 -translate-x-1/2 lg:-top-3 -top-2   max-lg:text-xs rounded-full justify-center items-center lg:px-2 px-1 lg:py-0.5  font-medium flex `}
       >
-        ¥{price}
+        {price}
       </p>
 
       <div className="flex-1">
@@ -55,8 +55,10 @@ export default function SpecialCard({
       </div>
 
       <div
-        className={`text-center lg:px-2 px-1 flex border   items-center font-medium justify-center relative ${
-          isSelected ? "bg-black/80 text-white" : "bg-black/5"
+        className={`text-center lg:px-2 px-1 flex   items-center font-medium justify-center relative ${
+          isSelected
+            ? "bg-black/80 text-white"
+            : "bg-white/15 border border-white/15"
         } rounded-lg  lg:h-24 h-20`}
       >
         <div className="font-medium xl: text-xs">
@@ -66,13 +68,13 @@ export default function SpecialCard({
 
           {card.condition === "upgrade" && (
             <span>
-              <span className="text-blue-600">+{card.reward_points}</span> /
+              <span className="text-green-500">+{card.reward_points}</span> /
               <span className="text-red-500">+{card.reward_multiplier}</span>{" "}
             </span>
           )}
 
           {card.condition === "points" && (
-            <span className="text-blue-600">+{card.reward} pts </span>
+            <span className="text-green-500">+{card.reward} pts </span>
           )}
 
           {card.condition === "multiples" && (

@@ -51,7 +51,7 @@ export const DiscardSelected = () => {
       playSound("DISCARD");
       await saveGame();
     } else {
-      setWarning("You can't discard anymore cards");
+      setWarning("You are out of mana");
       playSound("ERROR");
     }
   };

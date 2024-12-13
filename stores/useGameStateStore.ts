@@ -26,6 +26,7 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
     await saveGameState({
       turns: scoreState.turns,
       score: scoreState.score,
+      bossHp: scoreState.bossHp,
       multiplier: scoreState.multiplier,
       progress: scoreState.progress,
       missionID: scoreState.missionID,
@@ -52,6 +53,7 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
         useScoreStore.setState({
           turns: data.turns,
           score: data.score,
+          bossHp: data.bossHp,
           multiplier: data.multiplier,
           progress: data.progress,
           missionID: data.missionID,

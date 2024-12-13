@@ -5,6 +5,7 @@ import React, { useCallback } from "react";
 import { ActionButton } from "../board/actions-hand/buttons/action-button";
 import {
   ArrowRightIcon,
+  BadgeJapaneseYenIcon,
   DeleteIcon,
   JapaneseYenIcon,
   RefreshCwIcon,
@@ -421,21 +422,21 @@ export const Win = () => {
 
   return (
     <div className="w-fit relative gap-1 flex flex-col items-center">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col gap-2 items-center">
         <motion.div
           className="text-[#cb980b] font-medium lg:text-6xl text-4xl"
           initial={{ opacity: 0, scale: 2 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2 }}
         >
-          You Defeated
+          Reach Checkpoint
         </motion.div>
 
         <p className="font-medium text-xs lg:text-base text-black/90">
           Buy or sell special cards to enchance the next round
         </p>
       </div>
-      <div className="relative grid lg:mt-5 mt-4 grid-cols-3 lg:gap-2 gap-0.5 lg:p-2 p-0.5 bg-black/5 border  shadow-inner rounded-xl">
+      <div className="relative grid lg:mt-5 mt-4 grid-cols-3 lg:gap-2 gap-0.5 lg:p-2 p-0.5  bg-black/20 backdrop-blur-xl shadow-inner rounded-xl">
         {randomSpecialCards.map((card) => (
           <SpecialCard
             japanese_katakana={card.japanese_katakana}
@@ -450,6 +451,11 @@ export const Win = () => {
             )}
           />
         ))}
+
+        <div className="absolute  text-[#efcb68] flex-col  gap-2 -left-[6.7rem] top-0 bg-black/80 backdrop-blur-xl w-24 h-32 flex items-center justify-center rounded-xl">
+          <BadgeJapaneseYenIcon strokeWidth={1.7} />{" "}
+          <p className="font-semibold">{yen}</p>
+        </div>
 
         <div className="absolute lg:-right-12 -right-8 top-0 space-y-2">
           <ActionButton
@@ -479,7 +485,7 @@ export const Win = () => {
             className="bg-blue-300  hover:bg-blue-300/80"
           />
 
-          <div className=" bg-white border   p-2 font-medium rounded-full aspect-square lg:w-10 lg:h-10 w-6 text-xs h-6 flex items-center justify-center">
+          <div className=" bg-black/80 backdrop-blur-xl  p-2 font-medium rounded-full aspect-square lg:w-9 lg:h-9 w-6 text-xs h-6 flex items-center justify-center">
             {currentSpecialDeck.length}
           </div>
         </div>
@@ -489,7 +495,7 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-white relative border   h-full mb-28 mt-1 lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
+        className="flex bg-black/80 backdrop-blur-xl relative h-full mb-28 mt-1 lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
       >
         <ActionButton
           onClick={handleSellSpecial}
@@ -511,7 +517,7 @@ export const Win = () => {
           readOnly={isMobile}
           onChange={handleInputChange}
           placeholder={isMobile ? "Choose text below" : "Type here"}
-          className="flex text-center  outline-none rounded-md"
+          className="flex text-center bg-transparent outline-none rounded-md"
         />
 
         <ActionButton

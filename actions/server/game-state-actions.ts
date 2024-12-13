@@ -7,6 +7,7 @@ interface GameStateData {
   turns: number;
   score: number;
   multiplier: number;
+  bossHp: number;
   progress: number;
   missionID: number;
   currentHand: any[];

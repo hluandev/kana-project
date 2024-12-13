@@ -17,7 +17,7 @@ export default function Play() {
         linkText="Coming Soon"
         href="/menu/play/gate2"
         stage={2}
-        videoSrc="/video/katakana.mp4"
+        videoSrc="/video/dragon.mp4"
         title="カタカナ"
         description="Katakana the second challenger."
       />
