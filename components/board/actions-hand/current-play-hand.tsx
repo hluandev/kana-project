@@ -72,10 +72,7 @@ export default function CurrentPlayHand() {
       <Win />
     ) : (
       <div className="flex items-center  w-full flex-col lg:pb-6 pb-28 space-y-2">
-        <div className="flex justify-between items-end w-full">
-          <Score />
-          <ScoreDamage />
-        </div>
+        <Score />
         <CurrentHand />
         <ActionsHand />
       </div>

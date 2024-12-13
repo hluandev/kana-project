@@ -28,10 +28,10 @@ export const Card = ({ card }: CardProps) => {
       }}
       onMouseEnter={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
-      className={`flex relative duration-300  hover:scale-110 hover:shadow-lg hover:z-50 hover:-mt-5 h-24 w-16 p-1 lg:h-44 lg:w-[7.5rem] lg:p-2  ${
+      className={`flex border-2 relative duration-300  hover:scale-110 hover:shadow-lg hover:z-50 hover:-mt-5 h-24 w-16 p-1 lg:h-44 lg:w-[7.5rem] lg:p-1.5  ${
         isSelected
-          ? "bg-[#1d1d1f] text-white lg:-mt-10"
-          : "bg-black/80 backdrop-blur-xl"
+          ? "bg-black border-blue-400 text-white lg:-mt-3"
+          : "bg-black/80 border-transparent backdrop-blur-xl"
       }  rounded-xl`}
     >
       {!showRomaji && onHover && (

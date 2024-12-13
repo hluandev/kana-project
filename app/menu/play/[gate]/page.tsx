@@ -14,6 +14,7 @@ import { useKanaStore } from "@/stores/useKanaStore";
 import { Avatars } from "@/components/board/avatars";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { useScoreStore } from "@/stores/useScoreStore";
+import { ProgressBar } from "@/components/left-side/game-info/components/progress-bar";
 
 const Kana = () => {
   const { currentUpgrades } = useKanaStore();
@@ -45,7 +46,12 @@ const Kana = () => {
       <CurrentPlayHand />
 
       <div className="absolute flex justify-between w-full left-0 px-20 top-1/2 -translate-y-1/2 z-10">
-        <Avatars player name={info.username} videoSrc="/video/player.mp4" />
+        <div className="relative">
+          <Avatars player name={info.username} videoSrc="/video/player.mp4" />
+          <div className="-right-56 top-1/2 -translate-y-1/2  z-50 absolute">
+            <ScoreDamage />
+          </div>
+        </div>
 
         <Avatars name="Hiragana" videoSrc="/video/hiragana2.mp4" />
       </div>
