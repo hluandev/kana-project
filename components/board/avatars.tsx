@@ -27,12 +27,14 @@ export const Avatars = ({ videoSrc, name, player }: AvatarsProps) => {
 
       <div className="relative z-10">{player ? <PlayerHp /> : <BossHp />}</div>
 
-      <div className="space-y-4 flex items-end justify-between relative z-10">
-        <div className="space-y-2">
-          <p className="text-2xl font-semibold leading-none">{name}</p>
-          <p className="">fas</p>
+      {!player && (
+        <div className="space-y-4 flex items-end justify-between relative z-10">
+          <div className="space-y-2">
+            <p className="text-2xl font-semibold leading-none">{name}</p>
+            <p className="">fas</p>
+          </div>
         </div>
-      </div>
+      )}
     </motion.div>
   );
 };
