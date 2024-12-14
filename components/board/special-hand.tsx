@@ -42,8 +42,8 @@ export const SpecialHands = () => {
       {!hasWonGame && (
         <div className="relative z-10 pt-2">
           {currentUpgrades.length > 0 && (!isMobile || showUpgrades) && (
-            <div className="fixed bottom-2 left-2 space-y-2">
-              <div className="grid grid-cols-2 gap-2 rounded-lg">
+            <div className="fixed top-2 left-2 space-y-2">
+              <div className="grid grid-cols-3 gap-2 rounded-lg">
                 {Object.entries(
                   currentUpgrades.reduce(
                     (
