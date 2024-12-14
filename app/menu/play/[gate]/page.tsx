@@ -13,8 +13,6 @@ import Warning from "@/components/warning";
 import { useKanaStore } from "@/stores/useKanaStore";
 import { Avatars } from "@/components/board/avatars";
 import { usePlayerStore } from "@/stores/usePlayerStore";
-import { useScoreStore } from "@/stores/useScoreStore";
-import { ProgressBar } from "@/components/left-side/game-info/components/progress-bar";
 
 const Kana = () => {
   const { currentUpgrades } = useKanaStore();
@@ -46,13 +44,13 @@ const Kana = () => {
 
       <div className="absolute flex justify-between w-full left-0 px-20 top-1/2 -translate-y-1/2 z-[5]">
         <div className="relative">
-          <Avatars player name={info.username} videoSrc="/video/player.mp4" />
+          <Avatars player name={info.username} videoSrc="player.mp4" />
           <div className="absolute bottom-0 w-full p-2">
             <ScoreDamage />
           </div>
         </div>
 
-        <Avatars name="Hiragana" videoSrc="/video/dragon.mp4" />
+        <Avatars name="Hiragana" videoSrc="hiragana.mp4" />
       </div>
 
       <div className="absolute w-full blur-3xl h-full pointer-events-none">
@@ -75,7 +73,7 @@ const Kana = () => {
           playsInline
           className="absolute right-0 w-1/2 h-full object-cover object-left mix-blend-overlay pointer-events-none"
         >
-          <source src={"/video/dragon.mp4"} type="video/mp4" />
+          <source src={"/video/hiragana.mp4"} type="video/mp4" />
         </video>
       </div>
 

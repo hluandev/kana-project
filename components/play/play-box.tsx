@@ -1,5 +1,6 @@
 "use client";
 
+import { useVideoUrl } from "@/hooks/useVideoUrl";
 import { motion } from "framer-motion";
 import { LockIcon, SwordIcon } from "lucide-react";
 import Link from "next/link";
@@ -11,7 +12,8 @@ interface PlayBoxProps {
   linkText: string;
   href: string;
   disabled?: boolean;
-  videoSrc?: string;
+  videoSrc: string;
+  onClick?: () => void;
 }
 
 export const PlayBox = ({
@@ -22,7 +24,9 @@ export const PlayBox = ({
   href,
   disabled,
   videoSrc,
+  onClick,
 }: PlayBoxProps) => {
+  const { videoUrl, loading } = useVideoUrl(videoSrc);
   return (
     <motion.div
       initial={{ opacity: 0, y: 200 }}
@@ -31,7 +35,7 @@ export const PlayBox = ({
         disabled ? "bg-neutral-900" : ""
       }  flex flex-col p-2 justify-between`}
     >
-      {videoSrc && (
+      {videoSrc && !loading && (
         <video
           autoPlay
           loop
@@ -39,7 +43,7 @@ export const PlayBox = ({
           playsInline
           className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
         >
-          <source src={videoSrc} type="video/mp4" />
+          <source src={videoUrl} type="video/mp4" />
         </video>
       )}
 
@@ -55,6 +59,7 @@ export const PlayBox = ({
           <p className="">{description}</p>
         </div>
         <Link
+          onClick={onClick}
           prefetch={true}
           href={href}
           className={`${
