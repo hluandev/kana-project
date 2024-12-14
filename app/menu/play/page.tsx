@@ -28,11 +28,29 @@ export default function Play() {
       description: "Katakana the second challenger.",
       onClick: () => setHiragana(false),
     },
+    {
+      linkText: "Coming Soon",
+      href: "/menu/play/gate3",
+      stage: 3,
+      videoSrc: "kanji.mp4",
+      title: "漢字",
+      description: "Kanji the third challenger.",
+      onClick: () => setHiragana(false),
+    },
+    {
+      linkText: "Coming Soon",
+      href: "/menu/play/gate4",
+      stage: 4,
+      videoSrc: "kanji.mp4",
+      title: "TBD",
+      description: "TBD",
+      onClick: () => setHiragana(false),
+    },
     // ... other gates configuration
   ];
 
   return (
-    <div className="w-full grid grid-cols-5 gap-2 py-2 pr-2">
+    <div className="w-full grid grid-cols-4 gap-2 py-2 pr-2">
       {gates.map((gate, index) => (
         <PlayBox
           key={index}
