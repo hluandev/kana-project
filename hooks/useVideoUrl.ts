@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { fetchVideoUrl } from "@/actions/server/use-server/fetch-video-server";
+import { useVideoStore } from "@/stores/useVideoStore";
 
 export function useVideoUrl(path: string | undefined) {
-  const [videoUrl, setVideoUrl] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { videos, fetchVideo } = useVideoStore();
 
   useEffect(() => {
     const getVideoUrl = async () => {
@@ -14,12 +14,7 @@ export function useVideoUrl(path: string | undefined) {
       }
 
       try {
-        const url = await fetchVideoUrl(path);
-        if (url) {
-          setVideoUrl(url);
-        } else {
-          setError("No URL returned");
-        }
+        await fetchVideo(path);
       } catch (err) {
         setError("Failed to load video");
         console.error("Error loading video:", err);
@@ -29,7 +24,7 @@ export function useVideoUrl(path: string | undefined) {
     };
 
     getVideoUrl();
-  }, [path]);
+  }, [path, fetchVideo]);
 
-  return { videoUrl, loading, error };
+  return { videoUrl: videos[path ?? ""], loading, error };
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useVideoUrl } from "@/hooks/useVideoUrl";
+import { usePlayerStore } from "@/stores/usePlayerStore";
 import { motion } from "framer-motion";
 import { LockIcon, SwordIcon } from "lucide-react";
 import Link from "next/link";
@@ -27,6 +28,7 @@ export const PlayBox = ({
   onClick,
 }: PlayBoxProps) => {
   const { videoUrl, loading } = useVideoUrl(videoSrc);
+  const { info } = usePlayerStore();
   return (
     <motion.div
       initial={{ opacity: 0, y: 200 }}
@@ -63,8 +65,10 @@ export const PlayBox = ({
           prefetch={true}
           href={href}
           className={`${
-            disabled ? "" : "bg-black"
-          } [background:linear-gradient(45deg,#000,theme(colors.black)_50%,theme(colors.black))_padding-box,conic-gradient(from_var(--border-angle),theme(colors.yellow.600/.48)_0%,theme(colors.yellow.500)_20%,theme(colors.yellow.300)_40%,theme(colors.yellow.500)_60%,theme(colors.neutral.700/.48)_100%)_border-box]  border-2 border-transparent animate-border    text-center font-medium  flex items-center justify-center rounded-full aspect-square h-12`}
+            disabled
+              ? "bg-black"
+              : "[background:linear-gradient(45deg,#000,theme(colors.black)_50%,theme(colors.black))_padding-box,conic-gradient(from_var(--border-angle),theme(colors.yellow.600/.48)_0%,theme(colors.yellow.500)_20%,theme(colors.yellow.300)_40%,theme(colors.yellow.500)_60%,theme(colors.neutral.700/.48)_100%)_border-box] "
+          }  border-2 border-transparent animate-border    text-center font-medium  flex items-center justify-center rounded-full aspect-square h-12 `}
         >
           {disabled ? (
             <LockIcon className="w-5 h-5" />

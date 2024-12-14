@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import CurrentPlayHand from "@/components/board/actions-hand/current-play-hand";
 import { ShowMenuMobile } from "@/components/board/show-menu-mobile";
 import { ShowUpgradeButton } from "@/components/board/show-upgrade-button";
@@ -13,11 +14,33 @@ import Warning from "@/components/warning";
 import { useKanaStore } from "@/stores/useKanaStore";
 import { Avatars } from "@/components/board/avatars";
 import { usePlayerStore } from "@/stores/usePlayerStore";
+import AvatarsBg from "@/components/board/avatars-bg";
+import { fetchVideoParams } from "@/actions/server/use-server/fetch-video-params";
 
-const Kana = () => {
+const Kana = ({ params }: { params: { gate: string } }) => {
+  const router = useRouter();
   const { currentUpgrades } = useKanaStore();
   const { info } = usePlayerStore();
   const [showMobileTools, setShowMobileTools] = useState(false);
+  const [videoParams, setVideoParams] = useState<any>(null);
+
+  console.log(params.gate.slice(4));
+
+  useEffect(() => {
+    const gateNumber = parseInt(params.gate.slice(4));
+    if (gateNumber > (info.gate || 1)) {
+      router.push("/menu/play");
+    }
+  }, [params.gate, info.gate]);
+
+  useEffect(() => {
+    const fetchVideo = async () => {
+      const videoParams = await fetchVideoParams(params.gate.slice(4));
+      setVideoParams(videoParams);
+    };
+
+    fetchVideo();
+  }, [params.gate]);
 
   return (
     <div className="flex relative w-full flex-col items-center justify-between h-full">
@@ -50,31 +73,20 @@ const Kana = () => {
           </div>
         </div>
 
-        <Avatars name="Hiragana" videoSrc="hiragana.mp4" />
+        <Avatars
+          name={videoParams?.name}
+          videoSrc={`${videoParams?.name}.mp4`}
+        />
       </div>
 
       <div className="absolute w-full blur-3xl h-full pointer-events-none">
         {/* Left Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute left-0 w-1/2 h-full object-cover mix-blend-overlay pointer-events-none"
-        >
-          <source src={"/video/player.mp4"} type="video/mp4" />
-        </video>
+        <AvatarsBg videoSrc="player.mp4" left />
 
         {/* Right Video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute right-0 w-1/2 h-full object-cover object-left mix-blend-overlay pointer-events-none"
-        >
-          <source src={"/video/hiragana.mp4"} type="video/mp4" />
-        </video>
+        {videoParams?.name && (
+          <AvatarsBg videoSrc={`${videoParams.name}.mp4`} left={false} />
+        )}
       </div>
 
       {/* Mobile Tools */}

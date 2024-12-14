@@ -9,6 +9,7 @@ interface PlayerInfo {
   losses: number;
   highest_score: number;
   matches: number;
+  gate: number;
 }
 
 interface Activity {
@@ -37,6 +38,7 @@ interface playerStore {
 
 export const usePlayerStore = create<playerStore>((set, get) => ({
   info: {
+    gate: 1,
     id: "",
     level: 0,
     xp: 0,
