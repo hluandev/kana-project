@@ -497,18 +497,29 @@ export const Win = () => {
         }}
         className="flex bg-black/80 backdrop-blur-xl relative h-full mb-28 mt-1 lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
       >
-        <ActionButton
-          onClick={handleSellSpecial}
-          icon={
-            <JapaneseYenIcon
-              strokeWidth={1.7}
-              className="w-[1.2rem] h-[1.2rem]"
+        {/* Left button slot - always occupied */}
+        {selectedSpecial.length > 0 ? (
+          selectedSpecial.every((card) =>
+            currentSpecial.some((current) => current.romaji === card.romaji)
+          ) ? (
+            <ActionButton
+              onClick={handleSellSpecial}
+              icon={
+                <JapaneseYenIcon
+                  strokeWidth={1.7}
+                  className="w-[1.2rem] h-[1.2rem]"
+                />
+              }
+              descTooltip="Sell special cards"
+              keyboardShortcut="1"
+              className="bg-[#EFCB68]  hover:bg-yellow-600/40"
             />
-          }
-          descTooltip="Sell special cards"
-          keyboardShortcut="1"
-          className="bg-[#EFCB68]  hover:bg-yellow-600/40"
-        />
+          ) : (
+            <div className="w-9 h-9" />
+          )
+        ) : (
+          <div className="w-9 h-9" /> /* Placeholder with same dimensions */
+        )}
 
         <input
           ref={inputRef}
@@ -520,23 +531,30 @@ export const Win = () => {
           className="flex text-center bg-transparent outline-none rounded-md"
         />
 
-        <ActionButton
-          onClick={selectedSpecial.length > 0 ? handleSubmit : handleNextTurn}
-          descTooltip={
-            selectedSpecial.length > 0
-              ? "Buy special cards"
-              : "Go to the next round"
-          }
-          icon={
-            selectedSpecial.length > 0 ? (
-              <ShoppingCartIcon strokeWidth={1.7} className="w-5 h-5" />
-            ) : (
-              <ArrowRightIcon strokeWidth={1.7} className="w-5 h-5" />
-            )
-          }
-          keyboardShortcut="2"
-          className="bg-[#EFCB68]  hover:bg-yellow-600/40"
-        />
+        {/* Right button slot - always occupied */}
+        {selectedSpecial.length > 0 ? (
+          selectedSpecial.every((card) =>
+            randomSpecialCards.some((random) => random.romaji === card.romaji)
+          ) ? (
+            <ActionButton
+              onClick={handleSubmit}
+              descTooltip="Buy special cards"
+              icon={<ShoppingCartIcon strokeWidth={1.7} className="w-5 h-5" />}
+              keyboardShortcut="2"
+              className="bg-[#EFCB68]  hover:bg-yellow-600/40"
+            />
+          ) : (
+            <div className="w-9 h-9" /> /* Placeholder with same dimensions */
+          )
+        ) : (
+          <ActionButton
+            onClick={handleNextTurn}
+            descTooltip="Go to the next round"
+            icon={<ArrowRightIcon strokeWidth={1.7} className="w-5 h-5" />}
+            keyboardShortcut="2"
+            className="bg-[#EFCB68]  hover:bg-yellow-600/40"
+          />
+        )}
 
         <div
           onClick={() => setValue(value.slice(0, -1))}
