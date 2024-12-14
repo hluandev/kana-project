@@ -33,6 +33,7 @@ export default function CurrentPlayHand() {
     isEndlessMode,
     endlessTarget,
     score,
+    bossHp,
     multiplier,
   } = useScoreStore();
   const { loadGame } = useGameStateStore();
@@ -40,7 +41,8 @@ export default function CurrentPlayHand() {
   const mission = kanaMissions.find((mission) => mission.id === missionID);
   const target = isEndlessMode ? endlessTarget : mission?.target;
 
-  const hasWonGame = !isEndlessMode && missionID === 8 && progress >= target;
+  // const hasWonGame = !isEndlessMode && missionID === 8 && progress >= target;
+  const hasWonGame = bossHp <= 0;
   const hasWonEndless = isEndlessMode && progress >= target;
   useEffect(() => {
     drawHand();

@@ -25,6 +25,7 @@ export const WinTheGame = () => {
     setYen,
     setAnnouncement,
     setReroll,
+    setBossHp,
     setEndlessTarget,
     setIsEndlessMode,
   } = useScoreStore();
@@ -90,6 +91,7 @@ export const WinTheGame = () => {
     setMultiplier(0);
     setMultiplierBonus(0);
     setProgress(0);
+    setBossHp(33900);
     setAnnouncement("");
     setMissionID(1);
     setDiscard(4);
