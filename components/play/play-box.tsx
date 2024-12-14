@@ -34,7 +34,7 @@ export const PlayBox = ({
       initial={{ opacity: 0, y: 200 }}
       animate={{ opacity: 1, y: 0 }}
       className={`relative overflow-hidden text-white ${
-        disabled ? "bg-neutral-900" : ""
+        disabled ? "bg-black/30" : ""
       }  flex flex-col p-2 justify-between`}
     >
       {videoSrc && !loading && (
@@ -43,7 +43,7 @@ export const PlayBox = ({
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
+          className="absolute inset-0 w-full h-full object-cover  mix-blend-overlay"
         >
           <source src={videoUrl} type="video/mp4" />
         </video>

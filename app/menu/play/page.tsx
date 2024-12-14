@@ -50,7 +50,7 @@ export default function Play() {
   ];
 
   return (
-    <div className="w-full grid grid-cols-4 gap-2 py-2 pr-2">
+    <div className="w-full grid grid-cols-2 gap-2 py-2 pr-2">
       {gates.map((gate, index) => (
         <PlayBox
           key={index}
