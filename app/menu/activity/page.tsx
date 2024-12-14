@@ -32,7 +32,7 @@ export default function Activity() {
   }, []);
 
   return (
-    <div className="overflow-hidden w-full">
+    <div className="w-full h-full">
       <div className="flex flex-col lg:space-y-2 space-y-1 rounded-xl w-full h-full">
         <div className="grid grid-cols-4 lg:gap-2 gap-1">
           <ActivityBox
@@ -42,7 +42,7 @@ export default function Activity() {
           />
           <ActivityBox
             loading={isLoading}
-            textColor="text-blue-600"
+            textColor="text-green-500"
             title="Wins"
             value={info.wins}
           />
@@ -60,7 +60,7 @@ export default function Activity() {
           />
         </div>
 
-        <div className="flex h-full lg:gap-2 gap-1">
+        <div className="flex-1 flex lg:gap-2 gap-1">
           <GraphTable loading={isLoading} highestHandsTable={true} />
           <GraphTable loading={isLoading} highestHandsTable={false} />
         </div>

@@ -7,7 +7,7 @@ export const LeftDocs = () => {
   const pathname = usePathname();
 
   return (
-    <div className="border-r  w-48 lg:w-56 lg:p-4 p-2  flex flex-col gap-2 items-start">
+    <div className="border-r border-white/20  w-48 lg:w-56 lg:p-4 p-2  flex flex-col gap-2 items-start">
       <Link
         prefetch={true}
         href={"/menu/docs"}

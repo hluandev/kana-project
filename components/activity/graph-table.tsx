@@ -33,7 +33,7 @@ export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
   };
 
   return (
-    <div className="bg-white border   p-4 w-full  overflow-hidden h-full rounded-xl">
+    <div className="bg-neutral-800 p-4 w-full  overflow-hidden h-full rounded-xl">
       {loading ? (
         <div className="flex justify-center h-full items-center">
           <Loader2Icon className="animate-spin" />
@@ -46,7 +46,7 @@ export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
           >
             <CartesianGrid vertical={false} stroke="#e5e5e5" />
             <XAxis
-              stroke="black"
+              stroke="white"
               strokeWidth={2}
               tickLine={false}
               axisLine={false}
@@ -75,7 +75,7 @@ export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
                 position="top"
                 offset={16}
                 fontSize={18}
-                fill="black"
+                fill="white"
                 fontWeight={600}
               />
             </Line>
@@ -91,7 +91,7 @@ export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
                   position="top"
                   offset={16}
                   fontSize={18}
-                  fill="black"
+                  fill="white"
                   fontWeight={600}
                 />
               </Line>

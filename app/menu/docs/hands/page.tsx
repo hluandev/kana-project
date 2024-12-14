@@ -10,10 +10,10 @@ export default function Hands() {
       </p>
 
       <div className="space-y-2 flex flex-col items-center">
-        <div className="flex flex-col justify-between items-center w-40 h-56 p-2 bg-white border   rounded-lg">
+        <div className="flex flex-col justify-between items-center w-40 h-56 p-2 bg-black/80  rounded-lg">
           <div className="flex justify-between w-full text-lg">
             <p className="text-2xl pl-1">1</p>
-            <p className="bg-[#ff915a] border   h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
+            <p className="bg-[#ff915a]  h-8 w-8 flex justify-center items-center  rounded-lg aspect-square">
               あ
             </p>
           </div>
@@ -23,7 +23,7 @@ export default function Hands() {
           <p>ka</p>
         </div>
 
-        <p className="italic text-black/50">Example of a card</p>
+        <p className="italic text-white/50">Example of a card</p>
       </div>
 
       <p>
@@ -35,19 +35,19 @@ export default function Hands() {
           Different than Balatro and Poker, in Kamikana, there will be 5 suits:
         </p>
         <div className="flex gap-2 justify-center">
-          <p className="bg-[#ff915a] h-8 w-8 border   flex justify-center items-center  rounded-lg aspect-square">
+          <p className="bg-[#ff915a] h-8 w-8 text-black flex justify-center items-center  rounded-lg aspect-square">
             あ
           </p>
-          <p className="bg-[#01de5b] h-8 w-8 border   flex justify-center items-center  rounded-lg aspect-square">
+          <p className="bg-[#01de5b] h-8 w-8 text-black flex justify-center items-center  rounded-lg aspect-square">
             う
           </p>
-          <p className="bg-[#e4e4e6] h-8 w-8 border   flex justify-center items-center  rounded-lg aspect-square">
+          <p className="bg-[#e4e4e6] h-8 w-8 text-black flex justify-center items-center  rounded-lg aspect-square">
             お
           </p>
-          <p className="bg-[#ffe65e] h-8 w-8 border   flex justify-center items-center  rounded-lg aspect-square">
+          <p className="bg-[#ffe65e] h-8 w-8 text-black flex justify-center items-center  rounded-lg aspect-square">
             い
           </p>
-          <p className="bg-[#fc96df] h-8 w-8 border   flex justify-center items-center  rounded-lg aspect-square">
+          <p className="bg-[#fc96df] h-8 w-8 text-black flex justify-center items-center  rounded-lg aspect-square">
             え
           </p>
         </div>

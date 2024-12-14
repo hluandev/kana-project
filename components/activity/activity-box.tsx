@@ -14,7 +14,7 @@ export const ActivityBox = ({
   loading,
 }: ActivityBoxProps) => {
   return (
-    <div className="bg-white lg:p-4 p-2 border   rounded-xl ">
+    <div className="bg-neutral-800 lg:p-4 p-2  rounded-xl ">
       {loading ? (
         <div className="flex justify-center items-center">
           <Loader2Icon className="animate-spin" />
