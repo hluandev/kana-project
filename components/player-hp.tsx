@@ -1,18 +1,26 @@
 import { useScoreStore } from "@/stores/useScoreStore";
+import { useEffect, useRef } from "react";
 
 export const PlayerHp = () => {
   const { turns, discard } = useScoreStore();
-  // maxTurns will be either the current turns or 4, whichever is higher
-  const maxTurns = Math.max(turns, 4);
-  const maxDiscard = Math.max(discard, 4);
+  const maxTurnsRef = useRef(4);
+  const maxDiscardRef = useRef(4);
+
+  useEffect(() => {
+    maxTurnsRef.current = Math.max(maxTurnsRef.current, turns);
+  }, [turns]);
+
+  useEffect(() => {
+    maxDiscardRef.current = Math.max(maxDiscardRef.current, discard);
+  }, [discard]);
 
   return (
     <div className="flex flex-col">
       <div
         className="gap-0.5 bg-black/80 w-44 backdrop-blur-xl p-0.5 grid"
-        style={{ gridTemplateColumns: `repeat(${maxTurns}, 1fr)` }}
+        style={{ gridTemplateColumns: `repeat(${maxTurnsRef.current}, 1fr)` }}
       >
-        {Array.from({ length: maxTurns }).map((_, index) => (
+        {Array.from({ length: maxTurnsRef.current }).map((_, index) => (
           <div
             className={`w-full h-3 ${
               index < turns ? "bg-red-600" : "bg-white/10"
@@ -23,9 +31,9 @@ export const PlayerHp = () => {
       </div>
       <div
         className="gap-0.5 bg-black/80 w-44 backdrop-blur-xl px-0.5 pb-0.5 grid"
-        style={{ gridTemplateColumns: `repeat(${maxDiscard}, 1fr)` }}
+        style={{ gridTemplateColumns: `repeat(${maxDiscardRef.current}, 1fr)` }}
       >
-        {Array.from({ length: maxDiscard }).map((_, index) => (
+        {Array.from({ length: maxDiscardRef.current }).map((_, index) => (
           <div
             className={`w-full h-3 ${
               index < discard ? "bg-blue-600" : "bg-white/10"
