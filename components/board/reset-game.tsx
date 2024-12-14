@@ -76,7 +76,7 @@ export const ResetGame = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed flex justify-center items-center z-[9999] top-0 left-0 w-full h-full bg-black/40"
+            className="fixed flex justify-center items-center relative z-[9999] top-0 left-0 w-full h-full bg-black/40"
           >
             <motion.div
               initial={{ opacity: 0, y: 200 }}

@@ -24,14 +24,16 @@ export default function UpgradeCard({
       <div>
         <div className="flex justify-between items-center">
           <p>
-            <span className="text-blue-600">+{card.reward_points * count}</span>{" "}
+            <span className="text-green-500">
+              +{card.reward_points * count}
+            </span>{" "}
             /{" "}
             <span className="text-red-500">
               +{card.reward_multiplier * count}
             </span>{" "}
           </p>
           {count > 1 && (
-            <span className=" absolute right-2 lg:top-2 max-lg:top-1/2 max-lg:-translate-y-1/2 bg-black/5 px-1 py-0.5 border   rounded-md">
+            <span className=" absolute right-2 lg:top-2 max-lg:top-1/2 max-lg:-translate-y-1/2 bg-white/10 px-1 py-0.5 border   rounded-md">
               x{count}
             </span>
           )}

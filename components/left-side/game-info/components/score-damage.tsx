@@ -28,7 +28,7 @@ export const ScoreDamage = () => {
       </div>
 
       <div className="font-medium text-center grid lg:mt-2 mt-1 lg:gap-2 gap-1 grid-cols-2">
-        <div className="py-1.5 bg-black/30 rounded-lg text-blue-600">
+        <div className="py-1.5 bg-black/30 rounded-lg text-green-500">
           {score}
         </div>
         <div className="py-1.5 bg-black/30 rounded-lg text-red-500">

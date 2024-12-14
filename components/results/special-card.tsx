@@ -36,7 +36,7 @@ export default function SpecialCard({
           : isFrozen
           ? "border-blue-500 bg-blue-200"
           : card.condition === "upgrade"
-          ? "bg-black/90 backdrop-blur-xl"
+          ? "bg-orange-950/60 backdrop-blur-xl"
           : "bg-black/70 backdrop-blur-xl"
       } rounded-xl`}
     >
@@ -49,7 +49,11 @@ export default function SpecialCard({
       </p>
 
       <div className="flex-1">
-        <p className="font-medium lg:text-4xl text-xl flex justify-center items-center h-full">
+        <p
+          className={`font-medium ${
+            isSelected && "text-black"
+          } lg:text-4xl text-xl flex justify-center items-center h-full`}
+        >
           {hover ? romaji : hiragana ? japanese : japanese_katakana}
         </p>
       </div>
@@ -58,7 +62,7 @@ export default function SpecialCard({
         className={`text-center lg:px-2 px-1 flex   items-center font-medium justify-center relative ${
           isSelected
             ? "bg-black/80 text-white"
-            : "bg-white/15 border border-white/15"
+            : "bg-white/10 border border-white/15"
         } rounded-lg  lg:h-24 h-20`}
       >
         <div className="font-medium xl: text-xs">

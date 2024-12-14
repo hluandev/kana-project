@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { BossHp } from "./boss-hp";
 import { PlayerHp } from "../player-hp";
+import { useScoreStore } from "@/stores/useScoreStore";
 
 interface AvatarsProps {
   videoSrc?: string;
@@ -9,11 +10,15 @@ interface AvatarsProps {
 }
 
 export const Avatars = ({ videoSrc, name, player }: AvatarsProps) => {
+  const { turns } = useScoreStore();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 200 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`relative rounded-2xl shadow-lg overflow-hidden h-[30rem] w-[20rem] text-white flex flex-col p-2 justify-between`}
+      className={`${
+        player && turns === 0 && "grayscale"
+      } relative rounded-2xl shadow-lg overflow-hidden h-[30rem] w-[20rem] text-white flex flex-col p-2 justify-between`}
     >
       <video
         autoPlay

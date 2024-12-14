@@ -16,7 +16,7 @@ export const Lose = () => {
     setYen,
     setAnnouncement,
     setReroll,
-
+    setBossHp,
     setIsEndlessMode,
     setMultiplierBonus,
   } = useScoreStore();
@@ -36,6 +36,7 @@ export const Lose = () => {
     setFrozenSpecialCards([]);
     setTurns(4);
     setScore(0);
+    setBossHp(33900);
     setMultiplier(0);
     setProgress(0);
     setMultiplierBonus(0);
@@ -68,7 +69,7 @@ export const Lose = () => {
           You Died
         </motion.div>
 
-        <div className="bg-white border border-black/20  flex items-center gap-2 rounded-full py-1 pl-1 pr-4">
+        <div className="bg-black/80 backdrop-blur-xl flex items-center gap-2 rounded-full py-1 pl-1 pr-4">
           <ActionButton
             hideTooltip
             onClick={handleLoseSubmit}
