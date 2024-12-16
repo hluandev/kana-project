@@ -28,7 +28,6 @@ export const PlayBox = ({
   onClick,
 }: PlayBoxProps) => {
   const { videoUrl, loading } = useVideoUrl(videoSrc);
-  const { info } = usePlayerStore();
   return (
     <motion.div
       initial={{ opacity: 0, y: 200 }}
