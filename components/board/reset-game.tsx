@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { updateActivityServer } from "@/actions/server/activity-server-actions";
 import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
 import { useGameStateStore } from "@/stores/useGameStateStore";
@@ -70,8 +71,8 @@ export const ResetGame = () => {
 
   return (
     <>
-      <AnimatePresence>
-        {isOpen && (
+      {isOpen &&
+        createPortal(
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -82,11 +83,11 @@ export const ResetGame = () => {
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 200 }}
-              className="bg-[#fafafa] rounded-xl w-[16rem] p-3  flex flex-col gap-y-2"
+              className="bg-black/80 backdrop-blur-xl relative z-[9999] rounded-xl w-[16rem] p-3 flex flex-col gap-y-2"
             >
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-1">
                 <p className="font-medium">Do you want to reset the game?</p>
-                <p className="text-black/50">
+                <p className="text-white/50">
                   This round will be counted as a loss.
                 </p>
               </div>
@@ -94,24 +95,24 @@ export const ResetGame = () => {
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="bg-blue-600 p-2 rounded-lg border   text-white"
+                  className="bg-blue-600 p-2 rounded-lg text-white"
                 >
                   No
                 </button>
                 <button
                   onClick={handleLoseSubmit}
-                  className="bg-red-600 p-2 rounded-lg border   text-white"
+                  className="bg-red-600 p-2 rounded-lg text-white"
                 >
                   Yes
                 </button>
               </div>
             </motion.div>
-          </motion.div>
+          </motion.div>,
+          document.body
         )}
-      </AnimatePresence>
       <div
         onClick={() => setIsOpen(true)}
-        className={`bg-black/80 backdrop-blur-xl rounded-xl duration-300 lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center`}
+        className="bg-black/80 backdrop-blur-xl rounded-xl duration-300 lg:h-10 lg:w-10 h-8 w-8 flex items-center justify-center"
       >
         <RotateCwIcon className="lg:w-5 lg:h-5 w-4 h-4" strokeWidth={1.5} />
       </div>

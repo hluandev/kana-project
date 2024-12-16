@@ -9,9 +9,17 @@ interface AvatarsProps {
   videoSrc?: string;
   name: string;
   player?: boolean;
+  description?: string;
+  japanese?: string;
 }
 
-export const Avatars = ({ videoSrc, name, player }: AvatarsProps) => {
+export const Avatars = ({
+  videoSrc,
+  name,
+  player,
+  description,
+  japanese,
+}: AvatarsProps) => {
   const { turns } = useScoreStore();
   const { videoUrl, loading } = useVideoUrl(videoSrc);
   return (
@@ -43,8 +51,8 @@ export const Avatars = ({ videoSrc, name, player }: AvatarsProps) => {
       {!player && (
         <div className="space-y-4 flex items-end justify-between relative z-10">
           <div className="space-y-2">
-            <p className="text-2xl font-semibold leading-none">{name}</p>
-            <p className="">fas</p>
+            <p className="text-2xl font-semibold leading-none">{japanese}</p>
+            <p className="">{description}</p>
           </div>
         </div>
       )}

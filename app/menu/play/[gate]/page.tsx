@@ -95,6 +95,8 @@ const Kana = ({ params }: { params: { gate: string } }) => {
         <Avatars
           name={videoParams?.name}
           videoSrc={`${videoParams?.name}.mp4`}
+          description={videoParams?.description}
+          japanese={videoParams?.japanese}
         />
       </div>
 

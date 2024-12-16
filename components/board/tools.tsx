@@ -53,11 +53,6 @@ export const Tools = () => {
     }
   }, [setHiragana]);
 
-  const handleKanaSwitch = (value: boolean) => {
-    setHiragana(value);
-    localStorage.setItem("hiragana", value.toString());
-  };
-
   return (
     <>
       {!hasWonGame && (
@@ -104,7 +99,11 @@ export const Tools = () => {
             />
           </div> */}
 
-          <div className="fixed flex flex-col lg:gap-2 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-2 lg:bottom-2">
+          <div className="fixed flex z-[9999] lg:gap-1 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-2 lg:bottom-2">
+            <div className="bg-black/80 backdrop-blur-xl rounded-xl text-sm lg:h-10 lg:w-10 h-8 w-8 flex items-center justify-center">
+              {currentDeck.length}
+            </div>
+
             <ToolButton
               keyboardShortcut="0"
               onClick={() => setIsCombineOpen(true)}
@@ -130,24 +129,11 @@ export const Tools = () => {
               label="Hide romaji"
             />
 
-            <div className="lg:hidden">
-              <ToolButton
-                onClick={() => handleKanaSwitch(!hiragana)}
-                icon={"仮名"}
-                isActive={hiragana}
-                label="Switch kana"
-              />
-            </div>
-
             <ResetGame />
 
             <Report />
 
-            <div className="bg-black/80 backdrop-blur-xl rounded-xl text-sm lg:h-11 lg:w-11 h-8 w-8 flex items-center justify-center">
-              {currentDeck.length}
-            </div>
-
-            <div className="lg:hidden">
+            <div className="">
               <ReturnButton />
             </div>
           </div>
