@@ -12,6 +12,7 @@ interface PlayBoxProps {
   description: string;
   linkText: string;
   href: string;
+  comingSoon?: boolean;
   disabled?: boolean;
   videoSrc: string;
   onClick?: () => void;
@@ -24,6 +25,7 @@ export const PlayBox = ({
   linkText,
   href,
   disabled,
+  comingSoon,
   videoSrc,
   onClick,
 }: PlayBoxProps) => {
@@ -59,22 +61,29 @@ export const PlayBox = ({
           <p className="text-2xl font-semibold leading-none">{title}</p>
           <p className="">{description}</p>
         </div>
-        <Link
-          onClick={onClick}
-          prefetch={true}
-          href={href}
-          className={`${
-            disabled
-              ? "bg-black"
-              : "[background:linear-gradient(45deg,#000,theme(colors.black)_50%,theme(colors.black))_padding-box,conic-gradient(from_var(--border-angle),theme(colors.yellow.600/.48)_0%,theme(colors.yellow.500)_20%,theme(colors.yellow.300)_40%,theme(colors.yellow.500)_60%,theme(colors.neutral.700/.48)_100%)_border-box] "
-          }  border-2 border-transparent animate-border    text-center font-medium  flex items-center justify-center rounded-full aspect-square h-12 `}
-        >
-          {disabled ? (
-            <LockIcon className="w-5 h-5" />
-          ) : (
-            <SwordIcon className="w-5 h-5" />
+        <div className="flex justify-between items-end gap-4">
+          {comingSoon && (
+            <p className="border-2 border-transparent animate-border  py-2 px-3  text-center font-medium  flex items-center justify-center rounded-full [background:linear-gradient(45deg,#000,theme(colors.black)_50%,theme(colors.black))_padding-box,conic-gradient(from_var(--border-angle),theme(colors.violet.600/.48)_0%,theme(colors.violet.500)_20%,theme(colors.violet.300)_40%,theme(colors.violet.500)_60%,theme(colors.neutral.700/.48)_100%)_border-box]">
+              Coming Soon
+            </p>
           )}
-        </Link>
+          <Link
+            onClick={onClick}
+            prefetch={true}
+            href={href}
+            className={`${
+              disabled
+                ? "bg-black"
+                : "[background:linear-gradient(45deg,#000,theme(colors.black)_50%,theme(colors.black))_padding-box,conic-gradient(from_var(--border-angle),theme(colors.yellow.600/.48)_0%,theme(colors.yellow.500)_20%,theme(colors.yellow.300)_40%,theme(colors.yellow.500)_60%,theme(colors.neutral.700/.48)_100%)_border-box] "
+            }  border-2 border-transparent animate-border    text-center font-medium  flex items-center justify-center rounded-full aspect-square h-12 `}
+          >
+            {disabled ? (
+              <LockIcon className="w-5 h-5" />
+            ) : (
+              <SwordIcon className="w-5 h-5" />
+            )}
+          </Link>
+        </div>
       </div>
     </motion.div>
   );
