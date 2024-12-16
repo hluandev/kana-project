@@ -51,9 +51,9 @@ export default function CurrentPlayHand() {
     drawSpecial();
   }, [kana]);
 
-  useEffect(() => {
-    loadGame();
-  }, []);
+  // useEffect(() => {
+  //   loadGame();
+  // }, []);
 
   useEffect(() => {
     if (turns === 4) {

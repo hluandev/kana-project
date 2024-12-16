@@ -16,6 +16,7 @@ import { Avatars } from "@/components/board/avatars";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import AvatarsBg from "@/components/board/avatars-bg";
 import { fetchVideoParams } from "@/actions/server/use-server/fetch-video-params";
+import { useGameStateStore } from "@/stores/useGameStateStore";
 
 const Kana = ({ params }: { params: { gate: string } }) => {
   const router = useRouter();
@@ -23,12 +24,16 @@ const Kana = ({ params }: { params: { gate: string } }) => {
   const { info } = usePlayerStore();
   const [showMobileTools, setShowMobileTools] = useState(false);
   const [videoParams, setVideoParams] = useState<any>(null);
+  const { loadGame } = useGameStateStore();
 
   useEffect(() => {
     const gateNumber = parseInt(params.gate.slice(4));
     if (gateNumber > (info.gate || 1)) {
       router.push("/menu/play");
     }
+
+    useGameStateStore.getState().setCurrentGate(gateNumber);
+    loadGame();
   }, [params.gate, info.gate]);
 
   useEffect(() => {

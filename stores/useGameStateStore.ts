@@ -11,19 +11,25 @@ import { useKanaStore } from "./useKanaStore";
 type GameStateStore = {
   hasSavedGame: boolean;
   isLoading: boolean;
+  currentGate: number;
+  setCurrentGate: (gate: number) => void;
   saveGame: () => Promise<void>;
   loadGame: () => Promise<void>;
 };
 
-export const useGameStateStore = create<GameStateStore>((set) => ({
+export const useGameStateStore = create<GameStateStore>((set, get) => ({
   hasSavedGame: false,
   isLoading: true,
+  currentGate: 1,
+  setCurrentGate: (gate) => set({ currentGate: gate }),
 
   saveGame: async () => {
     const scoreState = useScoreStore.getState();
     const kanaState = useKanaStore.getState();
+    const { currentGate } = get();
 
     await saveGameState({
+      gate: currentGate,
       turns: scoreState.turns,
       score: scoreState.score,
       bossHp: scoreState.bossHp,
@@ -46,9 +52,10 @@ export const useGameStateStore = create<GameStateStore>((set) => ({
   },
 
   loadGame: async () => {
+    const { currentGate } = get();
     set({ isLoading: true });
     try {
-      const data = await loadGameState();
+      const data = await loadGameState(currentGate);
       if (data) {
         useScoreStore.setState({
           turns: data.turns,

@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/server";
 import { validateGameState } from "@/utils/validateGameState";
 
 interface GameStateData {
+  gate: number;
   turns: number;
   score: number;
   multiplier: number;
@@ -56,18 +57,21 @@ export async function saveGameState(gameState: GameStateData) {
     .from("game_states")
     .select()
     .eq("user_id", user.id)
+    .eq("gate", gameState.gate)
     .single();
 
   if (existingState) {
     const { error } = await supabase
       .from("game_states")
       .update({ state: filteredGameState })
-      .eq("user_id", user.id);
+      .eq("user_id", user.id)
+      .eq("gate", gameState.gate);
 
     if (error) throw error;
   } else {
     const { error } = await supabase.from("game_states").insert({
       user_id: user.id,
+      gate: gameState.gate,
       state: filteredGameState,
       created_at: new Date().toISOString(),
     });
@@ -76,7 +80,7 @@ export async function saveGameState(gameState: GameStateData) {
   }
 }
 
-export async function loadGameState() {
+export async function loadGameState(gate: number) {
   const supabase = await createClient();
 
   const {
@@ -89,6 +93,7 @@ export async function loadGameState() {
     .from("game_states")
     .select("state")
     .eq("user_id", user.id)
+    .eq("gate", gate)
     .single();
 
   return data?.state as GameStateData | null;
