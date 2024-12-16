@@ -38,6 +38,7 @@ export default function CurrentPlayHand() {
     multiplier,
   } = useScoreStore();
   const { loadGame } = useGameStateStore();
+  const { info, updatePlayerGateLocal } = usePlayerStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
   const target = isEndlessMode ? endlessTarget : mission?.target;
@@ -61,9 +62,22 @@ export default function CurrentPlayHand() {
     }
   }, [missionID]);
 
+  // useEffect(() => {
+  //   if (hasWonGame) {
+  //     updatePlayerGateLocal(info.gate + 1);
+  //     const updateGate = async () => {
+  //       try {
+  //         await updatePlayerGate();
+  //       } catch (error) {
+  //         console.error("Failed to update player gate:", error);
+  //       }
+  //     };
+  //     updateGate();
+  //   }
+  // }, [bossHp <= 0]);
+
   const renderOutcome = () => {
     if (hasWonGame) {
-      updatePlayerGate();
       return <WinTheGame />;
     }
     if (hasWonEndless) {

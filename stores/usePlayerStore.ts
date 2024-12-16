@@ -34,6 +34,7 @@ interface playerStore {
   updateWins: (wins: number) => void;
   updateLosses: (losses: number) => void;
   updateMatches: (matches: number) => void;
+  updatePlayerGateLocal: (gate: number) => void;
 }
 
 export const usePlayerStore = create<playerStore>((set, get) => ({
@@ -80,4 +81,6 @@ export const usePlayerStore = create<playerStore>((set, get) => ({
     set((state) => ({
       info: { ...state.info, highest_score },
     })),
+  updatePlayerGateLocal: (gate: number) =>
+    set((state) => ({ info: { ...state.info, gate } })),
 }));

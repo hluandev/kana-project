@@ -24,8 +24,6 @@ const Kana = ({ params }: { params: { gate: string } }) => {
   const [showMobileTools, setShowMobileTools] = useState(false);
   const [videoParams, setVideoParams] = useState<any>(null);
 
-  console.log(params.gate.slice(4));
-
   useEffect(() => {
     const gateNumber = parseInt(params.gate.slice(4));
     if (gateNumber > (info.gate || 1)) {
@@ -35,12 +33,28 @@ const Kana = ({ params }: { params: { gate: string } }) => {
 
   useEffect(() => {
     const fetchVideo = async () => {
-      const videoParams = await fetchVideoParams(params.gate.slice(4));
-      setVideoParams(videoParams);
+      try {
+        const gateNumber = parseInt(params.gate.slice(4));
+        if (isNaN(gateNumber) || gateNumber < 1 || gateNumber > 4) {
+          router.push("/menu/play");
+          return;
+        }
+
+        const videoParams = await fetchVideoParams(gateNumber.toString());
+        if (!videoParams) {
+          router.push("/menu/play");
+          return;
+        }
+
+        setVideoParams(videoParams);
+      } catch (error) {
+        console.error("Error fetching video params:", error);
+        router.push("/menu/play");
+      }
     };
 
     fetchVideo();
-  }, [params.gate]);
+  }, [params.gate, router]);
 
   return (
     <div className="flex relative w-full flex-col items-center justify-between h-full">

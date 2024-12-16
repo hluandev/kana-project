@@ -11,7 +11,7 @@ import { updatePlayerGate } from "@/actions/server/use-server/update-player-gate
 import { useRouter } from "next/navigation";
 
 export const WinTheGame = () => {
-  const { info, isSubscribed } = usePlayerStore();
+  const { info, isSubscribed, updatePlayerGateLocal } = usePlayerStore();
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [showShop, setShowShop] = useState(false);
@@ -76,8 +76,9 @@ export const WinTheGame = () => {
     }
   };
 
-  const handleEndlessMode = () => {
+  const handleEndlessMode = async () => {
     if (isSubscribed) {
+      await handleWinTheGate();
       setIsEndlessMode(true);
       setBossHp(Infinity);
       setShowShop(true);
@@ -87,6 +88,7 @@ export const WinTheGame = () => {
   };
 
   const handleLoseSubmit = async () => {
+    await handleWinTheGate();
     setIsEndlessMode(false);
     setFrozenSpecialCards([]);
     setTurns(4);
@@ -109,7 +111,20 @@ export const WinTheGame = () => {
   };
 
   const handleNextGate = async () => {
+    await handleWinTheGate();
     router.push(`/menu/play/gate${info.gate + 1}`);
+  };
+
+  const handleWinTheGate = async () => {
+    updatePlayerGateLocal(info.gate + 1);
+    const updateGate = async () => {
+      try {
+        await updatePlayerGate();
+      } catch (error) {
+        console.error("Failed to update player gate:", error);
+      }
+    };
+    updateGate();
   };
 
   return (
