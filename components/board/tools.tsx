@@ -10,6 +10,7 @@ import { useScoreStore } from "@/stores/useScoreStore";
 import { ResetGame } from "./reset-game";
 import { ToolButton } from "./actions-hand/buttons/tool-button";
 import { ReturnButton } from "../left-side/game-info/components/return-button";
+import { createPortal } from "react-dom";
 
 export const Tools = () => {
   const {
@@ -57,19 +58,19 @@ export const Tools = () => {
     <>
       {!hasWonGame && (
         <>
-          <AnimatePresence>
-            {isCombineOpen && (
+          {isCombineOpen &&
+            createPortal(
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed  top-0 left-0 w-full h-full z-50 flex items-center justify-center"
+                className="fixed top-0 left-0 w-full h-full z-[9999] flex items-center justify-center"
               >
                 <motion.div
                   initial={{ y: 200 }}
                   animate={{ y: 0 }}
                   exit={{ y: 200 }}
-                  className="bg-white rounded-xl relative z-[9999] lg:h-2/3 h-3/4 hideScroll overflow-y-scroll lg:p-4 p-2 space-y-2"
+                  className="bg-white/15 backdrop-blur-xl rounded-xl relative z-[9999] lg:h-2/3 h-3/4 hideScroll overflow-y-scroll lg:p-4 p-2 space-y-2"
                 >
                   <div className="flex items-center justify-between">
                     <div className="text-2xl font-semibold text-center">
@@ -86,18 +87,9 @@ export const Tools = () => {
                   onClick={() => setIsCombineOpen(false)}
                   className="bg-black/50 h-full w-full absolute top-0 left-0"
                 ></div>
-              </motion.div>
+              </motion.div>,
+              document.body
             )}
-          </AnimatePresence>
-
-          {/* <div className="fixed lg:hidden right-1 bottom-1">
-            <ToolButton
-              onClick={() => setShowTools(!showTools)}
-              icon={<ChevronUp className="w-5 h-5" strokeWidth={1.5} />}
-              isActive={showTools}
-              label="Show tools"
-            />
-          </div> */}
 
           <div className="fixed flex z-[9999] lg:gap-1 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-2 lg:bottom-2">
             <div className="bg-black/80 backdrop-blur-xl rounded-xl text-sm lg:h-10 lg:w-10 h-8 w-8 flex items-center justify-center">
