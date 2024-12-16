@@ -7,7 +7,6 @@ import { LogOutIcon, SettingsIcon, Volume2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Support } from "../../support";
 import { useSettingStore } from "@/stores/useSettingStore";
-import { usePathname } from "next/navigation";
 
 export default function PlayerLevel() {
   const { info, updateLevel, setXp, isSubscribed, checkSubscription } =
@@ -62,9 +61,9 @@ export default function PlayerLevel() {
             exit={{ opacity: 0, y: 20 }}
             className={`${
               isSubscribed ? "-top-[4.5rem]" : "-top-[17.5rem]"
-            } absolute flex flex-col gap-2  items-center justify-between bg-[#fafafa] border   w-full rounded-xl left-0 lg:p-2 p-1`}
+            } absolute flex flex-col gap-2  items-center justify-between bg-neutral-800 w-full rounded-xl left-0 lg:p-2 p-1`}
           >
-            <div className="flex justify-between items-center w-full bg-[#fafafa] border   p-2 rounded-xl">
+            <div className="flex justify-between items-center w-full bg-white/10  p-2 rounded-xl">
               <div className="flex justify-between  items-center">
                 <div className="flex items-center gap-2">
                   <div className="">
@@ -72,13 +71,13 @@ export default function PlayerLevel() {
                       onClick={handleSoundToggle}
                       className={`${
                         !isMuted ? "mainBgColor" : "bg-black/5"
-                      } h-8 w-8 flex justify-center items-center border   rounded-lg`}
+                      } h-8 w-8 flex justify-center items-center  rounded-lg`}
                     >
                       <Volume2Icon className="h-4 w-4" />
                     </div>
                   </div>
 
-                  <button className="  h-8 w-8 flex justify-center items-center border     rounded-lg">
+                  <button className="bg-white/10  h-8 w-8 flex justify-center items-center    rounded-lg">
                     <ManageSubscription />
                   </button>
                 </div>
@@ -87,7 +86,7 @@ export default function PlayerLevel() {
               <div>
                 <button
                   onClick={() => signOut()}
-                  className="bg-red-600 h-8 w-8 flex justify-center items-center border   text-white  rounded-lg"
+                  className="bg-red-600 h-8 w-8 flex justify-center items-center  text-white  rounded-lg"
                 >
                   <LogOutIcon strokeWidth={1.7} className="w-4 h-4 " />
                 </button>
@@ -99,10 +98,10 @@ export default function PlayerLevel() {
         )}
       </AnimatePresence>
 
-      <div className="bg-[#fafafa] col-span-10 w-full flex flex-col lg:gap-2 gap-1 relative overflow-hidden rounded-xl lg:p-2 p-1 border   ">
+      <div className="bg-neutral-800 col-span-10 w-full flex flex-col lg:gap-2 gap-1 relative overflow-hidden rounded-xl lg:p-2 p-1 ">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="bg-[#efcb68] border   z-20  font-medium rounded-lg p-1 lg:w-8 lg:h-8 h-6 w-6 aspect-square flex justify-center items-center">
+            <div className="bg-purple-500 z-20  font-medium rounded-lg p-1 lg:w-8 lg:h-8 h-6 w-6 aspect-square flex justify-center items-center">
               {info.level}
             </div>
 
@@ -114,8 +113,8 @@ export default function PlayerLevel() {
           <div
             onClick={() => setSetting(!setting)}
             className={`${
-              setting ? "bg-black text-white" : "bg-white text-black"
-            }  h-6 w-6 lg:h-8 lg:w-8 rounded-lg flex justify-center items-center border  `}
+              setting ? "bg-white text-black" : "bg-white/15 text-white"
+            }  h-6 w-6 lg:h-8 lg:w-8 rounded-lg flex justify-center items-center `}
           >
             <SettingsIcon strokeWidth={1.7} className="h-4 w-4" />
           </div>
@@ -126,7 +125,7 @@ export default function PlayerLevel() {
             <motion.div
               className={`absolute ${
                 percentage === 0 ? "hidden" : ""
-              } top-0 left-0 h-full bg-[#efcb68] border rounded-l-lg   ${
+              } top-0 left-0 h-full bg-purple-500 rounded-l-lg   ${
                 percentage === 100 ? "rounded-r-lg" : ""
               }`}
               initial={{ width: 0 }}
@@ -134,8 +133,8 @@ export default function PlayerLevel() {
               transition={{ duration: 0.5 }}
             />
             <motion.div
-              className={`absolute top-0 right-0 h-full bg-white border-y border-r   ${
-                percentage === 0 ? "border-l rounded-lg" : "rounded-r-lg"
+              className={`absolute top-0 right-0 h-full bg-white/15     ${
+                percentage === 0 ? " rounded-lg" : "rounded-r-lg"
               } ${percentage === 100 ? "hidden" : ""}`}
               animate={{ width: `${100 - percentage}%` }}
               transition={{ duration: 0.5 }}

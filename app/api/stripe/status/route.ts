@@ -23,6 +23,8 @@ export async function GET(request: Request) {
       .eq("id", user.id)
       .single();
 
+    console.log(profile);
+
     if (!profile?.stripe_customer_id) {
       return Response.json({ isSubscribed: false });
     }

@@ -80,6 +80,7 @@ export const WinTheGame = () => {
     if (isSubscribed) {
       await handleWinTheGate();
       setIsEndlessMode(true);
+      setEndlessTarget(1);
       setBossHp(Infinity);
       setShowShop(true);
     } else {
@@ -112,6 +113,7 @@ export const WinTheGame = () => {
 
   const handleNextGate = async () => {
     await handleWinTheGate();
+    await handleLoseSubmit();
     router.push(`/menu/play/gate${info.gate + 1}`);
   };
 

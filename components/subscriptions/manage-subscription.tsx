@@ -43,7 +43,7 @@ export default function ManageSubscription() {
       onMouseEnter={() => setTooltip(true)}
       onMouseLeave={() => setTooltip(false)}
       disabled={loading}
-      className="z-10 relative border-b flex items-center p-3 gap-2"
+      className="z-10 relative flex items-center p-3 gap-2"
     >
       <AnimatePresence>
         {toolTip && (
@@ -51,7 +51,7 @@ export default function ManageSubscription() {
             initial={{ opacity: 0, y: 10, x: "-50%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="hover:bg-gray-100 absolute -top-10 bg-white w-40 p-2 border   left-1/2 -translate-x-1/2 flex justify-center items-center rounded-lg"
+            className="hover:bg-gray-100 border border-white/15 absolute -top-10 bg-neutral-800 backdrop-blur-xl w-40 p-2 left-1/2 -translate-x-1/2 flex justify-center items-center rounded-lg"
           >
             {error ? (
               error

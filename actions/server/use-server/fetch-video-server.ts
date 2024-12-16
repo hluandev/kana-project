@@ -9,8 +9,6 @@ export async function fetchVideoUrl(path: string) {
   const { data: buckets } = await supabase.storage.listBuckets();
   const videoBucket = buckets?.find((bucket) => bucket.name === "videos");
 
-  console.log(videoBucket);
-
   if (!videoBucket) {
     console.log("Videos bucket not found");
   }

@@ -56,8 +56,8 @@ export default function Play() {
           key={index}
           {...gate}
           disabled={gate.stage > (info.gate || 1)}
-          href={gate.stage > (info.gate || 1) ? "" : gate.href}
-          linkText={gate.stage > (info.gate || 1) ? "Locked" : gate.linkText}
+          href={gate.stage <= (info.gate || 1) ? gate.href : ""}
+          linkText={gate.stage <= (info.gate || 1) ? gate.linkText : "Locked"}
         />
       ))}
     </div>
