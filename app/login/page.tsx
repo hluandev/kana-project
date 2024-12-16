@@ -32,7 +32,7 @@ export default function LoginPage() {
         />
       </svg>
 
-      <div className="border  bg-black/5 shadow-inner p-6 gap-2 rounded-xl flex flex-col">
+      <div className=" bg-neutral-800 shadow-inner p-6 gap-2 rounded-xl flex flex-col">
         {emailOpen && confirmEmail === "" && (
           <form
             onSubmit={(e) => {
@@ -44,7 +44,7 @@ export default function LoginPage() {
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="p-2 w-64 h-11 outline-none rounded-md  border "
+              className="p-2 w-64 placeholder:text-neutral-500 bg-neutral-700 h-11 outline-none rounded-md border border-white/10 "
               type="email"
               name="email"
               placeholder="Email"
@@ -57,7 +57,7 @@ export default function LoginPage() {
                 setConfirmEmail("confirm");
                 setLoading(false);
               }}
-              className="w-64 h-11 bg-white hover:bg-neutral-100 duration-200 flex justify-center items-center rounded-md  border  "
+              className="w-64 h-11 bg-neutral-700 hover:bg-neutral-600 duration-200 flex justify-center items-center rounded-md  border border-white/10 "
               type="submit"
             >
               {loading ? <Loader2Icon className="animate-spin" /> : "Continue"}
