@@ -117,45 +117,45 @@ export const WinTheGame = () => {
       {showShop ? (
         <Win />
       ) : (
-        <div className="flex  flex-col items-center justify-center gap-6">
+        <div className="flex  flex-col items-center justify-center gap-6 pb-10">
           <div className="flex flex-col items-center gap-2">
             <h2 className="text-4xl font-semibold">Congratulation!</h2>
-            <p className=" text-neutral-500 max-w-md text-center">
-              Congratulations on winning the game! You can now choose to play
-              again or dive into Endless Mode.
+            <p className=" text-white/70 max-w-md text-center">
+              Congratulations on beating the boss! You can now choose to play
+              again, go to the next gate or dive into Endless Mode.
             </p>
           </div>
 
           <div className="flex gap-4">
             <div
               onClick={handleLoseSubmit}
-              className="bg-white rounded-xl flex flex-col justify-between p-3 border   aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+              className="bg-black/80 backdrop-blur-xl rounded-xl flex flex-col justify-between p-3  aspect-square h-48 cursor-pointer hover:bg-opacity-90"
             >
               <div>
                 <h1 className=" font-semibold">Play again</h1>
               </div>
-              <p className="text-neutral-700 ">
+              <p className="text-neutral-400 ">
                 Start the game from the beginning.
               </p>
             </div>
 
             <div
               onClick={handleNextGate}
-              className="bg-white rounded-xl flex flex-col justify-between p-3 border   aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+              className="bg-blue-600/80 backdrop-blur-xl rounded-xl flex flex-col justify-between p-3  aspect-square h-48 cursor-pointer hover:bg-opacity-90"
             >
               <div>
                 <h1 className=" font-semibold">Next gate</h1>
               </div>
-              <p className="text-neutral-700 ">Start the next gate.</p>
+              <p className="text-white/70 ">Start the next gate.</p>
             </div>
 
             <div
               onClick={handleEndlessMode}
-              className="bg-[#efcb68] rounded-xl flex flex-col justify-between p-3 border   aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+              className="bg-[#efcb68] rounded-xl flex flex-col justify-between p-3 aspect-square h-48 cursor-pointer hover:bg-opacity-90"
             >
               <div>
-                <h1 className=" font-semibold">Play endless</h1>
-                <p className=" text-black/50">Premium required</p>
+                <h1 className=" font-semibold text-black">Play endless</h1>
+                <p className=" text-black/40">Premium required</p>
               </div>
               <p className="text-neutral-700 ">
                 Play the game in endless mode and keep scoring higher and

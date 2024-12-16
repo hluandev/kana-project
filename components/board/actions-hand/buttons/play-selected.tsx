@@ -151,6 +151,7 @@ export const PlaySelected = () => {
       hasFullHouse,
       hasFourOfKind,
       hasStraightFlush,
+      hasFiveOfKind: rankValues.some((count) => count >= 5),
     };
   };
 
@@ -172,6 +173,7 @@ export const PlaySelected = () => {
       hasFullHouse,
       hasFourOfKind,
       hasStraightFlush,
+      hasFiveOfKind,
     } = checkHand();
 
     const cardRanks = selectedCard.map((card) => parseInt(card.rank));
@@ -180,7 +182,15 @@ export const PlaySelected = () => {
     let newScore = 0;
     let newMultiplier = 1;
 
-    if (hasStraightFlush) {
+    if (hasFiveOfKind) {
+      const fiveKindRank = Array.from(rankCount.entries()).find(
+        ([_, count]) => count === 5
+      )?.[0];
+      rankPoints = fiveKindRank ? parseInt(fiveKindRank) * 5 : 0;
+      newScore = 120 + rankPoints;
+      newMultiplier = 12;
+      setAnnouncement("five_of_a_kind");
+    } else if (hasStraightFlush) {
       rankPoints = cardRanks
         .sort((a, b) => b - a)
         .slice(0, 5)
@@ -258,7 +268,9 @@ export const PlaySelected = () => {
 
     let finalScore = newScore;
     let finalMultiplier = newMultiplier;
-    const currentAnnouncement = hasStraightFlush
+    const currentAnnouncement = hasFiveOfKind
+      ? "five_of_a_kind"
+      : hasStraightFlush
       ? "straight_flush"
       : hasFourOfKind
       ? "four_of_a_kind"
@@ -297,6 +309,15 @@ export const PlaySelected = () => {
           "two_pairs"
         );
       }
+      if (hasFiveOfKind) {
+        validCombos.push(
+          "five_of_a_kind",
+          "four_of_a_kind",
+          "three_of_a_kind",
+          "pair",
+          "two_pairs"
+        );
+      }
       if (hasStraightFlush) {
         validCombos.push("straight_flush", "straight", "flush");
       }
@@ -325,6 +346,15 @@ export const PlaySelected = () => {
       }
       if (hasFourOfKind) {
         validCombos.push(
+          "four_of_a_kind",
+          "three_of_a_kind",
+          "pair",
+          "two_pairs"
+        );
+      }
+      if (hasFiveOfKind) {
+        validCombos.push(
+          "five_of_a_kind",
           "four_of_a_kind",
           "three_of_a_kind",
           "pair",
