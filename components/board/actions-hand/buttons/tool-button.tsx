@@ -40,7 +40,7 @@ export const ToolButton = ({
   return (
     <div className="relative">
       {tooltip && !isMobile && (
-        <div className="absolute top-1/2 -translate-y-1/2 -left-28 w-24   p-2 rounded-md bg-black/80 backdrop-blur-xl border  ">
+        <div className="absolute top-1/2 -translate-y-1/2 -left-28 w-24   p-2 rounded-md bg-black/80 backdrop-blur-xl">
           <p className="font-medium">Shortcut: {keyboardShortcut}</p>
           <p>{label}</p>
         </div>
