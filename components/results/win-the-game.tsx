@@ -7,9 +7,12 @@ import { usePlayerStore } from "@/stores/usePlayerStore";
 import { useKanaStore } from "@/stores/useKanaStore";
 import { useGameStateStore } from "@/stores/useGameStateStore";
 import { checkIfSubBefore } from "@/actions/server/use-server/check-if-sub-before";
+import { updatePlayerGate } from "@/actions/server/use-server/update-player-gate";
+import { useRouter } from "next/navigation";
 
 export const WinTheGame = () => {
-  const { isSubscribed } = usePlayerStore();
+  const { info, isSubscribed } = usePlayerStore();
+  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [showShop, setShowShop] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -76,7 +79,7 @@ export const WinTheGame = () => {
   const handleEndlessMode = () => {
     if (isSubscribed) {
       setIsEndlessMode(true);
-      setEndlessTarget(1);
+      setBossHp(Infinity);
       setShowShop(true);
     } else {
       handleSubscribe();
@@ -105,6 +108,10 @@ export const WinTheGame = () => {
     await saveGame();
   };
 
+  const handleNextGate = async () => {
+    router.push(`/menu/play/gate${info.gate + 1}`);
+  };
+
   return (
     <>
       {showShop ? (
@@ -130,6 +137,16 @@ export const WinTheGame = () => {
               <p className="text-neutral-700 ">
                 Start the game from the beginning.
               </p>
+            </div>
+
+            <div
+              onClick={handleNextGate}
+              className="bg-white rounded-xl flex flex-col justify-between p-3 border   aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+            >
+              <div>
+                <h1 className=" font-semibold">Next gate</h1>
+              </div>
+              <p className="text-neutral-700 ">Start the next gate.</p>
             </div>
 
             <div

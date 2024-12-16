@@ -17,6 +17,7 @@ import { VirtualKeyboard } from "./virtual-keyboard";
 import { ProgressBar } from "@/components/left-side/game-info/components/progress-bar";
 import { Score } from "@/components/left-side/game-info/components/score";
 import { ScoreDamage } from "@/components/left-side/game-info/components/score-damage";
+import { updatePlayerGate } from "@/actions/server/use-server/update-player-gate";
 
 export default function CurrentPlayHand() {
   const {
@@ -62,6 +63,7 @@ export default function CurrentPlayHand() {
 
   const renderOutcome = () => {
     if (hasWonGame) {
+      updatePlayerGate();
       return <WinTheGame />;
     }
     if (hasWonEndless) {
