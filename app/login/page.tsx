@@ -148,7 +148,7 @@ export default function LoginPage() {
         )}
       </div>
 
-      <div className="text-xs text-center max-w-xs  text-black/60">
+      <div className="text-xs text-center max-w-xs  text-white/60">
         By continuing, you agree to Kamikana&apos;s{" "}
         <a
           href="https://www.kamikana.com/terms"
