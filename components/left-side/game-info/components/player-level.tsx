@@ -17,10 +17,6 @@ export default function PlayerLevel() {
   const percentage = (info.xp / 100) * 100;
 
   useEffect(() => {
-    checkSubscription();
-  }, []);
-
-  useEffect(() => {
     const handleLevelUp = async () => {
       if (info.xp >= 100) {
         if (info.level >= 10 && !isSubscribed) {
