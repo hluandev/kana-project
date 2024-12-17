@@ -10,14 +10,8 @@ import { Lose } from "@/components/results/lose";
 import { WinTheGame } from "@/components/results/win-the-game";
 import { playSound } from "@/actions/client/play-sound";
 import { usePlayerStore } from "@/stores/usePlayerStore";
-import { updatePlayerInfoServer } from "@/actions/server/update-player-info";
-import { updateActivityServer } from "@/actions/server/activity-server-actions";
 import { useGameStateStore } from "@/stores/useGameStateStore";
-import { VirtualKeyboard } from "./virtual-keyboard";
-import { ProgressBar } from "@/components/left-side/game-info/components/progress-bar";
 import { Score } from "@/components/left-side/game-info/components/score";
-import { ScoreDamage } from "@/components/left-side/game-info/components/score-damage";
-import { updatePlayerGate } from "@/actions/server/use-server/update-player-gate";
 
 export default function CurrentPlayHand() {
   const {
@@ -89,7 +83,7 @@ export default function CurrentPlayHand() {
     return progress >= target ? (
       <Win />
     ) : (
-      <div className="flex items-center  w-full flex-col lg:pb-6 pb-28 space-y-2">
+      <div className="flex items-center  w-full flex-col lg:pb-2 pb-28 space-y-2">
         <Score />
         <CurrentHand />
         <ActionsHand />

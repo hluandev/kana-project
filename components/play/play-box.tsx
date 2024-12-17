@@ -3,7 +3,7 @@
 import { useVideoUrl } from "@/hooks/useVideoUrl";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { motion } from "framer-motion";
-import { LockIcon, SwordIcon } from "lucide-react";
+import { Loader2Icon, LockIcon, SwordIcon } from "lucide-react";
 import Link from "next/link";
 
 interface PlayBoxProps {
@@ -15,7 +15,6 @@ interface PlayBoxProps {
   comingSoon?: boolean;
   disabled?: boolean;
   videoSrc: string;
-  onClick?: () => void;
 }
 
 export const PlayBox = ({
@@ -26,7 +25,6 @@ export const PlayBox = ({
   disabled,
   comingSoon,
   videoSrc,
-  onClick,
 }: PlayBoxProps) => {
   const { videoUrl, loading } = useVideoUrl(videoSrc);
   return (
@@ -37,7 +35,7 @@ export const PlayBox = ({
         disabled ? "bg-black/30" : ""
       }  flex flex-col p-2 justify-between`}
     >
-      {videoSrc && !loading && (
+      {videoSrc && !loading ? (
         <video
           autoPlay
           loop
@@ -47,6 +45,10 @@ export const PlayBox = ({
         >
           <source src={videoUrl} type="video/mp4" />
         </video>
+      ) : (
+        <div className="flex items-center justify-center h-full">
+          <Loader2Icon className="w-10 h-10 animate-spin" />
+        </div>
       )}
 
       <div className="relative z-10">
@@ -67,7 +69,6 @@ export const PlayBox = ({
             </p>
           )}
           <Link
-            onClick={onClick}
             prefetch={true}
             href={href}
             className={`${

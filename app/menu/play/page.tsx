@@ -17,7 +17,6 @@ export default function Play() {
       title: "ひらがな",
       description: "Hiragana the first challenger.",
       videoSrc: "hiragana.mp4",
-      onClick: () => setHiragana(true),
     },
     {
       linkText: "Coming Soon",
@@ -26,7 +25,6 @@ export default function Play() {
       videoSrc: "katakana.mp4",
       title: "カタカナ",
       description: "Katakana the second challenger.",
-      onClick: () => setHiragana(false),
     },
     {
       linkText: "Coming Soon",
@@ -36,7 +34,6 @@ export default function Play() {
       comingSoon: true,
       title: "漢字",
       description: "Kanji the third challenger.",
-      onClick: () => setHiragana(false),
     },
     {
       linkText: "Coming Soon",
@@ -45,7 +42,6 @@ export default function Play() {
       videoSrc: "kanji2.mp4",
       title: "TBD",
       description: "TBD",
-      onClick: () => setHiragana(false),
     },
     // ... other gates configuration
   ];

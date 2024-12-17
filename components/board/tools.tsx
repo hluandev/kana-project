@@ -2,7 +2,13 @@
 
 import { useKanaStore } from "@/stores/useKanaStore";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronUp, CombineIcon, LanguagesIcon, XIcon } from "lucide-react";
+import {
+  ChevronUp,
+  CombineIcon,
+  LanguagesIcon,
+  MenuIcon,
+  XIcon,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { Report } from "./report";
 import { ComboHelp } from "./combo-help";
@@ -13,17 +19,11 @@ import { ReturnButton } from "../left-side/game-info/components/return-button";
 import { createPortal } from "react-dom";
 
 export const Tools = () => {
-  const {
-    currentDeck,
-    setShowRomaji,
-    showRomaji,
-    kanaMissions,
-    hiragana,
-    setHiragana,
-  } = useKanaStore();
+  const { currentDeck, setShowRomaji, showRomaji, kanaMissions } =
+    useKanaStore();
   const { missionID, progress, isEndlessMode } = useScoreStore();
   const [isCombineOpen, setIsCombineOpen] = useState(false);
-  const [showTools, setShowTools] = useState(true);
+  const [showTools, setShowTools] = useState(false);
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
   const hasWonGame =
@@ -46,13 +46,6 @@ export const Tools = () => {
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, []);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("hiragana");
-    if (stored !== null) {
-      setHiragana(stored === "true");
-    }
-  }, [setHiragana]);
 
   return (
     <>
@@ -91,44 +84,51 @@ export const Tools = () => {
               document.body
             )}
 
-          <div className="fixed flex z-[9999] lg:gap-1 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-2 lg:bottom-2">
-            <div className="bg-black/80 backdrop-blur-xl rounded-xl text-sm lg:h-10 lg:w-10 h-8 w-8 flex items-center justify-center">
-              {currentDeck.length}
+          <button
+            onClick={() => setShowTools(!showTools)}
+            className={`fixed z-[9999] bottom-2 right-2 ${
+              showTools ? "bg-white text-black" : "bg-black/80"
+            } backdrop-blur-xl rounded-xl text-sm lg:h-10 lg:w-10 h-8 w-8 flex items-center justify-center`}
+          >
+            <MenuIcon className="lg:w-5 lg:h-5 w-4 h-4" />
+          </button>
+
+          {showTools && (
+            <div className="fixed flex z-[9999] lg:gap-1 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-[3.3rem] lg:bottom-2">
+              <ToolButton
+                keyboardShortcut="0"
+                onClick={() => setIsCombineOpen(true)}
+                icon={
+                  <CombineIcon
+                    className="lg:w-5 lg:h-5 w-4 h-4"
+                    strokeWidth={1.5}
+                  />
+                }
+                label="Show hands"
+              />
+
+              <ToolButton
+                keyboardShortcut="9"
+                onClick={() => setShowRomaji(!showRomaji)}
+                icon={
+                  <LanguagesIcon
+                    className="lg:w-5 lg:h-5 w-4 h-4"
+                    strokeWidth={1.5}
+                  />
+                }
+                isActive={showRomaji}
+                label="Hide romaji"
+              />
+
+              <ResetGame />
+
+              <Report />
+
+              <div className="">
+                <ReturnButton />
+              </div>
             </div>
-
-            <ToolButton
-              keyboardShortcut="0"
-              onClick={() => setIsCombineOpen(true)}
-              icon={
-                <CombineIcon
-                  className="lg:w-5 lg:h-5 w-4 h-4"
-                  strokeWidth={1.5}
-                />
-              }
-              label="Show hands"
-            />
-
-            <ToolButton
-              keyboardShortcut="9"
-              onClick={() => setShowRomaji(!showRomaji)}
-              icon={
-                <LanguagesIcon
-                  className="lg:w-5 lg:h-5 w-4 h-4"
-                  strokeWidth={1.5}
-                />
-              }
-              isActive={showRomaji}
-              label="Hide romaji"
-            />
-
-            <ResetGame />
-
-            <Report />
-
-            <div className="">
-              <ReturnButton />
-            </div>
-          </div>
+          )}
         </>
       )}
     </>

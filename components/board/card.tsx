@@ -36,9 +36,11 @@ export const Card = ({ card }: CardProps) => {
     >
       {!showRomaji && onHover && (
         <p
-          className={`absolute -top-12 left-1/2 -translate-x-1/2 ${
-            isSelected ? "bg-[#1d1d1f] text-white" : "bg-white"
-          }  py-2 w-full text-center  rounded-[10px]  border border-neutral-300`}
+          className={`absolute -top-10 left-1/2 -translate-x-1/2 ${
+            isSelected
+              ? "bg-[#1d1d1f] text-white"
+              : "bg-black/80 backdrop-blur-xl"
+          }  py-2 w-full text-center  rounded-[10px] border-neutral-300`}
         >
           {card.romaji}
         </p>

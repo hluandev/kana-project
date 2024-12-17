@@ -429,7 +429,7 @@ export const Win = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2 }}
         >
-          Reach Checkpoint
+          Reached Checkpoint
         </motion.div>
 
         <p className="font-medium text-xs lg:text-base text-black/90">
@@ -452,7 +452,7 @@ export const Win = () => {
           />
         ))}
 
-        <div className="absolute  text-[#efcb68] flex-col  gap-2 -left-[6.7rem] top-0 bg-black/80 backdrop-blur-xl w-24 h-32 flex items-center justify-center rounded-xl">
+        <div className="absolute  text-[#efcb68] flex-col  gap-2 -left-[6.7rem] top-0 bg-black/80 backdrop-blur-xl w-24 h-24 flex items-center justify-center rounded-xl">
           <BadgeJapaneseYenIcon strokeWidth={1.7} />{" "}
           <p className="font-semibold">{yen}</p>
         </div>
@@ -466,7 +466,7 @@ export const Win = () => {
                 className="lg:w-5 lg:h-5 w-4 h-4"
               />
             }
-            descTooltip="Refresh cards to get new ones for ¥200. This will also cancel any frozen cards."
+            descTooltip="Refresh shop to get new cards for ¥200. This will also cancel any frozen cards."
             keyboardShortcut="3"
             className="bg-[#ff915a]  hover:bg-[#ff915a] hover:bg-opacity-90"
           />
@@ -484,10 +484,6 @@ export const Win = () => {
             keyboardShortcut="4"
             className="bg-blue-300  hover:bg-blue-300/80"
           />
-
-          <div className=" bg-black/80 backdrop-blur-xl  p-2 font-medium rounded-full aspect-square lg:w-9 lg:h-9 w-6 text-xs h-6 flex items-center justify-center">
-            {currentSpecialDeck.length}
-          </div>
         </div>
       </div>
 
