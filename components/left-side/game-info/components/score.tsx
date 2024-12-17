@@ -14,7 +14,7 @@ export const Score = () => {
     : kanaMissions.find((mission) => mission.id === missionID)?.target || 0;
 
   return (
-    <div className=" lg:w-[18rem] w-[15rem] max-lg:text-xs bg-black/60 backdrop-blur-xl rounded-full p-1 max-lg:flex max-lg:flex-col max-lg:justify-between">
+    <div className=" lg:w-[18rem] w-[15rem] max-lg:text-xs bg-black/60 backdrop-blur-xl rounded-full p-0.5 lg:p-1 max-lg:flex max-lg:flex-col max-lg:justify-between">
       <ProgressBar target={target} />
     </div>
   );
