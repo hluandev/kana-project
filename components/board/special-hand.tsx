@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import UpgradeCard from "./upgrade-card";
 import { SpecialCardCurrent } from "./special-card-current";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { createPortal } from "react-dom";
 
 const handRankOrder = {
   high_card: 1,
@@ -41,45 +42,48 @@ export const SpecialHands = () => {
     <>
       {!hasWonGame && (
         <div className="relative z-10 lg:pt-2">
-          {currentUpgrades.length > 0 && (!isMobile || showUpgrades) && (
-            <div className="fixed top-2 left-2 space-y-2">
-              <div className="grid grid-cols-3 gap-1 rounded-lg">
-                {Object.entries(
-                  currentUpgrades.reduce(
-                    (
-                      acc: { [key: string]: { card: any; count: number } },
-                      card
-                    ) => {
-                      const key = card.romaji;
-                      acc[key] = acc[key] || { card, count: 0 };
-                      acc[key].count++;
-                      return acc;
-                    },
-                    {}
+          {currentUpgrades.length > 0 &&
+            (!isMobile || showUpgrades) &&
+            createPortal(
+              <div className="fixed z-[9999] lg:top-2 max-lg:bottom-2  left-2 space-y-2">
+                <div className="grid grid-cols-3 max-lg:bg-neutral-800 max-lg:p-1 gap-1 rounded-lg">
+                  {Object.entries(
+                    currentUpgrades.reduce(
+                      (
+                        acc: { [key: string]: { card: any; count: number } },
+                        card
+                      ) => {
+                        const key = card.romaji;
+                        acc[key] = acc[key] || { card, count: 0 };
+                        acc[key].count++;
+                        return acc;
+                      },
+                      {}
+                    )
                   )
-                )
-                  .sort(([, { card: cardA }], [, { card: cardB }]) => {
-                    const rankA =
-                      handRankOrder[
-                        cardA.combo as keyof typeof handRankOrder
-                      ] || 0;
-                    const rankB =
-                      handRankOrder[
-                        cardB.combo as keyof typeof handRankOrder
-                      ] || 0;
-                    return rankB - rankA;
-                  })
-                  .map(([key, { card, count }]) => (
-                    <UpgradeCard
-                      isActive={activeSpecials.includes(card.romaji)}
-                      key={key}
-                      card={card}
-                      count={count}
-                    />
-                  ))}
-              </div>
-            </div>
-          )}
+                    .sort(([, { card: cardA }], [, { card: cardB }]) => {
+                      const rankA =
+                        handRankOrder[
+                          cardA.combo as keyof typeof handRankOrder
+                        ] || 0;
+                      const rankB =
+                        handRankOrder[
+                          cardB.combo as keyof typeof handRankOrder
+                        ] || 0;
+                      return rankB - rankA;
+                    })
+                    .map(([key, { card, count }]) => (
+                      <UpgradeCard
+                        isActive={activeSpecials.includes(card.romaji)}
+                        key={key}
+                        card={card}
+                        count={count}
+                      />
+                    ))}
+                </div>
+              </div>,
+              document.body
+            )}
 
           <motion.div
             layout
