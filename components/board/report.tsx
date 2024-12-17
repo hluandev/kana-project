@@ -14,11 +14,11 @@ export const Report = () => {
     <>
       {isOpen &&
         createPortal(
-          <div className="fixed flex justify-center items-center z-50 top-0 left-0 w-full h-full bg-black/50">
+          <div className="fixed flex justify-center items-center  z-[9999999] top-0 left-0 w-full h-full bg-black/50">
             <motion.div
               initial={{ opacity: 0, y: 200 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white/15 backdrop-blur-xl rounded-xl w-1/2 h-2/3 lg:w-1/4 lg:h-1/3 lg:p-4 p-2 flex flex-col gap-y-2"
+              className="bg-white/15 backdrop-blur-xl rounded-xl w-[90%] h-[50%] lg:w-1/4 lg:h-1/3 lg:p-4 p-2 flex flex-col gap-y-2"
             >
               <div className="flex justify-between items-center ">
                 <div className="flex gap-2 items-center ">
