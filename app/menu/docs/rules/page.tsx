@@ -5,29 +5,27 @@ export default function Rules() {
   return (
     <Doc title="2. Rules">
       <div className="max-w-md mx-auto space-y-8">
-        <DocDesc title="Round score">
-          <div className={`rounded-xl w-1/2 bg-black/80 p-2 overflow-hidden `}>
-            <div className="flex justify-center items-center pb-4 ">
-              Score at least 300 points to clear this round.
-            </div>
-
-            <div className="rounded-lg font-medium overflow-hidden">
-              <div className="relative h-8">
-                <div
-                  className={`absolute top-0 w-full rounded-xl right-0 h-full bg-white/10 `}
-                />
-                <div className="absolute leading-none  w-full h-full flex gap-1 items-center justify-center text-center z-10">
-                  <p>0</p> <p className="">/</p> <p>300</p>
-                </div>
+        <DocDesc title="Checkpoints">
+          <div className="rounded-lg font-medium overflow-hidden">
+            <div className="relative h-8">
+              <div
+                className={`absolute top-0 w-full rounded-xl right-0 h-full bg-white/10 `}
+              />
+              <div className="absolute leading-none  w-full h-full flex gap-1 items-center justify-center text-center z-10">
+                <p>0</p> <p className="">/</p> <p>300</p>
               </div>
             </div>
           </div>
 
           <p>
-            For each round, you&apos;ll have a target score to beat. Beat all 8
-            rounds to win the game!
+            Checkpoints is where you can shop and upgrade your cards. This
+            Checkpoints will be increase higher higher after each checkpoints.
+            You health and mana will also be reset here.
           </p>
-          <p>In endless mode, every round you win will count as a win.</p>
+          <p>
+            In endless mode, every round you reach a checkpoint will count as a
+            win.
+          </p>
         </DocDesc>
         <DocDesc title="Damage">
           <div className={`rounded-xl w-1/2 bg-black/80 p-2 overflow-hidden `}>
@@ -38,7 +36,7 @@ export default function Rules() {
             </div>
 
             <div className="font-medium text-center grid mt-2 gap-2 grid-cols-2">
-              <div className="py-1.5 bg-white/10 rounded-lg text-blue-600">
+              <div className="py-1.5 bg-white/10 rounded-lg text-green-500">
                 0
               </div>
               <div className="py-1.5 bg-white/10 rounded-lg text-red-500">
@@ -69,7 +67,7 @@ export default function Rules() {
             <div>
               <div className="flex justify-between items-center">
                 <p>
-                  <span className="text-blue-600">+20</span> /{" "}
+                  <span className="text-green-500">+20</span> /{" "}
                   <span className="text-red-500">+3</span>{" "}
                 </p>
               </div>

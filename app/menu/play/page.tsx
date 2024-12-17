@@ -1,12 +1,9 @@
 "use client";
 
 import { PlayBox } from "@/components/play/play-box";
-import { useKanaStore } from "@/stores/useKanaStore";
 import { usePlayerStore } from "@/stores/usePlayerStore";
-import { useEffect } from "react";
 
 export default function Play() {
-  const { setHiragana } = useKanaStore();
   const { info } = usePlayerStore();
 
   const gates = [
@@ -47,7 +44,7 @@ export default function Play() {
   ];
 
   return (
-    <div className="w-full grid grid-cols-2 gap-2 py-2 pr-2">
+    <div className="w-full max-lg:h-full grid lg:grid-cols-2 lg:gap-2 lg:py-2 lg:pr-2">
       {gates.map((gate, index) => (
         <PlayBox
           key={index}

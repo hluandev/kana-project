@@ -46,10 +46,30 @@ export const Nav = () => {
     <>
       {/* Mobile */}
       <div className="lg:hidden flex max-lg:justify-between max-lg:px-2 max-lg:py-1 lg:flex-col">
-        <LinkNav href="/menu/play">Play</LinkNav>
-        <LinkNav href="/menu/docs">How to play</LinkNav>
-        <LinkNav href="/menu/leaderboard">Leaderboard</LinkNav>
-        <LinkNav href="/menu/activity">Activity</LinkNav>
+        <LinkNav
+          icon={<SwordsIcon className="w-[0.8rem] h-[0.8rem]" />}
+          href="/menu/play"
+        >
+          Play
+        </LinkNav>
+        <LinkNav
+          icon={<BookIcon className="w-[0.8rem] h-[0.8rem]" />}
+          href="/menu/docs"
+        >
+          Guide
+        </LinkNav>
+        <LinkNav
+          icon={<TrophyIcon className="w-[0.8rem] h-[0.8rem]" />}
+          href="/menu/leaderboard"
+        >
+          Leaderboard
+        </LinkNav>
+        <LinkNav
+          icon={<ActivityIcon className="w-[0.8rem] h-[0.8rem]" />}
+          href="/menu/activity"
+        >
+          Activity
+        </LinkNav>
         {/* <LinkNav onClick={handleInboxClick} href="/menu/inbox">
           Inbox ({unreadCount})
         </LinkNav>
@@ -73,7 +93,7 @@ export const Nav = () => {
             icon={<BookIcon className="w-[1.1rem] h-[1.1rem]" />}
             href="/menu/docs"
           >
-            How to play
+            Guide
           </LinkNav>
           <LinkNav
             icon={<TrophyIcon className="w-[1.1rem] h-[1.1rem]" />}
