@@ -17,8 +17,8 @@ export default function LoginPage() {
   const [confirmEmail, setConfirmEmail] = useState("");
 
   return (
-    <div className="grid grid-cols-2 h-full">
-      <div className="">
+    <div className="grid lg:grid-cols-2 h-full">
+      <div className="max-lg:hidden">
         <video
           autoPlay
           loop
