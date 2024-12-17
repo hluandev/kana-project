@@ -22,7 +22,6 @@ export const PlayBox = ({
   stage,
   title,
   description,
-  linkText,
   href,
   disabled,
   comingSoon,

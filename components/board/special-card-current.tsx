@@ -47,10 +47,10 @@ export const SpecialCardCurrent = ({
       animate={{ opacity: 1, x: 0 }}
       layout
       key={card.romaji}
-      className={`flex flex-col lg:p-3 p-1 ${
+      className={`flex flex-col lg:p-2 p-1 ${
         activeSpecials.includes(card.romaji) &&
         "[background:linear-gradient(45deg,#000,theme(colors.black)_50%,#000)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.red.600/.48)_0%,theme(colors.red.500)_20%,theme(colors.indigo.300)_40%,theme(colors.indigo.500)_60%,theme(colors.slate.600/.48)_100%)_border-box] rounded-xl border-2 border-transparent animate-border"
-      } relative justify-between border-2 border-transparent rounded-xl h-32 w-[4.8rem] lg:h-52 lg:w-36   ${
+      } relative justify-between border-2 border-transparent rounded-xl h-32 w-[4.8rem] lg:h-48 lg:w-[8rem]   ${
         isSelected
           ? "border-yellow-500 bg-[#efcb68]"
           : " bg-black/80  backdrop-blur-xl"
@@ -102,7 +102,7 @@ export const SpecialCardCurrent = ({
                 setSelectedSpecial([]);
               }
             }}
-            className={`absolute lg:top-2 lg:left-2 z-50 max-lg:-bottom-9 max-lg:left-1/2 max-lg:-translate-x-1/2  bg-black/80 aspect-square lg:w-7 w-6 flex justify-center items-center rounded-lg cursor-pointer hover:bg-black`}
+            className={`absolute lg:top-1 lg:left-1 z-50 max-lg:-bottom-9 max-lg:left-1/2 max-lg:-translate-x-1/2  bg-black/80 aspect-square lg:w-7 w-6 flex justify-center items-center rounded-lg cursor-pointer hover:bg-black`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >

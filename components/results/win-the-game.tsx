@@ -118,15 +118,16 @@ export const WinTheGame = () => {
   };
 
   const handleWinTheGate = async () => {
-    updatePlayerGateLocal(info.gate + 1);
-    const updateGate = async () => {
+    const currentGate = useGameStateStore.getState().currentGate;
+
+    if (currentGate === info.gate) {
+      updatePlayerGateLocal(info.gate + 1);
       try {
         await updatePlayerGate();
       } catch (error) {
         console.error("Failed to update player gate:", error);
       }
-    };
-    updateGate();
+    }
   };
 
   return (

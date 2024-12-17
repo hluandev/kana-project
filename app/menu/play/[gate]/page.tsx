@@ -20,7 +20,7 @@ import { useGameStateStore } from "@/stores/useGameStateStore";
 
 const Kana = ({ params }: { params: { gate: string } }) => {
   const router = useRouter();
-  const { currentUpgrades } = useKanaStore();
+  const { currentUpgrades, setHiragana } = useKanaStore();
   const { info } = usePlayerStore();
   const [showMobileTools, setShowMobileTools] = useState(false);
   const [videoParams, setVideoParams] = useState<any>(null);
@@ -33,6 +33,11 @@ const Kana = ({ params }: { params: { gate: string } }) => {
     }
 
     useGameStateStore.getState().setCurrentGate(gateNumber);
+    if (gateNumber === 1) {
+      setHiragana(true);
+    } else {
+      setHiragana(false);
+    }
     loadGame();
   }, [params.gate, info.gate]);
 
@@ -84,7 +89,7 @@ const Kana = ({ params }: { params: { gate: string } }) => {
 
       <CurrentPlayHand />
 
-      <div className="absolute flex justify-between w-full left-0 px-20 top-1/2 -translate-y-1/2 z-[5]">
+      <div className="absolute flex justify-between w-full left-0 px-4 top-1/2 -translate-y-1/2 z-[5]">
         <div className="relative">
           <Avatars player name={info.username} videoSrc="player.mp4" />
           <div className="absolute bottom-0 w-full p-2">
