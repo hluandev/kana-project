@@ -17,6 +17,7 @@ import { ResetGame } from "./reset-game";
 import { ToolButton } from "./actions-hand/buttons/tool-button";
 import { ReturnButton } from "../left-side/game-info/components/return-button";
 import { createPortal } from "react-dom";
+import VolumeButton from "./actions-hand/buttons/volume-button";
 
 export const Tools = () => {
   const { currentDeck, setShowRomaji, showRomaji, kanaMissions } =
@@ -93,42 +94,46 @@ export const Tools = () => {
             <MenuIcon className="lg:w-5 lg:h-5 w-4 h-4" />
           </button>
 
-          {showTools && (
-            <div className="fixed flex z-[9999] lg:gap-1 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-[3.3rem] lg:bottom-2">
-              <ToolButton
-                keyboardShortcut="0"
-                onClick={() => setIsCombineOpen(true)}
-                icon={
-                  <CombineIcon
-                    className="lg:w-5 lg:h-5 w-4 h-4"
-                    strokeWidth={1.5}
-                  />
-                }
-                label="Show hands"
-              />
+          {showTools &&
+            createPortal(
+              <div className="fixed flex z-[9999] lg:gap-1 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-[3.3rem] lg:bottom-2">
+                <ToolButton
+                  keyboardShortcut="0"
+                  onClick={() => setIsCombineOpen(true)}
+                  icon={
+                    <CombineIcon
+                      className="lg:w-5 lg:h-5 w-4 h-4"
+                      strokeWidth={1.5}
+                    />
+                  }
+                  label="Show hands"
+                />
 
-              <ToolButton
-                keyboardShortcut="9"
-                onClick={() => setShowRomaji(!showRomaji)}
-                icon={
-                  <LanguagesIcon
-                    className="lg:w-5 lg:h-5 w-4 h-4"
-                    strokeWidth={1.5}
-                  />
-                }
-                isActive={showRomaji}
-                label="Hide romaji"
-              />
+                <ToolButton
+                  keyboardShortcut="9"
+                  onClick={() => setShowRomaji(!showRomaji)}
+                  icon={
+                    <LanguagesIcon
+                      className="lg:w-5 lg:h-5 w-4 h-4"
+                      strokeWidth={1.5}
+                    />
+                  }
+                  isActive={showRomaji}
+                  label="Hide romaji"
+                />
 
-              <ResetGame />
+                <ResetGame />
 
-              <Report />
+                <VolumeButton />
 
-              <div className="">
-                <ReturnButton />
-              </div>
-            </div>
-          )}
+                <Report />
+
+                <div className="">
+                  <ReturnButton />
+                </div>
+              </div>,
+              document.body
+            )}
         </>
       )}
     </>

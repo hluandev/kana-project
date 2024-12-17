@@ -51,8 +51,8 @@ export const ToolButton = ({
         onMouseLeave={() => setTooltip(false)}
         onClick={handleClick}
         className={`${
-          isActive ? "bg-black/80" : "bg-red-600/60 text-white"
-        } rounded-xl backdrop-blur-xl font-bold duration-300 lg:h-10 lg:w-10 h-8 w-8 flex items-center justify-center`}
+          isActive ? "bg-white/15" : "bg-red-600/60"
+        } rounded-xl backdrop-blur-xl font-bold duration-200 lg:h-10 lg:w-10 h-8 w-8 flex items-center justify-center`}
       >
         {icon}
       </button>
