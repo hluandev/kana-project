@@ -90,6 +90,12 @@ export const Nav = () => {
             Play
           </LinkNav>
           <LinkNav
+            icon={<UserIcon className="w-[1.1rem] h-[1.1rem]" />}
+            href="/menu/characters"
+          >
+            Characters
+          </LinkNav>
+          <LinkNav
             icon={<BookIcon className="w-[1.1rem] h-[1.1rem]" />}
             href="/menu/docs"
           >
