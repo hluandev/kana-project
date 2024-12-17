@@ -18,13 +18,13 @@ export default function Rules() {
           </div>
 
           <p>
-            Checkpoints is where you can shop and upgrade your cards. This
-            Checkpoints will be increase higher higher after each checkpoints.
-            You health and mana will also be reset here.
+            Checkpoints are places where you can shop and upgrade your cards.
+            Each checkpoint will increase in difficulty as you progress. Your
+            health and mana will also reset at every checkpoint.
           </p>
           <p>
-            In endless mode, every round you reach a checkpoint will count as a
-            win.
+            In Endless Mode, reaching a checkpoint counts as a win for that
+            round.
           </p>
         </DocDesc>
         <DocDesc title="Damage">
@@ -45,13 +45,13 @@ export default function Rules() {
             </div>
           </div>
           <p>
-            Your current hand&apos;s score will be shown here. Blue represents
+            Your current hand&apos;s score will be shown here. Green represents
             points, and red indicates the multiplier.
           </p>
         </DocDesc>
 
         <DocDesc title="Levels">
-          <p>Everytime you win a round, you gain 20xp.</p>
+          <p>Everytime you reach a checkpoint, you gain 20xp.</p>
         </DocDesc>
         <DocDesc title="Special cards">
           <p>

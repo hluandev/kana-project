@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
   LabelList,
 } from "recharts";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface GraphTableProps {
   highestHandsTable: boolean;
@@ -18,6 +19,7 @@ interface GraphTableProps {
 
 export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
   const { activity } = usePlayerStore();
+  const isMobile = useIsMobile();
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -32,6 +34,10 @@ export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
     return [`${value}`, label];
   };
 
+  const margins = isMobile
+    ? { left: 10, right: 10, bottom: 10, top: 30 }
+    : { left: 60, right: 60, bottom: 10, top: 40 };
+
   return (
     <div className="bg-neutral-800 p-4 w-full  overflow-hidden h-full rounded-xl">
       {loading ? (
@@ -40,10 +46,7 @@ export const GraphTable = ({ highestHandsTable, loading }: GraphTableProps) => {
         </div>
       ) : (
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            margin={{ left: 60, right: 60, bottom: 10, top: 40 }}
-            data={activity}
-          >
+          <LineChart margin={margins} data={activity}>
             <CartesianGrid vertical={false} stroke="#e5e5e5" />
             <XAxis
               stroke="white"
