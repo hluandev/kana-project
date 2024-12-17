@@ -8,8 +8,8 @@ export const ScoreDamage = () => {
   const { score, multiplier, announcement } = useScoreStore();
 
   return (
-    <Box className="flex flex-col w-full max-lg:justify-between lg:gap-1">
-      <div className="flex flex-col gap-1">
+    <Box className="flex flex-col w-full max-lg:justify-between">
+      <div className="flex flex-col">
         <div className="">
           {announcement === ""
             ? "Hand"
