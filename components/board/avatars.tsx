@@ -28,7 +28,7 @@ export const Avatars = ({
       animate={{ opacity: 1, y: 0 }}
       className={`${
         player && turns === 0 && "grayscale"
-      } relative rounded-2xl shadow-lg overflow-hidden lg:h-[20rem] lg:w-[14rem] h-[16rem] w-[12rem] text-white flex flex-col p-2 justify-between`}
+      } relative rounded-2xl shadow-lg overflow-hidden lg:h-[20rem] lg:w-[14rem] h-full w-[11rem] text-white flex flex-col lg:p-2 p-1 justify-between`}
     >
       {videoUrl && !loading ? (
         <video
@@ -49,9 +49,9 @@ export const Avatars = ({
       <div className="relative z-10">{player ? <PlayerHp /> : <BossHp />}</div>
 
       {!player && (
-        <div className="space-y-4 flex items-end justify-between relative z-10">
-          <div className="space-y-2">
-            <p className="text-2xl font-semibold leading-none">{japanese}</p>
+        <div className="space-y-4 max-lg:text-xs flex items-end justify-between relative z-10">
+          <div className="lg:space-y-2">
+            <p className="lg:text-2xl font-semibold leading-none">{japanese}</p>
             <p className="">{description}</p>
           </div>
         </div>

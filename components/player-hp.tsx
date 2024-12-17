@@ -10,7 +10,7 @@ export const PlayerHp = () => {
 
   return (
     <div className="flex items-center gap-1">
-      <div className="text-lg flex items-center justify-center font-semibold bg-black/80 w-8 h-8 rounded-lg aspect-square">
+      <div className="lg:text-lg flex items-center justify-center font-semibold bg-black/80 lg:w-8 lg:h-8 h-6 w-6 rounded-lg aspect-square">
         {info.level}
       </div>
       <div className="flex flex-col">
@@ -20,7 +20,7 @@ export const PlayerHp = () => {
         >
           {Array.from({ length: maxTurns }).map((_, index) => (
             <div
-              className={`h-3 w-8 rounded-full ${
+              className={`lg:h-3 lg:w-8 h-2 w-6 rounded-full ${
                 index < turns ? "bg-red-600" : "bg-white/10"
               }`}
               key={index}
@@ -33,7 +33,7 @@ export const PlayerHp = () => {
         >
           {Array.from({ length: maxDiscard }).map((_, index) => (
             <div
-              className={`w-8 h-3 rounded-full ${
+              className={`lg:w-8 lg:h-3 w-6 h-2 rounded-full ${
                 index < discard ? "bg-blue-600" : "bg-white/10"
               }`}
               key={index}

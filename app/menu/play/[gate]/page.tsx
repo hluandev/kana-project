@@ -67,17 +67,15 @@ const Kana = ({ params }: { params: { gate: string } }) => {
   }, [params.gate, router]);
 
   return (
-    <div className="flex relative w-full flex-col items-center justify-between h-full">
+    <div className="flex relative max-lg:space-y-1 w-full flex-col items-center justify-between h-full">
       <SpecialHands />
 
       <Warning />
 
-      <CurrentPlayHand />
-
-      <div className="absolute flex justify-between w-full left-0 px-4 lg:top-1/2 top-1/3 -translate-y-1/2 z-[5]">
+      <div className="lg:absolute flex justify-between max-lg:h-full w-full left-0 lg:px-4 px-2 lg:top-1/2 lg:-translate-y-1/2 z-[5]">
         <div className="relative">
           <Avatars player name={info.username} videoSrc="player.mp4" />
-          <div className="absolute bottom-0 w-full p-1">
+          <div className="absolute bottom-0 w-full lg:p-1">
             <ScoreDamage />
           </div>
         </div>
@@ -89,6 +87,8 @@ const Kana = ({ params }: { params: { gate: string } }) => {
           japanese={videoParams?.japanese}
         />
       </div>
+
+      <CurrentPlayHand />
 
       <div className="absolute w-full blur-3xl h-full pointer-events-none">
         {/* Left Video */}
