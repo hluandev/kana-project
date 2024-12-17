@@ -88,7 +88,7 @@ export const Tools = () => {
 
           <button
             onClick={() => setShowTools(!showTools)}
-            className={`fixed z-[9999] bottom-2 right-2 ${
+            className={`fixed max-lg:hidden z-[9999] bottom-2 right-2 ${
               showTools ? "bg-white text-black" : "bg-black/80"
             } backdrop-blur-xl rounded-xl text-sm lg:h-10 lg:w-10 h-8 w-8 flex items-center justify-center`}
           >
