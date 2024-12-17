@@ -68,28 +68,13 @@ const Kana = ({ params }: { params: { gate: string } }) => {
 
   return (
     <div className="flex relative w-full flex-col items-center justify-between h-full">
-      {/* Mobile */}
-      <div className="lg:hidden flex flex-col items-center gap-2">
-        <div className="grid grid-cols-3 text-xs gap-1">
-          <Score />
-          <ScoreDamage />
-          <CurrentInfo />
-        </div>
-
-        <div className="lg:hidden">
-          <SpecialHands />
-        </div>
-      </div>
-
-      <div className="max-lg:hidden">
-        <SpecialHands />
-      </div>
+      <SpecialHands />
 
       <Warning />
 
       <CurrentPlayHand />
 
-      <div className="absolute flex justify-between w-full left-0 px-4 top-1/2 -translate-y-1/2 z-[5]">
+      <div className="absolute flex justify-between w-full left-0 px-4 lg:top-1/2 top-1/3 -translate-y-1/2 z-[5]">
         <div className="relative">
           <Avatars player name={info.username} videoSrc="player.mp4" />
           <div className="absolute bottom-0 w-full p-1">

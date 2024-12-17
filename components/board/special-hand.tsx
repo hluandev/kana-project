@@ -40,7 +40,7 @@ export const SpecialHands = () => {
   return (
     <>
       {!hasWonGame && (
-        <div className="relative z-10 pt-2">
+        <div className="relative z-10 lg:pt-2">
           {currentUpgrades.length > 0 && (!isMobile || showUpgrades) && (
             <div className="fixed top-2 left-2 space-y-2">
               <div className="grid grid-cols-3 gap-1 rounded-lg">

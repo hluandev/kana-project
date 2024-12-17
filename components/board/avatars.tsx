@@ -28,7 +28,7 @@ export const Avatars = ({
       animate={{ opacity: 1, y: 0 }}
       className={`${
         player && turns === 0 && "grayscale"
-      } relative rounded-2xl shadow-lg overflow-hidden h-[20rem] w-[14rem] text-white flex flex-col p-2 justify-between`}
+      } relative rounded-2xl shadow-lg overflow-hidden lg:h-[20rem] lg:w-[14rem] h-[16rem] w-[12rem] text-white flex flex-col p-2 justify-between`}
     >
       {videoUrl && !loading ? (
         <video

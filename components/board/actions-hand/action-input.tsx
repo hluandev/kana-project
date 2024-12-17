@@ -97,7 +97,7 @@ export default function ActionInput() {
 
       <div
         onClick={() => setValue(value.slice(0, -1))}
-        className="lg:hidden absolute -right-16 top-1/2 -translate-y-1/2 bg-white rounded-xl border p-1.5"
+        className="lg:hidden absolute -right-16 top-1/2 -translate-y-1/2 bg-white/15 rounded-xl p-1.5"
       >
         <DeleteIcon className="w-4 h-4" />
       </div>

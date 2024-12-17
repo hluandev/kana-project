@@ -11,7 +11,7 @@ export const ProgressBar = ({ target }: ProgressBarProps) => {
 
   return (
     <div className="rounded-full font-medium overflow-hidden">
-      <div className="relative h-9">
+      <div className="relative lg:h-9 h-6">
         <motion.div
           className={`absolute ${
             percentage === 0 ? "hidden" : ""
