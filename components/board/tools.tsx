@@ -18,13 +18,14 @@ import { ToolButton } from "./actions-hand/buttons/tool-button";
 import { ReturnButton } from "../left-side/game-info/components/return-button";
 import { createPortal } from "react-dom";
 import VolumeButton from "./actions-hand/buttons/volume-button";
+import { useSettingStore } from "@/stores/useSettingStore";
 
 export const Tools = () => {
   const { currentDeck, setShowRomaji, showRomaji, kanaMissions } =
     useKanaStore();
   const { missionID, progress, isEndlessMode } = useScoreStore();
   const [isCombineOpen, setIsCombineOpen] = useState(false);
-  const [showTools, setShowTools] = useState(false);
+  const { showTools, setShowTools } = useSettingStore();
 
   const mission = kanaMissions.find((mission) => mission.id === missionID);
   const hasWonGame =
@@ -96,7 +97,7 @@ export const Tools = () => {
 
           {showTools &&
             createPortal(
-              <div className="fixed flex z-[9999] lg:gap-1 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-[3.3rem] lg:bottom-2">
+              <div className="fixed flex max-lg:flex-col z-[9999] lg:gap-1 gap-0.5 max-lg:left-1 max-lg:bottom-10 lg:right-[3.3rem] lg:bottom-2">
                 <ToolButton
                   keyboardShortcut="0"
                   onClick={() => setIsCombineOpen(true)}

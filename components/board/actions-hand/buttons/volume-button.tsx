@@ -19,9 +19,9 @@ export default function VolumeButton() {
       onClick={handleSoundToggle}
       className={`${
         !isMuted ? "bg-white/15" : "bg-red-600/60"
-      } h-10 w-10 flex justify-center duration-200 items-center  rounded-lg`}
+      } lg:h-10 lg:w-10 h-8 w-8 flex justify-center duration-200 items-center  rounded-lg`}
     >
-      <Volume2Icon className="h-5 w-5" />
+      <Volume2Icon className="lg:h-5 lg:w-5 h-4 w-4" />
     </div>
   );
 }

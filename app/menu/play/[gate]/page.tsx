@@ -17,6 +17,7 @@ import { usePlayerStore } from "@/stores/usePlayerStore";
 import AvatarsBg from "@/components/board/avatars-bg";
 import { fetchVideoParams } from "@/actions/server/use-server/fetch-video-params";
 import { useGameStateStore } from "@/stores/useGameStateStore";
+import { useSettingStore } from "@/stores/useSettingStore";
 
 const Kana = ({ params }: { params: { gate: string } }) => {
   const router = useRouter();
@@ -25,6 +26,7 @@ const Kana = ({ params }: { params: { gate: string } }) => {
   const [showMobileTools, setShowMobileTools] = useState(false);
   const [videoParams, setVideoParams] = useState<any>(null);
   const { loadGame } = useGameStateStore();
+  const { showTools, setShowTools } = useSettingStore();
 
   useEffect(() => {
     const gateNumber = parseInt(params.gate.slice(4));
@@ -107,7 +109,10 @@ const Kana = ({ params }: { params: { gate: string } }) => {
 
       <div className="lg:hidden fixed bottom-1 left-1">
         <ShowMenuMobile
-          onClick={() => setShowMobileTools(!showMobileTools)}
+          onClick={() => {
+            setShowMobileTools(!showMobileTools);
+            setShowTools(!showTools);
+          }}
           isActive={showMobileTools}
         />
       </div>
