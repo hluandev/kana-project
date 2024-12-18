@@ -144,10 +144,10 @@ export const WinTheGame = () => {
             </p>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex max-lg:flex-col lg:gap-4 gap-2 max-lg:px-4">
             <div
               onClick={handleLoseSubmit}
-              className="bg-black/80 backdrop-blur-xl rounded-xl flex flex-col justify-between p-3  aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+              className="bg-black/80 backdrop-blur-xl rounded-xl flex flex-col justify-between p-3  lg:aspect-square lg:h-48 h-20 cursor-pointer hover:bg-opacity-90"
             >
               <div>
                 <h1 className=" font-semibold">Play again</h1>
@@ -159,7 +159,7 @@ export const WinTheGame = () => {
 
             <div
               onClick={handleNextGate}
-              className="bg-blue-600/80 backdrop-blur-xl rounded-xl flex flex-col justify-between p-3  aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+              className="bg-blue-600/80 backdrop-blur-xl rounded-xl flex flex-col justify-between p-3  lg:aspect-square lg:h-48 h-20 cursor-pointer hover:bg-opacity-90"
             >
               <div>
                 <h1 className=" font-semibold">Next gate</h1>
@@ -169,9 +169,9 @@ export const WinTheGame = () => {
 
             <div
               onClick={handleEndlessMode}
-              className="bg-[#efcb68] rounded-xl flex flex-col justify-between p-3 aspect-square h-48 cursor-pointer hover:bg-opacity-90"
+              className="bg-[#efcb68] rounded-xl flex flex-col justify-between p-3 lg:aspect-square lg:h-48 cursor-pointer h-20 hover:bg-opacity-90"
             >
-              <div>
+              <div className="max-lg:flex max-lg:justify-between">
                 <h1 className=" font-semibold text-black">Play endless</h1>
                 <p className=" text-black/40">Premium required</p>
               </div>
