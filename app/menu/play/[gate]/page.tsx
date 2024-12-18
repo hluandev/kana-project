@@ -111,7 +111,7 @@ const Kana = ({ params }: { params: { gate: string } }) => {
         <Tools />
       </div>
 
-      <div className="lg:hidden fixed bottom-1 left-1">
+      <div className="lg:hidden z-[100] fixed bottom-1 left-1">
         <ShowMenuMobile
           onClick={() => {
             setShowMobileTools(!showMobileTools);
@@ -122,7 +122,7 @@ const Kana = ({ params }: { params: { gate: string } }) => {
       </div>
 
       {currentUpgrades.length > 0 && (
-        <div className="lg:hidden fixed bottom-1 right-1">
+        <div className="lg:hidden fixed z-[100] bottom-1 right-1">
           <ShowUpgradeButton />
         </div>
       )}
