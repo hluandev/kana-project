@@ -10,6 +10,8 @@ interface PlayerInfo {
   highest_score: number;
   matches: number;
   gate: number;
+  character: string;
+  owned_characters: string[];
 }
 
 interface Activity {
@@ -35,11 +37,14 @@ interface playerStore {
   updateLosses: (losses: number) => void;
   updateMatches: (matches: number) => void;
   updatePlayerGateLocal: (gate: number) => void;
+  updateCharacter: (character: string) => void;
 }
 
 export const usePlayerStore = create<playerStore>((set, get) => ({
   info: {
     gate: 1,
+    character: "",
+    owned_characters: [],
     id: "",
     level: 0,
     xp: 0,
@@ -83,4 +88,6 @@ export const usePlayerStore = create<playerStore>((set, get) => ({
     })),
   updatePlayerGateLocal: (gate: number) =>
     set((state) => ({ info: { ...state.info, gate } })),
+  updateCharacter: (character: string) =>
+    set((state) => ({ info: { ...state.info, character } })),
 }));

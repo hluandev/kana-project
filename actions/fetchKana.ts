@@ -23,7 +23,7 @@ export async function fetchPlayerInfo() {
   let { data: playerInfo } = await supabase
     .from("profiles")
     .select(
-      "id, level, username, xp, wins, losses, highest_score, matches, gate"
+      "id, level, username, xp, wins, losses, highest_score, matches, gate, character, owned_characters"
     )
     .limit(1)
     .single();

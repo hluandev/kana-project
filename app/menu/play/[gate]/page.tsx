@@ -76,7 +76,11 @@ const Kana = ({ params }: { params: { gate: string } }) => {
 
       <div className="lg:absolute flex justify-between max-lg:h-full w-full left-0 lg:px-4 px-2 lg:top-1/2 lg:-translate-y-1/2 z-[5]">
         <div className="relative">
-          <Avatars player name={info.username} videoSrc="player.mp4" />
+          <Avatars
+            player
+            name={info.username}
+            videoSrc={`${info.character}.mp4`}
+          />
           <div className="absolute bottom-0 w-full lg:p-1">
             <ScoreDamage />
           </div>
@@ -94,7 +98,7 @@ const Kana = ({ params }: { params: { gate: string } }) => {
 
       <div className="absolute w-full blur-3xl h-full pointer-events-none">
         {/* Left Video */}
-        <AvatarsBg videoSrc="player.mp4" left />
+        <AvatarsBg videoSrc={`${info.character}.mp4`} left />
 
         {/* Right Video */}
         {videoParams?.name && (
