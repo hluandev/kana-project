@@ -14,7 +14,7 @@ export const VirtualKeyboard: React.FC<VirtualKeyboardProps> = ({
   };
 
   return (
-    <div className="lg:hidden fixed left-1/2 w-96 -translate-x-1/2 -bottom-10 h-full flex flex-col items-center gap-1">
+    <div className="lg:hidden fixed left-1/2 w-96 -translate-x-1/2 bottom-1  flex flex-col items-center gap-1">
       {/* Top row */}
       <div className="grid grid-cols-10 gap-1">
         {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((item) => (

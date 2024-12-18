@@ -421,10 +421,10 @@ export const Win = () => {
   };
 
   return (
-    <div className="w-fit relative gap-1 flex flex-col items-center">
-      <div className="flex flex-col gap-2 items-center">
+    <div className="w-fit relative lg:gap-1 flex flex-col items-center">
+      <div className="flex flex-col lg:gap-2 items-center">
         <motion.div
-          className="text-[#cb980b] font-medium lg:text-6xl text-4xl"
+          className="text-[#cb980b] font-medium lg:text-6xl text-2xl"
           initial={{ opacity: 0, scale: 2 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 2 }}
@@ -452,7 +452,7 @@ export const Win = () => {
           />
         ))}
 
-        <div className="absolute  text-[#efcb68] flex-col  gap-2 -left-[6.7rem] top-0 bg-black/80 backdrop-blur-xl w-24 h-24 flex items-center justify-center rounded-xl">
+        <div className="absolute  text-[#efcb68] flex-col  gap-2 lg:-left-[6.7rem] -left-[3.6rem] top-0 bg-black/80 backdrop-blur-xl lg:w-24 w-14 h-20 lg:h-24 flex items-center justify-center rounded-xl">
           <BadgeJapaneseYenIcon strokeWidth={1.7} />{" "}
           <p className="font-semibold">{yen}</p>
         </div>
@@ -491,7 +491,7 @@ export const Win = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex bg-black/80 backdrop-blur-xl relative h-full mb-28 mt-1 lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
+        className="flex items-center bg-black/80 backdrop-blur-xl relative h-full mb-28 mt-1 lg:mb-2 lg:mt-4 rounded-full lg:p-2 p-1"
       >
         {/* Left button slot - always occupied */}
         {selectedSpecial.length > 0 ? (
@@ -524,7 +524,7 @@ export const Win = () => {
           readOnly={isMobile}
           onChange={handleInputChange}
           placeholder={isMobile ? "Choose text below" : "Type here"}
-          className="flex text-center bg-transparent outline-none rounded-md"
+          className="flex text-center bg-transparent  outline-none rounded-md"
         />
 
         {/* Right button slot - always occupied */}
@@ -554,7 +554,7 @@ export const Win = () => {
 
         <div
           onClick={() => setValue(value.slice(0, -1))}
-          className="lg:hidden absolute -right-9  top-1/2 -translate-y-1/2 bg-white rounded-xl border   p-1.5"
+          className="lg:hidden absolute -right-9  top-1/2 -translate-y-1/2 bg-white/20 rounded-xl p-1.5"
         >
           <DeleteIcon className="w-4 h-4" />
         </div>
