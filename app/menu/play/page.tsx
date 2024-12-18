@@ -44,7 +44,7 @@ export default function Play() {
   ];
 
   return (
-    <div className="w-full max-lg:h-full grid lg:grid-cols-2 lg:gap-2 lg:py-2 lg:pr-2">
+    <div className="w-full max-lg:h-full lg:grid-rows-2 grid lg:grid-cols-2 lg:gap-2 lg:py-2 lg:pr-2">
       {gates.map((gate, index) => (
         <PlayBox
           key={index}
