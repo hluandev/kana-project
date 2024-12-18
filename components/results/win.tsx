@@ -560,7 +560,11 @@ export const Win = () => {
         </div>
       </form>
 
-      <VirtualKeyboard handleChange={handleInputChange} value={value} />
+      <VirtualKeyboard
+        inWinScreen={true}
+        handleChange={handleInputChange}
+        value={value}
+      />
     </div>
   );
 };
