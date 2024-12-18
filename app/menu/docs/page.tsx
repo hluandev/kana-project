@@ -10,6 +10,17 @@ export default function Docs() {
       <h2 className="">
         Here&apos;s everything you need to know about the game!
       </h2>
+
+      <div className="aspect-w-16 aspect-h-9 my-4">
+        <iframe
+          src="https://www.youtube.com/embed/W6X5C2eYb70"
+          title="Kamikana Introduction"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-[315px] rounded-lg"
+        ></iframe>
+      </div>
+
       <p>
         Kamikani is a mix of Balatro, Poker, and Japanese. If you already know
         how to play Balatro, you&apos;re halfway there. This game will feel
