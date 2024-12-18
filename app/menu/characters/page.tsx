@@ -7,7 +7,7 @@ export default function Characters() {
   const { info } = usePlayerStore();
 
   return (
-    <div className="grid grid-cols-5 grid-rows-2 w-full h-full gap-2 py-2 pr-2">
+    <div className="grid lg:grid-cols-5 max-lg:grid-cols-2 max-lg:px-1 gap-1 grid-rows-2 w-full h-full lg:gap-2 lg:py-2 lg:pr-2">
       {info.owned_characters.map((item: any, index) => (
         <CharacterBox name={item} videoSrc={`${item}.mp4`} key={index} />
       ))}

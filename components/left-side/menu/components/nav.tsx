@@ -45,12 +45,18 @@ export const Nav = () => {
   return (
     <>
       {/* Mobile */}
-      <div className="lg:hidden flex max-lg:justify-between max-lg:px-2 max-lg:py-1 lg:flex-col">
+      <div className="lg:hidden flex max-lg:justify-between max-lg:py-1 lg:flex-col">
         <LinkNav
           icon={<SwordsIcon className="w-[0.8rem] h-[0.8rem]" />}
           href="/menu/play"
         >
           Play
+        </LinkNav>
+        <LinkNav
+          icon={<UserIcon className="w-[0.8rem] h-[0.8rem]" />}
+          href="/menu/characters"
+        >
+          Characters
         </LinkNav>
         <LinkNav
           icon={<BookIcon className="w-[0.8rem] h-[0.8rem]" />}

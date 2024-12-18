@@ -1,3 +1,4 @@
+import { useIsMobile } from "@/hooks/useIsMobile";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -17,6 +18,7 @@ export const LinkNav = ({
   icon,
 }: LinkNavProps) => {
   const pathname = usePathname();
+  const isMobile = useIsMobile();
 
   return (
     <Link
@@ -24,9 +26,11 @@ export const LinkNav = ({
       prefetch={true}
       href={href}
       target={blank ? "_blank" : undefined}
-      className={`flex gap-2 max-lg:text-xs hover:text-white/60 w-fit rounded-full ${
+      className={`flex  max-lg:text-xs hover:text-white/60 max-lg:px-1 w-fit rounded-full ${
         pathname === href ? "bg-white/20 " : ""
-      } font-medium  duration-300 px-2.5 py-1 items-center`}
+      } font-medium  duration-300 ${
+        isMobile ? "py-1 gap-0.5" : "px-2.5 py-1 gap-2"
+      } items-center`}
     >
       <div>{icon}</div>
       <p>{children}</p>
