@@ -1,6 +1,7 @@
 "use client";
 
 import { useVideoUrl } from "@/hooks/useVideoUrl";
+import { useKanaStore } from "@/stores/useKanaStore";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 import { motion } from "framer-motion";
 import { Loader2Icon, LockIcon, SwordIcon } from "lucide-react";
@@ -27,6 +28,13 @@ export const PlayBox = ({
   videoSrc,
 }: PlayBoxProps) => {
   const { videoUrl, loading } = useVideoUrl(videoSrc);
+  const {
+    setSelectedCard,
+    setCurrentSpecial,
+    setFrozenSpecialCards,
+    setCurrentUpgrades,
+  } = useKanaStore();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 200 }}
@@ -69,6 +77,12 @@ export const PlayBox = ({
             </p>
           )}
           <Link
+            onClick={() => {
+              setSelectedCard([]);
+              setFrozenSpecialCards([]);
+              setCurrentSpecial([]);
+              setCurrentUpgrades([]);
+            }}
             prefetch={true}
             href={href}
             className={`${
