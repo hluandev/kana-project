@@ -2,6 +2,7 @@
 
 import { CharacterBox } from "@/components/characters/character-box";
 import { usePlayerStore } from "@/stores/usePlayerStore";
+import { ShieldQuestionIcon } from "lucide-react";
 
 export default function Characters() {
   const { info } = usePlayerStore();
@@ -12,12 +13,42 @@ export default function Characters() {
         <CharacterBox name={item} videoSrc={`${item}.mp4`} key={index} />
       ))}
 
-      <div className="bg-neutral-900 box-border "></div>
-      <div className="bg-neutral-900 box-border"></div>
-      <div className="bg-neutral-900 box-border"></div>
-      <div className="bg-neutral-900 box-border"></div>
-      <div className="bg-neutral-900 box-border"></div>
-      <div className="bg-neutral-900 box-border"></div>
+      <div className="bg-neutral-900 box-border flex justify-center items-center">
+        <ShieldQuestionIcon
+          strokeWidth={0.4}
+          className="h-28 w-28 text-white/30"
+        />
+      </div>
+      <div className="bg-neutral-900 box-border flex justify-center items-center">
+        <ShieldQuestionIcon
+          strokeWidth={0.4}
+          className="h-28 w-28 text-white/30"
+        />
+      </div>
+      <div className="bg-neutral-900 box-border flex justify-center items-center">
+        <ShieldQuestionIcon
+          strokeWidth={0.4}
+          className="h-28 w-28 text-white/30"
+        />
+      </div>
+      <div className="bg-neutral-900 box-border flex justify-center items-center">
+        <ShieldQuestionIcon
+          strokeWidth={0.4}
+          className="h-28 w-28 text-white/30"
+        />
+      </div>
+      <div className="bg-neutral-900 box-border flex justify-center items-center">
+        <ShieldQuestionIcon
+          strokeWidth={0.4}
+          className="h-28 w-28 text-white/30"
+        />
+      </div>
+      <div className="bg-neutral-900 box-border flex justify-center items-center">
+        <ShieldQuestionIcon
+          strokeWidth={0.4}
+          className="h-28 w-28 text-white/30"
+        />
+      </div>
     </div>
   );
 }
