@@ -13,9 +13,9 @@ export const CharacterBox = ({ videoSrc, name }: CharacterBoxProps) => {
   const { info, updateCharacter } = usePlayerStore();
 
   return (
-    <div className="box-border relative h-full overflow-hidden">
+    <div className="box-border flex justify-between items-center relative h-full overflow-hidden">
       {loading ? (
-        <Loader2Icon />
+        <Loader2Icon className="animate-spin" />
       ) : (
         <div className="flex flex-col justify-between h-full p-4">
           <div className="text-xl font-semibold">
