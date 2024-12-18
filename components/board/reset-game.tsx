@@ -25,6 +25,7 @@ export const ResetGame = () => {
     setAnnouncement,
     setReroll,
     setIsEndlessMode,
+    setBossHp,
     setMultiplierBonus,
   } = useScoreStore();
 
@@ -41,6 +42,7 @@ export const ResetGame = () => {
     updateLosses(info.losses + 1);
     setIsEndlessMode(false);
     setFrozenSpecialCards([]);
+    setBossHp(33900);
     setTurns(4);
     setScore(0);
     setMultiplier(0);
