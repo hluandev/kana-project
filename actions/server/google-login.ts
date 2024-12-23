@@ -24,15 +24,15 @@ export async function signInWithGoogle() {
   }
 }
 
-export async function signInWithGithub() {
-  const supabase = await createClient();
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "github",
-    options: {
-      redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/auth/callback`,
-    },
-  });
+// export async function signInWithGithub() {
+//   const supabase = await createClient();
+//   const { data, error } = await supabase.auth.signInWithOAuth({
+//     provider: "github",
+//     options: {
+//       redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/auth/callback`,
+//     },
+//   });
 
-  if (error) throw error;
-  return { data };
-}
+//   if (error) throw error;
+//   return { data };
+// }
